@@ -1,0 +1,97 @@
+[{
+    "video": "hMLGik-Ut6o"
+}, {
+    "stops": [{
+            "timestamp": "1",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "Spørgsmål 1.0",
+                "svar": [
+                    "svar1",
+                    "svar2"
+                ],
+                "korrekt": [
+                    2
+                ],
+                "feedback": "Her er noget feedback!"
+            }, {
+                "eventtype": "svarknap",
+                "tekst": "Spørgsmål 1.1",
+                "svar": [
+                    "svar1",
+                    "svar2"
+                ],
+                "korrekt": [
+                    2
+                ],
+                "feedback": "Her er noget feedback!"
+            }]
+        }, {
+            "timestamp": "4",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "Spørgsmål 2.1",
+                "svar": [
+                    "svar1",
+                    "svar2"
+                ],
+                "korrekt": [
+                    2
+                ],
+                "feedback": "Her er noget feedback!"
+            }, {
+                "eventtype": "svarknap",
+                "tekst": "Spørgsmål 2.2",
+                "svar": [
+                    "svar1",
+                    "svar2"
+                ],
+                "korrekt": [
+                    2
+                ],
+                "feedback": "Her er noget feedback!"
+            }]
+        }, {
+            "timestamp": "10",
+            "eventtype": "radio",
+            "tekst": "Spørgsmål 2",
+            "svar": [
+                "svar1",
+                "svar2",
+                "svar3",
+                "svar4"
+            ],
+            "korrekt": [
+                3
+            ],
+            "feedback": "Her er noget feedback!"
+        }, {
+            "timestamp": "15",
+            "eventtype": "checkboxes",
+            "tekst": "Spørgsmål 3",
+            "svar": [
+                "svar1",
+                "svar2",
+                "svar3",
+                "svar4"
+            ],
+            "korrekt": [
+                2,
+                3
+            ],
+            "feedback": "Her er noget feedback!"
+        }, {
+            "timestamp": "20",
+            "eventtype": "information",
+            "tekst": "Spørgsmål 4",
+            "svar": [
+                null
+            ],
+            "korrekt": [
+                null
+            ],
+            "feedback": "Her er noget feedback!"
+        }
+
+    ]
+}]

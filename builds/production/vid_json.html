@@ -1,0 +1,43 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml lang=en><head><meta http-equiv=Content-Type content="text/html; charset=utf-8"><title>Interaktiv video</title><meta name=author content=ato><meta http-equiv=X-UA-Compatible content="IE=edge"><link rel=stylesheet href=css/styles.css type=text/css><link rel=stylesheet href=vid.css type=text/css></head><body><div class=jsonContainer></div><script src=js/script.js></script><script>
+    var JsonObj;
+    // Data skal hentes fra JSON-filen  og ligges over i den eksisterende array-struktur:
+    $.ajax({
+        url: 'data/vid.json',
+        // contentType: "application/json; charset=utf-8",  // Blot en test af tegnsaettet....
+        // dataType: 'json', // <------ VIGTIGT: Saadan boer en angivelse til en JSON-fil vaere! 
+        dataType: 'text', // <------ VIGTIGT: Pga. ???, saa bliver vi noedt til at angive JSON som text. 
+        async: false, // <------ VIGTIGT: Sikring af at JSON hentes i den rigtige raekkefoelge (ikke asynkront). 
+        success: function(data, textStatus, jqXHR) {
+
+            JsonObj = jQuery.parseJSON(data);
+
+             videoId = JsonObj[0].video;
+
+                alert(videoId);
+
+            for (var key in JsonObj) {
+                var objkey = Object.keys(JsonObj[key]);
+                alert(objkey);
+                if (objkey == "stops") {
+                    console.log("bingo: " + objkey);
+                    var stops = JsonObj[key].stops;
+                    alert (stops[0].timestamp);
+                }
+                //alert (Stops[key].timestamp);
+
+                //alert ("svarlenght:" + Stops[key].svar.length);
+                //tn_Array.push(JsonObj[Key].tn);
+                //image_Array.push(JsonObj[Key].image);
+                //overskrift_Array.push(JsonObj[Key].header);
+
+                // console.log("Key : " + Key + ", overskrift_Array : " + overskrift_Array[Key] ); 
+                // console.log("JsonObj : " + JSON.stringify(JsonObj)  ); 
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("Error!!!\njqXHR:" + jqXHR + "\ntextStatus: " + textStatus + "\nerrorThrown: " + errorThrown);
+        }
+    });
+
+    $(".jsonContainer").html(JSON.stringify(JsonObj));
+    </script></body></html>

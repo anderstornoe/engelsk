@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<wrap>
+	<video
+	videoId = "lny37_zJpFc"
+	
+	></video>
+	<runde
+	timestamp = "5"
+	>
+		<spm
+		tekst="Which word describes the setting best?"
+		korrekt ="0"
+		feedback ="Most times, the surroundings say a lot about the characters’ inner emotions (how is the character placed in his or her surroundings)"
+		>
+			<svar value="The Suburbs"/>
+			<svar value="A Cityscape"/>
+			<svar value="The Countryside"/>
+		</spm>
+
+				<spm
+		tekst="Which word describes the setting best?"
+		korrekt ="0"
+		feedback ="Most times, the surroundings say a lot about the characters’ inner emotions (how is the character placed in his or her surroundings)"
+		>
+			<svar value="The Suburbs"/>
+			<svar value="A Cityscape"/>
+			<svar value="The Countryside"/>
+		</spm>
+
+				<spm
+		tekst="Which word describes the setting best?"
+		korrekt ="0"
+		feedback ="Most times, the surroundings say a lot about the characters’ inner emotions (how is the character placed in his or her surroundings)"
+		>
+			<svar value="The Suburbs"/>
+			<svar value="A Cityscape"/>
+			<svar value="The Countryside"/>
+		</spm>
+	</runde>
+
+	<runde
+	timestamp = "39"
+	>
+		<spm
+		tekst="What do the images of jewelry tell you about the character?"
+		korrekt ="1"
+		feedback ="Costumes give us a clear image of what type of person we are looking at."
+		>
+			<svar value="She's a gangmember"/>
+			<svar value="She believes in traditional values"/>
+			<svar value="She loves to dress up"/>
+
+		</spm>
+	</runde>
+
+	<runde
+	timestamp = "45"
+	>
+		<spm
+		tekst="Is it a bad omen for how the rest of the day will be?"
+		korrekt ="0"
+		feedback ="Symbols xxx do ditten and datten"
+		>
+			<svar value="Yes"/>
+			<svar value="No"/>
+			
+
+		</spm>
+	</runde>
+
+<runde
+	timestamp = "70"
+	>
+		<spm
+		tekst="But what does it mean??"
+		korrekt ="0"
+		feedback ="Another bad omen? oh dear...."
+		>
+			<svar value="Something"/>
+			<svar value="Nothing"/>
+			
+
+		</spm>
+	</runde>
+
+	<runde
+	timestamp = "81"
+	>
+		<spm
+		tekst="Props tell us something about the character?"
+		korrekt ="0"
+		feedback ="Props may have specific relevance in a particular film or clear-cut cultural connotations, helping us to decode their meaning as symbols and the character’s relation to them."
+		>
+			<svar value="Yes"/>
+			<svar value="Np"/>
+			<svar value="Can you please give me a clue?"/>
+
+		</spm>
+	</runde>
+</wrap>

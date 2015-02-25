@@ -1,0 +1,186 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'jquery', 'jquery-ui' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose cache add [ 'jquery', null ]
+5 verbose cache add name=undefined spec="jquery" args=["jquery",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'jquery',
+6 verbose parsed url   path: 'jquery',
+6 verbose parsed url   href: 'jquery' }
+7 verbose cache add [ 'jquery-ui', null ]
+8 verbose cache add name=undefined spec="jquery-ui" args=["jquery-ui",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'jquery-ui',
+9 verbose parsed url   path: 'jquery-ui',
+9 verbose parsed url   href: 'jquery-ui' }
+10 silly lockFile 6f2ab963-jquery jquery
+11 verbose lock jquery /Users/anders/.npm/6f2ab963-jquery.lock
+12 silly lockFile 54d470e0-jquery-ui jquery-ui
+13 verbose lock jquery-ui /Users/anders/.npm/54d470e0-jquery-ui.lock
+14 silly lockFile 6f2ab963-jquery jquery
+15 silly lockFile 6f2ab963-jquery jquery
+16 silly lockFile 54d470e0-jquery-ui jquery-ui
+17 silly lockFile 54d470e0-jquery-ui jquery-ui
+18 verbose addNamed [ 'jquery', '' ]
+19 verbose addNamed [ null, '*' ]
+20 silly lockFile 039e748d-jquery jquery@
+21 verbose lock jquery@ /Users/anders/.npm/039e748d-jquery.lock
+22 verbose addNamed [ 'jquery-ui', '' ]
+23 verbose addNamed [ null, '*' ]
+24 silly lockFile b7077c0a-jquery-ui jquery-ui@
+25 verbose lock jquery-ui@ /Users/anders/.npm/b7077c0a-jquery-ui.lock
+26 silly addNameRange { name: 'jquery', range: '*', hasData: false }
+27 silly addNameRange { name: 'jquery-ui', range: '*', hasData: false }
+28 verbose request where is /jquery-ui
+29 verbose request registry https://registry.npmjs.org/
+30 verbose request id 3b8a9922038f71a3
+31 verbose url raw /jquery-ui
+32 verbose url resolving [ 'https://registry.npmjs.org/', './jquery-ui' ]
+33 verbose url resolved https://registry.npmjs.org/jquery-ui
+34 verbose request where is https://registry.npmjs.org/jquery-ui
+35 info trying registry request attempt 1 at 20:22:43
+36 http GET https://registry.npmjs.org/jquery-ui
+37 verbose request where is /jquery
+38 verbose request registry https://registry.npmjs.org/
+39 verbose url raw /jquery
+40 verbose url resolving [ 'https://registry.npmjs.org/', './jquery' ]
+41 verbose url resolved https://registry.npmjs.org/jquery
+42 verbose request where is https://registry.npmjs.org/jquery
+43 info trying registry request attempt 1 at 20:22:43
+44 verbose etag "ABO6GNRQ8CC78IE7S329YDLJG"
+45 http GET https://registry.npmjs.org/jquery
+46 http 200 https://registry.npmjs.org/jquery
+47 silly registry.get cb [ 200,
+47 silly registry.get   { date: 'Wed, 04 Feb 2015 19:22:44 GMT',
+47 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+47 silly registry.get     etag: '"NW9Q0J5TDZ6XWY5S5611RMJF"',
+47 silly registry.get     'content-type': 'application/json',
+47 silly registry.get     'cache-control': 'max-age=60',
+47 silly registry.get     'content-length': '52929',
+47 silly registry.get     'accept-ranges': 'bytes',
+47 silly registry.get     via: '1.1 varnish',
+47 silly registry.get     age: '53',
+47 silly registry.get     'x-served-by': 'cache-fra1238-FRA',
+47 silly registry.get     'x-cache': 'HIT',
+47 silly registry.get     'x-cache-hits': '1',
+47 silly registry.get     'x-timer': 'S1423077764.262631,VS0,VE0',
+47 silly registry.get     vary: 'Accept',
+47 silly registry.get     'keep-alive': 'timeout=10, max=50',
+47 silly registry.get     connection: 'Keep-Alive' } ]
+48 silly addNameRange number 2 { name: 'jquery', range: '*', hasData: true }
+49 silly addNameRange versions [ 'jquery',
+49 silly addNameRange   [ '1.5.1',
+49 silly addNameRange     '1.6.2',
+49 silly addNameRange     '1.6.3',
+49 silly addNameRange     '1.7.2',
+49 silly addNameRange     '1.7.3',
+49 silly addNameRange     '1.8.2',
+49 silly addNameRange     '1.8.3',
+49 silly addNameRange     '2.1.0-beta2',
+49 silly addNameRange     '2.1.0-beta3',
+49 silly addNameRange     '1.11.0-beta3',
+49 silly addNameRange     '1.11.0-rc1',
+49 silly addNameRange     '2.1.0-rc1',
+49 silly addNameRange     '1.11.0',
+49 silly addNameRange     '2.1.0',
+49 silly addNameRange     '2.1.1-beta1',
+49 silly addNameRange     '1.11.1-beta1',
+49 silly addNameRange     '2.1.1-rc1',
+49 silly addNameRange     '1.11.1-rc1',
+49 silly addNameRange     '2.1.1-rc2',
+49 silly addNameRange     '1.11.1-rc2',
+49 silly addNameRange     '2.1.1',
+49 silly addNameRange     '1.11.1',
+49 silly addNameRange     '1.9.1',
+49 silly addNameRange     '2.1.2',
+49 silly addNameRange     '1.11.2',
+49 silly addNameRange     '2.1.3' ] ]
+50 verbose addNamed [ 'jquery', '2.1.3' ]
+51 verbose addNamed [ '2.1.3', '2.1.3' ]
+52 silly lockFile 6fbd5787-jquery-2-1-3 jquery@2.1.3
+53 verbose lock jquery@2.1.3 /Users/anders/.npm/6fbd5787-jquery-2-1-3.lock
+54 silly lockFile 38b3ffac-pmjs-org-jquery-jquery-2-1-3-tgz https://registry.npmjs.org/jquery/-/jquery-2.1.3.tgz
+55 verbose lock https://registry.npmjs.org/jquery/-/jquery-2.1.3.tgz /Users/anders/.npm/38b3ffac-pmjs-org-jquery-jquery-2-1-3-tgz.lock
+56 verbose addRemoteTarball [ 'https://registry.npmjs.org/jquery/-/jquery-2.1.3.tgz',
+56 verbose addRemoteTarball   '6ec55204673d505d39432c5bf5cfad10e1dbad2e' ]
+57 info retry fetch attempt 1 at 20:22:44
+58 verbose fetch to= /var/folders/lx/d0x4w2h91qg_77j4vf5jp_jw0000gn/T/npm-4248-BSAk7eeV/registry.npmjs.org/jquery/-/jquery-2.1.3.tgz
+59 http GET https://registry.npmjs.org/jquery/-/jquery-2.1.3.tgz
+60 http 200 https://registry.npmjs.org/jquery/-/jquery-2.1.3.tgz
+61 silly lockFile 38b3ffac-pmjs-org-jquery-jquery-2-1-3-tgz https://registry.npmjs.org/jquery/-/jquery-2.1.3.tgz
+62 silly lockFile 38b3ffac-pmjs-org-jquery-jquery-2-1-3-tgz https://registry.npmjs.org/jquery/-/jquery-2.1.3.tgz
+63 silly lockFile 6fbd5787-jquery-2-1-3 jquery@2.1.3
+64 silly lockFile 6fbd5787-jquery-2-1-3 jquery@2.1.3
+65 silly lockFile 039e748d-jquery jquery@
+66 silly lockFile 039e748d-jquery jquery@
+67 http 200 https://registry.npmjs.org/jquery-ui
+68 silly registry.get cb [ 200,
+68 silly registry.get   { date: 'Wed, 04 Feb 2015 19:22:45 GMT',
+68 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+68 silly registry.get     etag: '"24G6CD0ZBWKLHCS6YR1L920C6"',
+68 silly registry.get     'content-type': 'application/json',
+68 silly registry.get     'cache-control': 'max-age=60',
+68 silly registry.get     'content-length': '4444',
+68 silly registry.get     'accept-ranges': 'bytes',
+68 silly registry.get     via: '1.1 varnish',
+68 silly registry.get     age: '0',
+68 silly registry.get     'x-served-by': 'cache-fra1226-FRA',
+68 silly registry.get     'x-cache': 'MISS',
+68 silly registry.get     'x-cache-hits': '0',
+68 silly registry.get     'x-timer': 'S1423077764.261940,VS0,VE744',
+68 silly registry.get     vary: 'Accept',
+68 silly registry.get     'keep-alive': 'timeout=10, max=50',
+68 silly registry.get     connection: 'Keep-Alive' } ]
+69 silly addNameRange number 2 { name: 'jquery-ui', range: '*', hasData: true }
+70 silly addNameRange versions [ 'jquery-ui', [ '1.10.4', '1.10.5' ] ]
+71 verbose addNamed [ 'jquery-ui', '1.10.5' ]
+72 verbose addNamed [ '1.10.5', '1.10.5' ]
+73 silly lockFile 34751937-jquery-ui-1-10-5 jquery-ui@1.10.5
+74 verbose lock jquery-ui@1.10.5 /Users/anders/.npm/34751937-jquery-ui-1-10-5.lock
+75 silly lockFile 497ba77f-g-jquery-ui-jquery-ui-1-10-5-tgz https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.10.5.tgz
+76 verbose lock https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.10.5.tgz /Users/anders/.npm/497ba77f-g-jquery-ui-jquery-ui-1-10-5-tgz.lock
+77 verbose addRemoteTarball [ 'https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.10.5.tgz',
+77 verbose addRemoteTarball   '826aed3dd1f88d32ae75d74df48643dc431a5815' ]
+78 info retry fetch attempt 1 at 20:22:45
+79 verbose fetch to= /var/folders/lx/d0x4w2h91qg_77j4vf5jp_jw0000gn/T/npm-4248-BSAk7eeV/registry.npmjs.org/jquery-ui/-/jquery-ui-1.10.5.tgz
+80 http GET https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.10.5.tgz
+81 http 200 https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.10.5.tgz
+82 silly lockFile 497ba77f-g-jquery-ui-jquery-ui-1-10-5-tgz https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.10.5.tgz
+83 silly lockFile 497ba77f-g-jquery-ui-jquery-ui-1-10-5-tgz https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.10.5.tgz
+84 silly lockFile 34751937-jquery-ui-1-10-5 jquery-ui@1.10.5
+85 silly lockFile 34751937-jquery-ui-1-10-5 jquery-ui@1.10.5
+86 silly lockFile b7077c0a-jquery-ui jquery-ui@
+87 silly lockFile b7077c0a-jquery-ui jquery-ui@
+88 error Error: EACCES, mkdir '/Users/anders/.npm/jquery/2.1.3'
+88 error  { [Error: EACCES, mkdir '/Users/anders/.npm/jquery/2.1.3']
+88 error   errno: 3,
+88 error   code: 'EACCES',
+88 error   path: '/Users/anders/.npm/jquery/2.1.3' }
+89 error Please try running this command again as root/Administrator.
+90 error System Darwin 13.4.0
+91 error command "node" "/usr/local/bin/npm" "install" "jquery" "jquery-ui"
+92 error cwd /Users/anders/Google Drive/Gulp_node_project/Læringsobjekter_produktionsfællesskab/Engelsk
+93 error node -v v0.10.33
+94 error npm -v 1.4.28
+95 error path /Users/anders/.npm/jquery/2.1.3
+96 error code EACCES
+97 error errno 3
+98 error stack Error: EACCES, mkdir '/Users/anders/.npm/jquery/2.1.3'
+99 verbose exit [ 3, true ]

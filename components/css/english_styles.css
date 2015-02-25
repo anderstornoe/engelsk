@@ -1,0 +1,36 @@
+.draggable {
+	 background-color: #ddd;
+    border-radius: 4px;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    margin: 6px 6px 0px 0px;
+        padding: 4px;
+}
+
+.draggable_dropped:hover{
+	background-color: green;
+};
+
+.draggable_dropped:hover{
+	background-color: rgba(140,42,21,.7);
+};
+
+.img-responsive{margin:0px;}
+
+.draggable_container{
+	margin-bottom:20px;
+}
+
+
+@media (max-width: 1024px) {
+	.draggable{
+		/*font-size:12px;*/}
+}
+
+.dialogBox{
+	position: absolute;
+	background-color: white;
+color:black;
+
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Anders Tornøe",
+  "version": "0.0.0",
+  "description": "Nu med Bower",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "none"
+  ],
+  "authors": [
+    "Anders Tornøe"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1",
+    "jquery": "~2.1.3"
+  }
+}
