@@ -14,10 +14,10 @@ function swallowError(error) {
 
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
+    webserver = require('gulp-webserver');
     browserify = require('gulp-browserify'),
     gulpif = require('gulp-if'),
     uglify = require('gulp-uglify'),
-    connect = require('gulp-connect'),
     minifyCSS = require('gulp-minify-css'),
     minifyHTML = require('gulp-minify-html'),
     concat = require('gulp-concat'),
@@ -68,7 +68,7 @@ gulp.task('js', function() {
         .pipe(browserify())
         .pipe(gulpif(env === 'production', uglify()))
         .pipe(gulp.dest(outputDir + 'js'))
-    .pipe(connect.reload())
+   // .pipe(webserver.reload())
 });
 
 gulp.task('html', function() {
@@ -77,7 +77,7 @@ gulp.task('html', function() {
         .pipe(gulpif(env === 'production', minifyHTML()))
         .pipe(gulpif(env === 'production', gulp.dest(outputDir)))
 
-    .pipe(connect.reload())
+    //.pipe(webserver.reload())
 
 });
 
@@ -88,7 +88,7 @@ gulp.task('css', function() {
             keepBreaks: false
         })))
         .pipe(gulp.dest(outputDir + 'css'))
-        .pipe(connect.reload())
+        //.pipe(webserver.reload())
 });
 
 gulp.task('lint', function() {
@@ -105,12 +105,13 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('connect', function() {
-    connect.server({
-        root: outputDir,
-        livereload: true
-    });
-    gutil.log("Hej fra loggen");
+gulp.task('webserver', function() {
+  gulp.src('app')
+    .pipe(webserver({
+      livereload: true,
+      directoryListing: true,
+      open: true
+    }));
 });
 
-gulp.task('default', ['bower', 'js', 'connect', 'html', 'css', 'lint', 'log', 'watch']);
+gulp.task('default', ['bower', 'js', 'webserver', 'html', 'css', 'lint', 'log', 'watch']);
