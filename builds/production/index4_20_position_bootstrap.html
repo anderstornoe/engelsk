@@ -1,0 +1,487 @@
+<!DOCTYPE html><html lang=en><head><title>Plotstruktur</title><meta name=robots content="noindex, nofollow"><meta http-equiv=Content-type content="text/html; charset=utf-8"><meta name=viewport content="width=device-width, initial-scale=1"><link rel=stylesheet href=http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel=stylesheet type=text/css><script src=http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js></script><script src=http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><style type=text/css>
+
+    /********************************************************************
+     *        STYLES FRA ANDERS'S BILLED-DRAG-AND-DROP QUIZ
+     ********************************************************************/
+
+    h4, .h4 {
+        font-size: 18px;
+    }
+
+
+    ul, ol {
+        margin-bottom: 10px;
+        margin-top: 0;
+    }
+
+    /********************************************************************
+     *        MINE STYLES
+     ********************************************************************/
+
+
+    body{ 
+        /*font-family: sans-serif;*/
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1.5em;
+        color: #000;
+        overflow-x:hidden; /*  Dette fjerne x-scrollbar i vinduet som opstaar pga. "$( Id ).css()" i funktionen RepositionObjects  */
+    }
+
+    #done { padding: 10px 50px 10px 50px; 
+            background-color: transparent;
+            position:absolute; bottom:0;
+            margin-left: 75%;
+            margin-bottom: 3%;
+          }
+
+    #tryagain{
+              margin-left: 60px;
+              margin-top: 25px; 
+              padding: 10px 20px 10px 20px; 
+              background-color: transparent;
+              color: #FFF;
+          }
+
+    .Dmenu{display: flex;} /* NOTE: "display: flex" faar elementerne til at aligne sig oven paa hinanden, som oensket */ 
+
+    .MenuHeading{margin-right: 6px;}
+
+    #resultwrap{margin-left: auto; margin-right: auto; 
+                width: 265px; 
+                font-weight: 700; 
+                margin-top: 25%;}
+
+    a{color: black;}
+
+    .ImgWrapper{ 
+        /*
+          Responsive baggrundsbilleder, se:
+          http://stackoverflow.com/questions/12609110/responsive-css-background-images
+         */
+        background-image: url("images/Beretttermodellen_BG.jpg");
+        background-repeat:no-repeat;
+        background-size:contain;
+        background-position:center;
+        /*border: 1px solid #F00;*/
+
+        margin-left: auto; margin-right: auto;
+        /*width: 50%; height: 31%;*/
+        /*width: 840px; height: 528px; */
+        width: 80%; 
+        /*
+          How to bottom-float an element:;
+          http://stackoverflow.com/questions/526035/html-css-positioning-float-bottom
+        */
+        position: relative; 
+    }
+
+    .ImgOverlay{
+        margin-left: auto; margin-right: auto;
+        width: 80%;
+       /* border: 1px solid #00F;*/
+        color: #FFF;
+        background-color: #000;
+        opacity: 0.8;
+    }
+
+    .hide{display: none;}
+
+
+    /*.ShowOverlay{position: absolute; z-index: 100; top: 0; margin-left: 10%}*/
+    .ShowOverlay{position: relative; z-index: 100;}
+
+    .menu a:link {text-decoration: none;}
+    .menu a:hover {color: #F00;}
+
+
+    .dropdown-menu{
+      min-width: auto;  /* Overwrite en default min-width paa 160px */
+    }
+
+    .UserManual{margin-left: auto; margin-right: auto; 
+                width: 50%;
+                margin-bottom: 30px;
+    }
+
+    #Hint{border: 1px solid #C0C0C0; 
+          background-color: #FFF; 
+          /*display: none; */
+          z-index: 10; 
+          padding: 5;
+          border-radius: 3px;}
+
+    .QustionNumbers{font-size: 2em;}
+
+    .Green{color: #8eed94;}
+    .Red{color: #ef8f8f;}
+    
+/*
+    .Green{color: #749481;}
+    .Red{color: #915a5a;}
+*/
+    /*********************************************************************
+     *                Media queries for responsivitet.
+     * Er det virkelig noedvendigt at anvende media queries i bootstrap? 
+     *********************************************************************/
+
+    @media (max-width: 768px) {
+      .btn-autosize, .Dmenu .dropdown-menu {
+        padding:3px 6px;
+        font-size:60%;
+        line-height: 1.2;
+      }
+
+      .Dmenu .dropdown-menu a{
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      #done { 
+            padding: 6px 30px 6px 30px; 
+            margin-left: 73%;
+            margin-bottom: 3%;
+      }
+
+      #resultwrap{margin-top: 15%;}
+
+      .QustionNumbers{font-size: 1em;}
+    }
+
+    @media (min-width: 769px) and (max-width: 992px) {
+      .btn-autosize, .Dmenu .dropdown-menu {
+        padding:4px 9px;
+        font-size:75%;
+        line-height: 1.2;
+      }
+
+      .Dmenu .dropdown-menu a{
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      #done { 
+            padding: 6px 40px 6px 40px; 
+            margin-left: 75%;
+            margin-bottom: 3%;
+      }
+
+      #resultwrap{margin-top: 20%;}
+
+      .QustionNumbers{font-size: 1.5em;}
+    }
+
+
+
+
+   /* 
+    * DENNE CSS JUSTERING HAR INGEN EFFEKT PAA JAVASCRIPTET 
+    * Javascript tager ikke hoejde for justeringen, og ser blot elementerne som vaerende ikke-justeret!!!
+    */
+/*      
+    #Menu1 {position: relative; top: 0px;}
+    #Menu2 {position: relative; top: -30px;}
+    #Menu3 {position: relative; top: -60px;}
+    #Menu4 {position: relative; top: -90px;}
+    #Menu5 {position: relative; top: -120px;}
+    #Menu6 {position: relative; top: -150px;}
+    #Menu7 {position: relative; top: -180px;}
+*/
+
+  </style><script type=text/javascript>
+
+
+      //########################################################################
+      //                      Funktioner
+      //########################################################################
+
+
+      // DOKUMENTATION:
+      // left_ajust : bliver dynamisk indsat afhaengig af tekst-stoerrelse.
+      // top_ajust  : "value", er afhaengig af tekst-stoerrelser, margin og padding paa ul-tags - de svare alle til at placere 
+      //              ul-tag'et i "position: relative; top: 0px" - se det udkommenterede CSS foroven.
+      // top og left: er begge angivelser for ul-tag'et naar billedet er i dets native stoerrelse, dvs 840 x 528 px.
+      var JsonCss = [ 
+          {"id":"#Menu1", "top":268, "left":66,   "left_ajust":0, "top_ajust":0,    "answer":"Teaser"},
+          {"id":"#Menu2", "top":200, "left":155,  "left_ajust":0, "top_ajust":-30,  "answer":"Presentation"},
+          {"id":"#Menu3", "top":140, "left":253,  "left_ajust":0, "top_ajust":-60,  "answer":"Elaboration"},
+          {"id":"#Menu4", "top":80,  "left":340,  "left_ajust":0, "top_ajust":-90,  "answer":"Point of no return"},
+          {"id":"#Menu5", "top":20,  "left":451,  "left_ajust":0, "top_ajust":-120, "answer":"Conflict escalation"},
+          {"id":"#Menu6", "top":-40, "left":618,  "left_ajust":0, "top_ajust":-150, "answer":"Climax"},
+          {"id":"#Menu7", "top":-10, "left":702,  "left_ajust":0, "top_ajust":-180, "answer":"Resolution"}
+      ];
+
+      var JsonCss_backup = JsonCss;
+
+      var JsonHint = [
+          {"answer":"Teaser", 
+           "hint":"The teaser starts off the plot off and <br/> gets the attention of the audience"},
+          {"answer":"Presentation", 
+           "hint":"The presentation introduces the main characters,<br/> the setting and the main conflicts that drive the plot"},
+          {"answer":"Elaboration", 
+           "hint":"The elaboration gives further knowledge and <br/>understanding about the conflict and the characters."},
+          {"answer":"Point of no return", 
+           "hint":"The point of no return of no return is the point <br/>in the film when the main character no longer can go back to <br/>the way things were before. The main character has to &quot;do or die.&quot;"},
+          {"answer":"Conflict escalation", 
+           "hint":"The conflict escalation sees the tension of the conflict increase."},
+          {"answer":"Climax", 
+           "hint":"The climax is the final conflict and its solution, <br/>after the conflict we know who has won and who has lost"},
+          {"answer":"Resolution", 
+           "hint":"The resolution is the end of the story, <br/>a new order has been established or the old one has been re-established."}
+      ];
+      
+      // Funktionen rescaler billedet saaledes at forholdet imellem billedets naturlige hoejde og bredde bevares.
+      //    ImgWrapper = En wrapper (f.eks et div-tag) omkring en div med et billede.
+      //    NativeWidth og NativeHeigth er den "naturlige" bredde og hoejde for billedet.
+      function RescaleImage(ImgWrapper, NativeWidth, NativeHeigth){
+          var ContainerWidth =  $( ImgWrapper ).width();
+          var Containerheigth = (NativeHeigth/NativeWidth)*ContainerWidth;
+          $( ImgWrapper ).height(Containerheigth);
+      }
+
+
+      // Funktionen rescaler positionen af ul-tags saaledes at forholdet mellem billedet og positionen bevares naar siden resizes.
+      //    JsonCss: JSON eller JS-objekt
+      //    ObjWrapper: En wrapper omkring billedet hvori ul-tags (dropdown objekterne) befinder sig.
+      //    NativeWidth og NativeHeigth er den "naturlige" bredde og hoejde for billedet.
+      function RepositionObjects(JsonCss ,ObjWrapper, NativeWidth, NativeHeigth){
+
+          var DefaultText = $( JsonCss[0].id + " a > span").text();
+
+          var Width =  $( ObjWrapper ).width();
+          var Height =  $( ObjWrapper ).height();
+          console.log("1 --- Width: " + Width + ", Height: " + Height + ", DefaultText: " + DefaultText );
+
+          var Id; var Top; var Left; var Left_scaled; var Top_scaled; var R_left; var R_top; var Top_ajust;
+          for(var key in JsonCss){
+              Id = JsonCss[key].id;
+              Top = JsonCss[key].top;
+              Left = JsonCss[key].left + JsonCss[key].left_ajust;  // Note: left_ajust er justering pga. tekstlaengde
+              Top_ajust = JsonCss[key].top_ajust;
+
+              // R_left og R_top er empirisk valgte scaling factors der faa positionerne
+              // til at vaere bedre for skaermstoerrelser mindre end NativeWidth og NativeHeigth:
+              R_top = Math.pow(0.15, Height/NativeHeigth)*1.1; 
+              R_left = 50*R_top;   
+
+              Left_scaled = Math.round( (Width/NativeWidth)*Left - R_left );
+              Top_scaled =  Math.round( (Height/NativeHeigth)*Top + R_top*Top_ajust );
+              console.log("5 --- Id: " + Id + ", Top_scaled: " + Top_scaled + ", Left_scaled: " + Left_scaled );
+
+              var TagText = $( Id + " a > span").text();
+              console.log("2 --- Id: " + Id + ", TagText: " + TagText + ", DefaultText: " + DefaultText );
+
+              // Placer alle elementer:
+              $( Id ).css({ position: "relative", top: Top_scaled+"px", left: Left_scaled+"px"});
+          }
+      }
+
+      // Resize overlayet til at matche billedet:
+      function ResizeAndPositionOverlayWindow(WindowSelector, OverlayWindowSelector){
+          var Pos = $(WindowSelector).offset();
+          $( OverlayWindowSelector ).css({ position: "absolute", top: Pos.top+"px", left: Pos.left+"px"});
+          console.log("Pos.top: " + Pos.top + ", Pos.left: " + Pos.left);
+
+          $(OverlayWindowSelector).width( $(WindowSelector).width() );
+          $(OverlayWindowSelector).height( $(WindowSelector).height() );
+      }
+
+
+      // Funktionen laver et array bestaaende af svarene (answer) fra JsonCss-objektet.
+      function MakeArray(JsonCss){
+          var LArray = new Array();
+          for(var key in JsonCss){
+              LArray.push(JsonCss[key].answer);
+          }
+          return LArray;
+      }
+
+
+      // Funktionen laver en kopi af arrayet i argumentet, og blander elementerne tilfaeldigt
+      function ShuffelArray(ItemArray){
+          var NumOfItems = ItemArray.length;
+          var NewArray = ItemArray.slice();  // Copy the array...
+          var Item2; var TempItem1; var TempItem2;
+          for (var Item1 = 0; Item1 < NumOfItems; Item1++) {
+            Item2 = Math.floor( Math.random() * NumOfItems);
+            TempItem1 = NewArray[Item1];
+            TempItem2 = NewArray[Item2];
+            NewArray[Item2] = TempItem1
+            NewArray[Item1] = TempItem2
+          };
+          return NewArray;
+      }
+      
+      // Funktion er laver en liste over li > a elementer:
+      function BS_LinkDropdownMenu(MenuArray){
+          var HTML = '';
+          for (var i in MenuArray){
+              HTML += '<li><a href="#">'+MenuArray[i]+'</a></li>';
+          }
+          console.log("BS_LinkDropdownMenu: " + HTML); 
+
+          return HTML;
+      }
+
+
+      //########################################################################
+      //                      Run code....
+      //########################################################################
+
+      $( document ).ready(function() {
+
+          var TimerId; 
+
+          // En liste laves over alle svar:
+          var ListArray = MakeArray(JsonCss);
+          console.log("--- ListArray 1 : " + ListArray);
+
+          // Generer random liste-elementer over vaerdierne i ListArray i alle dropdown-menuerne:  #Menu1 - #Menu7:
+          var RandArray;
+          for (var i = 1; i <= 7; i++) {
+              RandArray = ShuffelArray( ListArray );
+              $( "#Menu"+i+ " ul" ).append( BS_LinkDropdownMenu( RandArray ) );
+          };
+          console.log("--- ListArray 2 : " + ListArray);
+
+          // Naar vinduet loader rescales billedet og alle dropdownmenuer repositioneres:
+          $(window).load(function () {
+              RescaleImage(".ImgWrapper", 840, 528);
+              RepositionObjects(JsonCss ,".ImgWrapper", 840, 528);
+          });
+
+          // Naar reloader rescales billedet og alle dropdownmenuer repositioneres:
+          $(window).resize(function () {
+             RescaleImage(".ImgWrapper", 840, 528);
+             RepositionObjects(JsonCss ,".ImgWrapper", 840, 528);
+             ResizeAndPositionOverlayWindow(".ImgWrapper", ".ImgOverlay");
+          });
+
+
+          // Default tekst er ens i alle elementer:
+          var DefaultTextWidth = $( JsonCss[0].id + " a > span").width();
+          var DefaultText = $( JsonCss[0].id + " a > span").text();
+
+
+// LAV NOGET FUNKTIONALITET DER FJERNER HINTET NÅE DER TRYKKES I ImgWrapper:
+// Hvis der trykkes paa ImgWrapper, saa...
+$( document ).on('click', ".ImgWrapper", function(event){
+
+    console.log("########## TimerId: " + TimerId );
+
+    // if ( TimerId > 0 ) {
+    //     // Hvis et tidligere hint er synlig, saa skal det fjernes:
+    //     $( "#Hint" ).remove();
+    //     clearTimeout(TimerId);  // fjerner tidligere timere.
+    // }
+});
+
+
+          // Nedenstaaende udfoeres naar der trykkes paa et anchor-tag i dropdown menuerne:
+          $( document ).on('click', ".btn-group ul a", function(event){
+              event.preventDefault();  // Forhindre at anchor-tag'et sender brugeren til "href".
+              
+              var LinkText = $( this ).text();  // Teksten paa det link der 
+              var HeaderLinkObj = $( this ).closest( "ul" ).siblings("a");
+              var HeaderLinkText = $("> .MenuHeading", HeaderLinkObj).text();
+              console.log("LinkText: " + LinkText + ", HeaderLinkText: " + HeaderLinkText );
+
+              // Set teksten i dropdownmenuen til det valgte ord/saetning:
+              $("> .MenuHeading", HeaderLinkObj).text(LinkText);
+
+              // Foelgende finder bredden paa det valgte ord/saetning "TextWidth" og beregner
+              // en justering af teksten i forhold til bredden paa default teksten "DefaultTextWidth"
+              var DivObj = $( this ).closest( ".btn-group" ); // Referance til denne div.
+              var Num = $( ".ImgWrapper > div.Dmenu" ).index( DivObj );  // Nummeret paa denne div i .ImgWrapper.
+              var TextWidth = $("> a ", DivObj).width();  // Bredden paa a-tag'et.
+              var AjustWidth = Math.round( (DefaultTextWidth - TextWidth)/2 );
+              console.log("3 --- DivObj: " + DivObj.attr("id") + ", Num: " + Num + ", TextWidth: " + TextWidth );
+              JsonCss[Num].left_ajust = AjustWidth;  // Ret bredden i JsonCss left_ajust.
+              console.log("4 --- DivObj: " + DivObj.attr("id") + ", Num: " + Num + ", AjustWidth: " + AjustWidth );
+              RepositionObjects(JsonCss ,".ImgWrapper", 840, 528);  // Juster teksten.
+
+              // Hvis et tidligere hint er synlig, saa skal det fjernes:
+              $( "#Hint" ).remove();
+              clearTimeout(TimerId);  // fjerner tidligere timere.
+
+              // Giver et hint:
+              for (var index in JsonHint) {
+                  console.log("### LinkText: " + LinkText + ", JsonHint[index].answer: " + JsonHint[index].answer );
+                  if ( LinkText == JsonHint[index].answer ){
+                      var HintText = JsonHint[index].hint;
+                      // var Offset = $(DivObj).offset();     // absolute
+                      var Position = $(DivObj).position();    // relative
+                      var Left = Position.left;
+                      var Top = Math.round(Position.top);
+                      var DivHeight = DivObj.height();
+                      var Hint_Left = Math.round( Left - (HintText.length/2 - AjustWidth) );
+                      Hint_Left = (Hint_Left > 0) ? Hint_Left : 10;  // sikre HintText position
+                      var Hint_Top = Math.round( Top + DivHeight );
+                      console.log("Left: " + Position.left + ", Top: " + Position.top + ", DivHeight: " + DivHeight + "\nHintText: " + HintText  + ", Hint_Left: " + Hint_Left );
+                      $( DivObj ).before( $('<div id="Hint" class="btn-autosize">' + HintText + '</div>').fadeIn("slow") );
+                      $( "#Hint" ).css({ position: "absolute", top: Hint_Top+"px", left: Hint_Left+"px"});
+                      TimerId = setTimeout( function(){ 
+                        // $("#Hint").fadeOut(); 
+                        $("#Hint").fadeOut(600, function() {
+                            $( "#Hint" ).remove();
+                        });
+                      } , 5000);
+                      console.log(" TimerId 1 : " + TimerId );
+                      // clearTimeout(TimerId);  // fjerner tidligere timere.
+                      // console.log(" TimerId 2 : " + TimerId );
+                  }
+              }
+          });
+
+        
+
+          // Nedenstaaende udfoeres naar der trykkes paa kanppen "DONE":
+          $( document ).on('click', "#done", function(event){
+
+              $(".QustionNumbers").addClass("Red");  // Goer alle svar rode...
+
+              // Tael sammen hvor mange rigtige svar der er afgivet:
+              var count = 0;
+              $(".ImgWrapper .btn-group").each(function( index, element ) {
+                  var IdNumStr = (index + 1).toString();
+                  if ( $(".MenuHeading", this).text() == JsonCss[index].answer ){
+                    ++count;
+                    $("#QustionNum" + IdNumStr).toggleClass( "Red Green" ); // Skift til groen
+                  } 
+                  console.log("--- index: " + index + 
+                              ", element: " + $(".MenuHeading", this).text() + 
+                              ", IdNumStr: " + IdNumStr );
+              });
+
+              // Reseizing af ImgOverlay, saa det matcher ImgWrapper:
+              ResizeAndPositionOverlayWindow(".ImgWrapper", ".ImgOverlay");
+
+              // Vis overlayet over quizen:
+              $(".ImgOverlay").toggleClass("ShowOverlay hide");
+
+              // Skriv resultatet:
+              $("#result").text(count);
+          });
+
+
+          // Nedenstaaende udfoeres naar der trykkes paa kanppen "Try again?":
+          $( document ).on('click', "#tryagain", function(event){
+
+              // Reset alle vaerdier til de orginale vaerdier:
+              JsonCss = JsonCss_backup;
+
+              // Reset alle overskrifter:
+              $(".ImgWrapper .MenuHeading").each(function( index, element ) {
+                  $( this ).text(DefaultText);
+              });
+
+              // Skjul overlay:
+              $(".ImgOverlay").toggleClass("ShowOverlay hide");
+
+              // Fjern alle farver:
+              $(".QustionNumbers").removeClass( "Red Green" );
+
+          });
+          
+      });
+
+  </script></head><body><div class=container-fluid><div class=jumbotron><h1>The Hollywood model</h1><p>The most typical plot structure of fiction films is called the Hollywood model or sometimes the narrative model.<br>It resembles the way fairy tales are structured and follows 7 steps that you will be able to recognize in many different films that have nothing else in common.</p></div><div class=row><div class=col-sm-12><div class="h4 UserManual"><ul><li>Choose the right name from the drop down menu for each step of the plot</li><li>Bla. bla bla</li></ul></div></div></div><div class=row><div class=ImgWrapper><div id=Menu1 class="btn-group Dmenu"><a href=# class="btn btn-default btn-sm dropdown-toggle btn-autosize" data-toggle=dropdown><span class=MenuHeading>Choose a word</span> <span class="glyphicon glyphicon-chevron-down"></span></a><ul role=menu class=dropdown-menu></ul></div><div id=Menu2 class="btn-group Dmenu"><a href=# class="btn btn-default btn-sm dropdown-toggle btn-autosize" data-toggle=dropdown><span class=MenuHeading>Choose a word</span> <span class="glyphicon glyphicon-chevron-down"></span></a><ul role=menu class=dropdown-menu></ul></div><div id=Menu3 class="btn-group Dmenu"><a href=# class="btn btn-default btn-sm dropdown-toggle btn-autosize" data-toggle=dropdown><span class=MenuHeading>Choose a word</span> <span class="glyphicon glyphicon-chevron-down"></span></a><ul role=menu class=dropdown-menu></ul></div><div id=Menu4 class="btn-group Dmenu"><a href=# class="btn btn-default btn-sm dropdown-toggle btn-autosize" data-toggle=dropdown><span class=MenuHeading>Choose a word</span> <span class="glyphicon glyphicon-chevron-down"></span></a><ul role=menu class=dropdown-menu></ul></div><div id=Menu5 class="btn-group Dmenu"><a href=# class="btn btn-default btn-sm dropdown-toggle btn-autosize" data-toggle=dropdown><span class=MenuHeading>Choose a word</span> <span class="glyphicon glyphicon-chevron-down"></span></a><ul role=menu class=dropdown-menu></ul></div><div id=Menu6 class="btn-group Dmenu"><a href=# class="btn btn-default btn-sm dropdown-toggle btn-autosize" data-toggle=dropdown><span class=MenuHeading>Choose a word</span> <span class="glyphicon glyphicon-chevron-down"></span></a><ul role=menu class=dropdown-menu></ul></div><div id=Menu7 class="btn-group Dmenu"><a href=# class="btn btn-default btn-sm dropdown-toggle btn-autosize" data-toggle=dropdown><span class=MenuHeading>Choose a word</span> <span class="glyphicon glyphicon-chevron-down"></span></a><ul role=menu class=dropdown-menu></ul></div><button id=done type=button class="btn btn-default btn-lg btn-autosize">DONE</button></div><div class="ImgOverlay hide"><div id=resultwrap>Number of correct answers: <span id=result>0</span> of 7.<div id=TryAgainButton><button id=tryagain type=button class="btn btn-default btn-lg">Try again?</button></div></div><span id=QustionNum1 class=QustionNumbers>1</span> <span id=QustionNum2 class=QustionNumbers>2</span> <span id=QustionNum3 class=QustionNumbers>3</span> <span id=QustionNum4 class=QustionNumbers>4</span> <span id=QustionNum5 class=QustionNumbers>5</span> <span id=QustionNum6 class=QustionNumbers>6</span> <span id=QustionNum7 class=QustionNumbers>7</span></div></div></div></body></html>

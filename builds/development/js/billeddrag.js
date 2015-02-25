@@ -112,7 +112,7 @@
 
 
  function tjeksvar() {
-    $(".dialogBox").remove();
+     $(".dialogBox").remove();
      var score = 0;
      attempts++;
      $(".draggable").each(function() {
@@ -170,7 +170,7 @@
  function explanation(dims) {
      var indeks = dims.attr("id");
 
-//console.log(correct_Array[indeks]);
+     //console.log(correct_Array[indeks]);
      console.log("indeks: " + indeks + ", dims-value: " + dims.attr("value") + " , correct_Array[indeks]" + correct_Array[indeks]);
      if (dims.attr("value") && dims.attr("value") != "2") {
          if (dims.attr("value") == correct_Array[indeks]) {
@@ -180,7 +180,7 @@
                  dialogBox("Incorrect: " + word_Array[indeks] + " is not a word that describes this character..");
              } else {
                  dialogBox("Incorrect: " + feedback_Array[indeks]);
-              }
+             }
 
          }
 
