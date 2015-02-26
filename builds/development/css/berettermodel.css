@@ -1,0 +1,216 @@
+/*      
+    //########################################################################
+    //                                                          
+    //      DOKUMENTATION TIL THOMAS: 
+    //      Dette script tager udgangspunkt i versionen:
+    //
+    //          index4_21_position_bootstrap.html
+    //
+    //########################################################################
+*/
+
+
+    /********************************************************************
+     *        STYLES FRA ANDERS'S BILLED-DRAG-AND-DROP QUIZ
+     ********************************************************************/
+
+    h4, .h4 {
+        font-size: 18px;
+    }
+
+
+    ul, ol {
+        margin-bottom: 10px;
+        margin-top: 0;
+    }
+
+    /********************************************************************
+     *        MINE STYLES
+     ********************************************************************/
+
+
+    body{ 
+        /*font-family: sans-serif;*/
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1.5em;
+        color: #000;
+        overflow-x:hidden; /*  Dette fjerne x-scrollbar i vinduet som opstaar pga. "$( Id ).css()" i funktionen RepositionObjects  */
+    }
+
+    #done { padding: 10px 50px 10px 50px; 
+            background-color: transparent;
+            position:absolute; bottom:0;
+            margin-left: 75%;
+            margin-bottom: 3%;
+          }
+
+    #tryagain{
+              margin-left: 60px;
+              margin-top: 25px; 
+              padding: 10px 20px 10px 20px; 
+              background-color: transparent;
+              color: #FFF;
+          }
+
+    .Dmenu{display: flex;} /* NOTE: "display: flex" faar elementerne til at aligne sig oven paa hinanden, som oensket */ 
+
+    .MenuHeading{margin-right: 6px;}
+
+    #resultwrap{margin-left: auto; margin-right: auto; 
+                width: 265px; 
+                font-weight: 700; 
+                margin-top: 25%;}
+
+    a{color: black;}
+
+    .ImgWrapper{ 
+        /*
+          Responsive baggrundsbilleder, se:
+          http://stackoverflow.com/questions/12609110/responsive-css-background-images
+         */
+        background-image: url("../images/Beretttermodellen_BG.jpg");
+        background-repeat:no-repeat;
+        background-size:contain;
+        background-position:center;
+        /*border: 1px solid #F00;*/
+
+        margin-left: auto; margin-right: auto;
+        /*width: 50%; height: 31%;*/
+        /*width: 840px; height: 528px; */
+        width: 80%; 
+        /*
+          How to bottom-float an element:;
+          http://stackoverflow.com/questions/526035/html-css-positioning-float-bottom
+        */
+        position: relative; 
+    }
+
+    .ImgOverlay{
+        margin-left: auto; margin-right: auto;
+        width: 80%;
+       /* border: 1px solid #00F;*/
+        color: #FFF;
+        background-color: #000;
+        opacity: 0.8;
+    }
+
+    .hide{display: none;}
+
+
+    /*.ShowOverlay{position: absolute; z-index: 100; top: 0; margin-left: 10%}*/
+    .ShowOverlay{position: relative; z-index: 100;}
+
+    .menu a:link {text-decoration: none;}
+    .menu a:hover {color: #F00;}
+
+
+    .dropdown-menu{
+      min-width: auto;  /* Overwrite en default min-width paa 160px */
+    }
+
+    .UserManual{margin-left: auto; margin-right: auto; 
+                width: 50%;
+                margin-bottom: 30px;
+    }
+
+    .HintClass{
+        font-size: 0.9em;
+        border: 1px solid #C0C0C0; 
+        background-color: #FFF;
+        z-index: 10; 
+        border-radius: 3px;
+        padding: 5px;
+    }
+
+    .QustionNumbers{font-size: 2em;}
+
+    .Green{color: #8eed94;}
+    .Red{color: #ef8f8f;}
+
+/*
+    .Green{color: #749481;}
+    .Red{color: #915a5a;}
+*/
+
+    #QustionNumContainer{
+        position: relative; 
+        z-index: 101;  
+        padding: 40px 20px 40px 20px; 
+        background-color: #000; 
+    }
+    #QustionNum1{margin-left: 10%;}
+    #QustionNum2{margin-left: 8.5%;}
+    #QustionNum3{margin-left: 10%;}
+    #QustionNum4{margin-left: 6.3%;}
+    #QustionNum5{margin-left: 13%;}
+    #QustionNum6{margin-left: 17.8%;}
+    #QustionNum7{margin-left: 8%;}
+    
+
+    /*********************************************************************
+     *                Media queries for responsivitet.
+     * Er det virkelig noedvendigt at anvende media queries i bootstrap? 
+     *********************************************************************/
+
+    @media (max-width: 768px) {
+      .btn-autosize, .Dmenu .dropdown-menu, .HintClass {
+        padding:3px 6px;
+        font-size:60%;
+        line-height: 1.2;
+      }
+
+      .Dmenu .dropdown-menu a{
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      #done { 
+            padding: 6px 30px 6px 30px; 
+            margin-left: 73%;
+            margin-bottom: 3%;
+      }
+
+      #resultwrap{margin-top: 15%;}
+
+      .QustionNumbers{font-size: 1em;}
+    }
+
+    @media (min-width: 769px) and (max-width: 992px) {
+      .btn-autosize, .Dmenu .dropdown-menu, .HintClass {
+        padding:4px 9px;
+        font-size:75%;
+        line-height: 1.2;
+      }
+
+      .Dmenu .dropdown-menu a{
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      #done { 
+            padding: 6px 40px 6px 40px; 
+            margin-left: 75%;
+            margin-bottom: 3%;
+      }
+
+      #resultwrap{margin-top: 20%;}
+
+      .QustionNumbers{font-size: 1.5em;}
+    }
+
+
+
+
+   /* 
+    * DENNE CSS JUSTERING HAR INGEN EFFEKT PAA JAVASCRIPTET 
+    * Javascript tager ikke hoejde for justeringen, og ser blot elementerne som vaerende ikke-justeret!!!
+    */
+/*      
+    #Menu1 {position: relative; top: 0px;}
+    #Menu2 {position: relative; top: -30px;}
+    #Menu3 {position: relative; top: -60px;}
+    #Menu4 {position: relative; top: -90px;}
+    #Menu5 {position: relative; top: -120px;}
+    #Menu6 {position: relative; top: -150px;}
+    #Menu7 {position: relative; top: -180px;}
+*/

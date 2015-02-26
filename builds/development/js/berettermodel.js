@@ -1,3 +1,13 @@
+      //########################################################################
+      //                                                          
+      //      DOKUMENTATION TIL THOMAS: 
+      //      Dette script tager udgangspunkt i versionen:
+      //
+      //          index4_21_position_bootstrap.html
+      //
+      //########################################################################
+
+
 
       //########################################################################
       //                      Funktioner
@@ -48,7 +58,7 @@
       }
 
 
-      // Funktionen rescaler positionen af ul-tags saaledes at forholdet mellem billedet og positionen bevares naar siden resizes.
+      // Funktionen rescaler positionen af div-tags saaledes at forholdet mellem billedet og positionen bevares naar siden resizes.
       //    JsonCss: JSON eller JS-objekt
       //    ObjWrapper: En wrapper omkring billedet hvori ul-tags (dropdown objekterne) befinder sig.
       //    NativeWidth og NativeHeigth er den "naturlige" bredde og hoejde for billedet.
@@ -171,19 +181,6 @@
           var DefaultText = $( JsonCss[0].id + " a > span").text();
 
 
-// LAV NOGET FUNKTIONALITET DER FJERNER HINTET NÅE DER TRYKKES I ImgWrapper:
-// Hvis der trykkes paa ImgWrapper, saa...
-$( document ).on('click', ".ImgWrapper", function(event){
-
-    console.log("########## TimerId: " + TimerId );
-
-    // if ( TimerId > 0 ) {
-    //     // Hvis et tidligere hint er synlig, saa skal det fjernes:
-    //     $( "#Hint" ).remove();
-    //     clearTimeout(TimerId);  // fjerner tidligere timere.
-    // }
-});
-
 
           // Nedenstaaende udfoeres naar der trykkes paa et anchor-tag i dropdown menuerne:
           $( document ).on('click', ".btn-group ul a", function(event){
@@ -220,13 +217,13 @@ $( document ).on('click', ".ImgWrapper", function(event){
                       // var Offset = $(DivObj).offset();     // absolute
                       var Position = $(DivObj).position();    // relative
                       var Left = Position.left;
-                      var Top = Math.round(Position.top);
+                      var Top = Position.top;
                       var DivHeight = DivObj.height();
                       var Hint_Left = Math.round( Left - (HintText.length/2 - AjustWidth) );
                       Hint_Left = (Hint_Left > 0) ? Hint_Left : 10;  // sikre HintText position
                       var Hint_Top = Math.round( Top + DivHeight );
                       console.log("Left: " + Position.left + ", Top: " + Position.top + ", DivHeight: " + DivHeight + "\nHintText: " + HintText  + ", Hint_Left: " + Hint_Left );
-                      $( DivObj ).before( $('<div id="Hint" class="btn-autosize">' + HintText + '</div>').fadeIn("slow") );
+                      $( DivObj ).before( $('<div id="Hint" class="HintClass">' + HintText + '</div>').fadeIn("slow") );
                       $( "#Hint" ).css({ position: "absolute", top: Hint_Top+"px", left: Hint_Left+"px"});
                       TimerId = setTimeout( function(){ 
                         // $("#Hint").fadeOut(); 
@@ -235,8 +232,6 @@ $( document ).on('click', ".ImgWrapper", function(event){
                         });
                       } , 5000);
                       console.log(" TimerId 1 : " + TimerId );
-                      // clearTimeout(TimerId);  // fjerner tidligere timere.
-                      // console.log(" TimerId 2 : " + TimerId );
                   }
               }
           });
