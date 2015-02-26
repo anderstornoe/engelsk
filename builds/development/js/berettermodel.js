@@ -13,6 +13,7 @@
       //                      Funktioner
       //########################################################################
 
+//kvuc.overlayInfo("hej", "content", "bt_txt");
 
       // DOKUMENTATION:
       // left_ajust : bliver dynamisk indsat afhaengig af tekst-stoerrelse.

@@ -14,18 +14,27 @@
 
 var kvuc_js_class = {
 
-	// funktion der laver et overlay med information / valg, der forsvinder ved klik hvorsom helst
-	// parametre: 
-	overlayInfo: function(title, content, buttontxt) {},
+    // funktion der laver et overlay med information / valg, der forsvinder ved klik hvorsom helst
+    // parametre: 
+    overlayInfo: function(title, content, buttontxt) {
+        console.log("overlayInfo loaded");
+    },
 
-	//funktion der blander et div_Array
-	shuffelDivArray: function(divArray) {},
+    //funktion der blander et div_Array
+    shuffelDivArray: function(divArray) {},
 
-	//funktion der shuffler et Array 
-	shuffelArray: function(myArray) {},
+    //funktion der shuffler et Array 
+    shuffelArray: function(myArray) {},
 
-	// Dialog box:
-	dialogBox: function() {}
+    // Dialog box:
+    dialogBox: function() {},
+
+    // load JSon file
+    loadJson: function() {}
+
+
 
 }
 
+var kvuc = Object.create(kvuc_js_class);
+kvuc.overlayInfo("hej", "content", "bt_txt");

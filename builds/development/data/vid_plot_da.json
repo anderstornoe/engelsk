@@ -1,0 +1,204 @@
+[{
+    "video": "lny37_zJpFc"
+}, {
+    "stops": [{
+        "timestamp": "53",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Describe the FEMALE character’s mood, based on what you have seen so far",
+            "svar": ["happy, positive", "worried", "angry"],
+            "korrekt": [
+                1
+            ],
+            "feedback": "To answer this question you need to consider the actor’s actions, body language, and facial expressions"
+        },{
+            "eventtype": "svarknap",
+            "tekst": "Describe the MALE character’s mood, based on what you have seen so far",
+            "svar": ["happy, positive","worried","angry"],
+            "korrekt": [
+                0
+            ],
+            "feedback": "To answer this question you need to consider the actor’s actions, body language, and facial expressions"
+        }]
+    }, {
+        "timestamp": "63",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "What feelings do you think this shot is supposed to communicate?",
+            "svar": [
+                "A feeling of being happy and curious about the outside",
+                "A feeling of unease and worry about what is outside the house",
+                "A feeling of being in love"
+            ],
+            "korrekt": [
+                1
+            ],
+            "feedback": "You have to consider both what is in the frame and the angle it is seen from. By filming over the shoulder of the woman we adopt her point of view. Her view of the outside world in both this shot and the next is limited (constrained) by the framework of the window"
+        }]
+    }, {
+        "timestamp": "95",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Why do they argue?",
+            "svar": [
+                "They argue about money",
+                "They argue because she does not feel American",
+                "They argue about children"
+            ],
+            "korrekt": [
+                1
+            ],
+            "feedback": "Dialogue is an easy way to make audience understand what is going on"
+        }]
+    }, {
+        "timestamp": "109",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Why does he choose that music?",
+            "svar": [
+                "He does not like American culture",
+                "The type of music is not important",
+                "He likes American culture"
+            ],
+            "korrekt": [
+                2
+            ],
+            "feedback": "Always assume that when something happens in a film (or text) it happens for a reason. (It never simply rains on film)"
+        }]
+    }, {
+        "timestamp": "115",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Why does she change the music?",
+            "svar": [
+                "She is not comfortable with American culture",
+                "She likes American culture",
+                "The type of music is not important"
+            ],
+            "korrekt": [
+                0
+            ],
+            "feedback": "Remember it never simply rains on film"
+        }]
+    }, {
+        "timestamp": "122",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "When she changes the music, what does his reaction say about him?",
+            "svar": [
+                "That he wants her to be unhappy",
+                "That he likes Indian music better",
+                "That he does not want to argue with her "
+            ],
+            "korrekt": [
+                2
+            ],
+            "feedback": "Did you notice the way he first closed his fist and then relaxed and started to drum along to the new music?"
+        }]
+    }, {
+        "timestamp": "136",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Consider the use of sound and handheld camera and the pose of the actress, what does it say about the character’s feelings in the parking lot?",
+            "svar": [
+                "She is very angry",
+                "She is having a good time",
+                "She is very uncomfortable"
+            ],
+            "korrekt": [
+                2
+            ],
+            "feedback": "Sometimes characters simply describe their feelings in words but more often the filmmaker will use all the different means of expression she has at her disposal."
+        }]
+    }, {
+        "timestamp": "146",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "What emotion does her face express?",
+            "svar": [
+                "Disgust",
+                "Happiness",
+                "Anger"
+            ],
+            "korrekt": [
+                0
+            ],
+            "feedback": "A way of characterizing is showing the emotional response to the surroundings"
+        }]
+    }, {
+        "timestamp": "165",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "What does the camerawork express here in relation to the character?",
+            "svar": [
+                "That she feels happy and energetic",
+                "That she feels confused and afraid",
+                "That she feels angry and violent"
+            ],
+            "korrekt": [
+                1
+            ],
+            "feedback": "This is an example of how the filmmaker shows the audience how the character feels, through the use of the camera."
+        }]
+    }, {
+        "timestamp": "261",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Why does he react like that to the graffiti?",
+            "svar": [   
+                "He is very angry because his name is not Osama",
+                "He is very upset because he just painted the door",
+                "He is very hurt because it is important to him to be accepted as American "
+            ],
+            "korrekt": [
+                2
+            ],
+            "feedback": "The way a character reacts to a certain event gives the audience information about the character"
+        }]
+    }, {
+        "timestamp": "306",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "What does her face express?",
+            "svar": [
+                "Resolve",
+                "Anger",
+                "Aggression"
+            ],
+            "korrekt": [
+                0
+            ],
+            "feedback": "A good actor can express many different emotions and nuances with their face alone"
+        }]
+    }, {
+        "timestamp": "321",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Why does the picture change from her face to her hands?",
+            "svar": [
+                "Because she is going to start doing something with them",
+                "Because she is unable to do anything ",
+                "Because she will not do anything"
+            ],
+            "korrekt": [
+                0
+            ],
+            "feedback": "Films often use a part of a whole to highlight certain aspects or abilities. Hands often has to do with a character’s ability to do something"
+        }]
+    }, {
+        "timestamp": "364",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Why does she leave the word 'home' on the door?",
+            "svar": [
+                "Because she wants them to go to India to live",
+                "Because she wants the US to be her home",
+                "Because she couldn’t get it washed off"
+            ],
+            "korrekt": [
+                1
+            ],
+            "feedback": "Consider whether the word shows a development in her?"
+        }]
+    }]
+}]
