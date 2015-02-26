@@ -27,10 +27,9 @@ var m = 0;
 var timestamp_Array = [];
 var JsonObj;
 //XML SKAL SKIFTES UD MED JSON
-
-$("document").ready(function() {
+function loadData(url) {
     $.ajax({
-        url: 'data/vid.json',
+        url: url,
         // contentType: "application/json; charset=utf-8",  // Blot en test af tegnsaettet....
         // dataType: 'json', // <------ VIGTIGT: Saadan boer en angivelse til en JSON-fil vaere! 
         dataType: 'text', // <------ VIGTIGT: Pga. ???, saa bliver vi noedt til at angive JSON som text. 
@@ -73,8 +72,7 @@ $("document").ready(function() {
         }
     });
 
-});
-
+}
 
 /// PLAYER SCRIPT - SETUP tube
 function setUpTube() {
@@ -242,7 +240,7 @@ function stop_event(tal, taeller) {
         }
     }
  
-    $(".popud").html("<h4>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: " + score + "<h3>" + tekst + "(" + spm.eventtype + ")</h3><table>" + options_text + "</table> ");
+    $(".popud").html("<h4>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: " + score + "<h3>" + tekst + "</h3><table>" + options_text + "</table> ");
 
 
     $("tr").click(function() {

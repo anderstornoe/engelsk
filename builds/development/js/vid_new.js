@@ -28,9 +28,9 @@ var timestamp_Array = [];
 var JsonObj;
 //XML SKAL SKIFTES UD MED JSON
 
-$("document").ready(function() {
+function loadData(url) {
     $.ajax({
-        url: 'data/vid.json',
+        url: url,
         // contentType: "application/json; charset=utf-8",  // Blot en test af tegnsaettet....
         // dataType: 'json', // <------ VIGTIGT: Saadan boer en angivelse til en JSON-fil vaere! 
         dataType: 'text', // <------ VIGTIGT: Pga. ???, saa bliver vi noedt til at angive JSON som text. 
@@ -73,7 +73,7 @@ $("document").ready(function() {
         }
     });
 
-});
+}
 
 
 /// PLAYER SCRIPT - SETUP tube
@@ -269,12 +269,12 @@ function commit_answers() {
 
     console.log(valgt + "," + spm.korrekt[0]);
 
-  //  alert(typeof(valgt) + typeof(spm.korrekt));
+    //  alert(typeof(valgt) + typeof(spm.korrekt));
 
     //var 
 
-    for (var i = 0; i<valgt.length; i++){
-        
+    for (var i = 0; i < valgt.length; i++) {
+
     }
 
 
@@ -297,7 +297,7 @@ function commit_answers() {
         }
     });
 
-    
+
     feedback();
 }
 
