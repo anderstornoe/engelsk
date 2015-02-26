@@ -9,3 +9,7 @@
 2.  Hvorfor virker Thomas's gulp-server ("gulp-connect") ikke?
 
 3.	Hvordan laver man tilbagerulning paa f.eks en enkelt fil fra Git?
+
+4. 	Maaske ikke er relvant spoergsmaal, men...ß
+	Med mange forskellige laeringsobjekter, hvilken mappe-struktur paa Git vil vaere 
+	hensigtsmaessig? En mappe til hvert laeringsobjekt er vel OK?
