@@ -3,7 +3,7 @@
 // vaere et unikt navn).
 //
 // For at anvende en funktion inde i klassen, skal et objektet foerst "instiantieres" fra 
-// "klassen" - nedenstaaende linje skal kunskrive een gang:
+// "klassen" - nedenstaaende linje skal kun skrive een gang:
 //
 // 				var kvuc = Object.create(kvuc_js_class);
 //
@@ -16,17 +16,16 @@ var kvuc_js_class = {
 
 	// funktion der laver et overlay med information / valg, der forsvinder ved klik hvorsom helst
 	// parametre: 
-	function overlayInfo(title, content, buttontxt) {}
+	overlayInfo: function(title, content, buttontxt) {},
 
 	//funktion der blander et div_Array
+	shuffelDivArray: function(divArray) {},
 
 	//funktion der shuffler et Array 
+	shuffelArray: function(myArray) {},
 
-	// Dialog box
-
-	function dialogBox() {
-
-	}
+	// Dialog box:
+	dialogBox: function() {}
 
 }
 
