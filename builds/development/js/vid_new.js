@@ -249,7 +249,7 @@ function stop_event(tal, taeller) {
     } else {
 
         $(".svar_btn").click(function() {
-            $(this).toggleClass("btn_chosen")
+            $(this).toggleClass("btn_chosen");
         });
 
         $(".btn_videre").fadeIn().click(commit_answers);
@@ -264,7 +264,7 @@ function commit_answers() {
     var valgt = [];
 
     $(".btn_chosen").each(function() {
-        valgt.push($(this).attr("id"))
+        valgt.push($(this).attr("id"));
     });
 
     console.log(valgt + "," + spm.korrekt[0]);

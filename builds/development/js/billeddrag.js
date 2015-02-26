@@ -29,7 +29,7 @@
                  correct_Array.push(JsonObj[Key].Correct);
                  feedback_Array.push(JsonObj[Key].Explanation);
 
-                 if (JsonObj[Key].Correct != null) {
+                 if (JsonObj[Key].Correct !== null) {
                      antal_korrekte++;
                  }
              }
@@ -57,7 +57,7 @@
          revert: true,
          drag: function(event, ui) {
              $(".dialogBox").remove();
-             $(this).css("opacity", .8).addClass("draggable-active");
+             $(this).css("opacity", 0.8).addClass("draggable-active");
          },
          stop: function(event, ui) {
              $(this).css("opacity", 1).removeClass("draggable-active");
@@ -74,7 +74,7 @@
          //alert(e.pageX);
          cursorX = e.pageX;
          cursorY = e.pageY;
-     }
+     };
 
      $(".btn_tjek").click(tjeksvar);
 
@@ -128,7 +128,7 @@
                  top: 0,
                  left: 0
              }, 500, function() {
-                 $(this).attr("value", "2")
+                 $(this).attr("value", "2");
              });
              //$(this).animate.css("top", "0px").css("left", "0px");
          }
@@ -192,7 +192,7 @@
  function dialogBox(body) {
 
      $("body").append("<div class='dialogBox'>" + body + "</div>");
-     $(".dialogBox").css("top", (cursorY + 20) + "px").css("left", cursorX - 125).css("opacity", .1).fadeTo(400, 1);
+     $(".dialogBox").css("top", (cursorY + 20) + "px").css("left", cursorX - 125).css("opacity", 0.1).fadeTo(400, 1);
 
 
      $(".dialogBox").click(function() {
@@ -219,4 +219,4 @@
              $this.append(elems[i]);
 
      });
- }
+ };

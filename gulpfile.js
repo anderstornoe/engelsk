@@ -110,7 +110,7 @@ gulp.task('connect', function() {
         root: outputDir,
         livereload: true
     });
-    gutil.log("Hej fra loggen");
+    gutil.log("Hej fra connect");
 });
 
 gulp.task('default', ['bower', 'js', 'connect', 'html', 'css', 'lint', 'log', 'watch']);
