@@ -107,7 +107,7 @@
 
       // Funktionen laver et array bestaaende af svarene (answer) fra JsonCss-objektet.
       function MakeArray(JsonCss){
-          var LArray = new Array();
+          var LArray = []; // new Array();
           for(var key in JsonCss){
               LArray.push(JsonCss[key].answer);
           }
@@ -124,9 +124,9 @@
             Item2 = Math.floor( Math.random() * NumOfItems);
             TempItem1 = NewArray[Item1];
             TempItem2 = NewArray[Item2];
-            NewArray[Item2] = TempItem1
-            NewArray[Item1] = TempItem2
-          };
+            NewArray[Item2] = TempItem1;
+            NewArray[Item1] = TempItem2;
+          }
           return NewArray;
       }
       
@@ -139,6 +139,16 @@
           console.log("BS_LinkDropdownMenu: " + HTML); 
 
           return HTML;
+      }
+
+      // "#Hint"  SetHintTimer( "#Hint" );
+      function SetHintTimer(Selector){
+        var TimerId = setTimeout( function(){ 
+              $( Selector ).fadeOut(600, function() {
+                  $( Selector ).remove();
+              });
+          } , 5000);
+        return TimerId;
       }
 
 
@@ -159,7 +169,7 @@
           for (var i = 1; i <= 7; i++) {
               RandArray = ShuffelArray( ListArray );
               $( "#Menu"+i+ " ul" ).append( BS_LinkDropdownMenu( RandArray ) );
-          };
+          }
           console.log("--- ListArray 2 : " + ListArray);
 
           // Naar vinduet loader rescales billedet og alle dropdownmenuer repositioneres:
@@ -225,12 +235,7 @@
                       console.log("Left: " + Position.left + ", Top: " + Position.top + ", DivHeight: " + DivHeight + "\nHintText: " + HintText  + ", Hint_Left: " + Hint_Left );
                       $( DivObj ).before( $('<div id="Hint" class="HintClass">' + HintText + '</div>').fadeIn("slow") );
                       $( "#Hint" ).css({ position: "absolute", top: Hint_Top+"px", left: Hint_Left+"px"});
-                      TimerId = setTimeout( function(){ 
-                        // $("#Hint").fadeOut(); 
-                        $("#Hint").fadeOut(600, function() {
-                            $( "#Hint" ).remove();
-                        });
-                      } , 5000);
+                      TimerId = SetHintTimer( "#Hint" );
                       console.log(" TimerId 1 : " + TimerId );
                   }
               }
