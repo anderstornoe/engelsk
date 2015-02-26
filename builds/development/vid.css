@@ -5,6 +5,11 @@ body {
     font-family: Open Sans;
     font-weight: 100;
 }
+.svarcontainer {
+    margin-left: 9%;
+    margin-top: 6%;
+    margin-bottom: 6%;
+}
 .h1 {
     color: white;
     font-size: 36px;
@@ -125,7 +130,7 @@ h3 {
 }
 
 .btn_chosen{
-background-color: rgb(56,122,124);
+background-color: rgb(144, 144, 136);
 }
 
 .feed_txt {
