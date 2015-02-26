@@ -234,7 +234,7 @@ function stop_event(tal, taeller) {
         if (spm.eventtype == "svarknap") {
             options_text = options_text + "<div id ='" + i + "' class='svar_btn'>" + svar[i] + "</div>";
         } else if (spm.eventtype == "checkbox") {
-            options_text = options_text + "<tr id ='" + i + "'> <td><div class='svar_btn'>" + svar[i] + "</div></td></tr>";
+            options_text = options_text + "<div id ='" + i + "' class='svar_btn'>" + svar[i] + "</div>";
         } else if (spm.eventtype == "info") {
             options_text = "";
         }
@@ -249,7 +249,15 @@ function stop_event(tal, taeller) {
     } else {
 
         $(".svar_btn").click(function() {
-            $(this).toggleClass("btn_chosen");
+
+            if (spm.eventtype == "svarknap") {
+                $(".svar_btn").removeClass("btn_chosen");
+                $(this).addClass("btn_chosen");
+
+
+            } else {
+                $(this).toggleClass("btn_chosen");
+            }
         });
 
         $(".btn_videre").fadeIn().click(commit_answers);
@@ -259,36 +267,34 @@ function stop_event(tal, taeller) {
 }
 
 function commit_answers() {
-
+    var score = 0;
     $(".btn_videre").hide();
-    var valgt = [];
 
-    $(".btn_chosen").each(function() {
-        valgt.push($(this).attr("id"));
-    });
-
-    console.log(valgt + "," + spm.korrekt[0]);
-
-    //  alert(typeof(valgt) + typeof(spm.korrekt));
-
-    //var 
-
-    for (var i = 0; i < valgt.length; i++) {
-
-    }
-
-
-    if (valgt != spm.korrekt) {
-        console.log("InKorrektemundo!");
-        //$(this).find($(".svar_btn")).css("background-color", "#AF2B40");
-        //$("#runde").html("<h4>Quizrunde " + (runde + 1) + ", spørgsmål " + (events_taeller + 1) + " af " + spm_length + "<br/>Din score: " + score + "</h4>");
-
-        //Klikker på korrekt svar:
+    if (spm.eventtype == "svarknap") {
+        var valgt = $(".btn_chosen").attr("id");
+        if (valgt == spm.korrekt) {
+            console.log("korrekt!");
+            score ++; 
+        }
     } else {
-        console.log("Korrektemundo!");
-        //$(this).find($(".svar_btn")).css("background-color", "#45664b");
-        //score++;
-        //$("#runde").html("<h4>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: " + score);
+        var valgt = [];
+
+        $(".btn_chosen").each(function() {
+            var indeks = $(this).index();
+            var id = $(this).attr("id");
+            if (spm.korrekt.indexOf(id) > -1) {
+                score ++;
+                console.log("korrekt!")
+            } else {
+                console.log("ikke korrekt: " + $(this).attr("id") + "," + spm.korrekt[1]);
+            }
+        });
+        if (score >= spm.korrekt.length){
+            console.log("Alt er korrekt... score: " + score + " antal_ svar: " + spm.korrekt.length);
+        }else{
+            console.log("Ikke Alt er korrekt... score: " + score + " antal_ svar: " + spm.korrekt.length);
+        
+        }
     }
 
     $(".svar_btn").each(function() {
