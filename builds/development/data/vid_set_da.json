@@ -2,7 +2,7 @@
     "video": "lny37_zJpFc"
 }, {
     "stops": [{
-        "timestamp": "24",
+        "timestamp": "27",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "Consider the use of the pressure cooker as a prop? What could be reasons to show this item?",
@@ -33,14 +33,14 @@
         }]
 
     }, {
-        "timestamp": "45",
+        "timestamp": "49",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "Consider the man's costume, is he dressed as",
             "svar": [
-                "a typical American",
-                "a typical Indian (Sikh)",
-                "a mix between Indian (Sikh) and American"
+                "A typical American",
+                "A typical Indian (Sikh)",
+                "A mix between Indian (Sikh) and American"
             ],
             "korrekt": [
                 2
@@ -48,7 +48,7 @@
             "feedback": "Costume gives information both about the historical and social setting of the the character and it is often a hint to a character’s personality"
         }]
     }, {
-        "timestamp": "77",
+        "timestamp": "82",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "Why do you think we see this symbol in the car?",
@@ -64,7 +64,7 @@
         }]
 
     }, {
-        "timestamp": "258",
+        "timestamp": "324",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "The T-shirt becomes an important prop, what is its function?",

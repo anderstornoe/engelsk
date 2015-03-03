@@ -29,7 +29,7 @@
                  correct_Array.push(JsonObj[Key].Correct);
                  feedback_Array.push(JsonObj[Key].Explanation);
 
-                 if (JsonObj[Key].Correct !== null) {
+                 if (JsonObj[Key].Correct !== "2") {
                      antal_korrekte++;
                  }
              }
