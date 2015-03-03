@@ -1,19 +1,19 @@
-      //########################################################################
-      //                                                          
-      //      DOKUMENTATION TIL THOMAS: 
-      //      Dette script tager udgangspunkt i versionen:
-      //
-      //          index4_21_position_bootstrap.html
-      //
-      //########################################################################
-
+/*      
+    //########################################################################
+    //                                                          
+    //      DOKUMENTATION TIL THOMAS: 
+    //      Dette script tager udgangspunkt i versionen:
+    //
+    //          index4_24_position_bootstrap.html
+    //
+    //########################################################################
+*/
 
 
       //########################################################################
       //                      Funktioner
       //########################################################################
 
-//kvuc.overlayInfo("hej", "content", "bt_txt");
 
       // DOKUMENTATION:
       // left_ajust : bliver dynamisk indsat afhaengig af tekst-stoerrelse.
@@ -71,28 +71,45 @@
           var Height =  $( ObjWrapper ).height();
           console.log("1 --- Width: " + Width + ", Height: " + Height + ", DefaultText: " + DefaultText );
 
-          var Id; var Top; var Left; var Left_scaled; var Top_scaled; var R_left; var R_top; var Top_ajust;
-          for(var key in JsonCss){
-              Id = JsonCss[key].id;
-              Top = JsonCss[key].top;
-              Left = JsonCss[key].left + JsonCss[key].left_ajust;  // Note: left_ajust er justering pga. tekstlaengde
-              Top_ajust = JsonCss[key].top_ajust;
+          // // Dette begraenser positioneringen til billedets "NativeWidth":
+          // if (Width <= NativeWidth){
+            var Id; var Top; var Left; var Left_scaled; var Top_scaled; var R_left; var R_top; var Top_ajust;
+            for(var key in JsonCss){
+                Id = JsonCss[key].id;
+                Top = JsonCss[key].top;
+                Left = JsonCss[key].left + JsonCss[key].left_ajust;  // Note: left_ajust er justering pga. tekstlaengde
+                Top_ajust = JsonCss[key].top_ajust;
 
-              // R_left og R_top er empirisk valgte scaling factors der faa positionerne
-              // til at vaere bedre for skaermstoerrelser mindre end NativeWidth og NativeHeigth:
-              R_top = Math.pow(0.15, Height/NativeHeigth)*1.1; 
-              R_left = 50*R_top;   
+                // R_left og R_top er empirisk valgte scaling factors der faa positionerne
+                // til at vaere bedre for skaermstoerrelser mindre end NativeWidth og NativeHeigth:
+                R_top = Math.pow(0.15, Height/NativeHeigth)*1.1; 
+                R_left = 50*R_top;  
 
-              Left_scaled = Math.round( (Width/NativeWidth)*Left - R_left );
-              Top_scaled =  Math.round( (Height/NativeHeigth)*Top + R_top*Top_ajust );
-              console.log("5 --- Id: " + Id + ", Top_scaled: " + Top_scaled + ", Left_scaled: " + Left_scaled );
+                Left_scaled = Math.round( (Width/NativeWidth)*Left - R_left );
+                Top_scaled =  Math.round( (Height/NativeHeigth)*Top + R_top*Top_ajust );
+                console.log("5 --- Id: " + Id + ", Top_scaled: " + Top_scaled + ", Left_scaled: " + Left_scaled );
 
-              var TagText = $( Id + " a > span").text();
-              console.log("2 --- Id: " + Id + ", TagText: " + TagText + ", DefaultText: " + DefaultText );
+                var TagText = $( Id + " a > span").text();
+                console.log("2 --- Id: " + Id + ", TagText: " + TagText + ", DefaultText: " + DefaultText );
 
-              // Placer alle elementer:
-              $( Id ).css({ position: "relative", top: Top_scaled+"px", left: Left_scaled+"px"});
-          }
+                // Placer alle elementer:
+                $( Id ).css({ position: "relative", top: Top_scaled+"px", left: Left_scaled+"px"});
+
+            }
+          // } else {  // Dette justere positionen af div'erne "Left", efterhaanden som framen bliver bredere 
+          //           // billedet flyttes mod centeret: 
+            // var Offset = $(ObjWrapper).offset();
+            // var Position = $(ObjWrapper).position();
+
+            // var HalfWidthPos = (Width - NativeWidth)/2;
+
+            // console.log("===== Offset: " + JSON.stringify( Offset ) + 
+            //             ", Position: " + JSON.stringify( Position ) + 
+            //             ", HalfWidthPos: " + HalfWidthPos);
+
+            // // Placer alle elementer:
+            // $( Id ).css({ position: "relative", top: Top_scaled+"px", left: Left_scaled+HalfWidthPos+"px"});
+          // }
       }
 
       // Resize overlayet til at matche billedet:
@@ -108,7 +125,7 @@
 
       // Funktionen laver et array bestaaende af svarene (answer) fra JsonCss-objektet.
       function MakeArray(JsonCss){
-          var LArray = []; // new Array();
+          var LArray = new Array();
           for(var key in JsonCss){
               LArray.push(JsonCss[key].answer);
           }
@@ -125,9 +142,9 @@
             Item2 = Math.floor( Math.random() * NumOfItems);
             TempItem1 = NewArray[Item1];
             TempItem2 = NewArray[Item2];
-            NewArray[Item2] = TempItem1;
-            NewArray[Item1] = TempItem2;
-          }
+            NewArray[Item2] = TempItem1
+            NewArray[Item1] = TempItem2
+          };
           return NewArray;
       }
       
@@ -140,16 +157,6 @@
           console.log("BS_LinkDropdownMenu: " + HTML); 
 
           return HTML;
-      }
-
-      // "#Hint"  SetHintTimer( "#Hint" );
-      function SetHintTimer(Selector){
-        var TimerId = setTimeout( function(){ 
-              $( Selector ).fadeOut(600, function() {
-                  $( Selector ).remove();
-              });
-          } , 5000);
-        return TimerId;
       }
 
 
@@ -170,7 +177,7 @@
           for (var i = 1; i <= 7; i++) {
               RandArray = ShuffelArray( ListArray );
               $( "#Menu"+i+ " ul" ).append( BS_LinkDropdownMenu( RandArray ) );
-          }
+          };
           console.log("--- ListArray 2 : " + ListArray);
 
           // Naar vinduet loader rescales billedet og alle dropdownmenuer repositioneres:
@@ -236,7 +243,12 @@
                       console.log("Left: " + Position.left + ", Top: " + Position.top + ", DivHeight: " + DivHeight + "\nHintText: " + HintText  + ", Hint_Left: " + Hint_Left );
                       $( DivObj ).before( $('<div id="Hint" class="HintClass">' + HintText + '</div>').fadeIn("slow") );
                       $( "#Hint" ).css({ position: "absolute", top: Hint_Top+"px", left: Hint_Left+"px"});
-                      TimerId = SetHintTimer( "#Hint" );
+                      TimerId = setTimeout( function(){ 
+                        // $("#Hint").fadeOut(); 
+                        $("#Hint").fadeOut(600, function() {
+                            $( "#Hint" ).remove();
+                        });
+                      } , 5000);
                       console.log(" TimerId 1 : " + TimerId );
                   }
               }

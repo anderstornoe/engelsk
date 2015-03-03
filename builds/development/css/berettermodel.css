@@ -4,11 +4,10 @@
     //      DOKUMENTATION TIL THOMAS: 
     //      Dette script tager udgangspunkt i versionen:
     //
-    //          index4_21_position_bootstrap.html
+    //          index4_24_position_bootstrap.html
     //
     //########################################################################
 */
-
 
     /********************************************************************
      *        STYLES FRA ANDERS'S BILLED-DRAG-AND-DROP QUIZ
@@ -40,7 +39,7 @@
     #done { padding: 10px 50px 10px 50px; 
             background-color: transparent;
             position:absolute; bottom:0;
-            margin-left: 75%;
+            margin-left: 70%;
             margin-bottom: 3%;
           }
 
@@ -75,9 +74,10 @@
         /*border: 1px solid #F00;*/
 
         margin-left: auto; margin-right: auto;
-        /*width: 50%; height: 31%;*/
-        /*width: 840px; height: 528px; */
-        width: 80%; 
+        /* width: 50%; height: 31%;*/
+        /* width: 840px; height: 528px; */
+        /* width: 80%; */
+        width: 100%; 
         /*
           How to bottom-float an element:;
           http://stackoverflow.com/questions/526035/html-css-positioning-float-bottom
@@ -90,8 +90,11 @@
         width: 80%;
        /* border: 1px solid #00F;*/
         color: #FFF;
+        background-color: rgba(0, 0, 0, 0.8);
+/*
         background-color: #000;
         opacity: 0.8;
+  */      
     }
 
     .hide{display: none;}
@@ -135,16 +138,30 @@
     #QustionNumContainer{
         position: relative; 
         z-index: 101;  
-        padding: 40px 20px 40px 20px; 
-        background-color: #000; 
+        margin: 6% 3% 10% 3%; 
+        /*padding: 40px 20px 40px 20px;*/ 
+        padding: 3% 10% 3% 10%; 
+        /* background-color: #000 !important; */
+        background-color: #000;
+/*
+        background-image: url("https://gp5.googleusercontent.com/-DbCrfd-__iI/AAAAAAAAAAI/AAAAAAAAAAA/C2Yx8jyB5Qw/s48-c-k-no/photo.jpg");
+        background-repeat: repeat-x;
+ */       
     }
-    #QustionNum1{margin-left: 10%;}
-    #QustionNum2{margin-left: 8.5%;}
-    #QustionNum3{margin-left: 10%;}
-    #QustionNum4{margin-left: 6.3%;}
-    #QustionNum5{margin-left: 13%;}
-    #QustionNum6{margin-left: 17.8%;}
-    #QustionNum7{margin-left: 8%;}
+
+    #StudentFeedBackText{
+        color: #FFF; 
+        font-size: 1.2em;
+        margin-bottom: 2%;
+    }
+
+    #QustionNum1{margin-left: 5%;}
+    #QustionNum2{margin-left: 5%;}
+    #QustionNum3{margin-left: 5%;}
+    #QustionNum4{margin-left: 5%;}
+    #QustionNum5{margin-left: 5%;}
+    #QustionNum6{margin-left: 5%;}
+    #QustionNum7{margin-left: 5%;}
     
 
     /*********************************************************************
@@ -189,7 +206,7 @@
 
       #done { 
             padding: 6px 40px 6px 40px; 
-            margin-left: 75%;
+            margin-left: 72%;
             margin-bottom: 3%;
       }
 
