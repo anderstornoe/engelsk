@@ -252,6 +252,43 @@ function stop_event(tal, taeller) {
             //next_event();
         //});
 
+    total_spm++;
+    alert (events_taeller + ", type: " + typeof(events_taeller));
+    //events_taeller++;
+    console.log("next_event");
+    // hvis der er flere events tilbage i stoppet:
+    if (events_taeller < spm_length) {
+        console.log("events_taeller < spm_length. spmtaeller=" + events_taeller + " spm_length=" + spm_length);
+
+        $(".feedback").remove();
+        $("#overlay").unbind();
+
+        setTimeout(function() {
+            stop_event(runde, events_taeller);
+        }, 100);
+    } else {
+        console.log("events_taeller >= spm_length  spmtaeller=" + events_taeller + " spm_length=" + spm_length);
+
+        if (runde >= stops.length - 1) {
+            //console.log("tal > timestamp_Array.length - 2 ... tal: " + tal + " stops.length: " + stops.length);
+
+            //NO MORE STOPS ///
+            console.log("case_slut");
+            slutFeedback();
+        } else {
+
+            $(this).fadeOut(1000, function() {
+                //console.log("intro??")
+                $(".feedback").remove();
+                $("#overlay").unbind();
+                resumeVideo();
+                events_taeller = 0;
+                runde++;
+            });
+        }
+    }
+
+
     } else {
 
         $(".svar_btn").click(function() {
@@ -259,7 +296,6 @@ function stop_event(tal, taeller) {
             if (spm.eventtype == "svarknap") {
                 $(".svar_btn").removeClass("btn_chosen");
                 $(this).addClass("btn_chosen");
-
 
             } else {
                 $(this).toggleClass("btn_chosen");
@@ -275,10 +311,11 @@ function stop_event(tal, taeller) {
 function commit_answers() {
     var score = 0;
     var fejl = 0;
+    var valgt;
     $(".btn_videre").hide();
 
     if (spm.eventtype == "svarknap") {
-        var valgt = $(".btn_chosen").attr("id");
+        valgt = $(".btn_chosen").attr("id");
         if (valgt == spm.korrekt) {
             console.log("korrekt!");
             total_score++;
@@ -291,7 +328,7 @@ function commit_answers() {
             $(".btn_chosen").css("background-color", "red");
         }
     } else {
-        var valgt = [];
+        valgt = [];
 
         $(".btn_chosen").each(function() {
             var indeks = $(this).index();
@@ -299,14 +336,14 @@ function commit_answers() {
             if (spm.korrekt.indexOf(id) > -1) {
                 $(this).css("background-color", "green");
                 score++;
-                console.log("korrekt!")
+                console.log("korrekt!");
             } else {
                 fejl++;
                 $(this).css("background-color", "red");
                 console.log("ikke korrekt: " + $(this).attr("id") + "," + spm.korrekt[1]);
             }
         });
-        if (score >= spm.korrekt.length && fejl == 0) {
+        if (score >= spm.korrekt.length && fejl === 0) {
             console.log("Alt er korrekt... score: " + score + " antal_ svar: " + spm.korrekt.length);
             total_score++;
             $(".score_num").fadeOut(20, function() {
@@ -347,7 +384,6 @@ function feedback() {
 
 
 function next_event() {
-
     total_spm++;
     events_taeller++;
     console.log("next_event");

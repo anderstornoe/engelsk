@@ -4,7 +4,7 @@
     "stops": [{
         "timestamp": "2",
         "events": [{
-            "eventtype": "checkbox",
+            "eventtype": "info",
             "tekst": "This type of shot contains one part of an object. What term describes it?",
             "svar": [
                 "long shot",
