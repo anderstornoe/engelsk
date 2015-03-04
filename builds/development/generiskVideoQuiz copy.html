@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+	<!-- 
+	      //########################################################################
+	      //                                                          
+	      //      DOKUMENTATION TIL THOMAS: 
+	      //      Dette script tager udgangspunkt i versionen:
+	      //
+	      //          DynamicFormTest17_5_2_MariasGlWireframe.html
+	      //
+	      //########################################################################
+	 -->
+
+
+	 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<title> Generisk video-quiz </title>
+
+
+
+ 		<link rel="stylesheet" href="css/styles.css" />
+
+		<link rel="stylesheet" type="text/css" href="css/generiskVideoQuiz.css" />
+	 	
+
+	</head>
+
+	<body>
+
+		<h3>Video loader</h3>
+
+		<div id="VideoInit" class="b-red p10">
+			<form>
+				<input id="video_url" class="TextField w50" placeholder="Video URL" type="text" /> <br/> <br/>
+				<input id="video_startFrameTitle" class="TextField w50" placeholder="Titel p&aring; startframe" type="text" /> <br/> <br/>
+				<input id="video_startButtonTitle" class="TextField w50" placeholder="Titel p&aring; startknap" type="text" /> <br/> <br/>
+<!-- 				
+				<input id="video_width" class="TextField w25" placeholder="Video bredde" type="text" /> 
+				<input id="video_height" class="TextField w25" placeholder="Video h&oslash;jde" type="text" /> <span class="red"><------ Disse skal fjernes, men er nødvendig indtil videre. </span> <br/> <br/>
+ -->				
+				<div class="m5">
+					<input id="load_video" class="w20" name="submit" value="Hent video" type="button" />
+					<input id="delete_selections" class="w20" name="delete_selections" value="Slet valg" type="button" />
+					<a id="load_default_video" href=""> Hent default video </a>
+				</div>
+
+				<br/>
+			</form>
+
+ 			<div class="row">
+ 				<div class="col-sm-6">
+					<!-- <div class="embed-responsive embed-responsive-16by9"> -->
+					<div class="embed-responsive embed-responsive-4by3">
+						<iframe id="PlayerQuizView" class="embed-responsive-item" src="https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg"></iframe>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!-- <div class="embed-responsive embed-responsive-16by9"> -->
+					<div class="embed-responsive embed-responsive-4by3">
+						<iframe id="PlayerVideoView" class="embed-responsive-item" src="https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg"></iframe>
+					</div>
+				</div>
+		    </div>
+
+		</div>
+
+
+		<h3>User interface</h3>
+
+		<div id="FormsContainer" class="b-red p10">
+		</div>
+
+
+		<span class="btn btn-default usrbutton" ><a id="countform" class="ml10" href="#"> SE QUIZ </a></span> (Generere JSON-string som sendes til quiz-interfacet  - læreren kan nu se sin quiz. <b>(læren skal ikke se JSON-stringen)</b> ).
+
+		<br/><br/>
+
+		<span class="btn btn-default usrbutton" ><a id="countform" class="ml10" href="#"> GEM QUIZ </a></span> (Den optimale løsning: en server der modtager JSON-stringen. Alternativ løsning: ??? - vi skal tage en beslutning...).
+
+<!-- 
+	Min presentation mandag d. 02-03-2015:
+	http://globe-views.com/dcim/dreams/car/car-03.jpg
+	http://image.motortrend.com/f/30531095+w750/2012-McLaren-MP4-12C-chassis-front-three-quarter.jpg
+ -->
+
+		<br/><br/>
+		Mangler før vi har en funktionel beta-version at vise lærene: 
+		<ul>
+			<li>ATO og THAN vedtager en navngivningsstandard for variabler (nemmest hvis THAN tilpasser til ATO's navne i eksisterende video-quizer)</li>
+			<li>Quiz-visningsdelen laves</li>
+			<li>Spiseligt CSS (ikke det nuværende øjen-bæ layout ;-) )</li>
+			<li>User-input sikring</li>
+		</ul>
+
+
+		<h3>JSON output</h3> 
+
+		<pre id="JsonOutput">
+		</pre>
+
+
+		<h3>JSON video input</h3> 
+
+		<pre id="JsonVideoInput">
+		</pre>
+
+	</body>
+
+	<script type="text/javascript" src="js/script.js"></script>
+	
+    <script type="text/javascript" src="js/generiskVideoQuiz.js"></script>
+    <script type="text/javascript" src="js/generiskVideoQuiz_JsonTestOutput2.js"></script>
+
+
+</html>

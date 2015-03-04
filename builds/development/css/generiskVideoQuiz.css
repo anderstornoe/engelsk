@@ -1,0 +1,38 @@
+.QuestionField{border: 1px solid #F00; margin: 10px;}
+.EventForm{border: 1px solid #F00; padding: 10px; margin-right: 50px;}
+.EventForm b {margin-right: 20px;}
+.TimeStampForm{border: 1px solid #F00; padding: 10px; margin: 5px;}
+.TimeStampForm b {margin-right: 20px;}
+#JsonOutput{font-weight: 600;}
+#JsonVideoInput{font-weight: 600;}
+.usrbutton{margin-left: 10px; margin-top: 10px;}
+
+.QuestionWrapper{display: none;}
+
+.hide{display: none;}
+.dhide{}  /* dummy hide */
+
+.b-red {border: 1px solid #F00; }
+.b-blue{border: 1px solid #00F; }
+
+.ml5 {margin-left: 5px}
+.ml10 {margin-left: 10px}
+
+.w100 {width: 100%;}
+.w75 {width: 75%;}
+.w50 {width: 50%;}
+.w25 {width: 25%;}
+.w20 {width: 20%;}
+.m10 {margin: 10px;}
+.m5  {margin: 5px;}
+.p10 {padding: 10px;}
+.p5  {padding: 5px;}
+
+.right{float: right;}
+.left{float: left;}
+.clear{clear: both;}
+
+.bgc-C0C0C0{background-color: #C0C0C0;}
+.bgc-E0E0E0{background-color: #E0E0E0;}
+
+.red{color: #F00;}
