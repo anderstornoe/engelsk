@@ -1,4 +1,3 @@
-//Kvindens ord
 [{
     "English": "Puzzled",
     "Dansk": "Forvirret",
@@ -41,8 +40,6 @@
     "Correct": "0",
     "Explanation": "She takes a sensible decision"
 
-//Mandens ord
-
 }, {
     "English": "Infuriated",
     "Dansk": "Rasende",
@@ -66,8 +63,6 @@
     "Dansk": "Begejstret",
     "Correct": "1",
     "Explanation": "He is pleased with his wife’s solution to the problem"
-
-//neutrale ord
 
 }, {
     "English": "Talkative",

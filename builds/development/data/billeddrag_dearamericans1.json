@@ -1,13 +1,13 @@
 [{
     "English": "Affectionate",
     "Dansk": "Kærlig",
-    "Correct": 1,
+    "Correct": "1",
     "Explanation": "He is showing that he likes her."
 
 }, {
     "English": "Disgusted",
     "Dansk": "Væmmes",
-    "Correct": 0,
+    "Correct": "0",
     "Explanation": "She displays disgust toward the meat in the supermarket(2:27)"
 
 }, {
@@ -43,31 +43,31 @@
 }, {
     "English": "Extrovert",
     "Dansk": "Udadvendt",
-    "Correct": 1,
+    "Correct": "1",
     "Explanation": "He enjoys the company of her wife and greets the people in the supermarket"
 
 }, {
     "English": "Talkative",
     "Dansk": "Snakkesalig",
-    "Correct": 1,
+    "Correct": "1",
     "Explanation": "He talks to her wife but we cannot say that he talks a lot"
 
 }, {
     "English": "Reticent",
     "Dansk": "Tilbageholdende",
-    "Correct": 0,
+    "Correct": "0",
     "Explanation": "None of the characters behave this way"
 
 }, {
     "English": "Introvert",
     "Dansk": "Indadvendt",
-    "Correct": 0,
+    "Correct": "0",
     "Explanation": "We do not know whether she enjoys or not being with other people"
 
 }, {
     "English": "Prudent",
     "Dansk": "Forsigtig",
-    "Correct": 0,
+    "Correct": "0",
     "Explanation": "She is prudent towards him and other people."
 
 }, {
@@ -109,7 +109,7 @@
 }, {
     "English": "Enraged",
     "Dansk": "Vred",
-    "Correct": 0,
+    "Correct": "0",
     "Explanation": "She is angry when she is in dispute with her husband over being American (1:28)"
 
 }, {
@@ -121,7 +121,7 @@
 }, {
     "English": "Thrilled",
     "Dansk": "Begejstret",
-    "Correct": 1,
+    "Correct": "1",
     "Explanation": "He is very enthusiastic about living in the US"
 
 }]
