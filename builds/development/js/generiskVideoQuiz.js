@@ -553,9 +553,6 @@ $(document).ready(function() {
 
     $("#countform").click(function(e) {
 
-
-
-        //alert("se quiz?");
         e.preventDefault(); // Prevent the link-nature of the anchor-tag.
         // VideoObj.LoadDefaultVideo(); // Elers vrker det ikke med ReGenerateForm.   
         VideoObj.LoadVideo(); // Elers vrker det ikke med ReGenerateForm.
@@ -566,12 +563,15 @@ $(document).ready(function() {
 
         JsonVideoInput_update = JsonVideoInput;
 
+////
+//Her refreshes videoquiz preview iframen: 
+
         $(".player_container").html("<div id='player' class='embed-responsive-item'></div><div id='time'></div><div id='time_bar'></div>");
 
         loadData();
-          setupplayer();
-
-        alert (JSON.stringify(JsonVideoInput_update));
+        setupplayer();
+//
+        
     });
 
     // ================================

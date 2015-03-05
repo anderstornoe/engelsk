@@ -81,6 +81,7 @@ function loadData() {
     playing = false;
     console.log("loadData");
     $(".popud").html("");
+    $(".intro").html("");
     $.ajax({
         //url: url,
         // contentType: "application/json; charset=utf-8",  // Blot en test af tegnsaettet....
@@ -90,7 +91,6 @@ function loadData() {
         success: function(data, textStatus, jqXHR) {
 
             timestamp_Array = [];
-            alert(timestamp_Array);
             JsonObj = JsonVideoInput_update;
 
             console.log("success loadData");
