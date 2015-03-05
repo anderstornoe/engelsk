@@ -581,8 +581,9 @@ $(document).ready(function() {
         JsonVideoInput_update = JsonVideoInput;
 
         $(".player_container").html("<div id='player' class='embed-responsive-item'></div><div id='time'></div><div id='time_bar'></div>");
- //$( "#igstream").load($("#player"));
+
         loadData();
+          setupplayer();
 
         alert (JSON.stringify(JsonVideoInput_update));
     });
