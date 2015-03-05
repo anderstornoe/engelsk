@@ -3,46 +3,63 @@
 //###################################################################################### 
 
 
+// FALLBACK MARK 14:34
+
 var VideoObj = {};
 
 var VideoClass = {
     startFrameTitle: null,
     startButtonTitle: null,
-    URL: null,
-    DefaulNoVideoImg: 'https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg',
+    EmbedURL: null,
+    WatchURL: null,
+    BasicYoutubeEmbedStr: 'https://www.youtube.com/embed/',
+    BasicYoutubeWatchStr: 'https://www.youtube.com/watch?v=',
+    DefaultNoVideoImg: 'https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg',
     QustionObj: {},
     AddVideoProp: function(URL) {
-        this.URL = URL;
+        this.EmbedURL = URL;
     },
     DeleteSelections: function() {
         this.startFrameTitle = null;
         this.startButtonTitle = null;
-        this.URL = null;
+        this.EmbedURL = null;
         $("#video_startFrameTitle").val("");
         $("#video_startButtonTitle").val("");
         $("#video_width").val("");
         $("#video_height").val("");
         $("#video_url").val("");
-        $("#PlayerVideoView").attr("src", this.DefaulNoVideoImg);
+        $("#PlayerVideoView").attr("src", this.DefaultNoVideoImg);
     },
     LoadDefaultVideo: function() {
         this.startFrameTitle = "Game of Thrones";
         this.startButtonTitle = "Play the video";
-        this.URL = "https://www.youtube.com/embed/s7L2PVdrb_8";
+        this.EmbedURL = this.BasicYoutubeEmbedStr + "s7L2PVdrb_8";
+        this.WatchURL = this.BasicYoutubeWatchStr + "s7L2PVdrb_8";
         $("#video_startFrameTitle").val(this.startFrameTitle);
         $("#video_startButtonTitle").val(this.startButtonTitle);
         $("#video_width").val(this.Width);
         $("#video_height").val(this.Height);
-        $("#video_url").val(this.URL);
+        $("#video_url").val(this.EmbedURL);
     },
     LoadVideo: function() {
         this.startFrameTitle = $("#video_startFrameTitle").val();
         this.startButtonTitle = $("#video_startButtonTitle").val();
-        this.URL = $("#video_url").val();
-        $("#PlayerVideoView").attr("src", this.URL);
+        var TempURL = $("#video_url").val();
+        this.EmbedURL = this.BasicYoutubeEmbedStr + this.ReturnYoutubeVidId(TempURL);
+        this.WatchURL = this.BasicYoutubeWatchStr + this.ReturnYoutubeVidId(TempURL);
+        $("#PlayerVideoView").attr("src", this.EmbedURL);
     },
     DisplayJsonML: function() {
         $("#output").html(JSON.stringify(this));
+    },
+    LoadDefaultNoVideoImgIfNoVideoIsChosen: function(){
+        if ( (this.EmbedURL === null) || (this.EmbedURL == "") ){
+            $("#PlayerVideoView").prop('src', this.DefaultNoVideoImg);
+        } 
+    },
+    ReturnYoutubeVidId: function(url) {
+        var UrlParts = (url.indexOf("?v=") !== -1) ? url.split("?v=") : url.split("/");
+        return UrlParts[UrlParts.length - 1];
     }
 
 }
@@ -162,17 +179,6 @@ function GetFormsData(Selector_FormContainer) {
     // $("#JsonOutput").html( JSON.stringify( JSONarray, null, 4 ) );
 }
 
-
-// function GenerateNumberSelect(MinNum, MaxNum, DefaultVal, ClassSelector) {
-//     var HTML = '<select name="' + DefaultVal + '" class="' + ClassSelector + '">';
-//     HTML += (DefaultVal !== false) ? '<option selected disabled>' + DefaultVal + '</option>' : '';
-//     for (var i = MinNum; i <= MaxNum; i++) {
-//         HTML += '<option value="' + i + '">' + i + '</option>';
-//     };
-//     HTML += '</select>';
-
-//     return HTML;
-// }
 
 function GenerateNumberSelect(MinNum, MaxNum, NameVal, UserVal, ClassSelector) {
     var HTML = '<select name="' + NameVal + '" class="' + ClassSelector + '">';
@@ -405,7 +411,7 @@ function ReplicateVideoInputFormat(json) {
         var startFrameTitle = json.startFrameTitle;
         var startButtonTitle = json.startButtonTitle;
 
-        vidJson[0].video = ReturnYoutubeVidId(json.URL);
+        vidJson[0].video = ReturnYoutubeVidId(json.EmbedURL);
 
         console.log("vidJson 1 : " + JSON.stringify(vidJson));
 
@@ -533,6 +539,8 @@ $(document).ready(function() {
     $("#load_default_video").click(function(e) {
         e.preventDefault(); // Prevent the link-nature of the anchor-tag.
         VideoObj.LoadDefaultVideo();
+
+        console.log("VideoObj.EmbedURL 1: " + VideoObj.EmbedURL + ", VideoObj.WatchURL 1: " + VideoObj.WatchURL);
     });
 
     $("#load_video").click(function() {
@@ -540,6 +548,7 @@ $(document).ready(function() {
         console.log("VideoObj submit : " + JSON.stringify(VideoObj));
         // VideoObj.DisplayJsonML();
 
+        console.log("VideoObj.EmbedURL 2: " + VideoObj.EmbedURL + ", VideoObj.WatchURL 2: " + VideoObj.WatchURL);
     });
 
 
@@ -567,6 +576,7 @@ $(document).ready(function() {
         e.preventDefault(); // Prevent the link-nature of the anchor-tag.
         // VideoObj.LoadDefaultVideo(); // Elers vrker det ikke med ReGenerateForm.   
         VideoObj.LoadVideo(); // Elers vrker det ikke med ReGenerateForm.
+        VideoObj.LoadDefaultNoVideoImgIfNoVideoIsChosen();
         VideoObj.QuizData = GetFormsData('#FormsContainer');
 
         // Dette ukommenteres indtil moedet kvalitetscirklen mandag d. 9/3-2015 er overstaaet: 
