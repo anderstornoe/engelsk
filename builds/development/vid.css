@@ -20,6 +20,9 @@ body {
     top: 290px;
     width: 100%;
 }
+.correct_answer{
+    color:white;
+}
 #player {
     position: absolute;
     z-index: 1;
