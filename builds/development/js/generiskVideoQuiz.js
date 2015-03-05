@@ -53,7 +53,7 @@ var VideoClass = {
         $("#output").html(JSON.stringify(this));
     },
     LoadDefaultNoVideoImgIfNoVideoIsChosen: function(){
-        if ( (this.EmbedURL === null) || (this.EmbedURL == "") ){
+        if ( (this.EmbedURL === null) || (this.EmbedURL === "") ){
             $("#PlayerVideoView").prop('src', this.DefaultNoVideoImg);
         } 
     },
@@ -62,7 +62,7 @@ var VideoClass = {
         return UrlParts[UrlParts.length - 1];
     }
 
-}
+};
 
 
 
@@ -157,13 +157,13 @@ function RemoveElement(Selector, Min) {
 // 			JQuerys funktion ".serializeArray()" :
 // 			http://api.jquery.com/serializearray/
 function GetFormsData(Selector_FormContainer) {
-    var JSONarray = new Array();
-    var FormObj = {}
+    var JSONarray = [];
+    var FormObj = {};
     $(Selector_FormContainer + " .TimeStampForm").each(function(index, element) {
         FormObj.Index = index; // Only for testing
         FormObj.TimeStamp = $(" form.class_TimeStampForm", this).serializeArray();
         console.log("element : " + $(" form.class_TimeStampForm", this).get(0).tagName);
-        var EventFormArray = new Array();
+        var EventFormArray = [];
         $(" form.EventForm", this).each(function(index2, element2) {
             EventFormArray.push($(element2).serializeArray());
         });
@@ -185,7 +185,7 @@ function GenerateNumberSelect(MinNum, MaxNum, NameVal, UserVal, ClassSelector) {
     HTML += (UserVal !== false) ? '<option selected disabled>' + UserVal + '</option>' : '';
     for (var i = MinNum; i <= MaxNum; i++) {
         HTML += '<option value="' + i + '">' + i + '</option>';
-    };
+    }
     HTML += '</select>';
 
     return HTML;
@@ -243,7 +243,7 @@ function QuestionWrapperButtonControl(Selector) {
             $(".QuestionWrapperButton", EventFormObj).html('Vis spørgsmål <span class="glyphicon glyphicon-chevron-right"></span>');
         else
             $(".QuestionWrapperButton", EventFormObj).html('Skjul spørgsmål <span class="glyphicon glyphicon-chevron-down"></span>');
-    })
+    });
 }
 
 
@@ -256,7 +256,7 @@ function QuestionWrapperButtonControl(Selector) {
 //		http://stackoverflow.com/questions/5533192/how-to-get-object-length 
 function ReturnObjKeyNames(Obj) {
     var count = 0;
-    var KeyArray = new Array();
+    var KeyArray = [];
     for (var KeyName in Obj) {
         if (Obj.hasOwnProperty(KeyName)) {
             count++;
@@ -267,7 +267,7 @@ function ReturnObjKeyNames(Obj) {
     return KeyArray;
 }
 
-
+// MARK
 function ReGenerateForm(json, Selector) {
 
         $(Selector).css("border-width", "5"); // SET EN BRED BORDER, SAA MAN KAN SE AT FUNKTIONEN ER AKTIV!!!
@@ -285,8 +285,8 @@ function ReGenerateForm(json, Selector) {
         // Assume JS is array
         for (var key in QD) {
 
-            if (typeof(QD[key]["TimeStamp"]) !== "undefined") {
-                if (key == 0) { // if Selector is empty - eg. not prior TimeStampForms...
+            if (typeof(QD[key].TimeStamp) !== "undefined") {
+                if (key === 0) { // if Selector is empty - eg. not prior TimeStampForms...
                     $(Selector).html(TimeStampForm);
                     console.log('#####  TRUE - key: ' + key);
                 } else { // if Selector already has one or more TimeStampForms...
@@ -298,22 +298,22 @@ function ReGenerateForm(json, Selector) {
 
 
 
-                console.log('----- QD[key]["TimeStamp"].length: ' + QD[key]["TimeStamp"].length);
-                if (QD[key]["TimeStamp"].length > 0) {
-                    for (var key1 in QD[key]["TimeStamp"]) {
-                        var Obj = QD[key]["TimeStamp"][key1];
-                        $(".TimeStampForm:last-child select[name='" + Obj.name + "']").val(Obj.value);
-                        console.log("Obj.name: " + Obj.name + ", Obj.value: " + Obj.value);
+                console.log('----- QD[key].TimeStamp.length: ' + QD[key].TimeStamp.length);
+                if (QD[key].TimeStamp.length > 0) {
+                    for (var Tkey in QD[key].TimeStamp) {
+                        var TObj = QD[key].TimeStamp[Tkey];
+                        $(".TimeStampForm:last-child select[name='" + TObj.name + "']").val(TObj.value);
+                        console.log("TObj.name: " + TObj.name + ", TObj.value: " + TObj.value);
                     } // END for
                 } // END if
 
-                if (typeof(QD[key]["EventForm"]) !== "undefined") {
+                if (typeof(QD[key].EventForm) !== "undefined") {
 
-                    console.log('----- QD[key]["EventForm"].length: ' + QD[key]["EventForm"].length);
+                    console.log('----- QD[key].EventForm.length: ' + QD[key].EventForm.length);
 
-                    if (QD[key]["EventForm"].length > 0) {
+                    if (QD[key].EventForm.length > 0) {
 
-                        for (var key1 in QD[key]["EventForm"]) { // Each key1 is an EventForm
+                        for (var key1 in QD[key].EventForm) { // Each key1 is an EventForm
                             if (key1 > 0) {
                                 $(".TimeStampForm:last-child .EventForm:last-child").after(EventForm);
 
@@ -325,8 +325,8 @@ function ReGenerateForm(json, Selector) {
 
                             var Wrap = $(".TimeStampForm:last-child .EventForm:last-child");
 
-                            for (var key2 in QD[key]["EventForm"][key1]) { // Each key2 is an input-tag
-                                var Obj = QD[key]["EventForm"][key1][key2];
+                            for (var key2 in QD[key].EventForm[key1]) { // Each key2 is an input-tag
+                                var Obj = QD[key].EventForm[key1][key2];
 
                                 if (Obj.name == "Question") {
                                     // Append a newly created QuestionField to the current EventForm for each time
@@ -398,14 +398,14 @@ function ReplicateVideoInputFormat(json) {
         var Tstop = {
             "timestamp": null,
             "events": []
-        }
+        };
         var Tevent = {
             "eventtype": "svarknap",
             "tekst": null,
             "svar": [],
             "korrekt": [],
             "feedback": null
-        }
+        };
 
 
         var startFrameTitle = json.startFrameTitle;
@@ -428,16 +428,16 @@ function ReplicateVideoInputFormat(json) {
             var mm;
             var ss;
 
-            if (typeof(QD[key]["TimeStamp"]) !== "undefined") {
+            if (typeof(QD[key].TimeStamp) !== "undefined") {
 
-                console.log('----- QD[key]["TimeStamp"].length: ' + QD[key]["TimeStamp"].length);
-                if (QD[key]["TimeStamp"].length > 0) {
-                    for (var key1 in QD[key]["TimeStamp"]) {
-                        var Obj = QD[key]["TimeStamp"][key1];
-                        // if (Obj.name == "tt") tt = parseInt(Obj.value);
-                        if (Obj.name == "mm") mm = parseInt(Obj.value);
-                        if (Obj.name == "ss") ss = parseInt(Obj.value);
-                        console.log("Obj.name: " + Obj.name + ", Obj.value: " + Obj.value);
+                console.log('----- QD[key].TimeStamp.length: ' + QD[key].TimeStamp.length);
+                if (QD[key].TimeStamp.length > 0) {
+                    for (var Tkey in QD[key].TimeStamp) {
+                        var TObj = QD[key].TimeStamp[Tkey];
+                        // if (TObj.name == "tt") tt = parseInt(TObj.value);
+                        if (TObj.name == "mm") mm = parseInt(TObj.value);
+                        if (TObj.name == "ss") ss = parseInt(TObj.value);
+                        console.log("TObj.name: " + TObj.name + ", TObj.value: " + TObj.value);
                         console.log("tt: " + tt + ", mm: " + mm + ", ss: " + ss);
                     } // END for
                 } // END if
@@ -449,20 +449,20 @@ function ReplicateVideoInputFormat(json) {
 
                 console.log("TimeInSec: " + TimeInSec + ", Stop: " + JSON.stringify(Stop));
 
-                if (typeof(QD[key]["EventForm"]) !== "undefined") {
+                if (typeof(QD[key].EventForm) !== "undefined") {
 
-                    console.log('----- QD[key]["EventForm"].length: ' + QD[key]["EventForm"].length);
+                    console.log('----- QD[key].EventForm.length: ' + QD[key].EventForm.length);
 
-                    if (QD[key]["EventForm"].length > 0) {
+                    if (QD[key].EventForm.length > 0) {
 
-                        for (var key1 in QD[key]["EventForm"]) { // Each key1 is an EventForm
+                        for (var key1 in QD[key].EventForm) { // Each key1 is an EventForm
 
                             var Event = JSON.parse(JSON.stringify(Tevent)); // Copy the the template-object "Tevent"
 
                             var AnswerNum = -1;
 
-                            for (var key2 in QD[key]["EventForm"][key1]) { // Each key2 is an input-tag
-                                var Obj = QD[key]["EventForm"][key1][key2];
+                            for (var key2 in QD[key].EventForm[key1]) { // Each key2 is an input-tag
+                                var Obj = QD[key].EventForm[key1][key2];
 
                                 if (Obj.name == "valg") {
 
