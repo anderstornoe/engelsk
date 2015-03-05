@@ -87,8 +87,8 @@ var TimeStampForm = '<div class="TimeStampForm">' +
     '<form class="class_TimeStampForm p10 w75 left">' +
     '<b> Timestamp: </b>' +
     // GenerateNumberSelect(0, 24, "tt", "SelectHour") + " : " +
-    GenerateNumberSelect(0, 60, "mm", "SelectMin") + " : " +
-    GenerateNumberSelect(0, 60, "ss", "SelectSec") +
+    GenerateNumberSelect(0, 60, "mm", "minutter", "SelectMin") + " : " +
+    GenerateNumberSelect(0, 60, "ss", "sekunder", "SelectSec") +
     // ' eller <input type="text" placeholder="tt:mm:ss" />' +
     '</form>' +
     '<a class="remove_TimeStampForm ml10 right" href="#"> remove </a> <a class="add_TimeStampForm ml10 right" href="#"> add </a> ' + '<div class="clear"></div>' +
@@ -163,9 +163,20 @@ function GetFormsData(Selector_FormContainer) {
 }
 
 
-function GenerateNumberSelect(MinNum, MaxNum, DefaultVal, ClassSelector) {
-    var HTML = '<select name="' + DefaultVal + '" class="' + ClassSelector + '">';
-    HTML += (DefaultVal !== false) ? '<option selected disabled>' + DefaultVal + '</option>' : '';
+// function GenerateNumberSelect(MinNum, MaxNum, DefaultVal, ClassSelector) {
+//     var HTML = '<select name="' + DefaultVal + '" class="' + ClassSelector + '">';
+//     HTML += (DefaultVal !== false) ? '<option selected disabled>' + DefaultVal + '</option>' : '';
+//     for (var i = MinNum; i <= MaxNum; i++) {
+//         HTML += '<option value="' + i + '">' + i + '</option>';
+//     };
+//     HTML += '</select>';
+
+//     return HTML;
+// }
+
+function GenerateNumberSelect(MinNum, MaxNum, NameVal, UserVal, ClassSelector) {
+    var HTML = '<select name="' + NameVal + '" class="' + ClassSelector + '">';
+    HTML += (UserVal !== false) ? '<option selected disabled>' + UserVal + '</option>' : '';
     for (var i = MinNum; i <= MaxNum; i++) {
         HTML += '<option value="' + i + '">' + i + '</option>';
     };
@@ -560,7 +571,10 @@ $(document).ready(function() {
         // VideoObj.LoadDefaultVideo(); // Elers vrker det ikke med ReGenerateForm.   
         VideoObj.LoadVideo(); // Elers vrker det ikke med ReGenerateForm.
         VideoObj.QuizData = GetFormsData('#FormsContainer');
-        $("#JsonOutput").html(JSON.stringify(VideoObj, null, 4));
+
+        // Dette ukommenteres indtil moedet kvalitetscirklen mandag d. 9/3-2015 er overstaaet: 
+        // $("#JsonOutput").html(JSON.stringify(VideoObj, null, 4));
+
         var JsonVideoInput = ReplicateVideoInputFormat(VideoObj);
         $("#JsonVideoInput").html(JSON.stringify(JsonVideoInput, null, 4));
 
