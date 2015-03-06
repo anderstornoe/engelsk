@@ -74,19 +74,19 @@ var VideoClass = {
 
 // QuestionField
 var QuestionField = '<div class="QuestionField">' +
-    '<input type="text" class="TextField w25" placeholder="Skriv sp&oslash;rsm&aring;l p&aring; svarknap" name="Question"/>' +
+    '<input type="text" class="TextField w25" placeholder="Svarmulighed p&aring; svarknap" name="Question"/>' +
     '<input type="radio" name="Rsvar" class="Rsvar"/>' +
     '<input type="checkbox" name="Csvar" class="Csvar"/>' +
-    '<a class="addfield ml10" href="#"> add </a> <a class="removefield ml10" href="#"> remove </a>' +
+    '<a class="addfield ml10" href="#"> Tilf&oslash;j svarmulighed </a> <a class="removefield ml10" href="#"> Fjern svarmulighed </a>' +
     '</div>';
 
 // EventForm  -  NOTE: "Event" er det tidligere "Runde"
 var EventForm = '<form class="EventForm">' +
-    '<b class="ml10"> Event: </b>' +
-    ' <a class="removeform ml10 right" href="#"> remove </a><a class="addform ml10 right" href="#"> add </a>' +
+    '<b class="ml10"> Sp&oslash;rgsm&aring;l 1</b>' +
+    ' <a class="removeform ml10 right" href="#"> Fjern sp&oslash;rgsm&aring;l  </a><a class="addform ml10 right" href="#"> Tilf&oslash;j sp&oslash;rgsm&aring;l </a>' +
     '<div class="clear"></div> <br/>' +
     // '<input type="text" class="TextField w25" name="EventHeader" placeholder="Eventoverskrift" /> <br/>' +
-    '<textarea rows="4" class="TextField w25" name="EventInfo" placeholder="Information eller indledende tekst til sp&oslash;rsm&aring;l"></textarea> <br/>' +
+    '<textarea rows="4" class="TextField w25" name="EventInfo" placeholder="Sp&oslash;rgsm&aring;l"></textarea> <br/>' +
     '<div class="QuestionWrapperButton p10 bgc-E0E0E0 b-blue">Vis spørgsmål <span class="glyphicon glyphicon-chevron-right"></span> </div>' +
     '<div class="QuestionWrapper bgc-E0E0E0 b-blue dhide">' +
     'En svarmulighed <input type="radio" name="valg" value="radiobutton" checked="checked"/>' +
@@ -108,7 +108,7 @@ var TimeStampForm = '<div class="TimeStampForm">' +
     GenerateNumberSelect(0, 60, "ss", "sekunder", "SelectSec") +
     // ' eller <input type="text" placeholder="tt:mm:ss" />' +
     '</form>' +
-    '<a class="remove_TimeStampForm ml10 right" href="#"> remove </a> <a class="add_TimeStampForm ml10 right" href="#"> add </a> ' + '<div class="clear"></div>' +
+    '<a class="remove_TimeStampForm ml10 right" href="#"> Fjern stop </a> <a class="add_TimeStampForm ml10 right" href="#"> Tilf&oslash;j stop </a> ' + '<div class="clear"></div>' +
     EventForm +
     '</div>';
 
@@ -117,6 +117,20 @@ function InitHTML(Selector, HtmlToBeAdded) {
     $(Selector).append(HtmlToBeAdded);
     SetDualSwitchState(Selector + " .EventForm ");
 }
+
+
+function UpdateNumOfQuestionHeaders(Selector){
+    if ( ( Selector == ".addform" ) || ( Selector == ".removeform" ) ){
+        $(".EventForm > b").each(function(index, element) {
+            $(this).html("Sp&oslash;rgsm&aring;l " + (index + 1).toString() );
+        });
+    }
+}
+
+
+
+
+
 
 // VIGTIGT: Chromium tillader ikke default argumentet Max at blive angivet som "Max = false". 
 function AddElement(Selector, HtmlToBeAdded, Max) {
@@ -134,6 +148,8 @@ function AddElement(Selector, HtmlToBeAdded, Max) {
         } else {
             alert("Det største antal tilladte elementer er " + Max);
         }
+
+        UpdateNumOfQuestionHeaders(Selector);
     });
 }
 
@@ -149,6 +165,8 @@ function RemoveElement(Selector, Min) {
         } else {
             alert("Det mindste antal elementer skal være " + Min);
         }
+
+        UpdateNumOfQuestionHeaders(Selector);
     });
 }
 
