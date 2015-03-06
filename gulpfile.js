@@ -43,8 +43,8 @@ jsSources = [
     'builds/development/js/vid_new.js',
     'builds/development/js/opg_1.js',
     'builds/development/js/billeddrag.js', 
-    'builds/development/js/berettermodel.js', 
-    
+    'builds/development/js/berettermodel.js',
+    'builds/development/js/generiskVideoQuiz.js' 
 ];
 
 htmlSources = [
