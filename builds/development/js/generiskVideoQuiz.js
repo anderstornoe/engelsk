@@ -85,7 +85,7 @@ var EventForm = '<form class="EventForm">' +
     '<b class="ml10"> Event: </b>' +
     ' <a class="removeform ml10 right" href="#"> remove </a><a class="addform ml10 right" href="#"> add </a>' +
     '<div class="clear"></div> <br/>' +
-    '<input type="text" class="TextField w25" name="EventHeader" placeholder="Eventoverskrift" /> <br/>' +
+    // '<input type="text" class="TextField w25" name="EventHeader" placeholder="Eventoverskrift" /> <br/>' +
     '<textarea rows="4" class="TextField w25" name="EventInfo" placeholder="Information eller indledende tekst til sp&oslash;rsm&aring;l"></textarea> <br/>' +
     '<div class="QuestionWrapperButton p10 bgc-E0E0E0 b-blue">Vis spørgsmål <span class="glyphicon glyphicon-chevron-right"></span> </div>' +
     '<div class="QuestionWrapper bgc-E0E0E0 b-blue dhide">' +
@@ -400,7 +400,7 @@ function ReplicateVideoInputFormat(json) {
             "events": []
         };
         var Tevent = {
-            "eventtype": "svarknap",
+            "eventtype": null,
             "tekst": null,
             "svar": [],
             "korrekt": [],
@@ -465,7 +465,8 @@ function ReplicateVideoInputFormat(json) {
                                 var Obj = QD[key].EventForm[key1][key2];
 
                                 if (Obj.name == "valg") {
-
+                                    if (Obj.value == "checkbox")    Event.eventtype = "checkbox";
+                                    if (Obj.value == "radiobutton") Event.eventtype = "svarknap";
                                 }
 
                                 if (Obj.name == "Question") {
