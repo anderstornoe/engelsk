@@ -30,13 +30,13 @@ var seconds;
 
 var timestamp_Array = [];
 var JsonObj;
-var JsonVideoInput_update = [{
+var JsonVideoInput_update; /* = [{
     "video": "lny37_zJpFc"
 }, {
     "stops": [{
         "timestamp": "2",
         "events": [{
-            "eventtype": "info",
+            "eventtype": "checkbox",
             "tekst": "This type of shot contains one part of an object. It's called a long shot. End of info.",
             "svar": [
                 "long shot",
@@ -44,8 +44,7 @@ var JsonVideoInput_update = [{
                 "extreme close-up"
             ],
             "korrekt": [
-                "0",
-                "2"
+                "0", "1"
             ],
             "feedback": "Extreme close-up  is used to create an intense mood."
         }]
@@ -66,7 +65,7 @@ var JsonVideoInput_update = [{
             "feedback": "Extreme close-up  is used to create an intense mood."
         }]
     }]
-}];
+}];*/
 
 
 //XML SKAL SKIFTES UD MED JSON
@@ -306,7 +305,7 @@ function stop_event(tal, taeller) {
             //$(".btn_videre").fadeIn().click(feed);
         }
     }
-    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "(" + spm.eventtype + ")</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default btn_videre'>Videre</div>");
+    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default btn_videre videre_knap'>Answer</div>");
 
     $(".btn_videre").hide();
 
@@ -330,6 +329,7 @@ function stop_event(tal, taeller) {
             } else {
                 $(this).toggleClass("btn_chosen");
             }
+
         });
 
         $(".btn_videre").fadeIn().click(commit_answers);
@@ -399,16 +399,17 @@ function commit_answers() {
 }
 
 function feedback() {
+    console.log("kør feed");
     var correct_answers = "";
 
     for (var i = 0; i < spm.korrekt.length; i++) {
-        correct_answers = correct_answers + "<p class='correct_answer'>" + svar[spm.korrekt[i]] + "</p>";
+        correct_answers = correct_answers + "<span class='correct_answer'>" + svar[spm.korrekt[i]] + ", </span>";
     }
 
     //tween in feedback: 
     $(".svarcontainer").delay(800).fadeOut(1000, function() {
 
-        $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class ='introknap videre_knap'>Continue</div><div style='color:white'>CORRECT: " + correct_answers);
+        $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class ='introknap videre_knap'>Continue</div><div style='color:white'>Correct answer(s): " + correct_answers);
         $(".feedback").fadeOut(0);
         $(".feedback").fadeIn(1000);
 
@@ -473,9 +474,9 @@ function next_event() {
 function slutFeedback() {
     //console.log("slut");
 
-    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + score + " of " + total_spm + "Questions.</h3><div class='introknap forfra_knap'>Try again</div>");
+    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + "Questions.</h3><div class='introknap forfra_knap'>Try again</div>");
     $("#overlay").click(function() {
         //console.log ("ost");
-        location.reload();
+        //location.reload();
     });
 }
