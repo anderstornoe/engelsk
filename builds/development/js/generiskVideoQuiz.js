@@ -74,23 +74,24 @@ var VideoClass = {
 
 // QuestionField
 var QuestionField = '<div class="QuestionField">' +
-    '<input type="text" class="TextField w25" placeholder="Svarmulighed p&aring; svarknap" name="Question"/>' +
+    '<input type="text" class="TextField w25" placeholder="Svarmulighed" name="Question"/>' +
     '<input type="radio" name="Rsvar" class="Rsvar"/>' +
     '<input type="checkbox" name="Csvar" class="Csvar"/>' +
+    ' (korrekt svar) ' +
     '<a class="addfield ml10" href="#"> Tilf&oslash;j svarmulighed </a> <a class="removefield ml10" href="#"> Fjern svarmulighed </a>' +
     '</div>';
 
 // EventForm  -  NOTE: "Event" er det tidligere "Runde"
 var EventForm = '<form class="EventForm">' +
     '<b class="ml10"> Sp&oslash;rgsm&aring;l 1</b>' +
-    ' <a class="removeform ml10 right" href="#"> Fjern sp&oslash;rgsm&aring;l  </a><a class="addform ml10 right" href="#"> Tilf&oslash;j sp&oslash;rgsm&aring;l </a>' +
+    ' <a class="removeform ml10" href="#"> Fjern sp&oslash;rgsm&aring;l  </a><a class="addform ml10 " href="#"> Tilf&oslash;j et ekstra sp&oslash;rgsm&aring;l </a>' +
     '<div class="clear"></div> <br/>' +
     // '<input type="text" class="TextField w25" name="EventHeader" placeholder="Eventoverskrift" /> <br/>' +
     '<textarea rows="4" class="TextField w25" name="EventInfo" placeholder="Sp&oslash;rgsm&aring;l"></textarea> <br/>' +
-    '<div class="QuestionWrapperButton p10 bgc-E0E0E0 b-blue">Vis svarmulighed <span class="glyphicon glyphicon-chevron-right"></span> </div>' +
+    '<div class="QuestionWrapperButton p10 bgc-E0E0E0 b-blue"><span class="glyphicon glyphicon-chevron-right"></span> Svar og feedback  </div>' +
     '<div class="QuestionWrapper bgc-E0E0E0 b-blue dhide">' +
-    'En svarmulighed <input type="radio" name="valg" value="radiobutton" checked="checked"/>' +
-    ' Flere svarmuligheder <input type="radio" name="valg" value="checkbox"/>' +
+    '<input type="radio" name="valg" value="radiobutton" checked="checked"/> En svarmulighed <br/>' +
+    '<input type="radio" name="valg" value="checkbox"/> Flere svarmuligheder' +
     '<div class="QuestionFieldWrapper">' +
     QuestionField +
     QuestionField +
@@ -101,14 +102,14 @@ var EventForm = '<form class="EventForm">' +
 
 // TimestampForm  -  NOTE: "Timestamp" er synonym med "Stop"
 var TimeStampForm = '<div class="TimeStampForm">' +
-    '<form class="class_TimeStampForm p10 w75 left">' +
-    '<b> Timestamp 1 : </b>' +
+    '<form class="class_TimeStampForm p10 left">' +
+    '<b> Stop 1 : </b>' +
     // GenerateNumberSelect(0, 24, "tt", "SelectHour") + " : " +
     GenerateNumberSelect(0, 60, "mm", "minutter", "SelectMin") + " : " +
     GenerateNumberSelect(0, 60, "ss", "sekunder", "SelectSec") +
     // ' eller <input type="text" placeholder="tt:mm:ss" />' +
     '</form>' +
-    '<a class="remove_TimeStampForm ml10 right" href="#"> Fjern stop </a> <a class="add_TimeStampForm ml10 right" href="#"> Tilf&oslash;j stop </a> ' + '<div class="clear"></div>' +
+    '<a class="remove_TimeStampForm ml10" href="#"> Fjern stop </a> <a class="add_TimeStampForm ml10" href="#"> Tilf&oslash;j et ekstra stop </a> ' + '<div class="clear"></div>' +
     EventForm +
     '</div>';
 
@@ -122,22 +123,24 @@ function InitHTML(Selector, HtmlToBeAdded) {
 function UpdateNumbersInFormHeaders(Selector, this_Obj){
 
     if ( ( Selector == ".addform" ) || ( Selector == ".removeform" ) ){
-        // var ParentObj = $(this_Obj).closest(".class_TimeStampForm");
-        // console.log("ParentObj tagName: " + ParentObj.get(0).tagName);
+        var ParentObj = $(this_Obj).closest(".TimeStampForm");
+        console.log("JSON.stringify(ParentObj): " + JSON.stringify(ParentObj)  );
 
-        $(".EventForm > b").each(function(index, element) {
+        // $(".EventForm > b").each(function(index, element) {
+        //     $(this).html("Sp&oslash;rgsm&aring;l " + (index + 1).toString() );
+        // });
+
+        console.log("ParentObjSelector: " + Selector );
+
+// console.log("ParentObjTEXT: " + $(".EventForm > b", ParentObj).text() );
+        $(".EventForm > b", ParentObj).each(function(index, element) {
             $(this).html("Sp&oslash;rgsm&aring;l " + (index + 1).toString() );
         });
-
-// console.log("ParentObjTEXT: " + $(".EventForm", ParentObj).get(0).tagName );
-//         $(".EventForm", ParentObj).each(function(index, element) {
-//             $(this).html("Sp&oslash;rgsm&aring;l " + (index + 1).toString() );
-//         });
     }
 
     if ( ( Selector == ".add_TimeStampForm" ) || ( Selector == ".remove_TimeStampForm" ) ){
         $(".class_TimeStampForm > b").each(function(index, element) {
-            $(this).html("Timestamp " + (index + 1).toString() + " : ");
+            $(this).html("Stop " + (index + 1).toString() + " : ");
         });
     }
 }
@@ -270,9 +273,9 @@ function QuestionWrapperButtonControl(Selector) {
         $(".QuestionWrapper", EventFormObj).toggleClass("dhide");
         $(".QuestionWrapper", EventFormObj).slideToggle();
         if ($(".QuestionWrapper", EventFormObj).prop("class").indexOf("dhide") !== -1)
-            $(".QuestionWrapperButton", EventFormObj).html('Vis svarmulighed <span class="glyphicon glyphicon-chevron-right"></span>');
+            $(".QuestionWrapperButton", EventFormObj).html('<span class="glyphicon glyphicon-chevron-right"></span> Svar og feedback');
         else
-            $(".QuestionWrapperButton", EventFormObj).html('Skjul svarmulighed <span class="glyphicon glyphicon-chevron-down"></span>');
+            $(".QuestionWrapperButton", EventFormObj).html('<span class="glyphicon glyphicon-chevron-down"></span> Skjul svar og feedback');
     });
 }
 
