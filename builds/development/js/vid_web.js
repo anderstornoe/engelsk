@@ -30,7 +30,7 @@ var seconds;
 
 var timestamp_Array = [];
 var JsonObj;
-var JsonVideoInput_update = [{
+var JsonVideoInput_update; /* = [{
     "video": "lny37_zJpFc"
 }, {
     "stops": [{
@@ -65,7 +65,7 @@ var JsonVideoInput_update = [{
             "feedback": "Extreme close-up  is used to create an intense mood."
         }]
     }]
-}];
+}];*/
 
 
 //XML SKAL SKIFTES UD MED JSON
