@@ -1,6 +1,7 @@
 .QuestionField{border: 1px solid #F00; margin: 10px;}
 .EventForm{border: 1px solid #F00; padding: 10px; margin-right: 50px;}
 .EventForm b {margin-right: 20px;}
+.class_TimeStampForm{display: inline-block;}
 .TimeStampForm{border: 1px solid #F00; padding: 10px; margin: 5px;}
 .TimeStampForm b {margin-right: 20px;}
 #JsonOutput{font-weight: 600;}
