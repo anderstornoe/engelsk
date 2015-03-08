@@ -102,14 +102,14 @@ var EventForm = '<form class="EventForm">' +
 
 // TimestampForm  -  NOTE: "Timestamp" er synonym med "Stop"
 var TimeStampForm = '<div class="TimeStampForm">' +
-    '<form class="class_TimeStampForm p10 left">' +
+    '<form class="class_TimeStampForm p10">' +
     '<b> Stop 1 : </b>' +
     // GenerateNumberSelect(0, 24, "tt", "SelectHour") + " : " +
     GenerateNumberSelect(0, 60, "mm", "minutter", "SelectMin") + " : " +
     GenerateNumberSelect(0, 60, "ss", "sekunder", "SelectSec") +
     // ' eller <input type="text" placeholder="tt:mm:ss" />' +
-    '</form>' + '<div class="TimestampForm_container">' + 
-    '<a class="remove_TimeStampForm ml10" href="#"> Fjern stop </a> <a class="add_TimeStampForm ml10" href="#"> Tilf&oslash;j et ekstra stop </a> ' + '</div><div class="clear"></div>' +
+    '</form>' +
+    '<a class="remove_TimeStampForm ml10" href="#"> Fjern stop </a> <a class="add_TimeStampForm ml10" href="#"> Tilf&oslash;j et ekstra stop </a> ' +
     EventForm +
     '</div>';
 
@@ -120,31 +120,16 @@ function InitHTML(Selector, HtmlToBeAdded) {
 }
 
 
-function UpdateNumbersInFormHeaders(Selector, this_Obj){
+function UpdateNumbersInFormHeaders(){
 
-    if ( ( Selector == ".addform" ) || ( Selector == ".removeform" ) ){
-        var ParentObj = $(this_Obj).closest(".TimeStampForm");
-        console.log("JSON.stringify(ParentObj): " + JSON.stringify(ParentObj)  );
-
-        // $(".EventForm > b").each(function(index, element) {
-        //     $(this).html("Sp&oslash;rgsm&aring;l " + (index + 1).toString() );
-        // });
-
-        console.log("ParentObjSelector: " + Selector );
-
-// console.log("ParentObjTEXT: " + $(".EventForm > b", ParentObj).text() );
-        $(".EventForm > b", ParentObj).each(function(index, element) {
-            $(this).html("Sp&oslash;rgsm&aring;l " + (index + 1).toString() );
+    $(".class_TimeStampForm > b").each(function(index1, element1) {
+        $(this).html("Stop " + (index1 + 1).toString() + " : ");
+        var ParentObj = $(this).closest(".TimeStampForm");
+        $(".EventForm > b", ParentObj).each(function(index2, element2) {
+            $(this).html("Sp&oslash;rgsm&aring;l " + (index2 + 1).toString() );
         });
-    }
-
-    if ( ( Selector == ".add_TimeStampForm" ) || ( Selector == ".remove_TimeStampForm" ) ){
-        $(".class_TimeStampForm > b").each(function(index, element) {
-            $(this).html("Stop " + (index + 1).toString() + " : ");
-        });
-    }
+    });
 }
-
 
 
 // VIGTIGT: Chromium tillader ikke default argumentet Max at blive angivet som "Max = false". 
@@ -164,7 +149,9 @@ function AddElement(Selector, HtmlToBeAdded, Max) {
             alert("Det største antal tilladte elementer er " + Max);
         }
 
-        UpdateNumbersInFormHeaders(Selector, this);
+        // The following two lines "breaks" the generality of this function: 
+        UpdateNumbersInFormHeaders();
+        if (Selector == ".add_TimeStampForm") CheckTimeStopValues();
     });
 }
 
@@ -181,7 +168,7 @@ function RemoveElement(Selector, Min) {
             alert("Det mindste antal elementer skal være " + Min);
         }
 
-        UpdateNumbersInFormHeaders(Selector, this);
+        UpdateNumbersInFormHeaders();
     });
 }
 
@@ -210,6 +197,22 @@ function GetFormsData(Selector_FormContainer) {
     return JSONarray;
 
     // $("#JsonOutput").html( JSON.stringify( JSONarray, null, 4 ) );
+}
+
+
+function CheckTimeStopValues(){
+    // $('select').on('change', function() {  
+        var NumOfTimestamps = $(".class_TimeStampForm").length;
+        var TimestampObj = {};
+        $(".class_TimeStampForm").each(function(index, element) {
+            var mmssObj = {mm : null, ss : null};
+            mmssObj.mm = $("select[name='mm']", element).val();
+            mmssObj.ss = $("select[name='ss']", element).val();
+            console.log("mm : " + JSON.stringify(mmssObj.mm) + ", ss : " + JSON.stringify(mmssObj.ss) );
+            TimestampObj[index] = mmssObj;
+        });
+        console.log("TimestampObj : " + JSON.stringify(TimestampObj) );
+    // });
 }
 
 
@@ -604,6 +607,8 @@ $(document).ready(function() {
     RadioButtonDualSwitch(".EventForm input[name='valg']");
 
     QuestionWrapperButtonControl(".EventForm .QuestionWrapperButton");
+
+    // CheckTimeStopValues();
 
     $("#countform").click(function(e) {
 
