@@ -108,8 +108,8 @@ var TimeStampForm = '<div class="TimeStampForm">' +
     GenerateNumberSelect(0, 60, "mm", "minutter", "SelectMin") + " : " +
     GenerateNumberSelect(0, 60, "ss", "sekunder", "SelectSec") +
     // ' eller <input type="text" placeholder="tt:mm:ss" />' +
-    '</form>' +
-    '<a class="remove_TimeStampForm ml10" href="#"> Fjern stop </a> <a class="add_TimeStampForm ml10" href="#"> Tilf&oslash;j et ekstra stop </a> ' + '<div class="clear"></div>' +
+    '</form>' + '<div class="TimestampForm_container">' + 
+    '<a class="remove_TimeStampForm ml10" href="#"> Fjern stop </a> <a class="add_TimeStampForm ml10" href="#"> Tilf&oslash;j et ekstra stop </a> ' + '</div><div class="clear"></div>' +
     EventForm +
     '</div>';
 
