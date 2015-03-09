@@ -752,7 +752,8 @@ $(document).ready(function() {
         JsonVideoInput_update = JsonVideoInput;
 
         // VIGTIGT: Man skal se sin video foer man kan sende den:
-        var EmailStr = "mailto:?cc=elearning@kvuc.dk&amp;subject=Din%20quizdata&amp;body=";
+        // var EmailStr = "mailto:?cc=elearning@kvuc.dk&amp;subject=Din%20quizdata&amp;body=";
+        var EmailStr = "mailto:?cc=ato@kvuc.dk;than@kvuc.dk&amp;subject=Din%20quizdata&amp;body=";
         EmailStr += JSON.stringify(JsonVideoInput);
         $(".MailLink").attr("href", EmailStr);
 
