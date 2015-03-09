@@ -120,6 +120,11 @@ function InitHTML(Selector, HtmlToBeAdded) {
 }
 
 
+function htmlEntities(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+}
+
+
 function UpdateNumbersInFormHeaders(){
 
     $(".class_TimeStampForm > b").each(function(index1, element1) {
@@ -136,6 +141,7 @@ function UpdateNumbersInFormHeaders(){
 function AddElement(Selector, HtmlToBeAdded, Max) {
     $(document).on('click', Selector, function(event) {
         event.preventDefault();
+        var NextParent;
         var ParentClassName = $(this).parent().attr("class");
         var NumOfParents = $(this).parent().siblings("." + ParentClassName).length + 1;
         console.log("NumOfParents : " + NumOfParents + ", ParentClassName: " + ParentClassName);
@@ -143,15 +149,20 @@ function AddElement(Selector, HtmlToBeAdded, Max) {
             $(this).parent().after(HtmlToBeAdded);
 
             // The following two lines "breaks" the generality of this function: 
-            var NextParent = $(this).parent().next();
+            NextParent = $(this).parent().next();
             CheckEventFormPosition(NextParent); // Sets the state: "radio button" or "checkbox".
         } else {
             alert("Det største antal tilladte elementer er " + Max);
         }
 
-        // The following two lines "breaks" the generality of this function: 
+        // The following lines "breaks" the generality of this function: 
         UpdateNumbersInFormHeaders();
-        if (Selector == ".add_TimeStampForm") CheckTimeStopValues();
+        if (Selector == ".add_TimeStampForm") {
+            if (CheckTimeStopValues('Du forsøger nu at tilføje nu et ekstra "Stop"') == true){
+                $(".TimeStampForm:last-child").remove();
+            }
+        }
+        CheckInputValues(NextParent);
     });
 }
 
@@ -200,19 +211,118 @@ function GetFormsData(Selector_FormContainer) {
 }
 
 
-function CheckTimeStopValues(){
-    // $('select').on('change', function() {  
-        var NumOfTimestamps = $(".class_TimeStampForm").length;
-        var TimestampObj = {};
-        $(".class_TimeStampForm").each(function(index, element) {
-            var mmssObj = {mm : null, ss : null};
-            mmssObj.mm = $("select[name='mm']", element).val();
-            mmssObj.ss = $("select[name='ss']", element).val();
-            console.log("mm : " + JSON.stringify(mmssObj.mm) + ", ss : " + JSON.stringify(mmssObj.ss) );
-            TimestampObj[index] = mmssObj;
+function CheckTimeStopValues(StartStr){
+    var NumOfTimestamps = $(".class_TimeStampForm").length;
+    var TimestampObj = {};
+    var Error = false;
+    $(".class_TimeStampForm").each(function(index, element) {
+        var TObj = {mm : null, ss : null, TimeInSec : null};
+        TObj.mm = $("select[name='mm']", element).val();
+        TObj.ss = $("select[name='ss']", element).val();
+        TObj.TimeInSec = 60*TObj.mm + TObj.ss;
+        console.log("mm : " + JSON.stringify(TObj.mm) + ", ss : " + JSON.stringify(TObj.ss) );
+        TimestampObj[index] = TObj;
+        var Missing = null;
+
+
+        // Check for missing time-settings for stops/NumOfTimestamps >= 1:
+        if ( ((NumOfTimestamps > index + 1) || (NumOfTimestamps == 1)) && ((TObj.mm === null) || (TObj.ss === null)) ){
+            if (TObj.mm === null){  
+                Missing = 'minutterne';
+                if (TObj.ss === null) 
+                    Missing += ' og sekunderne';
+            } else
+                Missing = 'sekunderne';
+            alert("ADVARSEL:\n" + StartStr + ', men '+Missing+' i "Stop '+(index + 1).toString()+'" er ikke sat!');
+            Error = true;
+        }
+
+        // Check for invalid values - NumOfTimestamps/stops has to be like: "Stop 1" <= "Stop 2" <= "Stop 3"....
+        if ((Missing === null) && (index > 0 ) && (NumOfTimestamps > index + 1) && (TimestampObj[index-1].TimeInSec > TObj.TimeInSec)){
+            alert("ADVARSEL:\n" + StartStr + ', men tiden i "Stop '+(index).toString()+'" er større end i "Stop '+(index+1).toString() + 
+                  '", hvilket ikke er tilladt!'+"\n"+'Tiderne i stops skal være fortløbende, således at "Stop 1" <= "Stop 2" <= "Stop 3"...');
+            Error = true;
+        }
+
+    });
+    console.log("TimestampObj : " + JSON.stringify(TimestampObj) );
+
+    return Error;
+}
+
+
+function CheckInputValues(NextParent){
+    var Error = false;
+    var TSObj = {};
+    var NumOfTimestamps = $(".class_TimeStampForm").length;
+    $(".TimeStampForm").each(function(index1, element1) {
+        var TObj = {mm : null, ss : null, EventForm_HasVal : false, QuestionField_HasVal : false};
+        TObj.mm = $("select[name='mm']", element1).val();
+        TObj.ss = $("select[name='ss']", element1).val();
+        console.log("X1 - mm: " + TObj.mm + ", ss: " + TObj.ss);
+        var NumOfEventForms = $(".EventForm", element1).length;
+        $(".EventForm", element1).each(function(index2, element2) {
+            var EventInfo = $("textarea[name='EventInfo']", element2).val();
+            var EventFeedback = $("textarea[name='EventFeedback']", element2).val();
+
+            // if ( (EventInfo !== "") || (EventFeedback !== "") )
+            if (EventInfo !== "")
+                TObj.EventForm_HasVal = true;
+
+            // .
+            if ( (NumOfEventForms > index2 + 1) && !TObj.EventForm_HasVal ) {
+                alert("ADVARSEL:\n" + '"Spørgsmål '+(index1+1).toString()+'" skal spørgsmål-tekst eller svarmuligheder');
+                $(NextParent).remove(); // Dette fjerner det naeste element man forsoeger at tilfoeje.
+                Error = true;
+            }
+
+            $(".QuestionField", element2).each(function(index3, element3) {
+
+                console.log("X1 - Stop: "+(index1+1).toString()+", Spørgsmål: "+(index2+1).toString()+", QuestionField: "+(index3+1).toString()); 
+
+                var Question = $("input[name='Question']", element3).val();
+                var Rsvar = ($("input[name='Rsvar']", element3).prop('checked') ? true : false);
+                var Csvar = ($("input[name='Csvar']", element3).prop('checked') ? true : false);
+                
+
+                console.log("X1 - EventInfo: " + EventInfo + ",Question: " + Question + ", Rsvar: " + Rsvar + ", Csvar: " + Csvar + ", EventFeedback: " + EventFeedback); 
+
+                // Check that some text is supplied along with a correct answer:
+                if ((Question === "") && (Rsvar || Csvar) ){
+                    alert("ADVARSEL:\n" + 'I "Stop '+(index1+1).toString()+'", "Spørgsmål '+(index2+1).toString()+
+                          '", "Svarmulighed '+(index3+1).toString()+'" er der angivet en korrekt svarmulighed uden tilhørende tekst!');
+                    $(NextParent).remove(); // Dette fjerner det naeste element man forsoeger at tilfoeje.
+                    Error = true;
+                }
+
+                if ( (Question !== "") && ( Rsvar || Csvar ) )
+                    TObj.QuestionField_HasVal = true;
+
+            });
+
+            // // Checks that no new timestamps are added if no values are given in the input-fields current timestamp.
+            // if ( (NumOfEventForms > index2 + 1) && !TObj.QuestionField_HasVal ) {
+            //     alert("ADVARSEL:\n" + '"Spørgsmål '+(index1+1).toString()+'" XXXXX');
+            //     $(NextParent).remove(); // Dette fjerner det naeste element man forsoeger at tilfoeje.
+            //     Error = true;
+            // }
+
         });
-        console.log("TimestampObj : " + JSON.stringify(TimestampObj) );
-    // });
+
+        TSObj[index1] = TObj;
+
+        // Checks that no new timestamps are added if no values are given in the input-fields current timestamp.
+        if ( (NumOfTimestamps > index1 + 1)  && (TSObj[index1].mm !== null) && (TSObj[index1].ss !== null) && 
+            (!TSObj[index1].EventForm_HasVal) ){
+            alert("ADVARSEL:\n" + 'I "Stop '+(index1+1).toString()+'" er der ingen udfyldte spørgsmål eller svar muligheder!');
+            $(NextParent).remove(); // Dette fjerner det naeste element man forsoeger at tilfoeje.
+            Error = true;
+        }
+    });
+
+    console.log("X1 - TSObj: " + JSON.stringify(TSObj) );
+
+    return Error;
 }
 
 
@@ -505,8 +615,8 @@ function ReplicateVideoInputFormat(json) {
                                     if (Obj.value == "radiobutton") Event.eventtype = "svarknap";
                                 }
 
-                                if (Obj.name == "Question") {
-                                    Event.svar.push(Obj.value);
+                                if ( (Obj.name == "Question") && (Obj.value !== "") ) {
+                                    Event.svar.push(htmlEntities(Obj.value));
                                     ++AnswerNum;
                                 }
 
@@ -514,12 +624,13 @@ function ReplicateVideoInputFormat(json) {
 
                                 }
 
-                                if (Obj.name == "EventInfo") {
-                                    Event.tekst = Obj.value;
+                                if ( (Obj.name == "EventInfo") && (Obj.value !== "") ) {
+                                    Event.tekst = htmlEntities(Obj.value);
+                                    console.log("Obj.value: " + Obj.value + ", htmlEntities: " + Event.tekst);
                                 }
 
-                                if (Obj.name == "EventFeedback") {
-                                    Event.feedback = Obj.value;
+                                if ( (Obj.name == "EventFeedback") && (Obj.value !== "") ) {
+                                    Event.feedback = htmlEntities(Obj.value);
                                 }
 
                                 if (Obj.name == "Rsvar") {
@@ -534,6 +645,15 @@ function ReplicateVideoInputFormat(json) {
                                     "\nEvent: " + JSON.stringify(Event));
 
                             } // END for
+
+
+                            console.log("X2 -- Event: " + JSON.stringify(Event) );
+
+                            // If no answer options and no feedback is given, then: eventtype = "info":
+                            if ( (Event.korrekt.length == 0) && (Event.korrekt.length == 0) && (Event.feedback === null) ){
+                                Event.eventtype = "info";
+                            }
+
 
                             Stop.events.push(Event);
 
@@ -608,11 +728,16 @@ $(document).ready(function() {
 
     QuestionWrapperButtonControl(".EventForm .QuestionWrapperButton");
 
-    // CheckTimeStopValues();
 
-    $("#countform").click(function(e) {
-
+    $(".WatchQuiz").click(function(e) {
         e.preventDefault(); // Prevent the link-nature of the anchor-tag.
+
+        if (CheckTimeStopValues('Du vælger nu "Se Quiz"') == true){
+            return 0;
+        }
+
+        CheckInputValues(false);
+
         // VideoObj.LoadDefaultVideo(); // Elers vrker det ikke med ReGenerateForm.   
         VideoObj.LoadVideo(); // Elers vrker det ikke med ReGenerateForm.
         VideoObj.LoadDefaultNoVideoImgIfNoVideoIsChosen();
@@ -626,6 +751,14 @@ $(document).ready(function() {
 
         JsonVideoInput_update = JsonVideoInput;
 
+        // VIGTIGT: Man skal se sin video foer man kan sende den:
+        var EmailStr = "mailto:?cc=elearning@kvuc.dk&amp;subject=Din%20quizdata&amp;body=";
+        EmailStr += JSON.stringify(JsonVideoInput);
+        $(".MailLink").attr("href", EmailStr);
+
+
+        
+
 ////
 //Her refreshes videoquiz preview iframen: 
 
@@ -636,6 +769,29 @@ $(document).ready(function() {
 //
         
     });
+
+
+    // // Naar der trykkes paa email linket...
+    $(".MailLink").click(function(e) {
+        // e.preventDefault(); // VIGTIGT: e.preventDefault() forhindre emailen i at blive sendt til mail-klienten.
+
+        if ($(".MailLink").attr("href") === ""){
+            e.preventDefault();
+            alert("Før video-quiz'en kan sendes skal den først ses ved at trykke på"+'"Se Quiz".');
+        }
+
+        console.log("MailLink : " + JSON.stringify( $(".MailLink").attr("href") ) );
+
+        // VideoObj.LoadVideo(); // Elers vrker det ikke med ReGenerateForm.
+        // VideoObj.LoadDefaultNoVideoImgIfNoVideoIsChosen();
+        // VideoObj.QuizData = GetFormsData('#FormsContainer');
+        // var JsonVideoInput = ReplicateVideoInputFormat(VideoObj);
+        // var EmailStr = "mailto:?cc=elearning@kvuc.dk&amp;subject=Din%20quizdata&amp;body=";
+        // // EmailStr += JSON.stringify(JsonVideoInput);
+        // EmailStr += JSON.stringify( String(str).replace(/ /g, '%20') );
+        // $("#MailLink").attr("href", EmailStr); 
+    });
+
 
     // ================================
     // 		Regenerate user interface
