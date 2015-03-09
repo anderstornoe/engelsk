@@ -157,12 +157,12 @@ function AddElement(Selector, HtmlToBeAdded, Max) {
 
         // The following lines "breaks" the generality of this function: 
         UpdateNumbersInFormHeaders();
-        if (Selector == ".add_TimeStampForm") {
-            if (CheckTimeStopValues('Du forsøger nu at tilføje nu et ekstra "Stop"') == true){
-                $(".TimeStampForm:last-child").remove();
-            }
-        }
-        CheckInputValues(NextParent);
+        // if (Selector == ".add_TimeStampForm") {
+        //     if (CheckTimeStopValues('Du forsøger nu at tilføje nu et ekstra "Stop"') == true){
+        //         $(".TimeStampForm:last-child").remove();
+        //     }
+        // }
+        // CheckInputValues(NextParent);
     });
 }
 
@@ -732,11 +732,11 @@ $(document).ready(function() {
     $(".WatchQuiz").click(function(e) {
         e.preventDefault(); // Prevent the link-nature of the anchor-tag.
 
-        if (CheckTimeStopValues('Du vælger nu "Se Quiz"') == true){
-            return 0;
-        }
+        // if (CheckTimeStopValues('Du vælger nu "Se Quiz"') == true){
+        //     return 0;
+        // }
 
-        CheckInputValues(false);
+        // CheckInputValues(false);
 
         // VideoObj.LoadDefaultVideo(); // Elers vrker det ikke med ReGenerateForm.   
         VideoObj.LoadVideo(); // Elers vrker det ikke med ReGenerateForm.
