@@ -634,11 +634,11 @@ function ReplicateVideoInputFormat(json) {
                                 }
 
                                 if (Obj.name == "Rsvar") {
-                                    Event.korrekt.push(AnswerNum);
+                                    Event.korrekt.push( AnswerNum.toString() );
                                 }
 
                                 if (Obj.name == "Csvar") {
-                                    Event.korrekt.push(AnswerNum);
+                                    Event.korrekt.push( AnswerNum.toString() );
                                 }
 
                                 console.log("key1: " + key1 + ", key2: " + key2 +
