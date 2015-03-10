@@ -650,7 +650,7 @@ function ReplicateVideoInputFormat(json) {
                             console.log("X2 -- Event: " + JSON.stringify(Event) );
 
                             // If no answer options and no feedback is given, then: eventtype = "info":
-                            if ( (Event.korrekt.length == 0) && (Event.korrekt.length == 0) && (Event.feedback === null) ){
+                            if ( (Event.korrekt.length === 0) && (Event.korrekt.length === 0) && (Event.feedback === null) ){
                                 Event.eventtype = "info";
                             }
 

@@ -125,7 +125,7 @@
 
       // Funktionen laver et array bestaaende af svarene (answer) fra JsonCss-objektet.
       function MakeArray(JsonCss){
-          var LArray = new Array();
+          var LArray = [];
           for(var key in JsonCss){
               LArray.push(JsonCss[key].answer);
           }
