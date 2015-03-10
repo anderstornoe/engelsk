@@ -6,13 +6,10 @@ require('jquery-ui');
 
 var bootstrap = require('bootstrap');
 
-console.log("Bootstrap er loadet: " + bootstrap + "; jQuery Version: " + $.fn.jquery);
+//console.log("Bootstrap er loadet: " + bootstrap + "; jQuery Version: " + $.fn.jquery);
 
 //SLUT FUNCTIONS.JS
 
-function test_script(){
-	alert("test_script_kører..");
-}
 
 // For at undgaa sammenfald i mellem funktionsnavne i concatede .js-filer, saa wrappes
 // alle funktioner i en "klasse" som hedder "kvuc_js_class" (navnet er ligegyldigt, det skal bare 
