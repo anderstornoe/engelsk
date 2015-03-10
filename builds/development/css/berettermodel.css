@@ -151,17 +151,17 @@
 
     #StudentFeedBackText{
         color: #FFF; 
-        font-size: 1.8em;
+        font-size: 1.2em;
         margin-bottom: 2%;
     }
 
-    #QustionNum1{margin-left: 5%;}
-    #QustionNum2{margin-left: 5%;}
-    #QustionNum3{margin-left: 5%;}
-    #QustionNum4{margin-left: 5%;}
-    #QustionNum5{margin-left: 5%;}
-    #QustionNum6{margin-left: 5%;}
-    #QustionNum7{margin-left: 5%;}
+    #QustionNum1{margin-left: 0%;}
+    #QustionNum2{margin-left: 12%;}
+    #QustionNum3{margin-left: 12%;}
+    #QustionNum4{margin-left: 12%;}
+    #QustionNum5{margin-left: 12%;}
+    #QustionNum6{margin-left: 12%;}
+    #QustionNum7{margin-left: 12%;}
     
 
     /*********************************************************************
@@ -189,8 +189,6 @@
 
       #resultwrap{margin-top: 15%;}
 
-      #StudentFeedBackText{font-size: 1em;}
-
       .QustionNumbers{font-size: 1em;}
     }
 
@@ -214,10 +212,9 @@
 
       #resultwrap{margin-top: 20%;}
 
-      #StudentFeedBackText{font-size: 1.4em;}
-
       .QustionNumbers{font-size: 1.5em;}
     }
+
 
 
 
