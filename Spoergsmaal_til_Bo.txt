@@ -13,3 +13,10 @@
 4. 	Maaske ikke relvant spoergsmaal, men...
 	Med mange forskellige laeringsobjekter, hvilken mappe-struktur paa Git vil vaere 
 	hensigtsmaessig? En mappe til hvert laeringsobjekt er vel OK?
+
+5. 	Hvordan ruller vi tilbage til en tidligere version? Holder du en sideløbende version du kan bruge som "roll-back", 
+	hvis du fortager et "leap of faith" i din kode?
+
+6. 	Når vi et "push-and-pull issue", så har vi mulighed for at "resolve" issuet med "using mine" eller "using theres". Er
+	den eneste mulighed for at sikre at vigtige ting man selv (eller andre) har lavet kommunikation (mundligt, commit comments, mv)?
+
