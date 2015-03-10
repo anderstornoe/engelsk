@@ -29,7 +29,7 @@ var minutes;
 var seconds;
 
 var timestamp_Array = [];
-var JsonObj;
+var JsonObj; 
 //XML SKAL SKIFTES UD MED JSON
 
 
@@ -39,7 +39,7 @@ function loadData(url) {
         // contentType: "application/json; charset=utf-8",  // Blot en test af tegnsaettet....
         // dataType: 'json', // <------ VIGTIGT: Saadan boer en angivelse til en JSON-fil vaere! 
         dataType: 'text', // <------ VIGTIGT: Pga. ???, saa bliver vi noedt til at angive JSON som text. 
-        async: true, // <------ VIGTIGT: Sikring af at JSON hentes i den rigtige raekkefoelge (ikke asynkront). 
+        async: false, // <------ VIGTIGT: Sikring af at JSON hentes i den rigtige raekkefoelge (ikke asynkront). 
         success: function(data, textStatus, jqXHR) {
 
 
