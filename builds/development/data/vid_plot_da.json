@@ -2,7 +2,7 @@
     "video": "lny37_zJpFc"
 }, {
     "stops": [{
-        "timestamp": "53",
+        "timestamp": "55",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "Describe the FEMALE character’s mood, based on what you have seen so far",
@@ -21,7 +21,7 @@
             "feedback": "To answer this question you need to consider the actor’s actions, body language, and facial expressions"
         }]
     }, {
-        "timestamp": "63",
+        "timestamp": "76",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "What feelings do you think this shot is supposed to communicate?",
@@ -36,7 +36,7 @@
             "feedback": "You have to consider both what is in the frame and the angle it is seen from. By filming over the shoulder of the woman we adopt her point of view. Her view of the outside world in both this shot and the next is limited (constrained) by the framework of the window"
         }]
     }, {
-        "timestamp": "95",
+        "timestamp": "98",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "Why do they argue?",
@@ -51,7 +51,7 @@
             "feedback": "Dialogue is an easy way to make audience understand what is going on"
         }]
     }, {
-        "timestamp": "109",
+        "timestamp": "112",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "Why does he choose that music?",
@@ -66,7 +66,7 @@
             "feedback": "Always assume that when something happens in a film (or text) it happens for a reason. (It never simply rains on film)"
         }]
     }, {
-        "timestamp": "115",
+        "timestamp": "120",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "Why does she change the music?",
@@ -81,7 +81,7 @@
             "feedback": "Remember it never simply rains on film"
         }]
     }, {
-        "timestamp": "122",
+        "timestamp": "125",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "When she changes the music, what does his reaction say about him?",
@@ -96,7 +96,7 @@
             "feedback": "Did you notice the way he first closed his fist and then relaxed and started to drum along to the new music?"
         }]
     }, {
-        "timestamp": "136",
+        "timestamp": "140",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "Consider the use of sound and handheld camera and the pose of the actress, what does it say about the character’s feelings in the parking lot?",
@@ -111,7 +111,7 @@
             "feedback": "Sometimes characters simply describe their feelings in words but more often the filmmaker will use all the different means of expression she has at her disposal."
         }]
     }, {
-        "timestamp": "146",
+        "timestamp": "149",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "What emotion does her face express?",
@@ -126,7 +126,7 @@
             "feedback": "A way of characterizing is showing the emotional response to the surroundings"
         }]
     }, {
-        "timestamp": "165",
+        "timestamp": "169",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "What does the camerawork express here in relation to the character?",
@@ -141,7 +141,7 @@
             "feedback": "This is an example of how the filmmaker shows the audience how the character feels, through the use of the camera."
         }]
     }, {
-        "timestamp": "261",
+        "timestamp": "288",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "Why does he react like that to the graffiti?",
@@ -156,7 +156,7 @@
             "feedback": "The way a character reacts to a certain event gives the audience information about the character"
         }]
     }, {
-        "timestamp": "306",
+        "timestamp": "311",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "What does her face express?",

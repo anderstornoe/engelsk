@@ -9,3 +9,6 @@ console.log("Bootstrap er loadet: " + bootstrap + "; jQuery Version: " + $.fn.jq
 
 //SLUT FUNCTIONS.JS
 
+function test_script(){
+	alert("test_script_kører..");
+}

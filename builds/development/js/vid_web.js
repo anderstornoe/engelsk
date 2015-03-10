@@ -30,7 +30,8 @@ var seconds;
 
 var timestamp_Array = [];
 var JsonObj;
-var JsonVideoInput_update; /* = [{
+var JsonVideoInput_update;
+/* = [{
     "video": "lny37_zJpFc"
 }, {
     "stops": [{
@@ -107,7 +108,9 @@ function loadData() {
                 //console.log("Stops: " + stops);
             }
             //total_spille_tid = data.find('video').attr('total_tid');
-            var lengde = stops.length; //data.find('runde').length;
+            if (stops) {
+                lengde = stops.length;
+            } //data.find('runde').length;
             popudwidth = 450;
             popud_left = 0; //(bredde / 2) - (popudwidth / 2);
 
@@ -123,7 +126,7 @@ function loadData() {
             // console.log("JsonObj : " + JSON.stringify(JsonObj)  ); 
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            console.log("Error!!!\njqXHR:" + jqXHR + "\ntextStatus: " + textStatus + "\nerrorThrown: " + errorThrown);
+           // console.log("Error!!!\njqXHR:" + jqXHR + "\ntextStatus: " + textStatus + "\nerrorThrown: " + errorThrown);
         }
     });
 
@@ -201,8 +204,9 @@ function setupplayer() {
 
 function timerCheck() {
 
-    var playTime = Math.round(player.getCurrentTime());
-
+    if (player) {
+        playTime = Math.round(player.getCurrentTime());
+    }
     //Gør overlay og timebar responsive:
     $("#overlay").css("height", $(".embed-responsive").css("height") - 20); //                    $("#time_bar").css("width", player.getCurrentTime() * 10 + "px");
     $("#time_bar").css("width", (player.getCurrentTime() / player.getDuration()) * window.innerWidth);
@@ -311,7 +315,7 @@ function stop_event(tal, taeller) {
 
     if (spm.eventtype == "info") {
         // FAULTY CODE:::
-        $(".btn_videre").fadeIn()
+        $(".btn_videre").fadeIn();
         $(".btn_videre").click(function() {
             //  $("#overlay").fadeOut(1000);
             next_event();
@@ -474,7 +478,7 @@ function next_event() {
 function slutFeedback() {
     //console.log("slut");
 
-    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + "Questions.</h3><div class='introknap forfra_knap'>Try again</div>");
+    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + " Questions.</h3><div class='introknap forfra_knap'>Try again</div>");
     $("#overlay").click(function() {
         //console.log ("ost");
         //location.reload();

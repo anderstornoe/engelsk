@@ -142,9 +142,9 @@
             Item2 = Math.floor( Math.random() * NumOfItems);
             TempItem1 = NewArray[Item1];
             TempItem2 = NewArray[Item2];
-            NewArray[Item2] = TempItem1
-            NewArray[Item1] = TempItem2
-          };
+            NewArray[Item2] = TempItem1;
+            NewArray[Item1] = TempItem2;
+          }
           return NewArray;
       }
       
@@ -177,7 +177,7 @@
           for (var i = 1; i <= 7; i++) {
               RandArray = ShuffelArray( ListArray );
               $( "#Menu"+i+ " ul" ).append( BS_LinkDropdownMenu( RandArray ) );
-          };
+          }
           console.log("--- ListArray 2 : " + ListArray);
 
           // Naar vinduet loader rescales billedet og alle dropdownmenuer repositioneres:
