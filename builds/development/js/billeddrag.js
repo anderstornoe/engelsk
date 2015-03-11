@@ -46,6 +46,7 @@
  function init() {
 
     test_script();
+    
      for (var i = 0; i < word_Array.length; i++) {
          $(".draggable_container").append("<div class='btn btn-default draggable' id=" + i + ">" + word_Array[i] + "</div>");
      }
