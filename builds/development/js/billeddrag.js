@@ -34,7 +34,7 @@
                  }
              }
 
-             $(".correct").html("Correct answers: <b>" + score + " / " + antal_korrekte + " </b> Attempts: <b>" + attempts + "</b>");
+             $(".correct").html("Correct anwers: <b>" + score + " / " + antal_korrekte + " </b> Attempts: <b>" + attempts + "</b>");
              init();
          },
          error: function(jqXHR, textStatus, errorThrown) {
@@ -45,8 +45,8 @@
 
  function init() {
 
-    test_script();
-    
+    //test_script();
+
      for (var i = 0; i < word_Array.length; i++) {
          $(".draggable_container").append("<div class='btn btn-default draggable' id=" + i + ">" + word_Array[i] + "</div>");
      }
