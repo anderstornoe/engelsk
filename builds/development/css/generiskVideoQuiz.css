@@ -8,7 +8,7 @@
 #JsonVideoInput{font-weight: 600;}
 .usrbutton{margin-left: 10px; margin-top: 10px;}
 
-.QuestionWrapper{display: none;}
+/*.QuestionWrapper{display: none;}*/  /* Udkommenteret pga kvalitetscirklen */
 
 .hide{display: none;}
 .dhide{}  /* dummy hide */

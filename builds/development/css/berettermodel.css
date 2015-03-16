@@ -1,10 +1,7 @@
-/*      
+/*    
     //########################################################################
-    //                                                          
-    //      DOKUMENTATION TIL THOMAS: 
-    //      Dette script tager udgangspunkt i versionen:
-    //
-    //          index4_24_position_bootstrap.html
+    //      
+    // Note til Thomas: Denne version er lavet paa: index4_25_position_bootstrap
     //
     //########################################################################
 */
@@ -91,10 +88,10 @@
        /* border: 1px solid #00F;*/
         color: #FFF;
         background-color: rgba(0, 0, 0, 0.8);
-/*
-        background-color: #000;
-        opacity: 0.8;
-  */      
+    /*
+          background-color: #000;
+          opacity: 0.8;
+    */      
     }
 
     .hide{display: none;}
@@ -146,7 +143,7 @@
 /*
         background-image: url("https://gp5.googleusercontent.com/-DbCrfd-__iI/AAAAAAAAAAI/AAAAAAAAAAA/C2Yx8jyB5Qw/s48-c-k-no/photo.jpg");
         background-repeat: repeat-x;
- */       
+*/       
     }
 
     #StudentFeedBackText{
@@ -214,7 +211,6 @@
 
       .QustionNumbers{font-size: 1.5em;}
     }
-
 
 
 
