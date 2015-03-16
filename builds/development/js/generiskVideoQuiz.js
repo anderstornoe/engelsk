@@ -765,7 +765,7 @@ $(document).ready(function() {
 
         $(".player_container").html("<div id='player' class='embed-responsive-item'></div><div id='time'></div><div id='time_bar'></div>");
 
-        loadData();
+        loadData("generic");
         setupplayer();
 //
         
