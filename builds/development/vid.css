@@ -20,6 +20,9 @@ body {
     top: 290px;
     width: 100%;
 }
+.correct_answer{
+    color:white;
+}
 #player {
     position: absolute;
     z-index: 1;
@@ -36,7 +39,7 @@ body {
 }
 #overlay {
     background-color: rgba(0, 0, 0, 0.5);
-    height: 90%;
+    height: 900px;
     position: relative;
     z-index: 75;
 }
@@ -45,7 +48,7 @@ body {
     margin: 0 auto;
     position: absolute;
     right: 0;
-    top: 20%;
+    top: 2%;
     width: 50%;
     z-index: 100;
 }
@@ -73,9 +76,9 @@ td {
 }
 h3 {
     color: #fff;
-    font-size: 24px;
+    font-size: 21px;
     font-weight: 100;
-    margin: 0;
+    margin-top: 30px;
     width: 500px;
 }
 #time {
@@ -108,7 +111,7 @@ h3 {
     margin: 0 auto;
     position: absolute;
     right: 0;
-    top: 150px;
+    /*top: 150px;*/
     width: 50%;
     z-index: 100;
 }
@@ -120,7 +123,7 @@ h3 {
     border-radius: 4px;
     color: white;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 100;
     margin-bottom: 11px;
     padding: 4px;

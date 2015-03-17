@@ -3,13 +3,20 @@
 		Spoergsmaal til Bo
 =====================================
 
-1. 	Hvorfor er det ikke muligt at concate vores egene funktioner i scripts.js filen, og
-	efterfoelgende kalde dem fra en HTML-fil (hvor scripts.js er inkluderet), eller andre steder?
+1. 	Hvorfor er det ikke muligt at concate vores egene funktioner i scripts.js filen, og efterfoelgende kalde dem fra en 
+	HTML-fil (hvor scripts.js er inkluderet), eller andre steder?
 
 2.  Hvorfor virker Thomas's gulp-server ("gulp-connect") ikke?
 
 3.	Hvordan laver man tilbagerulning paa f.eks en enkelt fil fra Git?
 
-4. 	Maaske ikke relvant spoergsmaal, men...
+4. 	Maaske ikke relevant spoergsmaal, men...
 	Med mange forskellige laeringsobjekter, hvilken mappe-struktur paa Git vil vaere 
 	hensigtsmaessig? En mappe til hvert laeringsobjekt er vel OK?
+
+5. 	Hvordan ruller vi tilbage til en tidligere version? Holder du en sideloebende version du kan bruge som "roll-back", 
+	hvis du fortager et "leap of faith" i din kode?
+
+6. 	Naar vi et "push-and-pull issue", saa har vi mulighed for at "resolve" issuet med "using mine" eller "using theres". Er
+	den eneste mulighed for at sikre at vigtige ting man selv (eller andre) har lavet kommunikation (mundligt, commit comments, mv)?
+

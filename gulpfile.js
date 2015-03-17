@@ -39,12 +39,13 @@ if (env === 'development') {
 }
 
 jsSources = [
-    //'components/js/*.js',
-    'builds/development/js/vid_new.js',
+    //'components/js/generiskVideoQuiz.js',
+    'builds/development/js/generiskVideoQuiz.js',
+    'builds/development/js/vid_web.js',
     'builds/development/js/opg_1.js',
     'builds/development/js/billeddrag.js', 
-    'builds/development/js/berettermodel.js', 
-    
+    'builds/development/js/berettermodel.js',
+    'builds/development/js/generiskVideoQuiz.js' 
 ];
 
 htmlSources = [

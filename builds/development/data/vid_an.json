@@ -1,0 +1,217 @@
+[{
+        "video": "e0H6AzEMHSc"
+    },
+
+    {
+        "intro_header": "Answer the questions regarding set and shot in this video quiz."
+    },
+
+    {
+        "intro_text": "Take note of what goes on in the shots of the film."
+    },
+
+    {
+        "intro_knap": "START!"
+    },
+
+    {
+        "stops": [{
+            "timestamp": 58,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "How does the film show Lucas's breakfast?",
+                "svar": [
+                    "wide shots",
+                    "mid-shots",
+                    "close-ups"
+                ],
+                "korrekt": [
+                    "2"
+                ],
+                "feedback": "The film shows Lucas's breakfast in five close-ups of the products he consumes. We do not see Lucas at all during his breakfast."
+            }]
+        }, {
+            "timestamp": 64,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What do the groceries the tea and the cats indicate about the set?",
+                "svar": [
+                    "It´s an everyday situation",
+                    "It´s a hotel room in a foreign location",
+                    "It´s a classy environment"
+                ],
+                "korrekt": [
+                    "0"
+                ],
+                "feedback": "Everyday situations are often indicated with objects that we are all familiar with."
+            }]
+        }, {
+            "timestamp": 108,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "Lucas talks to his boss. How is the scene filmed?",
+                "svar": [
+                    "Lucas is filmed from a low angle",
+                    "Lucas is filmed from a high angle"
+                ],
+                "korrekt": [
+                    "1"
+                ],
+                "feedback": "The film illustrates the boss's authority by filming Lucas from a high angle in an over-the-shoulder shot."
+            }]
+        }, {
+            "timestamp": 116,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What do the clothes tell us about the relationsship between the two men?",
+                "svar": [
+                    "They are relaxed and friendly towards each other",
+                    "One of them is rich and the other one is poor",
+                    "One of them is in an authority position in relation to the other one"
+
+                ],
+                "korrekt": [
+                    "2"
+                ],
+                "feedback": "Clothes are often used to underline a person´s  position"
+            }]
+        }, {
+            "timestamp": 135,
+            "events": [{
+                "tekst": "The boss talks to Lucas. How is the scene filmed?",
+                "svar": [
+                    "The boss is filmed from a low angle",
+                    "The boss is filmed from a high angle"
+                ],
+                "korrekt": [
+                    "0"
+                ],
+                "feedback": "The film illustrates the boss's authority by filming him from a low angle from Lucas' perspective."
+            }]
+        }, {
+            "timestamp": 183,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What does the interior of the apartment tell us about Lucas George?",
+                "svar": [
+                    "His appartment reflects what an interesting guy he is",
+                    "That Lucas is relaxed and informal",
+                    "That his life is as empty and superficial as his appartment"
+                ],
+                "korrekt": [
+                    "2"
+                ],
+                "feedback": "Furniture and decor in an apartment or house are often used to reveal characteristics about the people living there."
+            }]
+        }, {
+            "timestamp": 284,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What kind of sound is in this shot?",
+                "svar": [
+                    "Diegetic sound",
+                    "Non-diegetic sound"
+                ],
+                "korrekt": [
+                    "0"
+                ],
+                "feedback": "The pop music we hear in the background, set the atmosfere for the shot. It emphasizes the superficiality of the relationship between the characters."
+            }]
+        }, {
+            "timestamp": 418,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What kind of lighting is used in this shot?",
+                "svar": [
+                    "High-key lightning",
+                    "Low-key lighting",
+                    "Natural lighting"
+                ],
+                "korrekt": [
+                    "1"
+                ],
+                "feedback": "The dark, contrast-filled Low-key lighting underlines Lucas' ambiguity."
+            }]
+        }, {
+            "timestamp": 490,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What camera movement is used? How does the camera move in this scene?",
+                "svar": [
+                    "Steady-cam",
+                    "Pan or tilt",
+                    "Handheld"
+
+                ],
+                "korrekt": [
+                    "0"
+                ],
+                "feedback": "Here and throughout the film Steady-cam is mainly used. The viewer does not notice the presence of the camera."
+            }]
+        }, {
+            "timestamp": 610,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "The mobile as a prop, what does it symbolize?",
+                "svar": [
+                    "The mobile symbolizes communication between the characters.",
+                    "The phone symbolizes his attraction to her.",
+                    "The mobile works as the lens Lucas views the world through."
+
+                ],
+                "korrekt": [
+                    "2"
+                ],
+                "feedback": "The phone is the main prop and it help us to understand the story, mainly that Lucas so anti-social and detached."
+            }]
+        }, {
+            "timestamp": 704,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What does the setting tell us about her feelings?",
+                "svar": [
+                    "She likes him and wants to show him a world outside facebook.",
+                    "She takes him there beacause she wants to break up with him.",
+                    "She is greedy."
+
+                ],
+                "korrekt": [
+                    "0"
+                ],
+                "feedback": "The sunset means romance and the beautiful surrondings expresses her feelings."
+            }]
+        }, {
+            "timestamp": 746,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What does the setting tell us about his feelings?",
+                "svar": [
+                    "He is happy that he's single again.",
+                    "He suddenly realizes what a lonely person he is.",
+                    "He is furious about her leaving him."
+
+                ],
+                "korrekt": [
+                    "0"
+                ],
+                "feedback": "The light and the setting conveys his loneliness."
+            }]
+        }, {
+            "timestamp": 886,
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What sound is used in the end of the movie?",
+                "svar": [
+                    "Diegetic",
+                    "Non-diegetic",
+                    "Diegetic and non-diegetic"
+
+                ],
+                "korrekt": [
+                    "2"
+                ],
+                "feedback": "The music (non-diegetic) and the bird song (diegetic) ephasizes the happy ending. Whether it´s truly happy is up to you!"
+            }]
+        }]
+    }
+]

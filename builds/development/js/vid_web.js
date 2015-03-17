@@ -22,6 +22,8 @@ var bol;
 var svar_length;
 var svar;
 
+var lengde;
+
 var m = 0;
 
 var checkTimer;
@@ -29,24 +31,71 @@ var minutes;
 var seconds;
 
 var timestamp_Array = [];
-var JsonObj; 
+var JsonObj;
+var JsonVideoInput_update;
+/* = [{
+    "video": "lny37_zJpFc"
+}, {
+    "stops": [{
+        "timestamp": "2",
+        "events": [{
+            "eventtype": "checkbox",
+            "tekst": "This type of shot contains one part of an object. It's called a long shot. End of info.",
+            "svar": [
+                "long shot",
+                "close-up",
+                "extreme close-up"
+            ],
+            "korrekt": [
+                "0", "1"
+            ],
+            "feedback": "Extreme close-up  is used to create an intense mood."
+        }]
+    }, {
+        "timestamp": "4",
+        "events": [{
+            "eventtype": "checkbox",
+            "tekst": "Which terms describes it?",
+            "svar": [
+                "long shot",
+                "close-up",
+                "extreme close-up"
+            ],
+            "korrekt": [
+                "0",
+                "2"
+            ],
+            "feedback": "Extreme close-up  is used to create an intense mood."
+        }]
+    }]
+}];*/
+
+
 //XML SKAL SKIFTES UD MED JSON
 
-var intro_header;
-var intro_knap;
-var intro_text;
+loadData();
 
-function loadData(url) {
+function loadData() {
+    runde = 0;
+    events_taeller = 0;
+    total_score = 0;
+    total_spm = 0;
+    playing = false;
+    console.log("loadData");
+    $(".popud").html("");
+    $(".intro").html("");
     $.ajax({
-        url: url,
+        //url: url,
         // contentType: "application/json; charset=utf-8",  // Blot en test af tegnsaettet....
         // dataType: 'json', // <------ VIGTIGT: Saadan boer en angivelse til en JSON-fil vaere! 
         dataType: 'text', // <------ VIGTIGT: Pga. ???, saa bliver vi noedt til at angive JSON som text. 
-        async: false, // <------ VIGTIGT: Sikring af at JSON hentes i den rigtige raekkefoelge (ikke asynkront). 
+        async: true, // <------ VIGTIGT: Sikring af at JSON hentes i den rigtige raekkefoelge (ikke asynkront). 
         success: function(data, textStatus, jqXHR) {
 
+            timestamp_Array = [];
+            JsonObj = JsonVideoInput_update;
 
-            JsonObj = jQuery.parseJSON(data);
+            console.log("success loadData");
 
             for (var key in JsonObj) {
                 var objkey = Object.keys(JsonObj[key]);
@@ -58,19 +107,12 @@ function loadData(url) {
                 } else if (objkey == "video") {
                     videoId = JsonObj[key].video;
                 }
-                else if (objkey == "intro_header") {
-                    intro_header = JsonObj[key].intro_header;
-                }
-                else if (objkey == "intro_knap") {
-                    intro_knap = JsonObj[key].intro_knap;
-                }
-                else if (objkey == "intro_text") {
-                    intro_text = JsonObj[key].intro_text;
-                }
                 //console.log("Stops: " + stops);
             }
             //total_spille_tid = data.find('video').attr('total_tid');
-            var lengde = stops.length; //data.find('runde').length;
+            if (stops) {
+                lengde = stops.length;
+            } //data.find('runde').length;
             popudwidth = 450;
             popud_left = 0; //(bredde / 2) - (popudwidth / 2);
 
@@ -86,7 +128,7 @@ function loadData(url) {
             // console.log("JsonObj : " + JSON.stringify(JsonObj)  ); 
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            console.log("Error!!!\njqXHR:" + jqXHR + "\ntextStatus: " + textStatus + "\nerrorThrown: " + errorThrown);
+           // console.log("Error!!!\njqXHR:" + jqXHR + "\ntextStatus: " + textStatus + "\nerrorThrown: " + errorThrown);
         }
     });
 
@@ -95,18 +137,25 @@ function loadData(url) {
 
 /// PLAYER SCRIPT - SETUP tube
 function setUpTube() {
-    //console.log("sut");
+    console.log("setup Tube kører..");
     var tag = document.createElement('script');
     tag.src = "http://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 }
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 
 function onYouTubeIframeAPIReady() {
-    //console.log(videoId);
+
+    setupplayer();
+    console.log("onYouTubeIframeAPIReady");
+
+}
+
+function setupplayer() {
     $("#overlay").toggle();
     player = new YT.Player('player', {
         videoId: videoId,
@@ -157,8 +206,9 @@ function onYouTubeIframeAPIReady() {
 
 function timerCheck() {
 
-    var playTime = Math.round(player.getCurrentTime());
-
+    if (player) {
+        playTime = Math.round(player.getCurrentTime());
+    }
     //Gør overlay og timebar responsive:
     $("#overlay").css("height", $(".embed-responsive").css("height") - 20); //                    $("#time_bar").css("width", player.getCurrentTime() * 10 + "px");
     $("#time_bar").css("width", (player.getCurrentTime() / player.getDuration()) * window.innerWidth);
@@ -212,7 +262,7 @@ function introscreen() {
     player.pauseVideo();
 
     $("#overlay").fadeIn(1000);
-    $("#overlay").append("<div class='intro'><div class='h1'>"+ intro_header +"</div><p class='feed_txt'>"+ intro_text +"</p><div class='introknap'>"+ intro_knap +"</div></div>");
+    $("#overlay").prepend("<div class='intro'><div class='h1'>Begin video quiz</div><div class='introknap'>READY!</div></div>");
     $("#overlay").click(function() {
 
         $(this).fadeOut(1000, function() {
@@ -261,13 +311,13 @@ function stop_event(tal, taeller) {
             //$(".btn_videre").fadeIn().click(feed);
         }
     }
-    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default btn_videre'>Videre</div>");
+    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default btn_videre videre_knap'>Answer</div>");
 
     $(".btn_videre").hide();
 
     if (spm.eventtype == "info") {
         // FAULTY CODE:::
-        $(".btn_videre").fadeIn()
+        $(".btn_videre").fadeIn();
         $(".btn_videre").click(function() {
             //  $("#overlay").fadeOut(1000);
             next_event();
@@ -285,6 +335,7 @@ function stop_event(tal, taeller) {
             } else {
                 $(this).toggleClass("btn_chosen");
             }
+
         });
 
         $(".btn_videre").fadeIn().click(commit_answers);
@@ -354,16 +405,17 @@ function commit_answers() {
 }
 
 function feedback() {
+    console.log("kør feed");
     var correct_answers = "";
 
     for (var i = 0; i < spm.korrekt.length; i++) {
-        correct_answers = correct_answers + "<p class='correct_answer'>" + svar[spm.korrekt[i]] + "</p>";
+        correct_answers = correct_answers + "<span class='correct_answer'>" + svar[spm.korrekt[i]] + ", </span>";
     }
 
-        //tween in feedback: 
+    //tween in feedback: 
     $(".svarcontainer").delay(800).fadeOut(1000, function() {
 
-        $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class ='introknap videre_knap'>Continue</div><div style='color:white'>Correct answer: " + correct_answers);
+        $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class ='introknap videre_knap'>Continue</div><div style='color:white'>Correct answer(s): " + correct_answers);
         $(".feedback").fadeOut(0);
         $(".feedback").fadeIn(1000);
 
@@ -428,9 +480,9 @@ function next_event() {
 function slutFeedback() {
     //console.log("slut");
 
-    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + score + " of " + total_spm + "Questions.</h3><div class='introknap forfra_knap'>Try again</div>");
+    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + " Questions.</h3><div class='introknap forfra_knap'>Try again</div>");
     $("#overlay").click(function() {
         //console.log ("ost");
-        location.reload();
+        //location.reload();
     });
 }

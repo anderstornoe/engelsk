@@ -1,13 +1,14 @@
 .QuestionField{border: 1px solid #F00; margin: 10px;}
 .EventForm{border: 1px solid #F00; padding: 10px; margin-right: 50px;}
 .EventForm b {margin-right: 20px;}
+.class_TimeStampForm{display: inline-block;}
 .TimeStampForm{border: 1px solid #F00; padding: 10px; margin: 5px;}
 .TimeStampForm b {margin-right: 20px;}
 #JsonOutput{font-weight: 600;}
 #JsonVideoInput{font-weight: 600;}
 .usrbutton{margin-left: 10px; margin-top: 10px;}
 
-.QuestionWrapper{display: none;}
+/*.QuestionWrapper{display: none;}*/  /* Udkommenteret pga kvalitetscirklen */
 
 .hide{display: none;}
 .dhide{}  /* dummy hide */
@@ -36,3 +37,10 @@
 .bgc-E0E0E0{background-color: #E0E0E0;}
 
 .red{color: #F00;}
+
+
+
+
+.TimestampForm_container{
+	padding:50px;
+}

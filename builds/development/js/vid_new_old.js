@@ -29,12 +29,9 @@ var minutes;
 var seconds;
 
 var timestamp_Array = [];
-var JsonObj; 
+var JsonObj;
 //XML SKAL SKIFTES UD MED JSON
 
-var intro_header;
-var intro_knap;
-var intro_text;
 
 function loadData(url) {
     $.ajax({
@@ -42,7 +39,7 @@ function loadData(url) {
         // contentType: "application/json; charset=utf-8",  // Blot en test af tegnsaettet....
         // dataType: 'json', // <------ VIGTIGT: Saadan boer en angivelse til en JSON-fil vaere! 
         dataType: 'text', // <------ VIGTIGT: Pga. ???, saa bliver vi noedt til at angive JSON som text. 
-        async: false, // <------ VIGTIGT: Sikring af at JSON hentes i den rigtige raekkefoelge (ikke asynkront). 
+        async: true, // <------ VIGTIGT: Sikring af at JSON hentes i den rigtige raekkefoelge (ikke asynkront). 
         success: function(data, textStatus, jqXHR) {
 
 
@@ -57,15 +54,6 @@ function loadData(url) {
                     //console.log(stops[0].timestamp);
                 } else if (objkey == "video") {
                     videoId = JsonObj[key].video;
-                }
-                else if (objkey == "intro_header") {
-                    intro_header = JsonObj[key].intro_header;
-                }
-                else if (objkey == "intro_knap") {
-                    intro_knap = JsonObj[key].intro_knap;
-                }
-                else if (objkey == "intro_text") {
-                    intro_text = JsonObj[key].intro_text;
                 }
                 //console.log("Stops: " + stops);
             }
@@ -212,7 +200,7 @@ function introscreen() {
     player.pauseVideo();
 
     $("#overlay").fadeIn(1000);
-    $("#overlay").append("<div class='intro'><div class='h1'>"+ intro_header +"</div><p class='feed_txt'>"+ intro_text +"</p><div class='introknap'>"+ intro_knap +"</div></div>");
+    $("#overlay").append("<div class='intro'><div class='h1'>Begin video quiz</div><div class='introknap'>READY!</div></div>");
     $("#overlay").click(function() {
 
         $(this).fadeOut(1000, function() {
@@ -261,7 +249,7 @@ function stop_event(tal, taeller) {
             //$(".btn_videre").fadeIn().click(feed);
         }
     }
-    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default btn_videre'>Videre</div>");
+    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "(" + spm.eventtype + ")</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default btn_videre'>Videre</div>");
 
     $(".btn_videre").hide();
 
@@ -363,7 +351,7 @@ function feedback() {
         //tween in feedback: 
     $(".svarcontainer").delay(800).fadeOut(1000, function() {
 
-        $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class ='introknap videre_knap'>Continue</div><div style='color:white'>Correct answer: " + correct_answers);
+        $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class ='introknap videre_knap'>Continue</div><div style='color:white'>CORRECT: " + correct_answers);
         $(".feedback").fadeOut(0);
         $(".feedback").fadeIn(1000);
 

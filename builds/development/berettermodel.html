@@ -1,51 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
 <!-- 
-      //########################################################################
-      //                                                          
-      //      DOKUMENTATION TIL THOMAS: 
-      //      Dette script tager udgangspunkt i versionen:
-      //
-      //          index4_24_position_bootstrap.html
-      //
-      //########################################################################
+  //########################################################################
+  //      
+  // Note til Thomas: Denne version er lavet paa: index4_25_position_bootstrap
+  //
+  //########################################################################
  -->
 
-  <title>Plotstruktur</title>
+	<head>
+	<title>Plotstruktur</title>
 
-  <!-- http://www.robotstxt.org/meta.html -->
-  <meta name="robots" content="noindex, nofollow" />
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- http://www.robotstxt.org/meta.html -->
+	<meta name="robots" content="noindex, nofollow" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="stylesheet" href="css/styles.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
 
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css' />
 
-  <link rel="stylesheet" type="text/css" href="css/berettermodel.css" />
+	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+	<link rel="stylesheet" href="css/berettermodel.css" type="text/css" />
 
-
-  <style type="text/css">
-   /* 
-    * DENNE CSS JUSTERING HAR INGEN EFFEKT PAA JAVASCRIPTET 
-    * Javascript tager ikke hoejde for justeringen, og ser blot elementerne som vaerende ikke-justeret!!!
-    */
-/*      
-    #Menu1 {position: relative; top: 0px;}
-    #Menu2 {position: relative; top: -30px;}
-    #Menu3 {position: relative; top: -60px;}
-    #Menu4 {position: relative; top: -90px;}
-    #Menu5 {position: relative; top: -120px;}
-    #Menu6 {position: relative; top: -150px;}
-    #Menu7 {position: relative; top: -180px;}
-*/
-
-  </style>
-
-
-</head>
+	</head>
     <body>
 
         <!-- 
@@ -156,7 +135,7 @@
                         </div>
 
                         <button id="done" type="button" class="btn btn-default btn-lg btn-autosize">
-                           DONE
+                           Check answers
                         </button>
 
                     </div>  <!-- END .ImgWrapper -->
@@ -173,7 +152,7 @@
                         </div>
 
                         <div id="QustionNumContainer">
-                          <span id="StudentFeedBackText">Your answers: </span>
+                          <span id="StudentFeedBackText">Your answers: </span> <br/>
                           <span id="QustionNum1" class="QustionNumbers">1</span>
                           <span id="QustionNum2" class="QustionNumbers">2</span>
                           <span id="QustionNum3" class="QustionNumbers">3</span>
@@ -190,11 +169,13 @@
            </div>  <!-- END .row -->
 
         </div>  <!-- END .container-fluid -->
-        
-      <script type="text/javascript" src="js/script.js"></script>
-      <script type="text/javascript" src="js/berettermodel.js"></script>
+<!-- 
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ -->
+
+  		<script src="js/script.js"></script>
+		<script src="js/berettermodel.js"></script>
 
     </body>
-
-
 </html>
