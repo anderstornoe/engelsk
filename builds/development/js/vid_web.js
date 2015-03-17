@@ -22,6 +22,8 @@ var bol;
 var svar_length;
 var svar;
 
+var lengde;
+
 var m = 0;
 
 var checkTimer;
@@ -260,7 +262,7 @@ function introscreen() {
     player.pauseVideo();
 
     $("#overlay").fadeIn(1000);
-    $("#overlay").append("<div class='intro'><div class='h1'>Begin video quiz</div><div class='introknap'>READY!</div></div>");
+    $("#overlay").prepend("<div class='intro'><div class='h1'>Begin video quiz</div><div class='introknap'>READY!</div></div>");
     $("#overlay").click(function() {
 
         $(this).fadeOut(1000, function() {

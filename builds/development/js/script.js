@@ -1,18 +1,21 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-//START FUNCTIONS.JS;
+//var $ = require('jquery');
 
 $ = jQuery = require('jquery');
 require('jquery-ui');
 
 var bootstrap = require('bootstrap');
 
-//console.log("Bootstrap er loadet: " + bootstrap + "; jQuery Version: " + $.fn.jquery);
 
-//SLUT FUNCTIONS.JS
 
-function test_script(){
-	alert("test_script_kører..");
-}
+console.log("Bootstrap er loadet: " + bootstrap + "; jQuery Version: " + $.fn.jquery);
+
+//$("head").prepend("<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>")
+//var bootstrap = require('bootstrap');
+
+
+
+
 
 // For at undgaa sammenfald i mellem funktionsnavne i concatede .js-filer, saa wrappes
 // alle funktioner i en "klasse" som hedder "kvuc_js_class" (navnet er ligegyldigt, det skal bare 
