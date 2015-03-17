@@ -1,6 +1,20 @@
 [{
     "video": "lny37_zJpFc"
-}, {
+    }, 
+    
+    {
+        "intro_header": "Answer the questions regarding set and shot in this video quiz."
+    },
+
+    {
+        "intro_text": "Take note of what goes on in the shots of the film."
+    },
+
+    {
+        "intro_knap": "START!"
+    },
+
+    {
     "stops": [{
         "timestamp": "27",
         "events": [{
