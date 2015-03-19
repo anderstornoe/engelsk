@@ -2,12 +2,6 @@
   //                      Funktioner
   //########################################################################
 
-  //########################################################################
-  //      
-  // Note til Thomas: Denne version er lavet paa: index4_25_position_bootstrap
-  //
-  //########################################################################
-
   // DOKUMENTATION:
   // left_ajust : bliver dynamisk indsat afhaengig af tekst-stoerrelse.
   // top_ajust  : "value", er afhaengig af tekst-stoerrelser, margin og padding paa ul-tags - de svare alle til at placere 
@@ -152,11 +146,11 @@
       return HTML;
   }
 
-  function SetTimerAndFadeout(){
+  function SetTimerAndFadeout(Selector){
       TimerId = setTimeout( function(){ 
           // $("#Hint").fadeOut(); 
-          $("#Hint").fadeOut(600, function() {
-              $( "#Hint" ).remove();
+          $(Selector).fadeOut(600, function() {
+              $( Selector ).remove();
           });
       } , 5000);
   }
@@ -242,9 +236,9 @@
                   Hint_Left = (Hint_Left > 0) ? Hint_Left : 10;  // sikre HintText position
                   var Hint_Top = Math.round( Top + DivHeight );
                   console.log("Left: " + Position.left + ", Top: " + Position.top + ", DivHeight: " + DivHeight + "\nHintText: " + HintText  + ", Hint_Left: " + Hint_Left );
-                  $( DivObj ).before( $('<div id="Hint" class="HintClass">' + HintText + '</div>').fadeIn("slow") );
+                  $( DivObj ).after( $('<div id="Hint" class="HintClass">' + HintText + '</div>').fadeIn("slow") );
                   $( "#Hint" ).css({ position: "absolute", top: Hint_Top+"px", left: Hint_Left+"px"});
-                  SetTimerAndFadeout();
+                  SetTimerAndFadeout("#Hint");
                   console.log(" TimerId 1 : " + TimerId );
               }
           }
@@ -254,50 +248,34 @@
 
       // Nedenstaaende udfoeres naar der trykkes paa kanppen "DONE":
       $( document ).on('click', "#done", function(event){
+          
+          if ( $(".AnsClass").length == 0 ){  // Hvis correct/worg vises, saa skal der ikke tilfoejes flere correct/worg.
 
-          $(".QustionNumbers").addClass("Red");  // Goer alle svar rode...
-
-          // Tael sammen hvor mange rigtige svar der er afgivet:
-          var count = 0;
-          $(".ImgWrapper .btn-group").each(function( index, element ) {
-              var IdNumStr = (index + 1).toString();
-              if ( $(".MenuHeading", this).text() == JsonCss[index].answer ){
-                ++count;
-                $("#QustionNum" + IdNumStr).toggleClass( "Red Green" ); // Skift til groen
-              } 
-              console.log("--- index: " + index + 
-                          ", element: " + $(".MenuHeading", this).text() + 
-                          ", IdNumStr: " + IdNumStr );
-          });
-
-          // Reseizing af ImgOverlay, saa det matcher ImgWrapper:
-          ResizeAndPositionOverlayWindow(".ImgWrapper", ".ImgOverlay");
-
-          // Vis overlayet over quizen:
-          $(".ImgOverlay").toggleClass("ShowOverlay hide");
-
-          // Skriv resultatet:
-          $("#result").text(count);
+              // Tael sammen hvor mange rigtige svar der er afgivet:
+              var count = 0;
+              $(".ImgWrapper .btn-group").each(function( index, element ) {
+                  var IdNumStr = (index + 1).toString();
+                  var DivObj = $( this ).closest( ".btn-group" ); 
+                  var AnsText = " Wrong ";
+                  if ( $(".MenuHeading", this).text() == JsonCss[index].answer ){
+                    ++count;
+                    AnsText = "Correct";
+                  } 
+                  var Position = $(DivObj).position();    // relative
+                  var Left = Position.left;
+                  var Top = Position.top;
+                  var DivHeight = DivObj.height();
+                  var Ans_Left = Math.round( Left - AnsText.length + 30 );
+                  Ans_Left = (Ans_Left > 0) ? Ans_Left : 10;  // sikre AnsText position
+                  var Ans_Top = Math.round( Top - 1*DivHeight );
+                  console.log("Left: " + Position.left + ", Top: " + Position.top + ", DivHeight: " + DivHeight + "\nAnsText: " + AnsText  + ", Ans_Left: " + Ans_Left );
+                  $( DivObj ).before( $('<div id="Ans'+IdNumStr+'" class="AnsClass Red">'+AnsText+'</div>').fadeIn("slow") );
+                  $( "#Ans"+IdNumStr ).css({ position: "absolute", top: Ans_Top+"px", left: Ans_Left+"px"});
+                  if (AnsText == "Correct") $("#Ans"+IdNumStr).toggleClass( "Red Green" ); // Skift til groen
+                  SetTimerAndFadeout(".AnsClass");
+                  console.log(" TimerId 2 : " + TimerId );
+              });
+          }
       });
 
-
-      // Nedenstaaende udfoeres naar der trykkes paa kanppen "Try again?":
-      $( document ).on('click', "#tryagain", function(event){
-
-          // Reset alle vaerdier til de orginale vaerdier:
-          // JsonCss = JsonCss_backup;
-
-          // Reset alle overskrifter:
-          // $(".ImgWrapper .MenuHeading").each(function( index, element ) {
-          //     $( this ).text(DefaultText);
-          // });
-
-          // Skjul overlay:
-          $(".ImgOverlay").toggleClass("ShowOverlay hide");
-
-          // Fjern alle farver:
-          $(".QustionNumbers").removeClass( "Red Green" );
-
-      });
-      
   });

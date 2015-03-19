@@ -1,10 +1,4 @@
-/*    
-    //########################################################################
-    //      
-    // Note til Thomas: Denne version er lavet paa: index4_25_position_bootstrap
-    //
-    //########################################################################
-*/
+
 
     /********************************************************************
      *        STYLES FRA ANDERS'S BILLED-DRAG-AND-DROP QUIZ
@@ -52,10 +46,6 @@
 
     .MenuHeading{margin-right: 6px;}
 
-    #resultwrap{margin-left: auto; margin-right: auto; 
-                width: 265px; 
-                font-weight: 700; 
-                margin-top: 25%;}
 
     a{color: black;}
 
@@ -113,6 +103,8 @@
                 margin-bottom: 30px;
     }
 
+    .AnsClass{ font-size: 1.3em; }
+
     .HintClass{
         font-size: 0.9em;
         border: 1px solid #C0C0C0; 
@@ -122,10 +114,14 @@
         padding: 5px;
     }
 
-    .QustionNumbers{font-size: 2em;}
-
+/*
     .Green{color: #8eed94;}
     .Red{color: #ef8f8f;}
+
+*/
+
+    .Green{color: #0F0;}
+    .Red{color: #F00;}
 
 /*
     .Green{color: #749481;}
@@ -146,20 +142,6 @@
 */       
     }
 
-    #StudentFeedBackText{
-        color: #FFF; 
-        font-size: 1.2em;
-        margin-bottom: 2%;
-    }
-
-    #QustionNum1{margin-left: 0%;}
-    #QustionNum2{margin-left: 12%;}
-    #QustionNum3{margin-left: 12%;}
-    #QustionNum4{margin-left: 12%;}
-    #QustionNum5{margin-left: 12%;}
-    #QustionNum6{margin-left: 12%;}
-    #QustionNum7{margin-left: 12%;}
-    
 
     /*********************************************************************
      *                Media queries for responsivitet.
@@ -184,9 +166,7 @@
             margin-bottom: 3%;
       }
 
-      #resultwrap{margin-top: 15%;}
-
-      .QustionNumbers{font-size: 1em;}
+      .AnsClass{font-size: 0.8em;}
     }
 
     @media (min-width: 769px) and (max-width: 992px) {
@@ -207,10 +187,10 @@
             margin-bottom: 3%;
       }
 
-      #resultwrap{margin-top: 20%;}
-
-      .QustionNumbers{font-size: 1.5em;}
+      .AnsClass{font-size: 1em;}
     }
+
+    .container-fluid{max-width: 992px}
 
 
 
