@@ -49,7 +49,7 @@ body {
     position: absolute;
     right: 0;
     top: 2%;
-    width: 50%;
+    width: 90%;
     z-index: 100;
 }
 img {
@@ -94,46 +94,31 @@ h3 {
 .html5-video-container {
     background-color: white;
 }
-.introknap {
-    background-color: rgb(84, 94, 86);
-    border-radius: 4px;
-    color: white;
-    font-size: 20px;
-    height: 37px;
-    margin: 30px auto 0;
-    padding-top: 4px;
-    position: relative;
-    text-align: center;
-    width: 120px;
-}
+
 .intro {
     left: 0;
     margin: 0 auto;
     position: absolute;
     right: 0;
+    text-align: center;
     /*top: 150px;*/
-    width: 50%;
     z-index: 100;
 }
 .introknap {
     cursor: pointer;
 }
 .svar_btn {
-    background-color: rgb(84, 94, 86);
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 100;
-    margin-bottom: 11px;
-    padding: 4px;
-    text-align: center;
+    margin-bottom: 11px;  
     width: 370px;
 
 }
 
 .btn_chosen{
-background-color: rgb(144, 144, 136);
+background-color: #bbb;
+}
+
+.btn_chosen:hover{
+background-color: #bbb;
 }
 
 .feed_txt {
@@ -141,13 +126,14 @@ background-color: rgb(144, 144, 136);
     font-size: 18px;
     margin-left: 30px;
     margin-top: 40px;
+    margin-bottom:20px;
 }
 table {
     margin-left: 33px;
     margin-top: 40px;
 }
 .videre_knap {
-    margin-left: 330px;
+    /*margin-left: 330px;*/
 }
 .forfra_knap {
     margin-left: 328px;
@@ -166,3 +152,10 @@ table {
     width: 300px;
     z-index: 2;
 }
+
+.correct_answers{
+     color: white;
+    display: flex;
+    margin-top: 20px
+}
+
