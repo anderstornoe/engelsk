@@ -3,11 +3,11 @@
 }, 
     
     {
-        "intro_header": "Answer the questions regarding set and shot in this video quiz."
+        "intro_header": "Watch the film and answer the questions along the way."
     },
 
     {
-        "intro_text": "Take note of what goes on in the shots of the film."
+        "intro_text": "Under the heading of “cinematic technique” or shot you look at how the pictures are created, for instance what angles, colours and sounds are used. You also look at how the camera is moved and how the different scenes are put together. You can say that you look at how things are shown in the picture.<br/>Each question has only one correct answer."
     },
 
     {
@@ -16,14 +16,14 @@
 
     {
     "stops": [{
-        "timestamp": "13",
+        "timestamp": "19",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "This type of shot contains one part of an object. What term describes it?",
             "svar": [
-                "long shot",
-                "close-up",
-                "extreme close-up"
+                "Long shot",
+                "Close-up",
+                "Extreme close-up"
             ],
             "korrekt": [
                 2
@@ -31,44 +31,44 @@
             "feedback": "Extreme close-up  is used to create an intense mood."
         }]
     }, {
-        "timestamp": "40",
-        "events": [{
-            "eventtype": "svarknap",
-            "tekst": "What kind of shot is this?",
-            "svar": [
-                "medium shot",
-                "close-up",
-                "ultra close-up"
-            ],
-            "korrekt": [
-                0
-            ],
-            "feedback": "Medium shot is good at allowing the viewer to see both facial expression and body language of one or two characters"
-        }]
-    }, {
-        "timestamp": "44",
+        "timestamp": "27",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "The picture is replaced by black screen. What term describes it?",
             "svar": [
-                "dissolve",
-                "cut",
-                "fade out"
+                "Dissolve",
+                "Cut",
+                "Fade out"
             ],
             "korrekt": [
                 2
             ],
             "feedback": "Fade out is a type of transition that signals the end of a story segment. Fade outs typically occur at the end of the film"
         }]
-    }, {
-        "timestamp": "66",
+    }{
+        "timestamp": "47",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "What kind of shot is this?",
+            "svar": [
+                "Medium shot",
+                "Close-up",
+                "Ultra close-up"
+            ],
+            "korrekt": [
+                0
+            ],
+            "feedback": "Medium shot is good at allowing the viewer to see both facial expression and body language of one or two characters"
+        }]
+    }, , {
+        "timestamp": "72",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "What we see seems as if we are seeing it through the eyes of the woman. What term describes it?",
             "svar": [
-                "transition",
-                "(subjective) point of view",
-                "cross-cutting"
+                "Transition",
+                "(Subjective) Point of view",
+                "Cross-cutting"
             ],
             "korrekt": [
                 1
@@ -76,14 +76,14 @@
             "feedback": "Point of view is used so the audience is able to identify  with the character"
         }]
     }, {
-        "timestamp": "86",
+        "timestamp": "96",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "What is it called when the film changes its perspective to look at what happened in the past?",
             "svar": [
-                "flashback",
-                "flashforward",
-                "cut"
+                "Flashback",
+                "Flashforward",
+                "Cut"
             ],
             "korrekt": [
                 0
@@ -91,14 +91,14 @@
             "feedback": " Flashbacks are used to create suspense or to develop a character"
         }]
     }, {
-        "timestamp": "104",
+        "timestamp": "110",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "What is the term used to describe a music that the characters can hear? ",
             "svar": [
-                "contrapuntal",
-                "diegetic",
-                "non-diegetic sound"
+                "Contrapuntal",
+                "Diegetic",
+                "Non-diegetic sound"
             ],
             "korrekt": [
                 1
@@ -106,14 +106,14 @@
             "feedback": "Music in a film is used to emphasize a particular mood."
         }]
     }, {
-        "timestamp": "121",
+        "timestamp": "123",
         "events": [{
             "eventtype": "svarknap",
             "tekst": "Is the music in this scene... ",
             "svar": [
-                "diegetic",
-                "extra-diegetic",
-                "contrapuntal"
+                "Diegetic",
+                "Extra-diegetic",
+                "Contrapuntal"
             ],
             "korrekt": [
                 0
@@ -126,9 +126,9 @@
             "eventtype": "svarknap",
             "tekst": "When the camera moves vertically from its own axis. What term describes it?",
             "svar": [
-                "steady",
-                "pan",
-                "tilt"
+                "Steady",
+                "Pan",
+                "Tilt"
             ],
             "korrekt": [
                 2
@@ -141,9 +141,9 @@
             "eventtype": "svarknap",
             "tekst": "How does the camera move?",
             "svar": [
-                "pan",
-                "tilt",
-                "handheld"
+                "Pan",
+                "Tilt",
+                "Handheld"
             ],
             "korrekt": [
                 2
@@ -156,9 +156,9 @@
             "eventtype": "svarknap",
             "tekst": "This type of shot contains the character from the waist up. What term describes it?  ",
             "svar": [
-                "close-up",
-                "medium shot",
-                "long shot"
+                "Close-up",
+                "Medium shot",
+                "Long shot"
             ],
             "korrekt": [
                 1
@@ -171,9 +171,9 @@
             "eventtype": "svarknap",
             "tekst": "Whose point of view is this shot taken from?",
             "svar": [
-                "someone who is part of the storyline",
-                "a neutral observer",
-                "one of the main characters"
+                "Someone who is part of the storyline",
+                "A neutral observer",
+                "One of the main characters"
             ],
             "korrekt": [
                 0
@@ -186,9 +186,9 @@
             "eventtype": "svarknap",
             "tekst": "What term describes this kind of shot?",
             "svar": [
-                "medium shot",
-                "long shot",
-                "over the shoulder"
+                "Medium shot",
+                "Long shot",
+                "Over the shoulder"
             ],
             "korrekt": [
                 2
@@ -201,9 +201,9 @@
             "eventtype": "svarknap",
             "tekst": "What is this kind of camera movement called?",
             "svar": [
-                "pan",
-                "tilt",
-                "handheld"
+                "Pan",
+                "Tilt",
+                "Handheld"
             ],
             "korrekt": [
                 1

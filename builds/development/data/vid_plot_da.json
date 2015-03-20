@@ -2,12 +2,11 @@
     "video": "lny37_zJpFc"
 },
 {
-        "intro_header": "Watch the film and answer the questions along the way. Each question has only one correct answer."
+        "intro_header": "Watch the film and answer the questions along the way."
     },
 
     {
-        "intro_text": "To get a good understanding of a piece of fiction, whether it is film or literature, you need to understand the characters thoroughly. That is what we try to do when we work with characterization. In a characterization of a character in a film we look at the way a character is described in the film through all the means a director has at her disposal - we look at  “plot”, “shot” and “set”. We also look at  their reaction to other people or events in the story and at the development or lack thereof of the character during the film.
-"
+        "intro_text": "To get a good understanding of a piece of fiction, whether it is film or literature, you need to understand the characters thoroughly. Each question has only one correct answer."
     },
 
     {
@@ -16,6 +15,17 @@
     
  {
     "stops": [{
+        "timestamp": "12",
+        "events": [{
+            "eventtype": "info",
+            "tekst": "In a characterization of a character in a film we look at the way a character is described in the film through all the means a director has at her disposal - we look at  “plot”, “shot” and “set”. We also look at  their reaction to other people or events in the story and at the development or lack thereof of the character during the film.",
+            "svar": ["happy, positive", "worried", "angry"],
+            "korrekt": [
+                1
+            ],
+            "feedback": "To answer this question you need to consider the actor’s actions, body language, and facial expressions"
+        }]
+    },{
         "timestamp": "55",
         "events": [{
             "eventtype": "svarknap",

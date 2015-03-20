@@ -16,7 +16,7 @@
 
     {
         "stops": [{
-            "timestamp": 15,
+            "timestamp": 58,
             "events": [{
                 "eventtype": "svarknap",
                 "tekst": "How does the film show Lucas's breakfast?",

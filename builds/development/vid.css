@@ -110,6 +110,7 @@ h3 {
 .svar_btn {
     margin-bottom: 11px;  
     width: 370px;
+    white-space:normal !important;
 
 }
 
@@ -155,7 +156,6 @@ table {
 
 .correct_answers{
      color: white;
-    display: flex;
     margin-top: 20px
 }
 

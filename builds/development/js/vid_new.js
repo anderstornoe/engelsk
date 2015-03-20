@@ -261,7 +261,7 @@ function stop_event(tal, taeller) {
             //$(".btn_videre").fadeIn().click(feed);
         }
     }
-    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-primary btn_videre'>Videre</div>");
+    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-primary btn_videre'>Continue</div>");
 
     $(".btn_videre").hide();
 
@@ -363,7 +363,7 @@ function feedback() {
         //tween in feedback: 
     $(".svarcontainer").delay(800).fadeOut(1000, function() {
 
-        $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class ='btn btn-primary introknap videre_knap'>Continue</div><div class = 'correct_answers'>Correct answer(s): " + correct_answers);
+        $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class = 'correct_answers'>Correct answer(s): " + correct_answers + "<br/><div class ='btn btn-primary introknap videre_knap'>Continue</div>");
         $(".feedback").fadeOut(0);
         $(".feedback").fadeIn(1000);
 

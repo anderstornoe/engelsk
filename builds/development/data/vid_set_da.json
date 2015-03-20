@@ -3,11 +3,11 @@
     }, 
     
     {
-        "intro_header": "Watch the film and answer the questions along the way. Each question has only one correct answer."
+        "intro_header": "Watch the film and answer the questions along the way."
     },
 
     {
-        "intro_text": "Besides what the actors say and do in a film, much is told through the use of costumes and props. Costume gives information both about the historical and social setting of the the character and it is often a hint to a character’s personality. Props can be many different things and have different levels of importance. The most important props become symbols of a character or a conflict that is important to the plot of the film. It is important to pay attention to set, costume and props when we want to understand how the film works and what it wants to say."
+        "intro_text": "Besides what the actors say and do in a film, much is told through the use of costumes and props.<br/> Each question has only one correct answer."
     },
 
     {
@@ -15,7 +15,23 @@
     },
 
     {
-    "stops": [{
+        "stops": [{
+        "timestamp": "13",
+        "events": [{
+            "eventtype": "info",
+            "tekst": "Costume gives information both about the historical and social setting of the the character and it is often a hint to a character’s personality. <br/>Props can be many different things and have different levels of importance. <br/>The most important props become symbols of a character or a conflict that is important to the plot of the film. <br/>It is important to pay attention to set, costume and props when we want to understand how the film works and what it wants to say.",
+            "svar": [
+                "The pressure cooker is not typical of an American kitchen and clearly ties its owners to a culture that is different from the mainstream American.",
+                "The pressure cooker shows that this film is going to be about food and eating.",
+                "The pressure cooker does not have any particular meaning."
+            ],
+            "korrekt": [
+                0
+            ],
+            "feedback": "The opening shot of a film is always important and usually tries to give the audience an idea about what the film is going to be about"
+        }]
+    },
+    {
         "timestamp": "27",
         "events": [{
             "eventtype": "svarknap",
