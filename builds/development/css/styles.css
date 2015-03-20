@@ -6809,7 +6809,7 @@ button.close {
     cursor: pointer;
     display: inline-block;
     margin: 6px 6px 0px 0px;
-        padding: 4px;
+    padding: 4px;
 }
 
 .draggable_dropped:hover{
@@ -6835,9 +6835,14 @@ button.close {
 .dialogBox{
 	position: absolute;
 	background-color: white;
-color:black;
-
+	color:black;
 }
+
+.part_pic{
+	position:absolute;
+	z-index:1;
+}
+
 body {
     color: black;
 }

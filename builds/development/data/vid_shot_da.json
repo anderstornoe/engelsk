@@ -45,7 +45,7 @@
             ],
             "feedback": "Fade out is a type of transition that signals the end of a story segment. Fade outs typically occur at the end of the film"
         }]
-    }{
+    },{
         "timestamp": "47",
         "events": [{
             "eventtype": "svarknap",
@@ -60,7 +60,7 @@
             ],
             "feedback": "Medium shot is good at allowing the viewer to see both facial expression and body language of one or two characters"
         }]
-    }, , {
+    }, {
         "timestamp": "72",
         "events": [{
             "eventtype": "svarknap",

@@ -45,7 +45,7 @@
 
  function init() {
 
-    //test_script();
+     //test_script();
 
      for (var i = 0; i < word_Array.length; i++) {
          $(".draggable_container").append("<div class='btn btn-default draggable' id=" + i + ">" + word_Array[i] + "</div>");
@@ -71,6 +71,18 @@
      $(".btn_switch").mouseup(reset_switch_words);
      $(".draggable").click(function() {
          explanation($(this));
+     });
+
+     $(".part_pic").click(function() {
+         $(this).fadeOut();
+     });
+
+     $(".part_pic").mouseover(function() {
+         $(this).fadeOut();
+     });
+
+     $(".part_pic").click(function() {
+         $(this).hide();
      });
 
      document.onmousemove = function(e) {
