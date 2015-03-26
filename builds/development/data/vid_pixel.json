@@ -1,7 +1,18 @@
 [{
         "video": "ou8vRWTSsJo"
     },
+
     {
+        "intro_header": "Pixels: Filmic effects"
+    },
+
+    {
+        "intro_text": "Answer to questions along the way in this videoquiz. As well as filmic effects the quiz is also about the American psyche."
+    },
+
+    {
+        "intro_knap": "START!"
+    }, {
         "stops": [{
             "timestamp": 36,
             "events": [{
