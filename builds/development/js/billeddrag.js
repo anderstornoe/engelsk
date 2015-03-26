@@ -168,18 +168,23 @@
      });
  }
 
- function reset_switch_words() {
-     $(".draggable").each(function() {
-         if ($(this).attr("value") != "0" && $(this).attr("value") !== "1") {
-             var indeks = $(this).attr("id");
-             var pos = $(this).index();
-             $(this).fadeOut((word_Array.length - pos) * 10, function() {
-                 $(this).fadeIn((word_Array.length - pos) * 20);
-                 $(this).css("background-color", "#ddd").css("color", "black").addClass("btn-default");
-                 $(this).html(word_Array[indeks]);
-             });
-         }
-     });
+function reset_switch_words() {
+    $(".btn_switch").unbind();     
+     setTimeout(function(){
+         $(".draggable").each(function() {
+             if ($(this).attr("value") != "0" && $(this).attr("value") !== "1") {
+                 var indeks = $(this).attr("id");
+                 var pos = $(this).index();
+                 $(this).fadeOut((word_Array.length - pos) * 10, function() {
+                     $(this).fadeIn((word_Array.length - pos) * 20);
+                     $(this).css("background-color", "#ddd").css("color", "black").addClass("btn-default");
+                     $(this).html(word_Array[indeks]);
+                 });
+             }
+         });
+         $(".btn_switch").mousedown(switch_words);
+         $(".btn_switch").mouseup(reset_switch_words);
+     }, 1000);
  }
 
  function explanation(dims) {
