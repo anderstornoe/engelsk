@@ -212,7 +212,7 @@ function introscreen() {
     player.pauseVideo();
 
     $("#overlay").fadeIn(1000);
-    $("#overlay").append("<div class='intro'><div class='h1_vid'>"+ intro_header +"</div><p class='feed_txt'>"+ intro_text +"</p><div class='btn btn-primary introknap'>"+ intro_knap +"</div></div>");
+    $("#overlay").append("<div class='intro'><div class='h1'>"+ intro_header +"</div><p class='feed_txt'>"+ intro_text +"</p><div class='btn btn-primary introknap'>"+ intro_knap +"</div></div>");
     $("#overlay").click(function() {
 
         $(this).fadeOut(1000, function() {

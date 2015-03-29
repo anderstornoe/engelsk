@@ -1,39 +1,25 @@
-body {
-      background-color: #eee;
-      color: #222;
-      font-family: arial,sans-serif;
-      font-size: 16px;
-  }
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
 
-.topcol {margin: 0px; padding: 0px;}
-.topcol h3 {text-align: center; }
-
+.topcol {
+  padding-right:40px;
+}
+.youtube_container {  
+  display: none;
+  padding-left: 5px; 
+}
+.heading {
+	padding:none;
+}
+.show {
+	display: block;
+}
 .top_tekst {
-    background-color: white;
-    border-radius: 5px;
-    color: black;
-    margin: 10px 5px;
-    padding-left: 3px;
-    padding: 8px 8px;
-  }
-
-.youtube_container {  display: none;
-                      padding-left: 5px; 
-                      padding-right: 5px;
-                 }
-
-.show{display: block;}
-
-.LinkButton:link { display: block; 
-              border: 2px solid black; 
-              border-radius: 5px;
-              margin: 8px 5px 10px 5px;
-              text-align: center;
-              padding: 8px 8px;
-              text-decoration: none;
-              color: black;
-            }
-
-.LinkButton:hover {background-color: black; color: #EEE;}
-
-.Active {background-color: white;}
+	list-style: none;
+}
+.btn {
+	margin-bottom: 7px;
+	margin-bottom: 7px;
+}

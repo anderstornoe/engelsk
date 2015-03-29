@@ -8,7 +8,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Charaterization - The antisocial network</title>
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
-    <link rel="stylesheet" href="../../css/generelOverlay.css" type="text/css" />
     <link rel="stylesheet" href="css/billeddrag.css" type="text/css" />
 </head>
 
@@ -51,17 +50,16 @@
         </div>
     </div>
 
-</body>
+
 <script src="js/script.js"></script>
-<script type="text/javascript" src="js/special_functions.js"></script>
+<script type="text/javascript" src="js/generelOverlay.js"></script>
 <script src="js/billeddrag.js"></script>
 <script>
 loadData("data/billeddrag_anti_social.json");
 </script>
-<script src="js/generelOverlay.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
-        GeneralOverlayObj.ApplyOverlay(".characters", "stiliseret_soegning");
+        GeneralOverlayObj.ApplyOverlay(".characters", "billeddrag_antisocial");
     });
 </script>
 </body>

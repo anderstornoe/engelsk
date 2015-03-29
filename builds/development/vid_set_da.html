@@ -31,6 +31,12 @@
     <script>
     loadData("data/vid_set_da.json");
     </script>
+    <script src="js/generelOverlay.js"></script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            GeneralOverlayObj.ApplyOverlay(".embed-responsive", "vid_set_da");
+        });
+    </script>
 </body>
 
 </html>

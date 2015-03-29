@@ -22,8 +22,6 @@ var bol;
 var svar_length;
 var svar;
 
-var lengde;
-
 var m = 0;
 
 var checkTimer;
@@ -111,7 +109,7 @@ function loadData() {
             }
             //total_spille_tid = data.find('video').attr('total_tid');
             if (stops) {
-                lengde = stops.length;
+                var lengde = stops.length;
             } //data.find('runde').length;
             popudwidth = 450;
             popud_left = 0; //(bredde / 2) - (popudwidth / 2);
@@ -128,7 +126,7 @@ function loadData() {
             // console.log("JsonObj : " + JSON.stringify(JsonObj)  ); 
         },
         error: function(jqXHR, textStatus, errorThrown) {
-           // console.log("Error!!!\njqXHR:" + jqXHR + "\ntextStatus: " + textStatus + "\nerrorThrown: " + errorThrown);
+            console.log("Error!!!\njqXHR:" + jqXHR + "\ntextStatus: " + textStatus + "\nerrorThrown: " + errorThrown);
         }
     });
 
@@ -207,7 +205,7 @@ function setupplayer() {
 function timerCheck() {
 
     if (player) {
-        playTime = Math.round(player.getCurrentTime());
+        var playTime = Math.round(player.getCurrentTime());
     }
     //Gør overlay og timebar responsive:
     $("#overlay").css("height", $(".embed-responsive").css("height") - 20); //                    $("#time_bar").css("width", player.getCurrentTime() * 10 + "px");
@@ -262,7 +260,7 @@ function introscreen() {
     player.pauseVideo();
 
     $("#overlay").fadeIn(1000);
-    $("#overlay").prepend("<div class='intro'><div class='h1'>Begin video quiz</div><div class='introknap'>READY!</div></div>");
+    $("#overlay").append("<div class='intro'><div class='h1'>Begin video quiz</div><div class='introknap'>READY!</div></div>");
     $("#overlay").click(function() {
 
         $(this).fadeOut(1000, function() {
@@ -317,7 +315,7 @@ function stop_event(tal, taeller) {
 
     if (spm.eventtype == "info") {
         // FAULTY CODE:::
-        $(".btn_videre").fadeIn();
+        $(".btn_videre").fadeIn()
         $(".btn_videre").click(function() {
             //  $("#overlay").fadeOut(1000);
             next_event();

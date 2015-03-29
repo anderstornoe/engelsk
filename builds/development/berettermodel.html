@@ -9,12 +9,14 @@
 	<meta name="robots" content="noindex, nofollow" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
+<!-- 
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css' />
+  -->   
 
 	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
 	<link rel="stylesheet" href="css/berettermodel.css" type="text/css" />
 
 	</head>
@@ -26,22 +28,12 @@
         -->
         <div class="container-fluid"> 
 
-            <div class="jumbotron">
-                <h1>The Hollywood model</h1>
-                <p>
-                  The most typical plot structure of fiction films is called the Hollywood model or sometimes the narrative model. <br/>It resembles the way fairy tales are structured and follows 7 steps that you will be able to recognize in many different films that have nothing else in common.
-                </p> 
-            </div>
-
             <div class="row"> 
-                <div class="col-sm-12">
-                    <div class="h4 UserManual">
-                        <ul>
-                            <li>Choose the right name from the drop down menu for each step of the plot </li>
-                            <li>Once you’re done selecting the words, click the “Check answers” button  </li>
-                        </ul>
-                    </div>
+                
+                <div class="col-sm-5">
+                    <div class="h1">The Hollywood model</div>                 
                 </div>
+
             </div>
 
             <div class="row"> 
@@ -145,7 +137,16 @@
  -->
 
   		<script src="js/script.js"></script>
+
 		<script src="js/berettermodel.js"></script>
+
+        <script src="js/generelOverlay.js"></script>
+
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                GeneralOverlayObj.ApplyOverlay(".ImgWrapper", "berettermodel");
+            });
+        </script>
 
     </body>
 </html>

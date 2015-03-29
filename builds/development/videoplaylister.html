@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Film analysis</title>
+
+  <!-- http://www.robotstxt.org/meta.html -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow" />
+<!-- 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  --> 
+  <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+  <link rel="stylesheet" href="css/videoplaylister.css" type="text/css" />
+</head>
+  <body>
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-lg-8 col-centered nopadding">
+        <div class="h1">Film analysis: Introduction, set, shot and plot</div>
+          <div class="col-centered video_container first_video">
+            <div class="embed-responsive embed-responsive-16by9 col-xs-12 col-md-12 vid_container">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zvu7zF9qNXw?rel=0"></iframe>
+            </div>
+          </div>
+        </div>
+    </div>    
+    
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-lg-8 col-centered">
+
+       <div class="col-sm-12 col-md-4 col-lg-4 topcol">
+        <h3>SET </h3>
+          <div class="top_tekst">
+            <p>
+               Under the heading of “Theatrical Elements” or “Set” you look at where and when the film takes place and how the characters look, what they wear and how the actors express their roles. 
+            </p>
+            <p>
+              You also consider the use of props and (cultural) symbols. You can say that under this heading you look at <strong>what is shown in the picture.</strong>
+            </p>
+          </div>
+        <a id="set" class="btn btn-default LinkButton" href="#">Watch the SET playlist</a>
+        </br>
+        <a id="" class="btn btn-default" target="_blank" href="../pdf/MANUSSET_TheatricalElements.pdf">Helpful questions</a>
+        </div>
+
+        <div class="col-sm-12 col-md-4 col-lg-4 topcol">
+          <h3>SHOT </h3>
+          <div class="top_tekst">
+            <p>
+               Under the heading of “cinematic technique” or shot you look at how the pictures are created, for instance what angles, colours and sounds are used.
+            </p>
+            <p>
+                You also look at how the camera is moved and how the different scenes are put together. You can say that you look at <strong>how things are shown in the picture.</strong> 
+            </p>
+          </div>
+          
+          <a id="shot" class="btn btn-default LinkButton" href="#">Watch the SHOT playlist</a>
+          </br>
+          <a id="" class="btn btn-default" target="_blank" href="../pdf/MANUSSHOT_CinematicTechnique.pdf">Helpful questions</a>
+          </div>
+
+        <div class="col-sm-12 col-md-4 col-lg-4 topcol">
+          <h3>PLOT </h3>        
+          <div class="top_tekst">
+            <p>
+               Under the heading of plot or “Storytelling” you look at how the story is told and what its theme and message might be. 
+               </p>
+            <p>
+              You dig deeper to find out whose points of view the film represents, how tension is created and how knowledge is distributed between both different characters and the audience. You can say you look at the <strong>what and why of the film.</strong>
+            </p>
+          </div>
+          <a id="plot" class="btn btn-default LinkButton" href="#">Watch the PLOT playlist</a>
+          </br>
+          <a id="" class="btn btn-default" target="_blank" href="../pdf/MANUSPLOT_Storytelling.pdf">Helpful questions</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-12 col-md-10 col-lg-8 col-centered video_container SET">
+        <div class="embed-responsive embed-responsive-16by9 col-xs-12 col-md-12 vid_container youtube_container shot">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=PLWvd5Km3bs5fW8PlZOCz5iKgH32vjLx0Y&amp;rel=0" frameborder="0" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-10 col-lg-8 col-centered video_container SHOT">
+        <div class="embed-responsive embed-responsive-16by9 col-xs-12 col-md-12 vid_container youtube_container set">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=PLWvd5Km3bs5dJv_eFafeCB13EeCHd5Uoq&amp;rel=0" frameborder="0" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-10 col-lg-8 col-centered video_container PLOT">
+        <div class="embed-responsive embed-responsive-16by9 col-xs-12 col-md-12 vid_container youtube_container plot">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=PLWvd5Km3bs5enyNLBBrCI2DuNmak6DDjf&amp;rel=0" frameborder="0" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </div> <!-- Container slutter her -->
+  <script src="js/script.js"></script>
+  <script src="js/videoplaylister.js"></script>
+  <script src="js/generelOverlay.js"></script>
+<script type="text/javascript">
+    $( document ).ready(function() {
+        GeneralOverlayObj.ApplyOverlay(".first_video", "videoplaylister");
+    });
+</script>
+  </body>
+</html>

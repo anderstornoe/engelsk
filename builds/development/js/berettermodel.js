@@ -265,7 +265,8 @@
                   var Left = Position.left;
                   var Top = Position.top;
                   var DivHeight = DivObj.height();
-                  var Ans_Left = Math.round( Left - AnsText.length + 30 );
+                  // var Ans_Left = Math.round( Left - AnsText.length + 30 );
+                  var Ans_Left = Math.round( Left );
                   Ans_Left = (Ans_Left > 0) ? Ans_Left : 10;  // sikre AnsText position
                   var Ans_Top = Math.round( Top - 1*DivHeight );
                   console.log("Left: " + Position.left + ", Top: " + Position.top + ", DivHeight: " + DivHeight + "\nAnsText: " + AnsText  + ", Ans_Left: " + Ans_Left );

@@ -88,7 +88,7 @@ var EventForm = '<form class="EventForm">' +
     '<div class="clear"></div> <br/>' +
     // '<input type="text" class="TextField w25" name="EventHeader" placeholder="Eventoverskrift" /> <br/>' +
     '<textarea rows="4" class="TextField w25" name="EventInfo" placeholder="Sp&oslash;rgsm&aring;l"></textarea> <br/>' +
-    // '<div class="QuestionWrapperButton p10 bgc-E0E0E0 b-blue"><span class="glyphicon glyphicon-chevron-right"></span> Svar og feedback  </div>' +  // Udkommenteret pga kvalitetscirklen
+    '<div class="QuestionWrapperButton p10 bgc-E0E0E0 b-blue"><span class="glyphicon glyphicon-chevron-right"></span> Svar og feedback  </div>' +
     '<div class="QuestionWrapper bgc-E0E0E0 b-blue dhide">' +
     '<input type="radio" name="valg" value="radiobutton" checked="checked"/> En svarmulighed <br/>' +
     '<input type="radio" name="valg" value="checkbox"/> Flere svarmuligheder' +
@@ -342,13 +342,13 @@ function SetDualSwitchState(this_obj) {
     if ($('input[value=radiobutton]', this_obj).is(':checked')) {
         $('.Csvar', this_obj).hide();
         $('.Rsvar', this_obj).show();
-        // $('.Csvar', this_obj).removeAttr('checked'); // This deletes the former choice... Udkommenteret pga kvalitetscirklen.
+        $('.Csvar', this_obj).removeAttr('checked'); // This deletes the former choice...
         console.log("Csvar hide");
     }
     if ($('input[value=checkbox]', this_obj).is(':checked')) {
         $('.Csvar', this_obj).show();
         $('.Rsvar', this_obj).hide();
-        // $('.Rsvar', this_obj).removeAttr('checked'); // This deletes the former choice... Udkommenteret pga kvalitetscirklen.
+        $('.Rsvar', this_obj).removeAttr('checked'); // This deletes the former choice...
         console.log("Rsvar hide");
     }
     console.log("radiobutton:" + $('input[value=radiobutton]', this_obj).is(':checked'));
@@ -547,10 +547,10 @@ function ReplicateVideoInputFormat(json) {
         };
         var Tevent = {
             "eventtype": null,
-            "tekst": "",
+            "tekst": null,
             "svar": [],
             "korrekt": [],
-            "feedback": ""
+            "feedback": null
         };
 
 
@@ -624,12 +624,12 @@ function ReplicateVideoInputFormat(json) {
 
                                 }
 
-                                if (Obj.name == "EventInfo") {
+                                if ( (Obj.name == "EventInfo") && (Obj.value !== "") ) {
                                     Event.tekst = htmlEntities(Obj.value);
                                     console.log("Obj.value: " + Obj.value + ", htmlEntities: " + Event.tekst);
                                 }
 
-                                if (Obj.name == "EventFeedback"){
+                                if ( (Obj.name == "EventFeedback") && (Obj.value !== "") ) {
                                     Event.feedback = htmlEntities(Obj.value);
                                 }
 
@@ -650,7 +650,7 @@ function ReplicateVideoInputFormat(json) {
                             console.log("X2 -- Event: " + JSON.stringify(Event) );
 
                             // If no answer options and no feedback is given, then: eventtype = "info":
-                            if ( (Event.korrekt.length === 0) && (Event.korrekt.length === 0) && (Event.feedback === null) ){
+                            if ( (Event.korrekt.length == 0) && (Event.korrekt.length == 0) && (Event.feedback === null) ){
                                 Event.eventtype = "info";
                             }
 
@@ -726,7 +726,7 @@ $(document).ready(function() {
 
     RadioButtonDualSwitch(".EventForm input[name='valg']");
 
-    // QuestionWrapperButtonControl(".EventForm .QuestionWrapperButton"); // Udkommenteret pga kvalitetscirklen
+    QuestionWrapperButtonControl(".EventForm .QuestionWrapperButton");
 
 
     $(".WatchQuiz").click(function(e) {
@@ -765,7 +765,7 @@ $(document).ready(function() {
 
         $(".player_container").html("<div id='player' class='embed-responsive-item'></div><div id='time'></div><div id='time_bar'></div>");
 
-        loadData("generic");
+        loadData();
         setupplayer();
 //
         

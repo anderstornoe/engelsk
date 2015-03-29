@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title></title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+	<link rel="stylesheet" href="css/american_dream_search.css" type="text/css" />
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row"> 
+            <div class="intro col-sm-10 col-m-10- col-lg-8 col-centered">
+                <div class="h1">Social Media</div>
+            </div>
+        </div>
+	</div>
+	<div class="google_search col-sm-10 col-m-10- col-lg-8 col-centered">
+		<div class="buttons"></div>
+		<!-- GOOGLE CUSTOM SEARCH SCRIPT START -->
+		<script>
+		 (function() {
+		   var cx = '010570756016901960454:0an98cvlhge';
+		   var gcse = document.createElement('script');
+		   gcse.type = 'text/javascript';
+		   gcse.async = true;
+		   gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		       '//www.google.com/cse/cse.js?cx=' + cx;
+		   var s = document.getElementsByTagName('script')[0];
+		   s.parentNode.insertBefore(gcse, s);
+		 })();
+		</script>
+		<gcse:search></gcse:search>
+		<!-- GOOGLE CUSTOM SEARCH STOP -->
+	</div>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script src="js/generelOverlay.js"></script>
+	<script type="text/javascript">
+	    $( document ).ready(function() {
+	        GeneralOverlayObj.ApplyOverlay(".buttons", "search_social_media");
+	    });
+	</script>
+</body>
+</html>
