@@ -29,11 +29,12 @@ var GeneralOverlayClass = {
 
 	OverlayMarkup : '<div class="Overlay"></div>' + 
    					'<div class="OverlayTextContainer">' + 
-   						'<span class="right glyphicon glyphicon-remove-circle"></span>' + 
+   						'<a href="#"><span class="right glyphicon glyphicon-remove"></span></a>' + 
    						'<div class="clear"></div>' + 
    						'<span class="OverlayTextHeader"></span>' +
    						'<div class="OverlayText"></div>' + 
    					'</div>',
+
 
 // billeddrag_antisocial.html - Her er <link rel="stylesheet" href="css/billeddrag.css" type="text/css" /> også inkluderet på visningssitet - skal den være det?
 
@@ -130,16 +131,21 @@ var GeneralOverlayClass = {
 
 	        if (ButtonId == "OverlayWhy") {
 	        	OverlayText = thisObj.JsonWhyHow[EleraningObj].why;
-	        	OverlayTextHeader = "Why:";
+	        	OverlayTextHeader = "<h1>WHY</h1>";
 	        }
 	        if (ButtonId == "OverlayHow") {
 	        	OverlayText = thisObj.JsonWhyHow[EleraningObj].how;
-	        	OverlayTextHeader = "How:";
+	        	OverlayTextHeader = "<h1>HOW</h1>";
 	    	}
 	        console.log("ButtonId: " + ButtonId + ", \nOverlayText: " + OverlayText);
 
 	        $( ".OverlayTextHeader" ).html( OverlayTextHeader );
-	        $( ".OverlayText" ).html( OverlayText );
+	        $( ".OverlayText" ).html( "<h4>" + OverlayText + "</h4>" );
+
+   	        var ButtonLeft = $(this).css("left");
+   	        var ButtonTOP = $(this).css("top");
+   	        console.log("top: "+ButtonTOP+" left: "+ButtonLeft);
+
 		});
 
 		// Naar der klikkes paa overlayet skal overlayet lukke:
