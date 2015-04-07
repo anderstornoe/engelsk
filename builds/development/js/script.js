@@ -17,142 +17,6 @@ console.log("Bootstrap er loadet: " + bootstrap + "; jQuery Version: " + $.fn.jq
 
 
 
-
-
-// OVERLAY TECHNIQUES:
-// http://tympanus.net/codrops/2013/11/07/css-overlay-techniques/
-
-
-// ============================================
-// 		WHY / HOW tekst fra MAM
-// ============================================
-// why:
-// Skimming and sorting information are both important abilities to have when you study, this assignment helps you
-//  practice them.
-// You also gain knowledge about The American Dream.
-
-
-// how:
-// Start med at søge på de ord du forbinder med The American Dream, f.x ordene "The American Dream", identity,
-//  "rags to riches"
-// ============================================
-
-
-var GeneralOverlayClass = {
-
-
-	ButtonControler : 	'<div id="OverlyWhyHowContainer">' + 
-							'<a href="#" id="OverlayHow" class="OverlayButton btn btn-primary"> HOW / HELP </a>' + 
-							'<a href="#" id="OverlayWhy" class="OverlayButton btn btn-primary"> WHY </a>' + 
-					 	'</div>',
-
-	OverlayMarkup : '<div class="Overlay"></div>' + 
-   					'<div class="OverlayTextContainer">' + 
-   						'<span class="right glyphicon glyphicon-remove-circle"></span>' + 
-   						'<div class="clear"></div>' + 
-   						'<span class="OverlayTextHeader"></span>' +
-   						'<div class="OverlayText"></div>' + 
-   					'</div>',
-
-	JsonWhyHow : {
-					"stiliseret_soegning" : {
-							"why" : "Skimming and sorting information are both important abilities to have when you study, this assignment helps you practice them. You also gain knowledge about The American Dream.",
-							"how" : "Start med at søge på de ord du forbinder med The American Dream, f.x ordene &quot;The American Dream&quot;, identity, &quot;rags to riches&quot;."
-						},
-					"berettermodel" : {
-							"why" : "",
-							"how" : ""
-						},
-					"drag_and_drop_plot_da" : {
-							"why" : "",
-							"how" : ""
-						}
-				},
-
-
-	ApplyOverlay: function (Selector, EleraningObj){
-
-		$( Selector ).before( this.ButtonControler );
-
-		var thisObj = this;
-
-		$(window).resize(function () {
-			// AKTIVER KUN HVIS OVERLAY SKAL RAMME EN SPECIFIK WRAPPER: 
-			// thisObj.ResizeAndPositionOverlayWindow(Selector, ".Overlay");
-		});
-
-		$(document).on('click', ".OverlayButton", function(event) {
-	        event.preventDefault();
-
-			if ( $( ".Overlay" ).length == 0 )  // Ensures that only one overlay is added.
-				$( Selector ).before( thisObj.OverlayMarkup );
-
-			// AKTIVER KUN HVIS OVERLAY SKAL RAMME EN SPECIFIK WRAPPER:
-			// thisObj.ResizeAndPositionOverlayWindow(Selector, ".Overlay");
-
-			// $( ".Overlay" ).slideDown( "fast", function() {
-			$( ".Overlay" ).fadeIn( "fast", function() {
-				$( ".OverlayTextContainer" ).fadeIn( "fast" );
-			});
-
-			var OverlayText, OverlayTextHeader;
-	        var ButtonId = $(this).prop("id");
-	        console.log("ButtonId: " + ButtonId);
-
-	        if (ButtonId == "OverlayWhy") {
-	        	OverlayText = thisObj.JsonWhyHow[EleraningObj].why;
-	        	OverlayTextHeader = "Why:";
-	        }
-	        if (ButtonId == "OverlayHow") {
-	        	OverlayText = thisObj.JsonWhyHow[EleraningObj].how;
-	        	OverlayTextHeader = "How:";
-	    	}
-	        console.log("ButtonId: " + ButtonId + ", \nOverlayText: " + OverlayText);
-
-	        $( ".OverlayTextHeader" ).html( OverlayTextHeader );
-	        $( ".OverlayText" ).html( OverlayText );
-		});
-
-		// Naar der klikkes paa overlayet skal overlayet lukke:
-		$(document).on('click', ".Overlay", function(event) {
-	        event.preventDefault();
-			$( ".OverlayTextContainer" ).fadeOut( "fast", function() {
-				// $( ".Overlay" ).slideUp( "fast" );
-				$( ".Overlay" ).fadeOut( "fast" );
-			});
-		});
-
-		// Naar der klikkes paa overlay-teksten skal overlayet lukke:
-		$(document).on('click', ".OverlayTextContainer", function(event) {
-	        event.preventDefault();
-			$( ".OverlayTextContainer" ).fadeOut( "fast", function() {
-				// $( ".Overlay" ).slideUp( "fast" );
-				$( ".Overlay" ).fadeOut( "fast" );
-			});
-		});
-
-		console.log("FilterCssSelector: " + this.FilterCssSelector( ".Overlay" ) );
-	},
-
-
-	FilterCssSelector: function (Selector){
-		return String(Selector).replace(/#/g, '').replace(/\./g, '');
-	},
-
-
-	// Resize overlayet til at matche billedet:
-	ResizeAndPositionOverlayWindow: function (WindowSelector, OverlayWindowSelector){
-		var Pos = $(WindowSelector).offset();
-		$( OverlayWindowSelector ).css({ position: "absolute", top: Pos.top+"px", left: Pos.left+"px"});
-		console.log("Pos.top: " + Pos.top + ", Pos.left: " + Pos.left);
-
-		$(OverlayWindowSelector).width( $(WindowSelector).width() );
-		$(OverlayWindowSelector).height( $(WindowSelector).height() );
-	}
-
-}
-
-var GeneralOverlayObj = Object.create( GeneralOverlayClass );
 // For at undgaa sammenfald i mellem funktionsnavne i concatede .js-filer, saa wrappes
 // alle funktioner i en "klasse" som hedder "kvuc_js_class" (navnet er ligegyldigt, det skal bare 
 // vaere et unikt navn).
@@ -210,10 +74,10 @@ require('../../js/tab.js')
 require('../../js/affix.js')
 },{"../../js/affix.js":3,"../../js/alert.js":4,"../../js/button.js":5,"../../js/carousel.js":6,"../../js/collapse.js":7,"../../js/dropdown.js":8,"../../js/modal.js":9,"../../js/popover.js":10,"../../js/scrollspy.js":11,"../../js/tab.js":12,"../../js/tooltip.js":13,"../../js/transition.js":14}],3:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: affix.js v3.3.2
+ * Bootstrap: affix.js v3.3.1
  * http://getbootstrap.com/javascript/#affix
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -239,7 +103,7 @@ require('../../js/affix.js')
     this.checkPosition()
   }
 
-  Affix.VERSION  = '3.3.2'
+  Affix.VERSION  = '3.3.1'
 
   Affix.RESET    = 'affix affix-top affix-bottom'
 
@@ -264,7 +128,7 @@ require('../../js/affix.js')
     var colliderTop    = initializing ? scrollTop : position.top
     var colliderHeight = initializing ? targetHeight : height
 
-    if (offsetTop != null && scrollTop <= offsetTop) return 'top'
+    if (offsetTop != null && colliderTop <= offsetTop) return 'top'
     if (offsetBottom != null && (colliderTop + colliderHeight >= scrollHeight - offsetBottom)) return 'bottom'
 
     return false
@@ -374,10 +238,10 @@ require('../../js/affix.js')
 
 },{}],4:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: alert.js v3.3.2
+ * Bootstrap: alert.js v3.3.1
  * http://getbootstrap.com/javascript/#alerts
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -393,7 +257,7 @@ require('../../js/affix.js')
     $(el).on('click', dismiss, this.close)
   }
 
-  Alert.VERSION = '3.3.2'
+  Alert.VERSION = '3.3.1'
 
   Alert.TRANSITION_DURATION = 150
 
@@ -470,10 +334,10 @@ require('../../js/affix.js')
 
 },{}],5:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: button.js v3.3.2
+ * Bootstrap: button.js v3.3.1
  * http://getbootstrap.com/javascript/#buttons
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -490,7 +354,7 @@ require('../../js/affix.js')
     this.isLoading = false
   }
 
-  Button.VERSION  = '3.3.2'
+  Button.VERSION  = '3.3.1'
 
   Button.DEFAULTS = {
     loadingText: 'loading...'
@@ -588,10 +452,10 @@ require('../../js/affix.js')
 
 },{}],6:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: carousel.js v3.3.2
+ * Bootstrap: carousel.js v3.3.1
  * http://getbootstrap.com/javascript/#carousel
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -619,7 +483,7 @@ require('../../js/affix.js')
       .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
   }
 
-  Carousel.VERSION  = '3.3.2'
+  Carousel.VERSION  = '3.3.1'
 
   Carousel.TRANSITION_DURATION = 600
 
@@ -659,11 +523,8 @@ require('../../js/affix.js')
   }
 
   Carousel.prototype.getItemForDirection = function (direction, active) {
-    var activeIndex = this.getItemIndex(active)
-    var willWrap = (direction == 'prev' && activeIndex === 0)
-                || (direction == 'next' && activeIndex == (this.$items.length - 1))
-    if (willWrap && !this.options.wrap) return active
     var delta = direction == 'prev' ? -1 : 1
+    var activeIndex = this.getItemIndex(active)
     var itemIndex = (activeIndex + delta) % this.$items.length
     return this.$items.eq(itemIndex)
   }
@@ -708,7 +569,13 @@ require('../../js/affix.js')
     var $next     = next || this.getItemForDirection(type, $active)
     var isCycling = this.interval
     var direction = type == 'next' ? 'left' : 'right'
+    var fallback  = type == 'next' ? 'first' : 'last'
     var that      = this
+
+    if (!$next.length) {
+      if (!this.options.wrap) return
+      $next = this.$element.find('.item')[fallback]()
+    }
 
     if ($next.hasClass('active')) return (this.sliding = false)
 
@@ -827,10 +694,10 @@ require('../../js/affix.js')
 
 },{}],7:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: collapse.js v3.3.2
+ * Bootstrap: collapse.js v3.3.1
  * http://getbootstrap.com/javascript/#collapse
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -856,7 +723,7 @@ require('../../js/affix.js')
     if (this.options.toggle) this.toggle()
   }
 
-  Collapse.VERSION  = '3.3.2'
+  Collapse.VERSION  = '3.3.1'
 
   Collapse.TRANSITION_DURATION = 350
 
@@ -874,7 +741,7 @@ require('../../js/affix.js')
     if (this.transitioning || this.$element.hasClass('in')) return
 
     var activesData
-    var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing')
+    var actives = this.$parent && this.$parent.find('> .panel').children('.in, .collapsing')
 
     if (actives && actives.length) {
       activesData = actives.data('bs.collapse')
@@ -1040,10 +907,10 @@ require('../../js/affix.js')
 
 },{}],8:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: dropdown.js v3.3.2
+ * Bootstrap: dropdown.js v3.3.1
  * http://getbootstrap.com/javascript/#dropdowns
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -1060,7 +927,7 @@ require('../../js/affix.js')
     $(element).on('click.bs.dropdown', this.toggle)
   }
 
-  Dropdown.VERSION = '3.3.2'
+  Dropdown.VERSION = '3.3.1'
 
   Dropdown.prototype.toggle = function (e) {
     var $this = $(this)
@@ -1203,10 +1070,10 @@ require('../../js/affix.js')
 
 },{}],9:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: modal.js v3.3.2
+ * Bootstrap: modal.js v3.3.1
  * http://getbootstrap.com/javascript/#modals
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -1234,7 +1101,7 @@ require('../../js/affix.js')
     }
   }
 
-  Modal.VERSION  = '3.3.2'
+  Modal.VERSION  = '3.3.1'
 
   Modal.TRANSITION_DURATION = 300
   Modal.BACKDROP_TRANSITION_DURATION = 150
@@ -1529,10 +1396,10 @@ require('../../js/affix.js')
 
 },{}],10:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: popover.js v3.3.2
+ * Bootstrap: popover.js v3.3.1
  * http://getbootstrap.com/javascript/#popovers
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -1549,7 +1416,7 @@ require('../../js/affix.js')
 
   if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
 
-  Popover.VERSION  = '3.3.2'
+  Popover.VERSION  = '3.3.1'
 
   Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
     placement: 'right',
@@ -1616,12 +1483,18 @@ require('../../js/affix.js')
 
   function Plugin(option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.popover')
-      var options = typeof option == 'object' && option
+      var $this    = $(this)
+      var data     = $this.data('bs.popover')
+      var options  = typeof option == 'object' && option
+      var selector = options && options.selector
 
       if (!data && option == 'destroy') return
-      if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
+      if (selector) {
+        if (!data) $this.data('bs.popover', (data = {}))
+        if (!data[selector]) data[selector] = new Popover(this, options)
+      } else {
+        if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
+      }
       if (typeof option == 'string') data[option]()
     })
   }
@@ -1644,10 +1517,10 @@ require('../../js/affix.js')
 
 },{}],11:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: scrollspy.js v3.3.2
+ * Bootstrap: scrollspy.js v3.3.1
  * http://getbootstrap.com/javascript/#scrollspy
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -1675,7 +1548,7 @@ require('../../js/affix.js')
     this.process()
   }
 
-  ScrollSpy.VERSION  = '3.3.2'
+  ScrollSpy.VERSION  = '3.3.1'
 
   ScrollSpy.DEFAULTS = {
     offset: 10
@@ -1821,10 +1694,10 @@ require('../../js/affix.js')
 
 },{}],12:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: tab.js v3.3.2
+ * Bootstrap: tab.js v3.3.1
  * http://getbootstrap.com/javascript/#tabs
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -1839,7 +1712,7 @@ require('../../js/affix.js')
     this.element = $(element)
   }
 
-  Tab.VERSION = '3.3.2'
+  Tab.VERSION = '3.3.1'
 
   Tab.TRANSITION_DURATION = 150
 
@@ -1976,11 +1849,11 @@ require('../../js/affix.js')
 
 },{}],13:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: tooltip.js v3.3.2
+ * Bootstrap: tooltip.js v3.3.1
  * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -2002,7 +1875,7 @@ require('../../js/affix.js')
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.3.2'
+  Tooltip.VERSION  = '3.3.1'
 
   Tooltip.TRANSITION_DURATION = 150
 
@@ -2323,10 +2196,10 @@ require('../../js/affix.js')
   }
 
   Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
-    return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 } :
-           placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 } :
+    return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2  } :
+           placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
            placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width }
+        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
 
   }
 
@@ -2422,12 +2295,18 @@ require('../../js/affix.js')
 
   function Plugin(option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.tooltip')
-      var options = typeof option == 'object' && option
+      var $this    = $(this)
+      var data     = $this.data('bs.tooltip')
+      var options  = typeof option == 'object' && option
+      var selector = options && options.selector
 
       if (!data && option == 'destroy') return
-      if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
+      if (selector) {
+        if (!data) $this.data('bs.tooltip', (data = {}))
+        if (!data[selector]) data[selector] = new Tooltip(this, options)
+      } else {
+        if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
+      }
       if (typeof option == 'string') data[option]()
     })
   }
@@ -2450,10 +2329,10 @@ require('../../js/affix.js')
 
 },{}],14:[function(require,module,exports){
 /* ========================================================================
- * Bootstrap: transition.js v3.3.2
+ * Bootstrap: transition.js v3.3.1
  * http://getbootstrap.com/javascript/#transitions
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 

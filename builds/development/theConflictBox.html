@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+	<head>
+	<title>The conflict box</title>
+
+	<!-- http://www.robotstxt.org/meta.html -->
+	<meta name="robots" content="noindex, nofollow" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+	<link rel="stylesheet" href="css/theConfilctBox.css" type="text/css" />
+
+	</head>
+    <body>
+
+        <!-- 
+          NOTE: Siden wrappes IKKE i et bootstrap "container" klasse, idet dette giver forstyrrelser 
+                i det JavaScript der styre positioneringen af div-tags med dropdown-menuer
+        -->
+        <div class="container-fluid"> 
+
+            <div class="row"> 
+                
+                <div class="col-sm-5">
+                    <div class="h1">The conflict box</div>                 
+                </div>
+
+            </div>
+
+            <div class="row"> 
+ 
+                    <div class="ImgWrapper">  
+
+                        
+                    </div>  <!-- END .ImgWrapper -->
+
+           </div>  <!-- END .row -->
+
+        </div>  <!-- END .container-fluid -->
+
+  		<script src="js/script.js"></script>
+
+		<script src="js/theConfilctBox.js"></script>
+
+        <script src="js/generelOverlay.js"></script>
+
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                GeneralOverlayObj.ApplyOverlay(".ImgWrapper", "berettermodel");
+            });
+        </script>
+
+    </body>
+</html>
