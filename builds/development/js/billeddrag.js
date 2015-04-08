@@ -48,7 +48,7 @@
      //test_script();
 
      for (var i = 0; i < word_Array.length; i++) {
-         $(".draggable_container").append("<div class='btn btn-default draggable' id=" + i + ">" + word_Array[i] + "</div>");
+         $(".draggable_container").append("<div class='btn btn-info draggable' id=" + i + ">" + word_Array[i] + "</div>");
      }
 
      //shuffleDivs($(".draggable_container"));
@@ -74,15 +74,7 @@
      });
 
      $(".part_pic").click(function() {
-         $(this).fadeOut();
-     });
-
-     $(".part_pic").mouseover(function() {
-         $(this).fadeOut();
-     });
-
-     $(".part_pic").click(function() {
-         $(this).hide();
+         $(this).fadeOut(400);
      });
 
      document.onmousemove = function(e) {
@@ -134,11 +126,11 @@
          var indeks = $(this).attr("id");
          console.log(indeks + "," + $(this).attr("value"));
          if ($(this).attr("value") == correct_Array[indeks] && $(this).attr("value") != "2") {
-             $(this).css("background-color", "#B1D1A3");
+             $(this).addClass("btn-success").removeClass("btn-info");
              console.log("correct!");
              score++;
          } else {
-             $(this).css("background-color", "#ddd");
+             $(this).addClass("btn-info").removeClass("btn-success");
              $(this).animate({
                  top: 0,
                  left: 0
@@ -162,7 +154,8 @@
              $(this).fadeOut(pos * 10, function() {
                  $(this).html(transArray[indeks]);
                  $(this).fadeIn(pos * 30);
-                 $(this).css("background-color", "#bbb").css("color", "white").removeClass("btn-default");
+
+                 $(this).addClass("btn-primary").removeClass("btn-info");
              });
          }
      });
@@ -177,8 +170,9 @@ function reset_switch_words() {
                  var pos = $(this).index();
                  $(this).fadeOut((word_Array.length - pos) * 10, function() {
                      $(this).fadeIn((word_Array.length - pos) * 20);
-                     $(this).css("background-color", "#ddd").css("color", "black").addClass("btn-default");
-                     $(this).html(word_Array[indeks]);
+                     
+                 $(this).addClass("btn-info").removeClass("btn-primary");
+                 $(this).html(word_Array[indeks]);
                  });
              }
          });

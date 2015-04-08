@@ -29,7 +29,7 @@ var minutes;
 var seconds;
 
 var timestamp_Array = [];
-var JsonObj; 
+var JsonObj;
 //XML SKAL SKIFTES UD MED JSON
 
 var intro_header;
@@ -57,14 +57,11 @@ function loadData(url) {
                     //console.log(stops[0].timestamp);
                 } else if (objkey == "video") {
                     videoId = JsonObj[key].video;
-                }
-                else if (objkey == "intro_header") {
+                } else if (objkey == "intro_header") {
                     intro_header = JsonObj[key].intro_header;
-                }
-                else if (objkey == "intro_knap") {
+                } else if (objkey == "intro_knap") {
                     intro_knap = JsonObj[key].intro_knap;
-                }
-                else if (objkey == "intro_text") {
+                } else if (objkey == "intro_text") {
                     intro_text = JsonObj[key].intro_text;
                 }
                 //console.log("Stops: " + stops);
@@ -212,7 +209,7 @@ function introscreen() {
     player.pauseVideo();
 
     $("#overlay").fadeIn(1000);
-    $("#overlay").append("<div class='intro'><div class='h1'>"+ intro_header +"</div><p class='feed_txt'>"+ intro_text +"</p><div class='btn btn-primary introknap'>"+ intro_knap +"</div></div>");
+    $("#overlay").append("<div class='intro'><div class='h1'>" + intro_header + "</div><p class='feed_txt'>" + intro_text + "</p><div class='btn btn-primary introknap'>" + intro_knap + "</div></div>");
     $("#overlay").click(function() {
 
         $(this).fadeOut(1000, function() {
@@ -360,7 +357,7 @@ function feedback() {
         correct_answers = correct_answers + "<p class='correct_answer'>" + svar[spm.korrekt[i]] + "</p>";
     }
 
-        //tween in feedback: 
+    //tween in feedback: 
     $(".svarcontainer").delay(800).fadeOut(1000, function() {
 
         $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class = 'correct_answers'>Correct answer(s): " + correct_answers + "<br/><div class ='btn btn-primary introknap videre_knap'>Continue</div>");
@@ -427,10 +424,23 @@ function next_event() {
 
 function slutFeedback() {
     //console.log("slut");
-
-    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + " questions.</h3><div class='btn btn-primary introknap forfra_knap'>Try again</div>");
-    $("#overlay").click(function() {
+    $("#overlay").unbind();
+    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + " questions.</h3><div class='btn btn-primary forfra_knap'>Try again</div><div class='btn btn-primary continue_film'>Watch the rest of the film</div>");
+    $(".forfra_knap").click(function() {
         //console.log ("ost");
         location.reload();
     });
+
+    $(".continue_film").click(function() {
+        $("#overlay").fadeOut(1000, function() {
+            //console.log("intro??")
+            $(".feedback").remove();
+            $("#overlay").unbind();
+            resumeVideo();
+            clearInterval(checkTimer);
+            events_taeller = 0;
+            runde++;
+        });
+    });
+
 }

@@ -1,20 +1,15 @@
 .draggable {
-	 background-color: #ddd;
     border-radius: 4px;
-    color: black;
     cursor: pointer;
     display: inline-block;
-    margin: 6px 6px 0px 0px;
-    padding: 4px;
-}
+    margin: 10px 10px 0px 0px;
+  }
 
 .draggable_dropped:hover{
-	background-color: green;
 };
 
 .draggable_dropped:hover{
-	background-color: rgba(140,42,21,.7);
-};
+	};
 
 .img-responsive{margin:0px;}
 
