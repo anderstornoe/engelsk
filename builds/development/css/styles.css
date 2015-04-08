@@ -6588,12 +6588,6 @@ button.close {
     margin: 10px 10px 0px 0px;
   }
 
-.draggable_dropped:hover{
-};
-
-.draggable_dropped:hover{
-	};
-
 .img-responsive{margin:0px;}
 
 .draggable_container{
@@ -6617,6 +6611,18 @@ button.close {
 	z-index:1;
 }
 
+.btn{
+	padding: 4px 20px;
+}
+
+
+.btn-lg, .btn-group-lg > .btn {
+    border-radius: 6px;
+    font-size: 18px;
+    line-height: 1.33333;
+    margin: 20px 20px 40px 0;
+    padding: 10px 30px;
+}
 a {
     color:black;
     text-decoration: none;
@@ -6643,8 +6649,8 @@ a:hover {
 
 #TestContent{border: 1px solid #F00;}
 
-.OverlayButton{margin-left: 20px;}
-#OverlyWhyHowContainer{margin-bottom: 20px;}
+#OverlyWhyHowContainer{margin: 0px 0px 0px 30px;}
+
 #OverlayId{background-color: rgba(0,0,0,0.5); position: fixed; z-index: 10;}
 
 .Overlay {

@@ -1,0 +1,12 @@
+.btn{
+	padding: 4px 20px;
+}
+
+
+.btn-lg, .btn-group-lg > .btn {
+    border-radius: 6px;
+    font-size: 18px;
+    line-height: 1.33333;
+    margin: 20px 20px 40px 0;
+    padding: 10px 30px;
+}

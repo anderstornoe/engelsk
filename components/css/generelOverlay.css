@@ -24,8 +24,8 @@ a:hover {
 
 #TestContent{border: 1px solid #F00;}
 
-.OverlayButton{margin-left: 20px;}
-#OverlyWhyHowContainer{margin-bottom: 20px;}
+#OverlyWhyHowContainer{margin: 0px 0px 0px 30px;}
+
 #OverlayId{background-color: rgba(0,0,0,0.5); position: fixed; z-index: 10;}
 
 .Overlay {

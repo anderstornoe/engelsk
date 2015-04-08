@@ -209,7 +209,7 @@ function introscreen() {
     player.pauseVideo();
 
     $("#overlay").fadeIn(1000);
-    $("#overlay").append("<div class='intro'><div class='h1'>" + intro_header + "</div><p class='feed_txt'>" + intro_text + "</p><div class='btn btn-primary introknap'>" + intro_knap + "</div></div>");
+    $("#overlay").append("<div class='intro'><div class='h1'>" + intro_header + "</div><p class='feed_txt'>" + intro_text + "</p><div class='btn btn-default btn-lg introknap'>" + intro_knap + "</div></div>");
     $("#overlay").click(function() {
 
         $(this).fadeOut(1000, function() {
@@ -258,7 +258,7 @@ function stop_event(tal, taeller) {
             //$(".btn_videre").fadeIn().click(feed);
         }
     }
-    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-primary btn_videre'>Continue</div>");
+    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default btn-lg btn_videre'>Continue</div>");
 
     $(".btn_videre").hide();
 
@@ -360,7 +360,7 @@ function feedback() {
     //tween in feedback: 
     $(".svarcontainer").delay(800).fadeOut(1000, function() {
 
-        $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class = 'correct_answers'>Correct answer(s): " + correct_answers + "<br/><div class ='btn btn-primary introknap videre_knap'>Continue</div>");
+        $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class = 'correct_answers'>Correct answer(s): " + correct_answers + "<br/><div class ='btn btn-default btn-lg introknap videre_knap'>Continue</div>");
         $(".feedback").fadeOut(0);
         $(".feedback").fadeIn(1000);
 
@@ -425,7 +425,7 @@ function next_event() {
 function slutFeedback() {
     //console.log("slut");
     $("#overlay").unbind();
-    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + " questions.</h3><div class='btn btn-primary forfra_knap'>Try again</div><div class='btn btn-primary continue_film'>Watch the rest of the film</div>");
+    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + " questions.</h3><div class='btn btn-default btn-lg forfra_knap'>Try again</div><div class='btn btn-default btn-lg continue_film'>Watch the rest of the film</div>");
     $(".forfra_knap").click(function() {
         //console.log ("ost");
         location.reload();
