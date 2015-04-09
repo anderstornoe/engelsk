@@ -9,12 +9,16 @@ var VideoObj = {};
 
 var VideoClass = {
     startFrameTitle: null,
+    startFrameText: null,
     startButtonTitle: null,
     EmbedURL: null,
     WatchURL: null,
     BasicYoutubeEmbedStr: 'https://www.youtube.com/embed/',
     BasicYoutubeWatchStr: 'https://www.youtube.com/watch?v=',
     DefaultNoVideoImg: 'https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg',
+    DefaultStartFrameTitle: "Answer the questions regarding set and shot in this video quiz.",
+    DefaultStartFrameText: "Take note of what goes on in the shots of the film.",
+    DefaultStartButtonTitle: "Watch Game of Thrones!",
     QustionObj: {},
     AddVideoProp: function(URL) {
         this.EmbedURL = URL;
@@ -24,6 +28,7 @@ var VideoClass = {
         this.startButtonTitle = null;
         this.EmbedURL = null;
         $("#video_startFrameTitle").val("");
+        $("#video_startFrameText").val("");
         $("#video_startButtonTitle").val("");
         $("#video_width").val("");
         $("#video_height").val("");
@@ -35,14 +40,16 @@ var VideoClass = {
         this.startButtonTitle = "Play the video";
         this.EmbedURL = this.BasicYoutubeEmbedStr + "s7L2PVdrb_8";
         this.WatchURL = this.BasicYoutubeWatchStr + "s7L2PVdrb_8";
-        $("#video_startFrameTitle").val(this.startFrameTitle);
-        $("#video_startButtonTitle").val(this.startButtonTitle);
+        $("#video_startFrameTitle").val(this.DefaultStartFrameTitle);
+        $("#video_startFrameText").val(this.DefaultStartFrameText);
+        $("#video_startButtonTitle").val(this.DefaultStartButtonTitle);
         $("#video_width").val(this.Width);
         $("#video_height").val(this.Height);
         $("#video_url").val(this.EmbedURL);
     },
     LoadVideo: function() {
         this.startFrameTitle = $("#video_startFrameTitle").val();
+        this.startFrameText = $("#video_startFrameText").val();
         this.startButtonTitle = $("#video_startButtonTitle").val();
         var TempURL = $("#video_url").val();
         this.EmbedURL = this.BasicYoutubeEmbedStr + this.ReturnYoutubeVidId(TempURL);
@@ -74,30 +81,37 @@ var VideoClass = {
 
 // QuestionField
 var QuestionField = '<div class="QuestionField">' +
-    '<input type="text" class="TextField w25" placeholder="Svarmulighed" name="Question"/>' +
-    '<input type="radio" name="Rsvar" class="Rsvar"/>' +
+    '<span class="QuestionLetter"></span>' +
+    '<input type="text" class="TextField w50 mr25" placeholder="Skriv svarmulighed her" name="Question"/>' +
     '<input type="checkbox" name="Csvar" class="Csvar"/>' +
-    ' (korrekt svar) ' +
-    '<a class="addfield ml10" href="#"> Tilf&oslash;j svarmulighed </a> <a class="removefield ml10" href="#"> Fjern svarmulighed </a>' +
+    // '<a class="addfield ml10" href="#"> Tilf&oslash;j svarmulighed </a>' + 
+    '<a class="removefield ml10" href="#"> slet </a>' +
     '</div>';
 
 // EventForm  -  NOTE: "Event" er det tidligere "Runde"
 var EventForm = '<form class="EventForm">' +
-    '<b class="ml10"> Sp&oslash;rgsm&aring;l 1</b>' +
-    ' <a class="removeform ml10" href="#"> Fjern sp&oslash;rgsm&aring;l  </a><a class="addform ml10 " href="#"> Tilf&oslash;j et ekstra sp&oslash;rgsm&aring;l </a>' +
-    '<div class="clear"></div> <br/>' +
-    // '<input type="text" class="TextField w25" name="EventHeader" placeholder="Eventoverskrift" /> <br/>' +
-    '<textarea rows="4" class="TextField w25" name="EventInfo" placeholder="Sp&oslash;rgsm&aring;l"></textarea> <br/>' +
-    '<div class="QuestionWrapperButton p10 bgc-E0E0E0 b-blue"><span class="glyphicon glyphicon-chevron-right"></span> Svar og feedback  </div>' +
-    '<div class="QuestionWrapper bgc-E0E0E0 b-blue dhide">' +
-    '<input type="radio" name="valg" value="radiobutton" checked="checked"/> En svarmulighed <br/>' +
-    '<input type="radio" name="valg" value="checkbox"/> Flere svarmuligheder' +
-    '<div class="QuestionFieldWrapper">' +
-    QuestionField +
-    QuestionField +
+    '<div class="EventFormBkColor">' +
+        '<b class="ml10"> Sæt 1</b>' +
+        '<span class="QuestionWrapperButton">' +
+            '<input type="radio" name="valg" value="RadioQuestion" /> Sp&oslash;rgsm&aring;l' + 
+            '<input type="radio" name="valg" value="RadioInformation" checked="checked"/> Information' + 
+        '</span>' +
+        '<a class="removeform ml10 right btn btn-default usrbutton" href="#"> Fjern sæt </a>' + 
+        '<div class="clear"></div>' +
+        '<input type="text" class="TextField w50 mb10" name="EventHeader" placeholder="Overskrift skrives her (70 tegn) - VIRKER IKKE!" /> <br/>' +
+        '<textarea rows="4" class="TextField w50" name="EventInfo" placeholder="Her skriver du din infotekst (300 tegn)"></textarea> <br/>' +
+        '<div class="QuestionWrapper dhide">' +
+            '<span class="QFTheading"> ANGIV SVARMULIGHEDER (maks 4 svar muligt) </span> <span class="QFAheading"> KORREKT SVAR </span>' +
+            '<div class="QuestionFieldWrapper">' +
+                QuestionField +
+                QuestionField +
+            '</div>' +
+            '<a class="addfield ml10" href="#"> Tilføj svar </a> <br/>' + 
+            '<textarea rows="4" class="TextField w50" name="EventFeedback" placeholder="Giv feedback til kursisten"></textarea> <br/>' +
+        '</div>' +
     '</div>' +
-    '<textarea rows="4" class="TextField w25" name="EventFeedback" placeholder="Giv feedback til kursisten"></textarea> <br/>' +
-    '</div>' +
+    '<a class="addform ml10 right btn btn-default usrbutton" href="#"> Tilføj sæt </a>' +
+    '<div class="clear"></div>' +
     '</form>';
 
 // TimestampForm  -  NOTE: "Timestamp" er synonym med "Stop"
@@ -109,14 +123,17 @@ var TimeStampForm = '<div class="TimeStampForm">' +
     GenerateNumberSelect(0, 60, "ss", "sekunder", "SelectSec") +
     // ' eller <input type="text" placeholder="tt:mm:ss" />' +
     '</form>' +
-    '<a class="remove_TimeStampForm ml10" href="#"> Fjern stop </a> <a class="add_TimeStampForm ml10" href="#"> Tilf&oslash;j et ekstra stop </a> ' +
+    '<a class="remove_TimeStampForm ml10 right btn btn-default usrbutton" href="#"> Fjern stop </a>' + 
+    '<div class="clear"></div>' +
+    // '<a class="add_TimeStampForm ml10" href="#"> Tilf&oslash;j et ekstra stop </a> ' +
     EventForm +
     '</div>';
 
 
 function InitHTML(Selector, HtmlToBeAdded) {
     $(Selector).append(HtmlToBeAdded);
-    SetDualSwitchState(Selector + " .EventForm ");
+    UpdateQuestionFieldLetters();
+    // SetDualSwitchState(Selector + " .EventForm ");
 }
 
 
@@ -130,33 +147,99 @@ function UpdateNumbersInFormHeaders(){
     $(".class_TimeStampForm > b").each(function(index1, element1) {
         $(this).html("Stop " + (index1 + 1).toString() + " : ");
         var ParentObj = $(this).closest(".TimeStampForm");
-        $(".EventForm > b", ParentObj).each(function(index2, element2) {
-            $(this).html("Sp&oslash;rgsm&aring;l " + (index2 + 1).toString() );
+        $(".EventForm > div > b", ParentObj).each(function(index2, element2) {
+            $(this).html("Sæt " + (index2 + 1).toString() );
         });
     });
 }
 
 
-// VIGTIGT: Chromium tillader ikke default argumentet Max at blive angivet som "Max = false". 
-function AddElement(Selector, HtmlToBeAdded, Max) {
+function UpdateQuestionFieldLetters(){
+
+    $(".EventForm").each(function(index1, element1) {
+        $(".QuestionLetter", element1).each(function(index2, element2) {
+            var Letter = String.fromCharCode(65 + index2); 
+            $( element2 ).html( Letter );
+            console.log("index2 : " + index2 + ", Letter : " + Letter );
+        });
+    });
+}
+
+
+//================================
+
+
+// AddElementLast('.AddNewPageButton', '.DummyPage', '#DummyPageContainer', DummyPage, false);
+function AddTimestampLast(Selector, TSelector, TSelectorParent, HtmlToBeAdded, Max, PagerSelector, PagerTargetSelectorChild, PagerCssId) {
     $(document).on('click', Selector, function(event) {
         event.preventDefault();
         var NextParent;
-        var ParentClassName = $(this).parent().attr("class");
-        var NumOfParents = $(this).parent().siblings("." + ParentClassName).length + 1;
+        var TSelectorParentObj = $(TSelectorParent);
+        var TSelectorParentText = TSelectorParentObj.text();
+        var NumOfSiblings = $(TSelector, TSelectorParentObj).siblings().length;
+        console.log("NumOfSiblings : " + NumOfSiblings + ", TSelectorParentText : " + TSelectorParentText);
+        if ((Max > NumOfSiblings) || (Max === false)) {
+            $(TSelector, TSelectorParentObj).last().after(HtmlToBeAdded);
+        } else {
+            alert("Det største antal tilladte elementer er " + Max);
+        }
+
+        // The following lines "breaks" the generality of this function: 
+        // UpdateNumbersInPages();
+        // Pager("#PagerContainer", "#DummyPageContainer > div", "Pager");
+        UpdateNumbersInFormHeaders();
+        UpdateQuestionFieldLetters();
+        Pager(PagerSelector, PagerTargetSelectorChild, PagerCssId);
+    });
+}
+
+// RemoveElement('.removePage', '.DummyPage', 1);
+function RemoveTimestamp(Selector, TSelector, Min, PagerSelector, PagerTargetSelectorChild, PagerCssId) {
+    $(document).on('click', Selector, function(event) {
+        event.preventDefault();
+        var ParentClassName = $(this).closest(TSelector).attr("class").split(" ")[0];
+        console.log("----ParentClassName 1: " + ParentClassName);
+        var NumOfParents = $(this).closest(TSelector).siblings("." + ParentClassName).length + 1;
+        console.log("NumOfParents : " + NumOfParents + ", ParentClassName: " + ParentClassName);
+        if ((Min < NumOfParents) || (Min === false)) {
+            $(this).closest(TSelector).remove();
+        } else {
+            alert("Det mindste antal elementer skal være " + Min);
+        }
+        // The following lines "breaks" the generality of this function: 
+        // UpdateNumbersInPages();
+        // Pager("#PagerContainer", "#DummyPageContainer > div", "Pager");
+        UpdateNumbersInFormHeaders();
+        UpdateQuestionFieldLetters();
+        Pager(PagerSelector, PagerTargetSelectorChild, PagerCssId);
+    });
+}
+
+
+//================================
+
+
+// VIGTIGT: Chromium tillader ikke default argumentet Max at blive angivet som "Max = false". 
+function AddElement(Selector, TSelector, HtmlToBeAdded, Max) {
+    $(document).on('click', Selector, function(event) {
+        event.preventDefault();
+        var NextParent;
+        var ParentClassName = $(this).closest(TSelector).attr("class");
+        var NumOfParents = $(this).closest(TSelector).siblings("." + ParentClassName).length + 1;
         console.log("NumOfParents : " + NumOfParents + ", ParentClassName: " + ParentClassName);
         if ((Max > NumOfParents) || (Max === false)) {
-            $(this).parent().after(HtmlToBeAdded);
+            $(this).closest(TSelector).after(HtmlToBeAdded);
 
             // The following two lines "breaks" the generality of this function: 
-            NextParent = $(this).parent().next();
-            CheckEventFormPosition(NextParent); // Sets the state: "radio button" or "checkbox".
+            // NextParent = $(this).closest(TSelector).next();
+            // CheckEventFormPosition(NextParent); // Sets the state: "radio button" or "checkbox".
         } else {
             alert("Det største antal tilladte elementer er " + Max);
         }
 
         // The following lines "breaks" the generality of this function: 
         UpdateNumbersInFormHeaders();
+        UpdateQuestionFieldLetters();
         // if (Selector == ".add_TimeStampForm") {
         //     if (CheckTimeStopValues('Du forsøger nu at tilføje nu et ekstra "Stop"') == true){
         //         $(".TimeStampForm:last-child").remove();
@@ -166,20 +249,47 @@ function AddElement(Selector, HtmlToBeAdded, Max) {
     });
 }
 
-// VIGTIGT: Chromium tillader ikke default argumentet Min at blive angivet som "Min = false". 
-function RemoveElement(Selector, Min) {
+
+//      AddLastElement('.addfield', '.QuestionField', '.EventForm', QuestionField, 4);
+// VIGTIGT: Chromium tillader ikke default argumentet Max at blive angivet som "Max = false". 
+function AddLastElement(Selector, TSelector, TSelectorParent, HtmlToBeAdded, Max) {
     $(document).on('click', Selector, function(event) {
         event.preventDefault();
-        var ParentClassName = $(this).parent().attr("class");
-        var NumOfParents = $(this).parent().siblings("." + ParentClassName).length + 1;
+        var NextParent;
+        var TSelectorParentObj = $(this).closest(TSelectorParent);
+        var NumOfSiblings = $(TSelector, TSelectorParentObj).siblings().length;
+        console.log("NumOfSiblings : " + NumOfSiblings );
+        if ((Max > NumOfSiblings) || (Max === false)) {
+            $(TSelector, TSelectorParentObj).last().after(HtmlToBeAdded);
+
+            // The following two lines "breaks" the generality of this function: 
+            // NextParent = $(this).closest(TSelector).next();
+            // CheckEventFormPosition(NextParent); // Sets the state: "radio button" or "checkbox".
+        } else {
+            alert("Det største antal tilladte elementer er " + Max);
+        }
+
+        // The following lines "breaks" the generality of this function: 
+        UpdateNumbersInFormHeaders();
+        UpdateQuestionFieldLetters();
+    });
+}
+
+// VIGTIGT: Chromium tillader ikke default argumentet Min at blive angivet som "Min = false". 
+function RemoveElement(Selector, TSelector, Min) {
+    $(document).on('click', Selector, function(event) {
+        event.preventDefault();
+        var ParentClassName = $(this).closest(TSelector).attr("class");
+        var NumOfParents = $(this).closest(TSelector).siblings("." + ParentClassName).length + 1;
         console.log("NumOfParents : " + NumOfParents + ", ParentClassName: " + ParentClassName);
         if ((Min < NumOfParents) || (Min === false)) {
-            $(this).parent().remove();
+            $(this).closest(TSelector).remove();
         } else {
             alert("Det mindste antal elementer skal være " + Min);
         }
 
         UpdateNumbersInFormHeaders();
+        UpdateQuestionFieldLetters();
     });
 }
 
@@ -338,29 +448,29 @@ function GenerateNumberSelect(MinNum, MaxNum, NameVal, UserVal, ClassSelector) {
 }
 
 
-function SetDualSwitchState(this_obj) {
-    if ($('input[value=radiobutton]', this_obj).is(':checked')) {
-        $('.Csvar', this_obj).hide();
-        $('.Rsvar', this_obj).show();
-        $('.Csvar', this_obj).removeAttr('checked'); // This deletes the former choice...
-        console.log("Csvar hide");
-    }
-    if ($('input[value=checkbox]', this_obj).is(':checked')) {
-        $('.Csvar', this_obj).show();
-        $('.Rsvar', this_obj).hide();
-        $('.Rsvar', this_obj).removeAttr('checked'); // This deletes the former choice...
-        console.log("Rsvar hide");
-    }
-    console.log("radiobutton:" + $('input[value=radiobutton]', this_obj).is(':checked'));
-    console.log("checkbox:" + $('input[value=checkbox]', this_obj).is(':checked'));
-}
+// function SetDualSwitchState(this_obj) {
+//     if ($('input[value=radiobutton]', this_obj).is(':checked')) {
+//         $('.Csvar', this_obj).hide();
+//         $('.Rsvar', this_obj).show();
+//         $('.Csvar', this_obj).removeAttr('checked'); // This deletes the former choice...
+//         console.log("Csvar hide");
+//     }
+//     if ($('input[value=checkbox]', this_obj).is(':checked')) {
+//         $('.Csvar', this_obj).show();
+//         $('.Rsvar', this_obj).hide();
+//         $('.Rsvar', this_obj).removeAttr('checked'); // This deletes the former choice...
+//         console.log("Rsvar hide");
+//     }
+//     console.log("radiobutton:" + $('input[value=radiobutton]', this_obj).is(':checked'));
+//     console.log("checkbox:" + $('input[value=checkbox]', this_obj).is(':checked'));
+// }
 
 
 function RadioButtonDualSwitch(Selector_radiobutton) {
     $(document).on('click', Selector_radiobutton, function(event) {
         var Parent = $(this).parent();
         console.log(" ThisTagName " + $(this).get(0).tagName + ", Parent " + Parent.get(0).tagName);
-        SetDualSwitchState(Parent);
+        // SetDualSwitchState(Parent);
     });
 }
 
@@ -370,25 +480,61 @@ function CheckEventFormPosition(this_obj) {
     var ClosestEventForm_class = ClosestEventForm.attr("class");
     console.log("ClosestEventForm_class : " + ClosestEventForm_class);
     console.log("this_obj name : " + this_obj.get(0).tagName);
-    if (typeof(ClosestEventForm_class) !== "undefined") { // If QuestionField or EventForm is added...
-        SetDualSwitchState(ClosestEventForm);
-    } else { // If TimeStampForm is added...
-        $('.Csvar', this_obj).hide();
-        $('.Rsvar', this_obj).show();
-    }
+    // if (typeof(ClosestEventForm_class) !== "undefined") { // If QuestionField or EventForm is added...
+    //     // SetDualSwitchState(ClosestEventForm);
+    // } else { // If TimeStampForm is added...
+    //     $('.Csvar', this_obj).hide();
+    //     $('.Rsvar', this_obj).show();
+    // }
 }
+
+// Selector = ".EventForm .QuestionWrapperButton"
+// function QuestionWrapperButtonControl(Selector) {
+//     $(document).on('click', Selector, function(event) {
+//         event.preventDefault();
+//         var EventFormObj = $(this).parent();
+//         $(".QuestionWrapper", EventFormObj).toggleClass("dhide");
+//         $(".QuestionWrapper", EventFormObj).slideToggle();
+//         if ($(".QuestionWrapper", EventFormObj).prop("class").indexOf("dhide") !== -1)
+//             $(".QuestionWrapperButton", EventFormObj).html('<span class="glyphicon glyphicon-chevron-right"></span> Svar og feedback');
+//         else
+//             $(".QuestionWrapperButton", EventFormObj).html('<span class="glyphicon glyphicon-chevron-down"></span> Skjul svar og feedback');
+//     });
+// }
 
 
 function QuestionWrapperButtonControl(Selector) {
-    $(document).on('click', Selector, function(event) {
-        event.preventDefault();
-        var EventFormObj = $(this).parent();
-        $(".QuestionWrapper", EventFormObj).toggleClass("dhide");
-        $(".QuestionWrapper", EventFormObj).slideToggle();
-        if ($(".QuestionWrapper", EventFormObj).prop("class").indexOf("dhide") !== -1)
-            $(".QuestionWrapperButton", EventFormObj).html('<span class="glyphicon glyphicon-chevron-right"></span> Svar og feedback');
-        else
-            $(".QuestionWrapperButton", EventFormObj).html('<span class="glyphicon glyphicon-chevron-down"></span> Skjul svar og feedback');
+    $(document).on('click', "input[name='valg']", function(event) {
+        var ParentObj = $(this).closest(".EventForm");
+        var RadioInformation = ($("input[value='RadioInformation']", ParentObj).prop('checked') ? true : false);
+        var RadioQuestion = ($("input[value='RadioQuestion']", ParentObj).prop('checked') ? true : false);
+        // var RadioButton = ((ParentObj).prop('checked')) ? true : false;
+        console.log("QuestionWrapperButton - OK");
+        // if (Selector == "RadioInformation"){   // slideDown()
+        if (RadioQuestion){ 
+            // $("input[name=EventHeader]", ParentObj).hide();
+            $("input[name=EventHeader]", ParentObj).slideUp("fast");
+            $("textarea[name=EventInfo]", ParentObj).attr("placeholder", "Skriv spørgsmålet her (70 tegn)");
+            $("input[value=RadioInformation]", ParentObj).removeAttr('checked'); 
+            $(".QuestionWrapper", ParentObj).removeClass("dhide");
+            $(".QuestionWrapper", ParentObj).slideDown( "slow" );
+            console.log("RadioInformation - OK");
+        }
+        // if (Selector == "RadioQuestion"){     // EventHeader  EventInfo  textarea
+        if (RadioInformation){ 
+            // $("input[name=EventHeader]", ParentObj).show();
+            $("input[name=EventHeader]", ParentObj).slideDown("fast");
+            $("textarea[name=EventInfo]", ParentObj).attr("placeholder", "Her skriver du din infotekst (300 tegn)");
+            $("input[value=RadioQuestion]", ParentObj).removeAttr('checked'); 
+            $(".QuestionWrapper", ParentObj).slideUp("slow", function() {
+                $(".QuestionWrapper", ParentObj).addClass("dhide");
+            });
+            console.log("RadioQuestion - OK");
+        }
+        // if ($(".QuestionWrapper", EventFormObj).prop("class").indexOf("dhide") !== -1)
+        //     $(".QuestionWrapperButton", EventFormObj).html('<span class="glyphicon glyphicon-chevron-right"></span> Svar og feedback');
+        // else
+        //     $(".QuestionWrapperButton", EventFormObj).html('<span class="glyphicon glyphicon-chevron-down"></span> Skjul svar og feedback');
     });
 }
 
@@ -421,6 +567,7 @@ function ReGenerateForm(json, Selector) {
         console.log("json: " + JSON.stringify(json));
 
         $("#video_startFrameTitle").val(json.startFrameTitle);
+        $("#video_startFrameText").val(json.startFrameText);
         $("#video_startButtonTitle").val(json.startButtonTitle);
         $("#video_url").val(json.URL);
 
@@ -510,7 +657,7 @@ function ReGenerateForm(json, Selector) {
                                     "\nObj: " + JSON.stringify(Obj));
                             } // END for
 
-                            SetDualSwitchState(Wrap); // Set all DualSwitchState to match the selected states.
+                            // SetDualSwitchState(Wrap); // Set all DualSwitchState to match the selected states.
                         } // END for
                     } // END if
                 } // END if EventForm
@@ -536,8 +683,15 @@ function ReplicateVideoInputFormat(json) {
 
 
         // Video JSON-object-template-format by ATO:
-        var vidJson = [{
-            "video": null
+        var vidJson = [
+            {
+                "video": null
+            },{
+                "intro_header": null
+            },{
+                "intro_text": null
+            },{
+                "intro_knap": null
         }, {
             "stops": []
         }];
@@ -547,17 +701,22 @@ function ReplicateVideoInputFormat(json) {
         };
         var Tevent = {
             "eventtype": null,
-            "tekst": null,
+            "tekst": "",
             "svar": [],
             "korrekt": [],
-            "feedback": null
+            "feedback": ""
         };
 
 
         var startFrameTitle = json.startFrameTitle;
+        var startFrameText = json.startFrameText;
         var startButtonTitle = json.startButtonTitle;
 
         vidJson[0].video = ReturnYoutubeVidId(json.EmbedURL);
+        vidJson[1].intro_header = htmlEntities( json.startFrameTitle );
+        vidJson[2].intro_text = htmlEntities( json.startFrameText );
+        vidJson[3].intro_knap = htmlEntities( json.startButtonTitle );
+
 
         console.log("vidJson 1 : " + JSON.stringify(vidJson));
 
@@ -611,8 +770,11 @@ function ReplicateVideoInputFormat(json) {
                                 var Obj = QD[key].EventForm[key1][key2];
 
                                 if (Obj.name == "valg") {
-                                    if (Obj.value == "checkbox")    Event.eventtype = "checkbox";
-                                    if (Obj.value == "radiobutton") Event.eventtype = "svarknap";
+                                    if (Obj.value == "RadioInformation") Event.eventtype = "info";
+                                    // if (Obj.value == "RadioQuestion"){    
+                                    //     Event.eventtype = "svarknap";
+                                    //     Event.eventtype = "checkbox";
+                                    // }
                                 }
 
                                 if ( (Obj.name == "Question") && (Obj.value !== "") ) {
@@ -633,12 +795,14 @@ function ReplicateVideoInputFormat(json) {
                                     Event.feedback = htmlEntities(Obj.value);
                                 }
 
-                                if (Obj.name == "Rsvar") {
-                                    Event.korrekt.push( AnswerNum.toString() );
-                                }
+                                // if (Obj.name == "Rsvar") {
+                                //     Event.korrekt.push( AnswerNum.toString() );
+                                // }
 
                                 if (Obj.name == "Csvar") {
                                     Event.korrekt.push( AnswerNum.toString() );
+                                    if (Event.korrekt.length == 1) Event.eventtype = "svarknap";
+                                    if (Event.korrekt.length > 1) Event.eventtype = "checkbox";
                                 }
 
                                 console.log("key1: " + key1 + ", key2: " + key2 +
@@ -662,7 +826,7 @@ function ReplicateVideoInputFormat(json) {
                 } // END if EventForm
             } // END if TimeStamp
 
-            vidJson[1].stops.push(Stop);
+            vidJson[4].stops.push(Stop);
 
         } // END for
 
@@ -671,6 +835,97 @@ function ReplicateVideoInputFormat(json) {
         return vidJson;
 
     } // END function
+
+
+// ================================
+//      Pager
+// ================================
+
+
+var Range = 9;
+var ActiveLinkNum = 1;
+
+function Pager(PagerSelector, TargetSelectorChild, CssId){
+
+    var NumOfPages = 0;
+    $(TargetSelectorChild).each(function( index, element ) {
+        ++NumOfPages;
+    });
+    console.log("NumOfPages : " + NumOfPages);
+
+
+    var HTML = '<ul id="'+CssId+'" class="PagerClass">';
+
+    if (NumOfPages == 1){
+        HTML += '<li><a href="#" class="PagerButton btn btn-default"> 1 </a></li>';
+    }
+
+    if ((1 < NumOfPages) && (NumOfPages <= Range+1)) {
+        for (var i = 1; i <= NumOfPages; i++) {
+            HTML += '<li><a href="#" class="PagerButton btn btn-default">'+ i +'</a></li>';
+        }
+    }
+
+    if (NumOfPages > Range+1) {
+        var StartIndex = ActiveLinkNum - Math.round((Range - 1)/2); // Find the startindex based on ActiveLinkNum
+        if (StartIndex < 1) StartIndex = 1;                         // Ajust startindex for low ActiveLinkNum
+        if (Range + StartIndex > NumOfPages) StartIndex = NumOfPages - Range; // Ajust startindex for high ActiveLinkNum
+            
+        // StartIndex = Math.round((NumOfPages - Range)/2);
+        console.log("StartIndex : " + StartIndex);
+
+
+        if (StartIndex == 2){  // Ugly special case...
+            HTML += '<li><a href="#" class="PagerButton btn btn-default"> 1 </a></li>';
+        }
+        if (StartIndex > 2)
+            HTML += '<li><a href="#" class="PagerButton btn btn-default"> 1 </a></li><li> ... </li>';
+        for (var i = StartIndex; i < Range+StartIndex; i++) {
+            HTML += '<li><a href="#" class="PagerButton btn btn-default">'+ i +'</a></li>';
+        }
+        if (Range + StartIndex == NumOfPages)
+            for (var i = Range+StartIndex; i <= NumOfPages; i++) {
+                HTML += '<li><a href="#" class="PagerButton btn btn-default">'+ i +'</a></li>';
+            }
+        else
+            HTML += '<li> ... </li><li><a href="#" class="PagerButton btn btn-default">'+ NumOfPages +'</a></li>';
+        
+    }
+    HTML += '</ul>';
+
+    // Generate the pager:
+    $( PagerSelector ).html( HTML );
+
+    $( TargetSelectorChild ).removeClass("dshow");
+    $( TargetSelectorChild+":eq("+(parseInt(ActiveLinkNum)-1)+")" ).addClass("dshow"); // TargetSelectorChild
+
+    // 
+    $( "#"+CssId+" .PagerButton" ).click(function( e ) {
+        e.preventDefault();  // Prevent the link-nature of the anchor-tag.
+        $( "#"+CssId+" .PagerButton" ).removeClass("btn-default btn-primary");
+        $( "#"+CssId+" .PagerButton" ).addClass("btn-default");
+        $(this).toggleClass("btn-default btn-primary"); 
+
+        ActiveLinkNum = $(this).text();
+        console.log("ActiveLinkNum 2: " + ActiveLinkNum);
+
+        // TargetSelectorChildText = $(TargetSelectorChild).text();
+        // console.log("TargetSelectorChildText: " + TargetSelectorChildText);
+        
+
+        Pager(PagerSelector, TargetSelectorChild, CssId); // Update the pager by recursive call
+    });
+
+    // Set the chosen color if the pager-button is showen:
+    $(PagerSelector+" li a").each(function(index, element) {
+        if ($(element).text() == ActiveLinkNum){
+            $(element).toggleClass("btn-default btn-primary");
+        }
+    });
+
+    console.log("ActiveLinkNum 1: " + ActiveLinkNum);
+}
+
 
 
 //######################################################################################
@@ -688,10 +943,10 @@ $(document).ready(function() {
 
     VideoObj.DeleteSelections(); // Delete previous selections on reload.
 
-    $("#delete_selections").click(function() {
-        VideoObj.DeleteSelections();
-        console.log("VideoObj submit : " + JSON.stringify(VideoObj));
-    });
+    // $("#delete_selections").click(function() {
+    //     VideoObj.DeleteSelections();
+    //     console.log("VideoObj submit : " + JSON.stringify(VideoObj));
+    // });
 
     $("#load_default_video").click(function(e) {
         e.preventDefault(); // Prevent the link-nature of the anchor-tag.
@@ -715,22 +970,41 @@ $(document).ready(function() {
 
     InitHTML('#FormsContainer', TimeStampForm);
 
-    AddElement('.addfield', QuestionField, 5);
-    RemoveElement('.removefield', 2);
+    // AddElement('.addfield', '.QuestionField', QuestionField, 4);
+    AddLastElement('.addfield', '.QuestionField', '.EventForm', QuestionField, 4);
+    RemoveElement('.removefield', '.QuestionField', 2);
 
-    AddElement('.addform', EventForm, false);
-    RemoveElement('.removeform', 1);
+    AddElement('.addform', '.EventForm', EventForm, false);
+    RemoveElement('.removeform', '.EventForm', 1);
 
-    AddElement('.add_TimeStampForm', TimeStampForm, false);
-    RemoveElement('.remove_TimeStampForm', 1);
+    // OLD:
+    // AddElement('.add_TimeStampForm', '.TimeStampForm', TimeStampForm, false);
+    // RemoveElement('.remove_TimeStampForm', '.TimeStampForm', 1);
 
-    RadioButtonDualSwitch(".EventForm input[name='valg']");
+// NEW:
+AddTimestampLast('.AddNewPageButton', '.TimeStampForm', '#FormsContainer', TimeStampForm, false, "#PagerContainer", "#FormsContainer > div", "Pager");
+RemoveTimestamp('.remove_TimeStampForm', '.TimeStampForm', 1, "#PagerContainer", "#FormsContainer > div", "Pager");
 
-    QuestionWrapperButtonControl(".EventForm .QuestionWrapperButton");
+Pager("#PagerContainer", "#FormsContainer > div", "Pager");
+
+
+    // RadioButtonDualSwitch(".EventForm input[name='valg']");
+
+    // QuestionWrapperButtonControl(".EventForm .QuestionWrapperButton");
+    QuestionWrapperButtonControl();
 
 
     $(".WatchQuiz").click(function(e) {
         e.preventDefault(); // Prevent the link-nature of the anchor-tag.
+
+        console.log("ScrollUp: " + $(this).prop("class"));
+
+        // Naar der trykkes paa den nederste ".WatchQuiz", saa scrolles der til "#ScrollHere":
+        if ($(this).prop("class").indexOf("ScrollUp") !== -1){
+            $('html, body').animate({
+                scrollTop: $("#ScrollHere").offset().top + 'px'
+            }, 'fast');
+        }
 
         // if (CheckTimeStopValues('Du vælger nu "Se Quiz"') == true){
         //     return 0;
@@ -744,21 +1018,13 @@ $(document).ready(function() {
         VideoObj.QuizData = GetFormsData('#FormsContainer');
 
         // Dette ukommenteres indtil moedet kvalitetscirklen mandag d. 9/3-2015 er overstaaet: 
-        // $("#JsonOutput").html(JSON.stringify(VideoObj, null, 4));
+        $("#JsonOutput").html(JSON.stringify(VideoObj, null, 4));
 
         var JsonVideoInput = ReplicateVideoInputFormat(VideoObj);
         $("#JsonVideoInput").html(JSON.stringify(JsonVideoInput, null, 4));
 
         JsonVideoInput_update = JsonVideoInput;
 
-        // VIGTIGT: Man skal se sin video foer man kan sende den:
-        // var EmailStr = "mailto:?cc=elearning@kvuc.dk&amp;subject=Din%20quizdata&amp;body=";
-        var EmailStr = "mailto:?cc=ato@kvuc.dk;than@kvuc.dk&amp;subject=Din%20quizdata&amp;body=";
-        EmailStr += JSON.stringify(JsonVideoInput);
-        $(".MailLink").attr("href", EmailStr);
-
-
-        
 
 ////
 //Her refreshes videoquiz preview iframen: 
@@ -770,28 +1036,8 @@ $(document).ready(function() {
 //
         
     });
+    
 
-
-    // // Naar der trykkes paa email linket...
-    $(".MailLink").click(function(e) {
-        // e.preventDefault(); // VIGTIGT: e.preventDefault() forhindre emailen i at blive sendt til mail-klienten.
-
-        if ($(".MailLink").attr("href") === ""){
-            e.preventDefault();
-            alert("Før video-quiz'en kan sendes skal den først ses ved at trykke på"+'"Se Quiz".');
-        }
-
-        console.log("MailLink : " + JSON.stringify( $(".MailLink").attr("href") ) );
-
-        // VideoObj.LoadVideo(); // Elers vrker det ikke med ReGenerateForm.
-        // VideoObj.LoadDefaultNoVideoImgIfNoVideoIsChosen();
-        // VideoObj.QuizData = GetFormsData('#FormsContainer');
-        // var JsonVideoInput = ReplicateVideoInputFormat(VideoObj);
-        // var EmailStr = "mailto:?cc=elearning@kvuc.dk&amp;subject=Din%20quizdata&amp;body=";
-        // // EmailStr += JSON.stringify(JsonVideoInput);
-        // EmailStr += JSON.stringify( String(str).replace(/ /g, '%20') );
-        // $("#MailLink").attr("href", EmailStr); 
-    });
 
 
     // ================================
