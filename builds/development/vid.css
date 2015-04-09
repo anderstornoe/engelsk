@@ -10,7 +10,7 @@ body {
     margin-top: 6%;
     margin-bottom: 6%;
 }
-.h1 {
+.movie_h1 {
     color: white;
     font-size: 36px;
     font-weight: lighter;
@@ -20,6 +20,7 @@ body {
     top: 290px;
     width: 100%;
 }
+
 .correct_answer{
     color:white;
 }

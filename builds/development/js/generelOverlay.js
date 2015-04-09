@@ -23,8 +23,8 @@ var GeneralOverlayClass = {
 
 
 	ButtonControler : 	'<div id="OverlyWhyHowContainer">' + 
-							'<a href="#" id="OverlayHow" class="OverlayButton btn btn-default btn-lg"> HOW </a>' + 
-							'<a href="#" id="OverlayWhy" class="OverlayButton btn btn-default btn-lg"> WHY </a>' + 
+							'<a href="#" id="OverlayHow" class="OverlayButton btn btn-default"> HOW </a>' + 
+							'<a href="#" id="OverlayWhy" class="OverlayButton btn btn-default"> WHY </a>' + 
 					 	'</div>',
 
 	OverlayMarkup : '<div class="Overlay"></div>' + 
