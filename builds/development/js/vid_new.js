@@ -209,7 +209,7 @@ function introscreen() {
     player.pauseVideo();
 
     $("#overlay").fadeIn(1000);
-    $("#overlay").append("<div class='intro'><div class='movie_h1'>" + intro_header + "</div><p class='feed_txt'>" + intro_text + "</p><div class='btn btn-default btn-lg introknap'>" + intro_knap + "</div></div>");
+    $("#overlay").append("<div class='intro'><div class='h1 movie_h1'>" + intro_header + "</div><p class='h4 feed_txt'>" + intro_text + "</p><div class='btn btn-default-inverse btn-lg introknap'>" + intro_knap + "</div></div>");
     $("#overlay").click(function() {
 
         $(this).fadeOut(1000, function() {
@@ -250,15 +250,15 @@ function stop_event(tal, taeller) {
 
     for (var i = 0; i < svar_length; i++) {
         if (spm.eventtype == "svarknap") {
-            options_text = options_text + "<div id ='" + i + "' class='btn svar_btn btn-default'>" + svar[i] + "</div>";
+            options_text = options_text + "<div id ='" + i + "' class='btn svar_btn btn-info'>" + svar[i] + "</div>";
         } else if (spm.eventtype == "checkbox") {
-            options_text = options_text + "<div id ='" + i + "' class='btn svar_btn btn-default'>" + svar[i] + "</div>";
+            options_text = options_text + "<div id ='" + i + "' class='btn svar_btn btn-info'>" + svar[i] + "</div>";
         } else if (spm.eventtype == "info") {
             options_text = "";
             //$(".btn_videre").fadeIn().click(feed);
         }
     }
-    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default btn-lg btn_videre'>Continue</div>");
+    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
 
     $(".btn_videre").hide();
 
@@ -301,13 +301,13 @@ function commit_answers() {
         if (valgt == spm.korrekt) {
             //console.log("korrekt!");
             total_score++;
-            $(".btn_chosen").css("background-color", "green");
+            $(".btn_chosen").css("background-color", "#0dcea0").css("border", "1px solid #0dcea0");
             $(".score_num").fadeOut(20, function() {
                 $(".score_num").html(total_score);
                 $(".score_num").fadeIn(); // Animation complete.
             });
         } else {
-            $(".btn_chosen").css("background-color", "red");
+            $(".btn_chosen").css("background-color", "#ed3e3a").css("border", "1px solid #ed3e3a");
         }
     } else {
         valgt = [];
@@ -316,12 +316,12 @@ function commit_answers() {
             var indeks = $(this).index();
             var id = $(this).attr("id");
             if (spm.korrekt.indexOf(id) > -1) {
-                $(this).css("background-color", "green");
+                $(this).css("background-color", "#0dcea0").css("border", "1px solid #0dcea0");
                 score++;
                 console.log("korrekt!");
             } else {
                 fejl++;
-                $(this).css("background-color", "red");
+                $(this).css("background-color", "#ed3e3a").css("border", "1px solid #ed3e3a");
                 console.log("ikke korrekt: " + $(this).attr("id") + "," + spm.korrekt[1]);
             }
         });
@@ -360,7 +360,7 @@ function feedback() {
     //tween in feedback: 
     $(".svarcontainer").delay(800).fadeOut(1000, function() {
 
-        $(".popud").append("<div class='feedback'><div class='feed_txt'>" + spm.feedback + "</div><div class = 'correct_answers'>Correct answer(s): " + correct_answers + "<br/><div class ='btn btn-default btn-lg introknap videre_knap'>Continue</div>");
+        $(".popud").append("<div class='feedback'><div class='h4'>" + spm.feedback + "</div><div class = 'correct_answers'>Correct answer(s): " + correct_answers + "<br/><div class ='btn btn-default-inverse btn-lg introknap videre_knap'>Continue</div>");
         $(".feedback").fadeOut(0);
         $(".feedback").fadeIn(1000);
 
@@ -425,7 +425,7 @@ function next_event() {
 function slutFeedback() {
     //console.log("slut");
     $("#overlay").unbind();
-    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + " questions.</h3><div class='btn btn-default btn-lg forfra_knap'>Try again</div><div class='btn btn-default btn-lg continue_film'>Watch the rest of the film</div>");
+    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + " questions.</h3><div class='btn btn-default-inverse btn-lg forfra_knap'>Try again</div><div class='btn btn-default-inverse btn-lg continue_film'>Watch the rest of the film</div>");
     $(".forfra_knap").click(function() {
         //console.log ("ost");
         location.reload();
