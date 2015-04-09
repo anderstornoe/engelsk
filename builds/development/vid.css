@@ -1,28 +1,26 @@
 
 @import "http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400italic,600italic,700italic,800italic,400,300,600,700,800";
 body {
-    color: #333;
-    font-family: Open Sans;
-    font-weight: 100;
+    color: white;
 }
 .svarcontainer {
+    margin-bottom: 6%;
     margin-left: 9%;
     margin-top: 6%;
-    margin-bottom: 6%;
+}
+.h1{
+    color:black;
 }
 .movie_h1 {
     color: white;
-    font-size: 36px;
-    font-weight: lighter;
-    line-height: 1.25;
-    margin-top: 50px;
+    padding: 40px 40px 0;
     text-align: center;
-    top: 290px;
-    width: 100%;
+    top: 0;
 }
 
-.correct_answer{
-    color:white;
+
+.correct_answer {
+    color: white;
 }
 #player {
     position: absolute;
@@ -39,7 +37,7 @@ body {
     width: 350px;
 }
 #overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 113, 128, 0.5);
     height: 900px;
     position: relative;
     z-index: 75;
@@ -58,22 +56,17 @@ img {
     margin-left: 15px;
     position: relative;
 }
-h4 {
-    color: white;
-    font-size: 10pt;
-    font-weight: 100;
-    position: relative;
-}
+
 td {
     margin: 3px;
 }
 .imgspan {
-   cursor: pointer;
+    color: white;
+    cursor: pointer;
     font-size: 18px !important;
+    left: 12px;
     position: relative;
     top: 4px;
-    left: 12px;
-    color: white;
 }
 h3 {
     color: #fff;
@@ -83,7 +76,7 @@ h3 {
     width: 500px;
 }
 #time {
-    background-color: rgba(84, 94, 86, 0.8);
+    background-color: #0071bc;
     bottom: 0;
     color: white;
     font-size: 10px;
@@ -95,68 +88,58 @@ h3 {
 .html5-video-container {
     background-color: white;
 }
-
 .intro {
     left: 0;
     margin: 0 auto;
     position: absolute;
     right: 0;
     text-align: center;
-    /*top: 150px;*/
     z-index: 100;
 }
 .introknap {
     cursor: pointer;
 }
 .svar_btn {
-    margin-bottom: 11px;  
+    margin-bottom: 11px;
+    white-space: normal !important;
     width: 370px;
-    white-space:normal !important;
-
 }
-
-.btn_chosen{
-background-color: #bbb;
+.btn_chosen {
+    background-color: #1da6db;
+    border: 1px solid #1da6db;
+    color: white;
 }
-
-.btn_chosen:hover{
-background-color: #bbb;
+.btn_chosen:hover {
+    background-color: #1da6db;
+    border: 1px solid #1da6db;
+    color: white;
 }
-
 .feed_txt {
     color: white;
-    font-size: 18px;
-    margin-left: 30px;
-    margin-top: 40px;
-    margin-bottom:20px;
+    line-height: 1.4;
+    margin-top: 0;
+    padding: 40px 40px 0;
 }
 table {
     margin-left: 33px;
     margin-top: 40px;
 }
 .videre_knap {
-    /*margin-left: 330px;*/
 }
 .forfra_knap {
     margin-left: 328px;
     margin-top: 40px;
 }
-/*.svar_btn:hover {
-    background-color: rgb(94, 105, 96);
-}
-*/
 #time_bar {
     background-color: white;
     bottom: 0;
-    height: 14px;
+    height: 17px;
     opacity: 0.4;
     position: absolute;
     width: 300px;
     z-index: 2;
 }
-
-.correct_answers{
-     color: white;
-    margin-top: 20px
+.correct_answers {
+    color: white;
+    margin-top: 20px;
 }
-
