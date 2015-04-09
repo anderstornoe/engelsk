@@ -814,7 +814,7 @@ function ReplicateVideoInputFormat(json) {
                             console.log("X2 -- Event: " + JSON.stringify(Event) );
 
                             // If no answer options and no feedback is given, then: eventtype = "info":
-                            if ( (Event.korrekt.length == 0) && (Event.korrekt.length == 0) && (Event.feedback === null) ){
+                            if ( (Event.korrekt.length === 0) && (Event.korrekt.length === 0) && (Event.feedback === null) ){
                                 Event.eventtype = "info";
                             }
 
@@ -880,12 +880,12 @@ function Pager(PagerSelector, TargetSelectorChild, CssId){
         }
         if (StartIndex > 2)
             HTML += '<li><a href="#" class="PagerButton btn btn-default"> 1 </a></li><li> ... </li>';
-        for (var i = StartIndex; i < Range+StartIndex; i++) {
-            HTML += '<li><a href="#" class="PagerButton btn btn-default">'+ i +'</a></li>';
+        for (var j = StartIndex; j < Range+StartIndex; j++) {
+            HTML += '<li><a href="#" class="PagerButton btn btn-default">'+ j +'</a></li>';
         }
         if (Range + StartIndex == NumOfPages)
-            for (var i = Range+StartIndex; i <= NumOfPages; i++) {
-                HTML += '<li><a href="#" class="PagerButton btn btn-default">'+ i +'</a></li>';
+            for (var k = Range+StartIndex; k <= NumOfPages; k++) {
+                HTML += '<li><a href="#" class="PagerButton btn btn-default">'+ k +'</a></li>';
             }
         else
             HTML += '<li> ... </li><li><a href="#" class="PagerButton btn btn-default">'+ NumOfPages +'</a></li>';

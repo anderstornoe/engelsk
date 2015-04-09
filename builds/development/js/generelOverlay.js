@@ -59,12 +59,6 @@ var GeneralOverlayClass = {
 							"how_btntext" : "How-button instruction text",
 							"how_content" : "<p>Lorem ipsum dolor sit amet, ut egestas maecenas iaculis dictumst eros. Donec integer ante vel. Dolor nullam ac, lacus augue. Vel eget auctor, hac nec tortor non aliquam suscipit, rhoncus vulputate nulla enim quam elit consequat, luctus wisi tortor, elit pretium dictum nec sit curabitur. Eget mauris hac, sit nec velit ultricies praesent wisi sit, turpis non ut sapien, velit nunc lorem, arcu venenatis consectetuer esse eget non.</p><p>Lacinia odio felis, nec in est et, mollis egestas, dui est sociis, esse eu. Ante euismod, ac quis dictum libero rerum, mollis morbi sollicitudin luctus. In felis ipsum mi, aliquet purus aute, lectus quidem odio suscipit, facilisis rutrum sed egestas, faucibus justo.</p>"
 						},
-					"vid_set_da" : {
-							"why_btntext" : "Why-button instruction text",
-							"why_content" : "<p>Lorem ipsum dolor sit amet, ut egestas maecenas iaculis dictumst eros. Donec integer ante vel. Dolor nullam ac, lacus augue. Vel eget auctor, hac nec tortor non aliquam suscipit, rhoncus vulputate nulla enim quam elit consequat, luctus wisi tortor, elit pretium dictum nec sit curabitur. Eget mauris hac, sit nec velit ultricies praesent wisi sit, turpis non ut sapien, velit nunc lorem, arcu venenatis consectetuer esse eget non.</p><p>Lacinia odio felis, nec in est et, mollis egestas, dui est sociis, esse eu. Ante euismod, ac quis dictum libero rerum, mollis morbi sollicitudin luctus. In felis ipsum mi, aliquet purus aute, lectus quidem odio suscipit, facilisis rutrum sed egestas, faucibus justo.</p>",
-							"how_btntext" : "How-button instruction text",
-							"how_content" : "<p>Lorem ipsum dolor sit amet, ut egestas maecenas iaculis dictumst eros. Donec integer ante vel. Dolor nullam ac, lacus augue. Vel eget auctor, hac nec tortor non aliquam suscipit, rhoncus vulputate nulla enim quam elit consequat, luctus wisi tortor, elit pretium dictum nec sit curabitur. Eget mauris hac, sit nec velit ultricies praesent wisi sit, turpis non ut sapien, velit nunc lorem, arcu venenatis consectetuer esse eget non.</p><p>Lacinia odio felis, nec in est et, mollis egestas, dui est sociis, esse eu. Ante euismod, ac quis dictum libero rerum, mollis morbi sollicitudin luctus. In felis ipsum mi, aliquet purus aute, lectus quidem odio suscipit, facilisis rutrum sed egestas, faucibus justo.</p>"
-						},
 					"vid_plot_da" : {
 							"why_btntext" : "Why-button instruction text",
 							"why_content" : "<p>Lorem ipsum dolor sit amet, ut egestas maecenas iaculis dictumst eros. Donec integer ante vel. Dolor nullam ac, lacus augue. Vel eget auctor, hac nec tortor non aliquam suscipit, rhoncus vulputate nulla enim quam elit consequat, luctus wisi tortor, elit pretium dictum nec sit curabitur. Eget mauris hac, sit nec velit ultricies praesent wisi sit, turpis non ut sapien, velit nunc lorem, arcu venenatis consectetuer esse eget non.</p><p>Lacinia odio felis, nec in est et, mollis egestas, dui est sociis, esse eu. Ante euismod, ac quis dictum libero rerum, mollis morbi sollicitudin luctus. In felis ipsum mi, aliquet purus aute, lectus quidem odio suscipit, facilisis rutrum sed egestas, faucibus justo.</p>",
@@ -153,7 +147,7 @@ var GeneralOverlayClass = {
 		$(document).on('click', ".OverlayButton", function(event) {
 	        event.preventDefault();
 
-			if ( $( ".Overlay" ).length == 0 )  // Ensures that only one overlay is added.
+			if ( $( ".Overlay" ).length === 0 )  // Ensures that only one overlay is added.
 				$( Selector ).before( thisObj.OverlayMarkup );
 
 			// AKTIVER KUN HVIS OVERLAY SKAL RAMME EN SPECIFIK WRAPPER:
@@ -200,7 +194,7 @@ var GeneralOverlayClass = {
 		$(document).on('click', ".OverlayButton", function(event) {
 	        event.preventDefault();
 
-			if ( $( ".Overlay" ).length == 0 )  // Ensures that only one overlay is added.
+			if ( $( ".Overlay" ).length === 0 )  // Ensures that only one overlay is added.
 				$( Selector ).before( thisObj.OverlayMarkup );
 
 			// AKTIVER KUN HVIS OVERLAY SKAL RAMME EN SPECIFIK WRAPPER:
@@ -267,6 +261,6 @@ var GeneralOverlayClass = {
 		$(OverlayWindowSelector).height( $(WindowSelector).height() );
 	}
 
-}
+};
 
 var GeneralOverlayObj = Object.create( GeneralOverlayClass );

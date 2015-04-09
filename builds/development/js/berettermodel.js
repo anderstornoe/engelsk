@@ -249,7 +249,7 @@
       // Nedenstaaende udfoeres naar der trykkes paa kanppen "DONE":
       $( document ).on('click', "#done", function(event){
           
-          if ( $(".AnsClass").length == 0 ){  // Hvis correct/worg vises, saa skal der ikke tilfoejes flere correct/worg.
+          if ( $(".AnsClass").length === 0 ){  // Hvis correct/worg vises, saa skal der ikke tilfoejes flere correct/worg.
 
               // Tael sammen hvor mange rigtige svar der er afgivet:
               var count = 0;
