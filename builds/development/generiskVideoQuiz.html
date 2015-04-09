@@ -30,25 +30,30 @@
 
 <body>
 
-    <h3>Video loader</h3>
+    <div id="HeaderWrap">
+        <h1>VIDEOQUIZ</h1>
+
+        <p>
+            Denne quizgenerator er stadig en betaversion, så vær derfor opmærksom på at gemme dine spørgsmål du opretter til hvert stop i filmen i et tekstdokument ved siden af...
+        </p>
+        <p>
+            Når du er færdig med at oprette dine stop i filmen, kopierer du koden ved at... @Thomas: Vi mangler lidt tekst som vi kan tilføje lidt senere...
+        </p>
+    </div>
 
     <div id="VideoInit" class="b-red p10">
         <form>
-            <input id="video_url" class="TextField w50" placeholder="Indsæt videolink her" type="text" />
+            <div class="InputHeader">Youtube URL</div>
+            <input id="video_url" class="TextField w50" placeholder="kopier URL'en fra adressefeltet i din browser ind i dette felt" type="text" />
+            <div class="InputHeader">Titel på startframe</div>
+            <input id="video_startFrameTitle" class="TextField w50" placeholder="Titel p&aring; startframe (70 tegn)" type="text" />
+            <div class="InputHeader">Introtekst til første frame</div>
+            <input id="video_startFrameText" class="TextField w50" placeholder="F.eks: Hvad ved du om the American Dream? (70 tegn)" type="text" />
+            <div class="InputHeader">Titel på startknap</div>
+            <input id="video_startButtonTitle" class="TextField w50" placeholder="Titel p&aring; startknap (40 tegn)" type="text" />
             <br/>
             <br/>
-<!-- 
-            <input id="video_startFrameTitle" class="TextField w50" placeholder="Titel p&aring; startframe" type="text" />
-            <br/>
-            <br/>
-            <input id="video_startButtonTitle" class="TextField w50" placeholder="Titel p&aring; startknap" type="text" />
-            <br/> 
-            <br/>
- -->
-<!-- 				
-				<input id="video_width" class="TextField w25" placeholder="Video bredde" type="text" /> 
-				<input id="video_height" class="TextField w25" placeholder="Video h&oslash;jde" type="text" /> <span class="red"><------ Disse skal fjernes, men er nødvendig indtil videre. </span> <br/> <br/>
- -->
+
             <div class="m5">
                 <input id="load_video" class="w20" name="submit" value="Hent video" type="button" />
                 <a id="load_default_video" href=""> Hent eksempel video </a>
@@ -59,11 +64,11 @@
 
         <div class="row">
             <div class="col-sm-6">
-                <h2>Din videoquiz </h2>
+                <h2 id="ScrollHere">Din videoquiz </h2>
                 <!-- <div class="embed-responsive embed-responsive-16by9"> -->
                 <div class="embed-responsive embed-responsive-16by9">
                     <div class="player_container embed-responsive embed-responsive-16by9 col-xs-12 col-md-12">
-                        <div id="player" class="embed-responsive-item"> <img class="img-responsive" src="https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg"> </div>
+                        <div id="player" class="embed-responsive-item"> <img class="img-responsive" alt="No video" src="https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg"/> </div>
                         <div id="time">
 
                         </div>
@@ -79,7 +84,7 @@
                 <h2>Din videofil </h2>
                 <!-- <div class="embed-responsive embed-responsive-16by9"> -->
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe id="PlayerVideoView" class="embed-responsive-item"> <img class="img-responsive" src="https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg">
+                    <iframe id="PlayerVideoView" class="embed-responsive-item"> <img class="img-responsive" alt="No video" src="https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg"/>
                     </iframe>
                 </div>
             </div>
@@ -88,8 +93,7 @@
     </div>
 
 
-    <span class="btn btn-default usrbutton"><a class="WatchQuiz" class="ml10" href="#"> SE QUIZ </a></span>
-    <span class="btn btn-default usrbutton"><a class="MailLink" href="">Send quiz-data via e-mail</a></span>
+    <span class="btn btn-default usrbutton"><a class="WatchQuiz ml10" href="#"> SE QUIZ </a></span>
 
 <!-- 
     (Generere JSON-string som sendes til quiz-interfacet - læreren kan nu se sin quiz. <b>(læren skal ikke se JSON-stringen)</b> ).
@@ -102,11 +106,13 @@
 
     <h3>User interface</h3>
 
+    STOP <span id="PagerContainer"></span>
+    <a href="#" class="AddNewPageButton btn btn-default"> Tilføj stop </a> <div class="clear"></div>
+    
     <div id="FormsContainer" class="b-red p10">
     </div>
 
-    <span class="btn btn-default usrbutton"><a class="WatchQuiz" class="ml10" href="#"> SE QUIZ </a></span>
-    <span class="btn btn-default usrbutton"><a class="MailLink" href="">Send quiz-data via e-mail</a></span>
+    <span class="btn btn-default usrbutton"><a class="WatchQuiz ScrollUp ml10" href="#"> SE QUIZ </a></span>
 
 
 <!-- 
@@ -123,21 +129,18 @@
         <li>Spiseligt CSS (ikke det nuværende øjen-bæ layout ;-) )</li>
         <li>User-input sikring</li>
     </ul>
- 
+--> 
 
-    <h3>JSON output</h3>
+    <h2>JSON output</h2>
 
     <pre id="JsonOutput">
-		</pre>
--->
-
-    <h3>JSON video input</h3>
-
-    <pre id="JsonVideoInput">
 	</pre>
 
 
+    <h2>JSON video input</h2>
 
+    <pre id="JsonVideoInput">
+	</pre>
 
 
 
@@ -147,12 +150,7 @@
 <script type="text/javascript" src="js/generiskVideoQuiz.js"></script>
 <script type="text/javascript" src="js/generiskVideoQuiz_JsonTestOutput2.js"></script>
 
-<script src="js/generelOverlay.js"></script>
-<script type="text/javascript">
-    $( document ).ready(function() {
-        GeneralOverlayObj.ApplyOverlay("#VideoInit", "generisk_videoquiz");
-    });
-</script>
-
 </body>
+
+
 </html>
