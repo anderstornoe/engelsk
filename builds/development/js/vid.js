@@ -234,7 +234,7 @@ function stop_event(tal, taeller) {
         } else if (spm.eventtype == "radio") {
             options_text = options_text + "<tr id ='" + i + "'> <td><img src='images/vid/i_valgt.png'></td> <td><span class='imgspan' ><p>" + svar[i] + "</p></span></td></tr>";
         } else if (spm.eventtype == "info") {
-            options_text = "<tr><td><span class='imgspan' ><p>" + svar[i] + "</p></span></td></tr>";
+            //options_text = "<tr><td><span class='imgspan' ><p>" + svar[i] + "</p></span></td></tr>";
         } else if (spm.eventtype == "checkbox") {
             options_text = options_text + "<tr id ='" + i + "'> <td><input type='checkbox' value='" + i + "'><span class='imgspan' ><p>" + svar[i] + "</p></span></td></tr>";
         }

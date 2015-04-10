@@ -50,11 +50,11 @@
         "timestamp": "40",
         "events": [{
             "eventtype": "svarknap",
-            "tekst": "How much information are you able to get from looking at the set and the characters in this picture? Consider the flag, the pressure cooker, the woman’s costume, the moving box and the kitchen setting",
+            "tekst": "How much information are you able to get from looking at the set and the characters in this picture?",
             "svar": [
-                "We get the impression that the people living in the house have recently arrived and are unable to keep their home clean",
-                "We get the impression that the people living in the house have recently arrived and that they have ties to more than one country/culture, i.e. India and the US.",
-                "We get the impression that the people living in the house desperately want children and are moving out"
+                "The characters have recently arrived and are unable to keep their home clean",
+                "They have recently arrived and that they have ties to more than one country/culture, i.e. India and the US.",
+                "The characters  desperately want children and are moving out"
             ],
             "korrekt": [
                 1

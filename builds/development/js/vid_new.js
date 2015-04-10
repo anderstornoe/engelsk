@@ -157,7 +157,8 @@ function timerCheck() {
     var playTime = Math.round(player.getCurrentTime());
 
     //Gør overlay og timebar responsive:
-    $("#overlay").css("height", $(".embed-responsive").css("height") - 20); //                    $("#time_bar").css("width", player.getCurrentTime() * 10 + "px");
+    var embed_height = $(".embed-responsive").css("height");
+    $("#overlay").css("height", embed_height); //                    $("#time_bar").css("width", player.getCurrentTime() * 10 + "px");
     $("#time_bar").css("width", (player.getCurrentTime() / player.getDuration()) * window.innerWidth);
 
     //Udregn minutter og sekunder til timebar:
@@ -209,7 +210,7 @@ function introscreen() {
     player.pauseVideo();
 
     $("#overlay").fadeIn(1000);
-    $("#overlay").append("<div class='intro'><div class='h1 movie_h1'>" + intro_header + "</div><p class='h4 feed_txt'>" + intro_text + "</p><div class='btn btn-default-inverse btn-lg introknap'>" + intro_knap + "</div></div>");
+    $("#overlay").append("<div class='intro'><div class='h2'>" + intro_header + "</div><p class='h4 feed_txt'>" + intro_text + "</p><div class='btn btn-default-inverse btn-lg introknap'>" + intro_knap + "</div></div>");
     $("#overlay").click(function() {
 
         $(this).fadeOut(1000, function() {
@@ -258,8 +259,12 @@ function stop_event(tal, taeller) {
             //$(".btn_videre").fadeIn().click(feed);
         }
     }
-    $(".popud").html("<h4 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h4><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
+    if (spm.eventtype == "info") {
+        $(".popud").html("<h5 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
+    } else {
+        $(".popud").html("<h5 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><h2>" + tekst + "</h2><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
 
+    }
     $(".btn_videre").hide();
 
     if (spm.eventtype == "info") {
@@ -354,13 +359,13 @@ function feedback() {
     var correct_answers = "";
 
     for (var i = 0; i < spm.korrekt.length; i++) {
-        correct_answers = correct_answers + "<p class='correct_answer'>" + svar[spm.korrekt[i]] + "</p>";
+        correct_answers = correct_answers + "<li class='correctliste'>" + svar[spm.korrekt[i]] + "</li>";
     }
 
     //tween in feedback: 
-    $(".svarcontainer").delay(800).fadeOut(1000, function() {
-
-        $(".popud").append("<div class='feedback'><div class='h4'>" + spm.feedback + "</div><div class = 'correct_answers'>Correct answer(s): " + correct_answers + "<br/><div class ='btn btn-default-inverse btn-lg introknap videre_knap'>Continue</div>");
+    $(".svarcontainer").delay(2000).fadeOut(1000, function() {
+        $("h2").fadeOut(0);
+        $(".popud").append("<div class='feedback'><div class='h2'>" + spm.feedback + "</div><div class = 'h4'><div class='btn-success correct_answers'>Correct answer(s): </div>" + correct_answers + "<br/><div class ='btn btn-default-inverse btn-lg introknap videre_knap'>Continue</div>");
         $(".feedback").fadeOut(0);
         $(".feedback").fadeIn(1000);
 

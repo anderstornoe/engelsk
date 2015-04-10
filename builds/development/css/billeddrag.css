@@ -3,3 +3,10 @@
 }
 
 .droppable{margin-right:20px;}
+
+.movietext{
+	color: red;
+
+	z-index:3;
+
+}
