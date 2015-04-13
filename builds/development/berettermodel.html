@@ -9,11 +9,10 @@
 	<meta name="robots" content="noindex, nofollow" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- 
+
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css' />
-  -->   
 
 	<link rel="stylesheet" href="css/styles.css" type="text/css" />
 
@@ -22,16 +21,12 @@
 	</head>
     <body>
 
-        <!-- 
-          NOTE: Siden wrappes IKKE i et bootstrap "container" klasse, idet dette giver forstyrrelser 
-                i det JavaScript der styre positioneringen af div-tags med dropdown-menuer
-        -->
-        <div class="container-fluid"> 
+        <div class="container"> 
 
             <div class="row"> 
                 
-                <div class="col-sm-5">
-                    <div class="h1">The Hollywood model</div>                 
+                <div class="col-sm-12">
+                    <div class="h1">The Hollywood model</div>                
                 </div>
 
             </div>
@@ -119,9 +114,11 @@
                             </ul>
                         </div>
 
-                        <button id="done" type="button" class="btn btn-default btn-lg btn-autosize">
+                        <button id="done" type="button" class="right btn btn-default btn-lg btn-autosize">
                            Check answers
                         </button>
+
+                        <div class="clear"></div>
 
                     </div>  <!-- END .ImgWrapper -->
 
@@ -131,20 +128,22 @@
            </div>  <!-- END .row -->
 
         </div>  <!-- END .container-fluid -->
-<!-- 
+
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
- -->
 
+<!-- 
   		<script src="js/script.js"></script>
-
+ -->
 		<script src="js/berettermodel.js"></script>
 
         <script src="js/generelOverlay.js"></script>
 
         <script type="text/javascript">
             $( document ).ready(function() {
-                GeneralOverlayObj.ApplyOverlay(".ImgWrapper", "berettermodel");
+                GeneralOverlayObj.ApplyOverlay_why(".ImgWrapper", "berettermodel");
+                GeneralOverlayObj.ApplyOverlay_how(".ImgWrapper", "berettermodel");
+                footer();
             });
         </script>
 

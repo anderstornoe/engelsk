@@ -1,56 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
-
-
+<html>
 	<head>
-	<title>The conflict box</title>
 
-	<!-- http://www.robotstxt.org/meta.html -->
-	<meta name="robots" content="noindex, nofollow" />
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="css/styles.css" type="text/css" />
-	<link rel="stylesheet" href="css/theConfilctBox.css" type="text/css" />
+		<title>The conflict box</title>
+
+		<!-- http://www.robotstxt.org/meta.html -->
+		<meta name="robots" content="noindex, nofollow" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+	    <link rel="stylesheet" href="css/theConflictBox.css" type="text/css" />
 
 	</head>
-    <body>
+	<body>
 
-        <!-- 
-          NOTE: Siden wrappes IKKE i et bootstrap "container" klasse, idet dette giver forstyrrelser 
-                i det JavaScript der styre positioneringen af div-tags med dropdown-menuer
-        -->
-        <div class="container-fluid"> 
 
-            <div class="row"> 
+		<div class="container"> 
+
+            <!-- VIGTIG NOTE: class="col-xs-12" paavirker positioneringen af overlays  --> 
+            <!-- <div class="col-xs-12">  -->  
+
+                <h1>The conflict box</h1>                 
+            
+                <h5>
+	                The protagonist is the <b>main character</b> and the “hero” of the story.<br/>
+					The antagonist is the <b>opposing character</b>, the ”bad guy”.<br/>
+					Remember that the protagonist can be the antagonist at the same time.
+				</h5>
+				<h5>
+					The protagonist wants to achieve something and the antagonist wants to prevent the protagonist from achieving his or her goal. This is a conflict. When it is impossible for the protagonist and antagonist to succeed at the same time <b>the conflict is locked</b>.
+				</h5>
+				<h5>
+					A story is often a description of a conflict between two forces. The story begins when a protagonist tries to reach his or her goal and takes form as the antagonist fights the protagonist in achieving his or her goal. If you want to understand and analyse a film is important to find out what the central conflict is about and if the conflict is locked.<br/>
+					To figure out the central conflict of the film you can try to fill in the conflict box.
+				</h5>
+
+            
+            	<div class="ImgWrapper"> 
+
+            		<div id="box1" class="red box left mt45 ml45">
+            			<div class="BoxText">
+            			</div>
+            		</div>
+            		<div id="box2" class="red box left mt45 ml15">
+            			<div class="BoxText">
+            			</div>
+            		</div>
+            		<div class="clear"></div>
+
+            		<div id="box3" class="red box left mt17 ml45">
+            			<div class="BoxText">
+            			</div>
+            		</div>
+            		<div id="box4" class="red box left mt17 ml15">
+            			<div class="BoxText">
+            			</div>
+            		</div>
+            		<div class="clear"></div>
+
+            	</div>
+
+                <span id="box1_overlay_blue"></span>
+                <span id="box2_overlay_blue"></span>
+                <span id="box3_overlay_red"></span>
+                <span id="box4_overlay_red"></span>
+
+            	<span id="AntagonistArrow"></span>
+            	<span id="ProtagonistArrow"></span>
+
+            	<div id="log"></div>
+
+           
+            	<h2>An example - Lord of The Rings</h2> 
+
+                <h5>
+	                Based on The Lord of the Rings, here is an example of how you can use the conflict box.
+					The Lord of the Ring is a fantasy film based on a world called Middle Earth.<br/>
+					The Evil Sauron wants to take over control of the entire world. An alliance forms to fight Sauron.
+				</h5>
+				<h5>
+					The story begins when Frodo leaves the Shire to keep the ring safe from Sauron.<br/>
+					The story takes form when Sauron does all he can to get the ring back.<br/>
+					The conflict in the film is, for instance, seen when Sauron sends the ring wraiths to kill the hobbits at the Prancing Pony. When Sauron’s evil almost succeeds in corrupting Boromir, one of Frodo’s helpers, and when the characters Pippin and Merry defeats one of Sauron’s evil allies with the help of the Ents.
+				</h5>
+
+            
+                <img class="img-responsive" src="images/example@x2.png" alt="Conflict box example">
+            
                 
-                <div class="col-sm-5">
-                    <div class="h1">The conflict box</div>                 
-                </div>
+                <h2>Try it out</h2> 
 
-            </div>
+                <h5>
+                    Choose a film and analyse it using the conflict box model. Use this PDF to help you.
+                </h5>
 
-            <div class="row"> 
- 
-                    <div class="ImgWrapper">  
+                <h5> 
+                    <a id="pdfimglink" href="">
+                        <img class="img-responsive" src="images/PDF_download.png" alt="Download pdf"> 
+                        <span>Using The Conflict Box</span>
+                    </a>
+                </h5>
+            <!-- </div> -->  <!-- class="col-xs-12" -->
 
-                        
-                    </div>  <!-- END .ImgWrapper -->
+        </div>
 
-           </div>  <!-- END .row -->
 
-        </div>  <!-- END .container-fluid -->
+		<script src="js/script.js"></script>
 
-  		<script src="js/script.js"></script>
-
-		<script src="js/theConfilctBox.js"></script>
+		<script src="js/theConflictBox.js"></script>
 
         <script src="js/generelOverlay.js"></script>
 
         <script type="text/javascript">
-            $( document ).ready(function() {
-                GeneralOverlayObj.ApplyOverlay(".ImgWrapper", "berettermodel");
-            });
+            // $( document ).ready(function() {
+            //     GeneralOverlayObj.ApplyOverlay(".ImgWrapper", "berettermodel");
+            // });
         </script>
 
-    </body>
+	</body>
 </html>
