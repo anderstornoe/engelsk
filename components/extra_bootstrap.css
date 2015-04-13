@@ -1,36 +1,18 @@
 @font-face {
-    font-family: 'OpenSans';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Open Sans'), local('OpenSans'), url("//themes.googleusercontent.com/static/fonts/opensans/v6/u-WUoqrET9fUeobQW7jkRT8E0i7KZn-EPnyo3HZu7kw.woff") format('woff');
-}
-
-@media (max-width: 992px) {
-    .h2 {
-        font-size: 22px;
-    }
-    .h3 {
-        font-size: 18px;
-    }
-    .h4 {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 768px) {
-    .h2 {
-        font-size: 18px;
-    }
-    .h3 {
-        font-size: 16px;
-    }
-    .h4 {
-        font-size: 12px;
-    }
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url("//themes.googleusercontent.com/static/fonts/opensans/v6/u-WUoqrET9fUeobQW7jkRT8E0i7KZn-EPnyo3HZu7kw.woff") format('woff');
 }
 
 
+@media (max-width: @screen-xs) {
+    body{font-size: 10px;}
+}
 
+@media (max-width: @screen-sm) {
+    body{font-size: 12px;}
+}
 .btn {
     padding: 4px 20px;
     margin-right: 20px;
@@ -82,6 +64,7 @@
 .btn-lg {
     text-transform: uppercase;
     letter-spacing: 1px;
+
 }
 
 p {
