@@ -30,23 +30,36 @@ var seconds;
 
 var timestamp_Array = [];
 var JsonObj;
+var JsonVideoInput_update;
 //XML SKAL SKIFTES UD MED JSON
 
 var intro_header;
 var intro_knap;
 var intro_text;
 
-function loadData(url) {
+loadData();
+
+function loadData() {
+    runde = 0;
+    events_taeller = 0;
+    total_score = 0;
+    total_spm = 0;
+    playing = false;
+    console.log("loadData");
+    $(".popud").html("");
+    $(".intro").html("");
     $.ajax({
-        url: url,
+        //url: url,
         // contentType: "application/json; charset=utf-8",  // Blot en test af tegnsaettet....
         // dataType: 'json', // <------ VIGTIGT: Saadan boer en angivelse til en JSON-fil vaere! 
         dataType: 'text', // <------ VIGTIGT: Pga. ???, saa bliver vi noedt til at angive JSON som text. 
-        async: false, // <------ VIGTIGT: Sikring af at JSON hentes i den rigtige raekkefoelge (ikke asynkront). 
+        async: true, // <------ VIGTIGT: Sikring af at JSON hentes i den rigtige raekkefoelge (ikke asynkront). 
         success: function(data, textStatus, jqXHR) {
 
+            timestamp_Array = [];
+            JsonObj = JsonVideoInput_update;
 
-            JsonObj = jQuery.parseJSON(data);
+            console.log("success loadData");
 
             for (var key in JsonObj) {
                 var objkey = Object.keys(JsonObj[key]);
@@ -67,7 +80,9 @@ function loadData(url) {
                 //console.log("Stops: " + stops);
             }
             //total_spille_tid = data.find('video').attr('total_tid');
-            var lengde = stops.length; //data.find('runde').length;
+            if (stops) {
+                var lengde = stops.length;
+            } //data.find('runde').length;
             popudwidth = 450;
             popud_left = 0; //(bredde / 2) - (popudwidth / 2);
 
@@ -103,7 +118,13 @@ function setUpTube() {
 //    after the API code downloads.
 
 function onYouTubeIframeAPIReady() {
-    //console.log(videoId);
+
+    setupplayer();
+    console.log("onYouTubeIframeAPIReady");
+
+}
+
+function setupplayer() {
     $("#overlay").toggle();
     player = new YT.Player('player', {
         videoId: videoId,
@@ -154,8 +175,10 @@ function onYouTubeIframeAPIReady() {
 
 function timerCheck() {
 
-    var playTime = Math.round(player.getCurrentTime());
+    if (player) {
 
+        var playTime = Math.round(player.getCurrentTime());
+    }
     //Gør overlay og timebar responsive:
     var embed_height = $(".embed-responsive").css("height");
     $("#overlay").css("height", embed_height); //                    $("#time_bar").css("width", player.getCurrentTime() * 10 + "px");
@@ -439,7 +462,7 @@ function slutFeedback() {
     $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + " questions.</h3><div class='btn btn-default-inverse btn-lg forfra_knap'>Try again</div><div class='btn btn-default-inverse btn-lg continue_film'>Watch the rest of the film</div>");
     $(".forfra_knap").click(function() {
         //console.log ("ost");
-        location.reload();
+      setupplayer();
     });
 
     $(".continue_film").click(function() {

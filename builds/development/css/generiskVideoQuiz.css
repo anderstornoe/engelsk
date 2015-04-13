@@ -1,3 +1,11 @@
+	.FormsContainer, .generator_container{
+		color:black;
+	}
+
+	.embed-responsive{
+		color:white;
+	}
+
 #HeaderWrap{padding: 10px;}
 .InputHeader{font-weight: 600; padding-top: 15px;}
 .QuestionField{margin: 10px;}
