@@ -13203,6 +13203,10 @@ button.close {
 	z-index:1;
 }
 
+.vuc_footer{
+	text-align: center;
+}
+
 @font-face {
   font-family: 'OpenSans';
   font-style: normal;
