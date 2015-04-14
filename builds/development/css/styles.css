@@ -13205,11 +13205,8 @@ button.close {
 
 .vuc_footer{
 	text-align: center;
-  color:black;
 }
-#OverlyContainerWhy, #OverlyContainerHow {
-  color:black;
-}
+
 @font-face {
     font-family: 'OpenSans';
     font-style: normal;
