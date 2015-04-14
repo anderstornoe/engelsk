@@ -58,6 +58,7 @@
     .glyphicon-chevron-down{margin-top: -4px; vertical-align: middle;}   
 
     .Dmenu{display: flex;} /* NOTE: "display: flex" faar elementerne til at aligne sig oven paa hinanden, som oensket */ 
+    .Dmenu .btn {padding-left: 10px;}
 
     .MenuHeading{margin-right: 6px;}
 
