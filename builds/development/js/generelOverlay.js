@@ -32,9 +32,9 @@ var GeneralOverlayClass = {
 
     OverlayMarkup: '<div class="Overlay"></div>' +
         '<div class="OverlayTextContainer">' +
-        '<span class="right glyphicon glyphicon-remove-circle"></span>' +
+        '<span class="right glyphicon glyphicon-remove"></span>' +
         '<div class="clear"></div>' +
-        '<span class="OverlayTextHeader"></span>' +
+        '<h1><span class="OverlayTextHeader"></span></h1>' +
         '<div class="OverlayText"></div>' +
         '</div>',
 
@@ -161,7 +161,7 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId);
 
             OverlayText = thisObj.JsonWhyHow[EleraningObj].why_content;
-            OverlayTextHeader = "Why:";
+            OverlayTextHeader = "Why";
 
             console.log("ButtonId: " + ButtonId + ", \nOverlayText: " + OverlayText);
 
@@ -208,7 +208,7 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId);
 
             OverlayText = thisObj.JsonWhyHow[EleraningObj].how_content;
-            OverlayTextHeader = "How:";
+            OverlayTextHeader = "How";
 
             console.log("ButtonId: " + ButtonId + ", \nOverlayText: " + OverlayText);
 
