@@ -92,20 +92,6 @@
             $( Id ).css({ position: "relative", top: Top_scaled+"px", left: Left_scaled+"px"});
 
         }
-      // } else {  // Dette justere positionen af div'erne "Left", efterhaanden som framen bliver bredere 
-      //           // billedet flyttes mod centeret: 
-        // var Offset = $(ObjWrapper).offset();
-        // var Position = $(ObjWrapper).position();
-
-        // var HalfWidthPos = (Width - NativeWidth)/2;
-
-        // console.log("===== Offset: " + JSON.stringify( Offset ) + 
-        //             ", Position: " + JSON.stringify( Position ) + 
-        //             ", HalfWidthPos: " + HalfWidthPos);
-
-        // // Placer alle elementer:
-        // $( Id ).css({ position: "relative", top: Top_scaled+"px", left: Left_scaled+HalfWidthPos+"px"});
-      // }
   }
 
   // Resize overlayet til at matche billedet:
