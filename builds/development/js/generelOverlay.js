@@ -111,7 +111,13 @@ var GeneralOverlayClass = {
             "why_btntext": "Why-button instruction text",
             "why_content": "Working with film-analysis is part of the subject of English and to do that in a meaningful way you need the proper vocabulary and an understanding of what to look for. The following video will introduce you to the main film techniques.",
             "how_btntext": "How-button instruction text",
-            "how_content": "Get an introduction to film analysis. Get the content as text. Get an overview of the three main analysis concepts: set, plot, shot. Read the helpful questions. Watch the introduction first. Then go into the film techniques in depth"
+            "how_content": "<ul>" +  
+                                "<li>Get an introduction to film analysis</li>" + 
+                                "<li>Get the content as text</li>" + 
+                                "<li>Get an overview of the three main analysis concepts: set, plot, shot</li>" + 
+                                "<li>Read the helpful questions</li>" +
+                                "<li>Watch the introduction first. Then go into the film techniques in depth</li>" +
+                            "</ul>"
         },
         "generisk_videoquiz": {
             "why_btntext": "Why-button instruction text",
