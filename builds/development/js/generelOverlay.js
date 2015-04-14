@@ -32,9 +32,9 @@ var GeneralOverlayClass = {
 
     OverlayMarkup: '<div class="Overlay"></div>' +
         '<div class="OverlayTextContainer">' +
-        '<span class="right glyphicon glyphicon-remove-circle"></span>' +
+        '<span class="right glyphicon glyphicon-remove"></span>' +
         '<div class="clear"></div>' +
-        '<span class="OverlayTextHeader"></span>' +
+        '<h1><span class="OverlayTextHeader"></span></h1>' +
         '<div class="OverlayText"></div>' +
         '</div>',
 
@@ -148,8 +148,10 @@ var GeneralOverlayClass = {
             // thisObj.ResizeAndPositionOverlayWindow(Selector, ".Overlay");
         });
 
-        $(document).on('click', ".OverlayButton", function(event) {
+        $(document).on('click', "#OverlayWhy", function(event) {
             event.preventDefault();
+
+            // alert("WHY");
 
             if ($(".Overlay").length === 0) // Ensures that only one overlay is added.
                 $(Selector).before(thisObj.OverlayMarkup);
@@ -167,9 +169,9 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId);
 
             OverlayText = thisObj.JsonWhyHow[EleraningObj].why_content;
-            OverlayTextHeader = "Why:";
+            OverlayTextHeader = "Why";
 
-            console.log("ButtonId: " + ButtonId + ", \nOverlayText: " + OverlayText);
+            console.log("ButtonId: " + ButtonId + ", \nOverlayTextHeader: " + OverlayTextHeader + ", \nOverlayText: " + OverlayText);
 
             $(".OverlayTextHeader").html(OverlayTextHeader);
             $(".OverlayText").html(OverlayText);
@@ -195,8 +197,10 @@ var GeneralOverlayClass = {
             // thisObj.ResizeAndPositionOverlayWindow(Selector, ".Overlay");
         });
 
-        $(document).on('click', ".OverlayButton", function(event) {
+        $(document).on('click', "#OverlayHow", function(event) {
             event.preventDefault();
+
+            // alert("HOW");
 
             if ($(".Overlay").length === 0) // Ensures that only one overlay is added.
                 $(Selector).before(thisObj.OverlayMarkup);
@@ -214,9 +218,9 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId);
 
             OverlayText = thisObj.JsonWhyHow[EleraningObj].how_content;
-            OverlayTextHeader = "How:";
+            OverlayTextHeader = "How";
 
-            console.log("ButtonId: " + ButtonId + ", \nOverlayText: " + OverlayText);
+            console.log("ButtonId: " + ButtonId + ", \nOverlayTextHeader: " + OverlayTextHeader + ", \nOverlayText: " + OverlayText);
 
             $(".OverlayTextHeader").html(OverlayTextHeader);
             $(".OverlayText").html(OverlayText);
