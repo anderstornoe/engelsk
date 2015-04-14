@@ -26,18 +26,20 @@
                 </div>
             </div>
         </div>
-        <script src="js/script.js"></script>
-        <script src="js/vid_new.js"></script>
-        <script>
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/vid_new.js"></script>
+    <script>
         loadData("data/vid_an.json");
-        </script>
-        <script src="js/generelOverlay.js"></script>
-        <script type="text/javascript">
+    </script>
+    <script src="js/generelOverlay.js"></script>
+    <script type="text/javascript">
         $(document).ready(function() {
-            GeneralOverlayObj.ApplyOverlay(".embed-responsive", "vid_an");
+            GeneralOverlayObj.ApplyOverlay_why(".embed-responsive", "vid_an");
+            GeneralOverlayObj.ApplyOverlay_how(".embed-responsive", "vid_an");
             footer();
         });
-        </script>
+    </script>
 </body>
 
 </html>
