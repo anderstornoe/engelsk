@@ -119,7 +119,7 @@
                 margin-bottom: 30px;
     }
 
-    .AnsClass{ font-size: 0.8em;}
+    .AnsClass{ font-size: 0.8em; z-index: 1;}
 
     .HintClass{
         font-size: 0.9em;

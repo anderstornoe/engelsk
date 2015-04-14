@@ -29,7 +29,7 @@
 </head>
 
 <body>
-<div class="fluid-container generator_container">
+<div class="container-fluid generator_container">
     <div id="HeaderWrap">
         <h1>VIDEOQUIZ</h1>
 
@@ -106,8 +106,11 @@
 
     <h3>User interface</h3>
 
-    STOP <span id="PagerContainer"></span>
-    <a href="#" class="AddNewPageButton btn btn-default"> Tilføj stop </a> <div class="clear"></div>
+    <div id="PagerWrapper">
+        STOP: 
+        <span id="PagerContainer"></span>
+        <a href="#" class="AddNewPageButton btn btn-default"> Tilføj stop </a> 
+    </div>
     
     <div id="FormsContainer" class="b-red p10">
     </div>
@@ -131,11 +134,12 @@
     </ul>
 --> 
 
+<!-- 
     <h2>JSON output</h2>
 
     <pre id="JsonOutput">
 	</pre>
-
+ -->
 
     <h2>JSON video input</h2>
 

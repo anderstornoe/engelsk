@@ -1017,8 +1017,8 @@ Pager("#PagerContainer", "#FormsContainer > div", "Pager");
         VideoObj.LoadDefaultNoVideoImgIfNoVideoIsChosen();
         VideoObj.QuizData = GetFormsData('#FormsContainer');
 
-        // Dette ukommenteres indtil moedet kvalitetscirklen mandag d. 9/3-2015 er overstaaet: 
-        $("#JsonOutput").html(JSON.stringify(VideoObj, null, 4));
+        // // Dette ukommenteres indtil moedet kvalitetscirklen mandag d. 9/3-2015 er overstaaet: 
+        // $("#JsonOutput").html(JSON.stringify(VideoObj, null, 4));
 
         var JsonVideoInput = ReplicateVideoInputFormat(VideoObj);
         $("#JsonVideoInput").html(JSON.stringify(JsonVideoInput, null, 4));
