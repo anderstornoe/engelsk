@@ -5,8 +5,8 @@
  */
 
 /*!
- * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=52bbbedda4c314bc63c5)
- * Config saved to config.json and https://gist.github.com/52bbbedda4c314bc63c5
+ * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=9283cf5329f2eab0b51e)
+ * Config saved to config.json and https://gist.github.com/9283cf5329f2eab0b51e
  */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
@@ -1133,7 +1133,7 @@ img {
   border-radius: 6px;
 }
 .img-thumbnail {
-  padding: 4px;
+  padding: 10px;
   line-height: 1.7;
   background-color: #f8f8f6;
   border: 1px solid none;
@@ -4896,7 +4896,7 @@ a.badge:focus {
 }
 .thumbnail {
   display: block;
-  padding: 4px;
+  padding: 10px;
   margin-bottom: 23px;
   line-height: 1.7;
   background-color: #f8f8f6;
