@@ -126,9 +126,9 @@ var GeneralOverlayClass = {
             "how_content": "Lorem ipsum dolor sit amet, ut egestas maecenas iaculis dictumst eros. Donec integer ante vel. Dolor nullam ac, lacus augue. Vel eget auctor, hac nec tortor non aliquam suscipit, rhoncus vulputate nulla enim quam elit consequat, luctus wisi tortor, elit pretium dictum nec sit curabitur. Eget mauris hac, sit nec velit ultricies praesent wisi sit, turpis non ut sapien, velit nunc lorem, arcu venenatis consectetuer esse eget non.Lacinia odio felis, nec in est et, mollis egestas, dui est sociis, esse eu. Ante euismod, ac quis dictum libero rerum, mollis morbi sollicitudin luctus. In felis ipsum mi, aliquet purus aute, lectus quidem odio suscipit, facilisis rutrum sed egestas, faucibus justo."
         },
         "the_conflict_box": {
-            "why_btntext": "Why-button instruction text",
+            "why_btntext": "Learn about how to analyze the conflict between characters.",
             "why_content": "This assignment lets you practice recognizing plot structure.",
-            "how_btntext": "How-button instruction text",
+            "how_btntext": "Click in the box.",
             "how_content": "Follow the different steps in the document."
         }
     },
@@ -282,5 +282,5 @@ var GeneralOverlayObj = Object.create(GeneralOverlayClass);
 /// Jeg spammer lige med en footer (Burde ligge i egen fil..):
 
 function footer() {
-    $(".container, .container-fluid").append("<div class='vuc_footer'><hr><h5>Digitale læringsmaterialer på voksenuddannelser</h5><h6>Udviklet af et produktionsfællesskab mellem otte VUC’er til anvendelse på de deltagende skoler: Hf og VUC Nordsjælland, VUC Hvidovre-Amager VUC Roskilde, VUC Vestegnen, VUF, VUC Storstrøm, VUC Aarhus og Københavns VUC (KVUC). <br/ > Copyright 2015 </h6></div >");
+    $(".container, .container-fluid").append("<div class='vuc_footer'><hr><h5>Digitale læringsmaterialer på voksenuddannelser</h5><h6>Udviklet af et produktionsfællesskab mellem otte VUC’er til anvendelse på de deltagende skoler: <br/> Hf og VUC Nordsjælland, VUC Hvidovre-Amager VUC Roskilde, VUC Vestegnen, VUF, VUC Storstrøm, VUC Aarhus og Københavns VUC (KVUC). <br/ > Copyright 2015 </h6></div >");
 }

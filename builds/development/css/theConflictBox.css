@@ -7,7 +7,14 @@
 
 .box{width: 47%; height: 42%; padding: 0px; display: inline-block;} /* VIGTIGT: Padding skal være nul pga JQuery offset */
 
-.clickbg{background-color: #f8f8f6; width: 90%; height: 80%; margin: 4%; text-align: center; padding-top: 10%;}
+.clickbg{	/*background-color: #f8f8f6; */
+			background-color: #fff;
+			width: 90%; 
+			height: 80%; 
+			margin: 4%; 
+			text-align: center; 
+			padding-top: 10%;
+		}
 
 #box1 .BoxText{padding: 20% 30% 4% 4%;}
 #box2 .BoxText{padding: 10% 4% 4% 30%;}
@@ -73,7 +80,7 @@
       http://stackoverflow.com/questions/12609110/responsive-css-background-images
      */
     /*background-image: url("../images/conflictbox_cleared@x2.png");*/
-    background-image: url("../images/conflictbox_text@2.png");
+    background-image: url("../images/conflictbox_text@x2.png");
     background-repeat:no-repeat;
     background-size:contain;
     background-position:center;

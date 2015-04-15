@@ -24,7 +24,7 @@
 
                 <h1>The conflict box</h1>                 
             
-                <h5>
+                <h5 id="TheConflictBoxWhy">
 	                The protagonist is the <b>main character</b> and the “hero” of the story.<br/>
 					The antagonist is the <b>opposing character</b>, the ”bad guy”.<br/>
 					Remember that the protagonist can be the antagonist at the same time.
@@ -97,7 +97,7 @@
                 </h5>
 
                 <h5> 
-                    <a id="pdfimglink" href="">
+                    <a id="pdfimglink" href="pdf/the_conflict_box01.pdf">
                         <img class="img-responsive" src="images/PDF_download.png" alt="Download pdf"> 
                         <span>Using The Conflict Box</span>
                     </a>
@@ -112,11 +112,12 @@
 		<script src="js/theConflictBox.js"></script>
 
         <script src="js/generelOverlay.js"></script>
-
         <script type="text/javascript">
-            // $( document ).ready(function() {
-            //     GeneralOverlayObj.ApplyOverlay(".ImgWrapper", "berettermodel");
-            // });
+        $(document).ready(function() {
+                GeneralOverlayObj.ApplyOverlay_why("#TheConflictBoxWhy", "the_conflict_box");
+                GeneralOverlayObj.ApplyOverlay_how(".ImgWrapper", "the_conflict_box");
+                footer();
+            });
         </script>
 
 	</body>
