@@ -6,4 +6,14 @@
 .jumbotron a{
 	float:right;
 	margin:0;
+	clear:both;
+}
+.jumbotron {
+	margin-right: 16.6667%;
+}
+.om_container {
+	margin-right: 25%;
+}
+.vuc_footer {
+	margin-top: 23px;
 }
