@@ -13207,6 +13207,26 @@ button.close {
 	text-align: center;
 }
 
+
+.image-holder {
+    display:inline-block;
+    position: relative;
+}
+.image-holder:after {
+    content:'';
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background: blue;
+    opacity: 0.5;
+}
+.image-holder:hover:after {
+    opacity: 0;
+}
 @font-face {
     font-family: 'OpenSans';
     font-style: normal;
