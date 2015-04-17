@@ -7,23 +7,25 @@
   // top_ajust  : "value", er afhaengig af tekst-stoerrelser, margin og padding paa ul-tags - de svare alle til at placere 
   //              ul-tag'et i "position: relative; top: 0px" - se det udkommenterede CSS foroven.
   // top og left: er begge angivelser for ul-tag'et naar billedet er i dets native stoerrelse, dvs 911 x 400 px.
+
   // var JsonCss = [ 
-  //     {"id":"#Menu1", "top":268, "left":66,   "left_ajust":0, "top_ajust":0,    "answer":"Teaser"},
-  //     {"id":"#Menu2", "top":200, "left":155,  "left_ajust":0, "top_ajust":-30,  "answer":"Presentation"},
-  //     {"id":"#Menu3", "top":140, "left":253,  "left_ajust":0, "top_ajust":-60,  "answer":"Elaboration"},
-  //     {"id":"#Menu4", "top":80,  "left":340,  "left_ajust":0, "top_ajust":-90,  "answer":"Point of no return"},
-  //     {"id":"#Menu5", "top":20,  "left":451,  "left_ajust":0, "top_ajust":-120, "answer":"Conflict escalation"},
-  //     {"id":"#Menu6", "top":-40, "left":618,  "left_ajust":0, "top_ajust":-150, "answer":"Climax"},
-  //     {"id":"#Menu7", "top":-10, "left":702,  "left_ajust":0, "top_ajust":-180, "answer":"Resolution"}
+  //     {"id":"#Menu1", "top":218, "left":65,   "left_ajust":0, "top_ajust":0,    "answer":"Teaser"},
+  //     {"id":"#Menu2", "top":150, "left":162,  "left_ajust":0, "top_ajust":-30,  "answer":"Presentation"},
+  //     {"id":"#Menu3", "top":80, "left":270,  "left_ajust":0, "top_ajust":-60,  "answer":"Elaboration"},
+  //     {"id":"#Menu4", "top":10,  "left":352,  "left_ajust":0, "top_ajust":-90,  "answer":"Point of no return"},
+  //     {"id":"#Menu5", "top":-60,  "left":489,  "left_ajust":0, "top_ajust":-120, "answer":"Conflict escalation"},
+  //     {"id":"#Menu6", "top":-110, "left":670,  "left_ajust":0, "top_ajust":-150, "answer":"Climax"},
+  //     {"id":"#Menu7", "top":-60, "left":764,  "left_ajust":0, "top_ajust":-180, "answer":"Resolution"}
   // ];
+
   var JsonCss = [ 
       {"id":"#Menu1", "top":218, "left":65,   "left_ajust":0, "top_ajust":0,    "answer":"Teaser"},
-      {"id":"#Menu2", "top":150, "left":162,  "left_ajust":0, "top_ajust":-30,  "answer":"Presentation"},
-      {"id":"#Menu3", "top":80, "left":270,  "left_ajust":0, "top_ajust":-60,  "answer":"Elaboration"},
-      {"id":"#Menu4", "top":10,  "left":352,  "left_ajust":0, "top_ajust":-90,  "answer":"Point of no return"},
-      {"id":"#Menu5", "top":-60,  "left":489,  "left_ajust":0, "top_ajust":-120, "answer":"Conflict escalation"},
-      {"id":"#Menu6", "top":-110, "left":670,  "left_ajust":0, "top_ajust":-150, "answer":"Climax"},
-      {"id":"#Menu7", "top":-60, "left":764,  "left_ajust":0, "top_ajust":-180, "answer":"Resolution"}
+      {"id":"#Menu2", "top":180, "left":162,  "left_ajust":0, "top_ajust":-30,  "answer":"Presentation"},
+      {"id":"#Menu3", "top":140, "left":270,  "left_ajust":0, "top_ajust":-60,  "answer":"Elaboration"},
+      {"id":"#Menu4", "top":100,  "left":352,  "left_ajust":0, "top_ajust":-90,  "answer":"Point of no return"},
+      {"id":"#Menu5", "top":60,  "left":489,  "left_ajust":0, "top_ajust":-120, "answer":"Conflict escalation"},
+      {"id":"#Menu6", "top":30, "left":670,  "left_ajust":0, "top_ajust":-150, "answer":"Climax"},
+      {"id":"#Menu7", "top":80, "left":764,  "left_ajust":0, "top_ajust":-180, "answer":"Resolution"}
   ];
 
   var JsonCss_backup = JsonCss;
@@ -44,6 +46,9 @@
       {"answer":"Resolution", 
        "hint":"The resolution is the end of the story, a new order has been established or the old one has been re-established."}
   ];
+
+  // RescaleImage(".ImgWrapper", 911, 400);
+  // RepositionObjects(JsonCss ,".ImgWrapper", 911, 400);
   
   // Funktionen rescaler billedet saaledes at forholdet imellem billedets naturlige hoejde og bredde bevares.
   //    ImgWrapper = En wrapper (f.eks et div-tag) omkring en div med et billede.
@@ -78,8 +83,9 @@
 
             // R_left og R_top er empirisk valgte scaling factors der faa positionerne
             // til at vaere bedre for skaermstoerrelser mindre end NativeWidth og NativeHeigth:
-            R_top = Math.pow(0.15, Height/NativeHeigth)*1.1; 
-            R_left = 50*R_top;  
+            // R_top = Math.pow(0.15, Height/NativeHeigth)*1.1; // position: "relative"
+            R_top = Math.pow(0.02, Height/NativeHeigth)*1.1; // position: "absolute"
+            R_left = 130*R_top;  
 
             Left_scaled = Math.round( (Width/NativeWidth)*Left - R_left );
             Top_scaled =  Math.round( (Height/NativeHeigth)*Top + R_top*Top_ajust );
@@ -89,10 +95,14 @@
             console.log("2 --- Id: " + Id + ", TagText: " + TagText + ", DefaultText: " + DefaultText );
 
             // Placer alle elementer:
-            $( Id ).css({ position: "relative", top: Top_scaled+"px", left: Left_scaled+"px"});
+            // $( Id ).css({ position: "relative", top: Top_scaled+"px", left: Left_scaled+"px"});  // position: "relative" kan ikke forstaas af IE <= 9 + Safari
+            $( Id ).css({ position: "absolute", top: Top_scaled+"px", left: Left_scaled+"px"});
 
+            console.log("### MARK ###\n   Width: " + Width + ", Height: " + Height + 
+                        "\n   Id: " + Id + ", Top: " + Top + ", Top: " + Top + 
+                        "\n   Top_scaled: " + Top_scaled + ", Left_scaled: " + Left_scaled); 
         }
-  }
+  } 
 
   // Resize overlayet til at matche billedet:
   function ResizeAndPositionOverlayWindow(WindowSelector, OverlayWindowSelector){
@@ -184,7 +194,7 @@
          // RepositionObjects(JsonCss ,".ImgWrapper", 840, 528);
          RescaleImage(".ImgWrapper", 911, 400);
          RepositionObjects(JsonCss ,".ImgWrapper", 911, 400);
-         ResizeAndPositionOverlayWindow(".ImgWrapper", ".ImgOverlay");
+         // ResizeAndPositionOverlayWindow(".ImgWrapper", ".ImgOverlay");
       });
 
 

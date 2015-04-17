@@ -5,22 +5,29 @@
 
 .red{} /* border: 1px solid #F00; */
 
-.box{width: 47%; height: 42%; padding: 0px; display: inline-block;} /* VIGTIGT: Padding skal være nul pga JQuery offset */
+.box{	width: 47%; 
+		height: 42%; 
+		padding: 0px; 
+		display: inline-block;
+        cursor:pointer;   /* IPAD-work-around til at faa div's til at lukke!!! */
+	} /* VIGTIGT: Padding skal være nul pga JQuery offset */
 
 .clickbg{	/*background-color: #f8f8f6; */
 			background-color: #fff;
-			width: 90%; 
-			height: 80%; 
-			margin: 4%; 
+			width: 89%;    /* width: 90%; */
+			height: 80%;   /* height: 80%; */
+			margin: 6% 4% 4% 6%;  /* margin: 4% */
 			text-align: center; 
 			padding-top: 10%;
+			cursor:pointer;   /* IPAD-work-around til at faa div's til at lukke!!! */
+			/*display: none;*/
 		}
-
+/*
 #box1 .BoxText{padding: 20% 30% 4% 4%;}
 #box2 .BoxText{padding: 10% 4% 4% 30%;}
 #box3 .BoxText{padding: 20% 30% 4% 4%;}
 #box4 .BoxText{padding: 10% 4% 4% 30%;}
-
+*/
 #box1_overlay_blue, #box2_overlay_blue {
 				    position: fixed;
 				    top: 0;
@@ -30,6 +37,7 @@
 				    background-color: rgba(29,166,219,0.2);
 				    z-index: 5;
 				    display: none;
+				    cursor:pointer;   /* IPAD-work-around til at faa div's til at lukke!!! */
 				}
 
 #box3_overlay_red, #box4_overlay_red {
@@ -41,6 +49,7 @@
 				    background-color: rgba(226,134,134,0.2);
 				    z-index: 5;
 				    display: none;
+				    cursor:pointer;   /* IPAD-work-around til at faa div's til at lukke!!! */
 				}
  
 .mt17{margin-top: 1.7%;}
