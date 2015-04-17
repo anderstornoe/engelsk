@@ -3,7 +3,7 @@
 
 
 // ============================================
-// 		WHY / HOW tekst fra MAM
+//      WHY / HOW tekst fra MAM
 // ============================================
 // why:
 // Skimming and sorting information are both important abilities to have when you study, this assignment helps you
@@ -111,13 +111,13 @@ var GeneralOverlayClass = {
             "why_btntext": "Why-button instruction text",
             "why_content": "Working with film-analysis is part of the subject of English and to do that in a meaningful way you need the proper vocabulary and an understanding of what to look for. The following video will introduce you to the main film techniques.",
             "how_btntext": "How-button instruction text",
-            "how_content": "<ul>" +  
-                                "<li>Get an introduction to film analysis</li>" + 
-                                "<li>Get the content as text</li>" + 
-                                "<li>Get an overview of the three main analysis concepts: set, plot, shot</li>" + 
-                                "<li>Read the helpful questions</li>" +
-                                "<li>Watch the introduction first. Then go into the film techniques in depth</li>" +
-                            "</ul>"
+            "how_content": "<ul>" +
+                "<li>Get an introduction to film analysis</li>" +
+                "<li>Get the content as text</li>" +
+                "<li>Get an overview of the three main analysis concepts: set, plot, shot</li>" +
+                "<li>Read the helpful questions</li>" +
+                "<li>Watch the introduction first. Then go into the film techniques in depth</li>" +
+                "</ul>"
         },
         "generisk_videoquiz": {
             "why_btntext": "Why-button instruction text",
@@ -284,3 +284,73 @@ var GeneralOverlayObj = Object.create(GeneralOverlayClass);
 function footer() {
     $(".container, .container-fluid").append("<div class='vuc_footer'><hr><h5>Digitale læringsmaterialer på voksenuddannelser</h5><h6>Udviklet af et produktionsfællesskab mellem otte VUC’er til anvendelse på de deltagende skoler: <br/> Hf og VUC Nordsjælland, VUC Hvidovre-Amager VUC Roskilde, VUC Vestegnen, VUF, VUC Storstrøm, VUC Aarhus og Københavns VUC (KVUC). <br/ > Copyright 2015 </h6></div >");
 }
+
+
+function embedlink(url, obj) {
+var objekt_link = obj.parent().parent().find("a").eq(0).attr("href");
+    var embedHTML = '<iframe src="http://eundervisning-wp.dk/pf_eng2015/"' + objekt_link + '"></iframe>';
+
+    if ($(".embedToggle").length > 0) {
+        
+        console.log("indeks: " + $(this).index());
+        console.log("yes embedToggle");
+        $(".embedToggle").slideUp(0, function() {
+            $(".embedToggle").remove();
+            // Animation complete.
+
+            obj.parent().parent().append("<div class='embedToggle'>Indsæt dette link i dit LMS eller webside: <input class='embedtext' type='text' value='" + embedHTML + "'></input><a>Hjælp til indlejning (embedding) </a></div>");
+            $(".embedToggle").slideUp(0);
+            $(".embedToggle").slideDown("slow");
+        });
+        //
+    } else {
+        console.log("indeks: " + obj.index());
+        obj.parent().parent().append("<div class='embedToggle'><p>Indsæt dette link i dit LMS eller webside: </p><input class='embedtext' type='text' value='" + embedHTML + "'></input><a>Hjælp til indlejning (embedding) </a></div>");
+        $(".embedToggle").slideUp(0);
+        $(".embedToggle").slideDown("slow");
+
+    }
+    //alert(obj.parent().html());
+
+
+}
+
+
+// Kom lige til at smide touchpunch ind her :-/
+! function(a) {
+    function f(a, b) {
+        if (!(a.originalEvent.touches.length > 1)) {
+            a.preventDefault();
+            var c = a.originalEvent.changedTouches[0],
+                d = document.createEvent("MouseEvents");
+            d.initMouseEvent(b, !0, !0, window, 1, c.screenX, c.screenY, c.clientX, c.clientY, !1, !1, !1, !1, 0, null), a.target.dispatchEvent(d)
+        }
+    }
+    if (a.support.touch = "ontouchend" in document, a.support.touch) {
+        var e, b = a.ui.mouse.prototype,
+            c = b._mouseInit,
+            d = b._mouseDestroy;
+        b._touchStart = function(a) {
+            var b = this;
+            !e && b._mouseCapture(a.originalEvent.changedTouches[0]) && (e = !0, b._touchMoved = !1, f(a, "mouseover"), f(a, "mousemove"), f(a, "mousedown"))
+        }, b._touchMove = function(a) {
+            e && (this._touchMoved = !0, f(a, "mousemove"))
+        }, b._touchEnd = function(a) {
+            e && (f(a, "mouseup"), f(a, "mouseout"), this._touchMoved || f(a, "click"), e = !1)
+        }, b._mouseInit = function() {
+            var b = this;
+            b.element.bind({
+                touchstart: a.proxy(b, "_touchStart"),
+                touchmove: a.proxy(b, "_touchMove"),
+                touchend: a.proxy(b, "_touchEnd")
+            }), c.call(b)
+        }, b._mouseDestroy = function() {
+            var b = this;
+            b.element.unbind({
+                touchstart: a.proxy(b, "_touchStart"),
+                touchmove: a.proxy(b, "_touchMove"),
+                touchend: a.proxy(b, "_touchEnd")
+            }), d.call(b)
+        }
+    }
+}(jQuery);
