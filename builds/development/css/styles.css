@@ -13179,41 +13179,50 @@ button.close {
     cursor: pointer;
     display: inline-block;
     margin: 10px 10px 0px 0px;
-  }
+}
 
-.img-responsive{margin:0px;}
+.img-responsive {
+    margin: 0px;
+}
 
-.draggable_container{
-	margin-bottom:20px;
+.draggable_container {
+    margin-bottom: 20px;
 }
 
 @media (max-width: 1024px) {
-	.draggable{
-		/*font-size:12px;*/}
+    .draggable {
+        /*font-size:12px;*/
+    }
 }
 
-.dialogBox{
-	position: absolute;
-	background-color: white;
-	color:black;
+.dialogBox {
+    position: absolute;
+    background-color: white;
+    color: black;
 }
 
-.part_pic{
-	position:absolute;
-	z-index:1;
+.embedBox {
+    position: absolute;
+    background-color: white;
+    color: black;
 }
 
-.vuc_footer{
-	text-align: center;
+.part_pic {
+    position: absolute;
+    z-index: 1;
 }
 
+.vuc_footer {
+    text-align: center;
+}
 
 .image-holder {
-    display:inline-block;
+    display: inline-block;
     position: relative;
 }
+
 .image-holder:after {
-    content:'';
+    content: '';
     top: 0;
     left: 0;
     z-index: 10;
@@ -13224,9 +13233,39 @@ button.close {
     background: blue;
     opacity: 0.5;
 }
+
 .image-holder:hover:after {
     opacity: 0;
 }
+
+.embedlink {
+    margin-top: -5px;
+}
+
+.btn_container {
+    margin-top: 20px;
+    font-weight: 200;
+
+}
+
+.indlejring_container {
+    margin-top: -50px;
+    float:right;
+    
+}
+
+.embedtext {
+    width: 100%;
+    margin-top: -8px;
+
+}
+.embedToggle{
+    background-color: white;
+    border:1px solid #eee;
+    margin-top: 10px;
+    padding: 4px;
+}
+
 @font-face {
     font-family: 'OpenSans';
     font-style: normal;

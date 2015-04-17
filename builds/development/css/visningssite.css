@@ -3,11 +3,38 @@
 }
 .MetaDataLink{color: #0071bc; margin-right: 20px;}
 
-/*.jumbotron a, .jumbotron p {
-	font-weight: 200;
-    vertical-align: top;
-}*/
 .jumbotron a{
 	float:right;
 	margin:0;
+	clear:both;
+}
+.jumbotron {
+	margin-right: 16.6667%;
+}
+.om_container {
+	margin-right: 25%;
+}
+.vuc_footer {
+	margin-top: 23px;
+}
+.thumb_img_container {
+	position: relative;
+}
+.thumb_img_container img {
+	display: block;
+	margin:0 auto;
+	vertical-align: middle;
+	max-width: 100%;
+}
+.thumb_overlay {
+	background-color: rgba(0,113,188,0);
+	opacity: 50%;
+	z-index: 3;
+	position: absolute;
+	width:100%;
+	height:100%;
+	top:0%;
+	left:0%;
+	bottom:100%;
+	right:100%;
 }
