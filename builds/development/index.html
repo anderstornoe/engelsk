@@ -32,19 +32,32 @@
                         <p>
                             Træn SET, SHOT og PLOT med disse 3 videoquizzer. Du skal se samme film, med forskellige fokuspunkter.
                         </p>
-                        <p>
-                            <a target="_blank" href="vid_set_da.html" class="btn-default btn-lg" role="button">Video Quiz 1: Set</a>
-                        </p>
-                        <p>
-                            <a target="_blank" href="vid_shot_da.html" class="btn-default btn-lg" role="button">Video Quiz 2: Shot</a>
-                        </p>
-                        <p>
-                            <a target="_blank" href="vid_plot_da.html" class="btn-default btn-lg" role="button">Video Quiz 3: Plot</a>
-                        </p>
-
-                        <a class="MetaDataLink" href="pdf/videoquiz_my_dear_american_SET.pdf"><u>Til Underviseren: SET</u></a>
-                        <a class="MetaDataLink" href="pdf/videoquiz_my_dear_american_SHOT.pdf"><u>Til Underviseren: SHOT</u></a>
-                        <a class="MetaDataLink" href="pdf/videoquiz_my_dear_american_PLOT.pdf"><u>Til Underviseren: PLOT</u></a>
+                         <div class="btn_container">
+                            <a target="_blank" href="vid_set_da.html" class="btn-default btn-lg">Video Quiz 1: Set</a>
+                            <div class="indlejring_container">
+                               <a class="MetaDataLink" href="pdf/videoquiz_my_dear_american_SET.pdf"><u>Til læreren</u></a>
+                                <br/>
+                                <a class="btn btn-info btn-xs embedlink" onclick="embedlink('hejsa', $(this))">Indlejring</a>
+                            </div>
+                        </div>
+                         <div class="btn_container">
+                            <a target="_blank" href="vid_shot_da.html" class="btn-default btn-lg">Video Quiz 2: Shot</a>
+                            <div class="indlejring_container">
+                                
+                               <a class="MetaDataLink" href="pdf/videoquiz_my_dear_american_SHOT.pdf"><u>Til læreren</u></a>
+                                <br/>
+                                <a class="btn btn-info btn-xs embedlink" onclick="embedlink('hejsa', $(this))">Indlejring</a>
+                            </div>
+                        </div>
+                               <div class="btn_container">
+                            <a target="_blank" href="vid_plot_da.html" class="btn-default btn-lg">Video Quiz 3: Plot</a>
+                            <div class="indlejring_container">
+                                
+                               <a class="MetaDataLink" href="pdf/videoquiz_my_dear_american_PLOT.pdf"><u>Til læreren</u></a>
+                                <br/>
+                                <a class="btn btn-info btn-xs embedlink" onclick="embedlink('hejsa', $(this))">Indlejring</a>
+                            </div>
+                        </div>
 
                         <!-- 
                         <a class="MetaDataLink" href="pdf/XXX.pdf">
@@ -271,7 +284,7 @@
         </div>
     </div>
     <script src="js/script.js"></script>
-    <script src="js/generelOverlay.js"></script>
+    <script src="js/shared_functions.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
         footer();

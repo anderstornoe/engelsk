@@ -13266,6 +13266,10 @@ button.close {
     padding: 4px;
 }
 
+.emb_bredde, .emb_hojde{
+    width:120px;
+}
+
 @font-face {
     font-family: 'OpenSans';
     font-style: normal;

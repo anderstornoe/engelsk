@@ -1,0 +1,30 @@
+[
+    {
+        "video": "s7L2PVdrb_8"
+    },
+    {
+        "intro_header": "Answer the questions regarding set and shot in this video quiz."
+    },
+    {
+        "intro_text": "Take note of what goes on in the shots of the film."
+    },
+    {
+        "intro_knap": "Watch Game of Thrones!"
+    },
+    {
+        "stops": [
+            {
+                "timestamp": null,
+                "events": [
+                    {
+                        "eventtype": "info",
+                        "tekst": "",
+                        "svar": [],
+                        "korrekt": [],
+                        "feedback": ""
+                    }
+                ]
+            }
+        ]
+    }
+]
