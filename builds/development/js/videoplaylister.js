@@ -25,8 +25,8 @@
 
 $( document ).ready(function() {
     // Saet "shot" som den foerst default viste video-playliste:
-    $(".shot").addClass("show");       // Dette viser video-playlisten ".shot".
-    $("#shot").addClass( "Active" );   // Dette giver anchor-tag'et "#shot" hvid baggrundsfarve.
+    $(".intro").addClass("show");       // Dette viser video-playlisten ".shot".
+    $("#intro").addClass("Active");   // Dette giver anchor-tag'et "#shot" hvid baggrundsfarve.
 
 
     // Rescale video: (Note: funktionen skal kaldes efter videoen vises via .addClass("show") )
