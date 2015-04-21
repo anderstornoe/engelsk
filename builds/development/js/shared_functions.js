@@ -402,6 +402,10 @@ function embedlink(url, obj) {
         $(".embedtext").val(embedArray[indeks]);
 
     }
+
+    $(".embedtext").click(function () {
+   $(this).select();
+});
 }
 
 
