@@ -6,9 +6,8 @@
 	margin-right: 20px;
 }
 .jumbotron a{
-	float:right;
-	margin:0;
-	clear:both;
+	margin-top: 15px;
+	font-weight: 200;
 }
 .jumbotron {
 	margin-right: 16.6667%;
