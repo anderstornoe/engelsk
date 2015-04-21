@@ -394,6 +394,9 @@ function embedlink(url, obj) {
     }
 
 
+//<p><iframe width="100%" height="800" frameborder="0" src="http://eundervisning-wp.dk/pf_eng2015/vid_set_da.html"></iframe></p>
+//<p><embed height="800px" src="http://eundervisning-wp.dk/pf_eng2015/vid_set_da.html" width="100%"></embed></p>
+
 
     function changeLink(indeks) {
 

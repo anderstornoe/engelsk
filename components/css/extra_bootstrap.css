@@ -150,3 +150,7 @@ body {
     padding-right: 15px;
     position: relative;
 }
+
+.container-fluid{
+    max-width: 1164px;
+}
