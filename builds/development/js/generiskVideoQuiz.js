@@ -16,9 +16,9 @@ var VideoClass = {
     BasicYoutubeEmbedStr: 'https://www.youtube.com/embed/',
     BasicYoutubeWatchStr: 'https://www.youtube.com/watch?v=',
     DefaultNoVideoImg: 'https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg',
-    DefaultStartFrameTitle: "Answer the questions regarding set and shot in this video quiz.",
-    DefaultStartFrameText: "Take note of what goes on in the shots of the film.",
-    DefaultStartButtonTitle: "Watch Game of Thrones!",
+    DefaultStartFrameTitle: "Answer the questions in this video quiz.",
+    DefaultStartFrameText: "Note what happens as the film plays and try to answer the questions",
+    DefaultStartButtonTitle: "Start quiz",
     QustionObj: {},
     AddVideoProp: function(URL) {
         this.EmbedURL = URL;
@@ -38,8 +38,8 @@ var VideoClass = {
     LoadDefaultVideo: function() {
         this.startFrameTitle = "Game of Thrones";
         this.startButtonTitle = "Play the video";
-        this.EmbedURL = this.BasicYoutubeEmbedStr + "s7L2PVdrb_8";
-        this.WatchURL = this.BasicYoutubeWatchStr + "s7L2PVdrb_8";
+        this.EmbedURL = this.BasicYoutubeEmbedStr + "4lIYv66vKGc";
+        this.WatchURL = this.BasicYoutubeWatchStr + "4lIYv66vKGc";
         $("#video_startFrameTitle").val(this.DefaultStartFrameTitle);
         $("#video_startFrameText").val(this.DefaultStartFrameText);
         $("#video_startButtonTitle").val(this.DefaultStartButtonTitle);
@@ -98,7 +98,6 @@ var EventForm = '<form class="EventForm">' +
         '</span>' +
         '<a class="removeform ml10 right btn btn-default usrbutton" href="#"> Fjern sæt </a>' + 
         '<div class="clear"></div>' +
-        '<input type="text" class="TextField w50 mb10" name="EventHeader" placeholder="Overskrift skrives her (70 tegn) - VIRKER IKKE!" /> <br/>' +
         '<textarea rows="4" class="TextField w50" name="EventInfo" placeholder="Her skriver du din infotekst (300 tegn)"></textarea> <br/>' +
         '<div class="QuestionWrapper dhide">' +
             '<span class="QFTheading"> ANGIV SVARMULIGHEDER (maks 4 svar muligt) </span> <span class="QFAheading"> KORREKT SVAR </span>' +

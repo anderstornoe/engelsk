@@ -13239,35 +13239,63 @@ button.close {
 }
 
 .embedlink {
-    margin-top: -5px;
+    margin-top: 0px;
 }
 
 .btn_container {
     margin-top: 20px;
     font-weight: 200;
-
 }
 
 .indlejring_container {
     margin-top: -50px;
-    float:right;
-    
+    float: right;
 }
 
 .embedtext {
     width: 100%;
     margin-top: -8px;
-
 }
-.embedToggle{
+
+.embedToggle {
+    margin-top: 8px;
+}
+
+.togglecontainer {
+    clear: both;
     background-color: white;
-    border:1px solid #eee;
-    margin-top: 10px;
+    border: 1px solid #eee;
     padding: 4px;
 }
 
-.emb_bredde, .emb_hojde{
-    width:120px;
+.emb_bredde,
+.emb_hojde {
+    width: 120px;
+}
+
+a {
+    font-size: 12px;
+}
+
+.tabcontainer {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.tab {
+    padding: 0px 5px;
+    border-radius: 2px;
+    float: left;
+}
+
+.tab {
+    background-color: #eee;
+    color: #222;
+    cursor:pointer;
+}
+
+.activetab {
+    background-color: white;
 }
 
 @font-face {

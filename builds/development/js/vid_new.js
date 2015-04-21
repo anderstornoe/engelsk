@@ -262,9 +262,9 @@ function stop_event(tal, taeller) {
         }
     }
     if (spm.eventtype == "info") {
-        $(".popud").html("<h5 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><h3>" + tekst + "</h3><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
+        $(".popud").html("<h5 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><h4>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
     } else {
-        $(".popud").html("<h5 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><div class='h2'>" + tekst + "</h2><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
+        $(".popud").html("<h5 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><div class='h4'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
 
     }
     $(".btn_videre").hide();
@@ -371,7 +371,7 @@ function feedback() {
     //tween in feedback: 
     $(".svarcontainer").delay(2000).fadeOut(1000, function() {
         $(".h2").fadeOut(0);
-        $(".popud").append("<div class='feedback'><div class='h2'>" + spm.feedback + "</div><div class = 'h4'><div class='btn-success correct_answers'>Correct answer(s): </div>" + correct_answers + "<br/><div class ='btn btn-default-inverse btn-lg introknap videre_knap'>Continue</div>");
+        $(".popud").append("<div class='feedback'><div class='h3'>" + spm.feedback + "</div><div class = 'h4'><div class='btn-success correct_answers'>Correct answer(s): </div>" + correct_answers + "<br/><div class ='btn btn-default-inverse btn-lg introknap videre_knap'>Continue</div>");
         $(".feedback").fadeOut(0);
         $(".feedback").fadeIn(1000);
 

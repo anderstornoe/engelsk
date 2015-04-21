@@ -287,7 +287,8 @@ function footer() {
 
 
 function embedlink(url, obj) {
-    var embedHTML = '<iframe src="http://eundervisning-wp.dk/pf_eng2015/"' + obj.parent().parent().find("a").eq(0).attr("href") + '"></iframe>';
+var embedIframe = '<iframe src="http://eundervisning-wp.dk/pf_eng2015/"' + obj.parent().parent().find("a").eq(0).attr("href") + '"></iframe>';
+var embedEmbed = $
 var embedwrapping = "<div class='embedToggle'>Indsæt dette link i dit LMS eller webside: <input class='embedtext' type='text' value='" + embedHTML + "'></input><a>Hjælp til indlejning (embedding) </a></div>";
     if ($(".embedToggle").length > 0) {
 
