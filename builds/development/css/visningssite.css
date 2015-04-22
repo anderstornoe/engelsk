@@ -40,6 +40,20 @@
 	bottom:100%;
 	right:100%;
 }
+.indlejring_container a {
+	margin-right: 0;
+}
 .thumb_overlay:hover {
 	background-color: rgba(0,113,188,0);
+}
+@media screen and (max-width: 480px) { 
+	.btn-lg {
+		display: inline-block;
+		float:none;
+	}
+	.indlejring_container {
+		margin-top: -40px;
+		float: none;
+		display: block;
+	}
 }

@@ -63,12 +63,12 @@ var GeneralOverlayClass = {
 
     ButtonControler_why: '<div id="OverlyContainerWhy">' +
         '<a href="#" id="OverlayWhy" class="OverlayButton btn btn-default"> WHY </a>' +
-        '<span class="OverlayBtnText"></span>' +
+        // '<span class="OverlayBtnText"></span>' +
         '</div>',
 
     ButtonControler_how: '<div id="OverlyContainerHow">' +
         '<a href="#" id="OverlayHow" class="OverlayButton btn btn-default"> HOW</a>' +
-        '<span class="OverlayBtnText"></span>' +
+        // '<span class="OverlayBtnText"></span>' +
         '</div>',
 
     OverlayMarkup: '<div class="Overlay"></div>' +
@@ -210,7 +210,7 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId);
 
             OverlayText = thisObj.JsonWhyHow[EleraningObj].why_content;
-            OverlayTextHeader = "Why";
+            OverlayTextHeader = "WHY";
 
             console.log("ButtonId: " + ButtonId + ", \nOverlayTextHeader: " + OverlayTextHeader + ", \nOverlayText: " + OverlayText);
 
@@ -259,7 +259,7 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId);
 
             OverlayText = thisObj.JsonWhyHow[EleraningObj].how_content;
-            OverlayTextHeader = "How";
+            OverlayTextHeader = "HOW";
 
             console.log("ButtonId: " + ButtonId + ", \nOverlayTextHeader: " + OverlayTextHeader + ", \nOverlayText: " + OverlayText);
 
