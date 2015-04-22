@@ -21,14 +21,9 @@
 .top_tekst {
 	list-style: none;
 }
-.btn {
-	margin-bottom: 7px;
-	margin-bottom: 7px;
-}
 .LinkButton {
-	w/*idth:100%;*/
 	padding:10px 10%;
-	margin-top: 0;
+	margin-bottom: 5px;
 }
 .MetaDataLink {
 	color: #0071BC;
@@ -41,10 +36,4 @@
 	.topcol {
 		width: 100%;
 	}
-	br {
-		display: none;
-	}
-	/*.LinkButton {
-		display: none;
-	}*/
 }
