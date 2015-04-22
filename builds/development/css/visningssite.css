@@ -15,6 +15,9 @@
 .om_container {
 	margin-right: 25%;
 }
+.row {
+	margin-left: 0;
+}
 .vuc_footer {
 	margin-top: 23px;
 }

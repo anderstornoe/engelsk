@@ -6899,10 +6899,12 @@ a:hover {
 #OverlyWhyHowContainer{margin-bottom: 20px;}
 
 #OverlyContainerWhy, #OverlyContainerHow{
-	margin-bottom: 40px;
-	width: auto;
-	display: inline-block;
+    margin-bottom: 40px;
+    width: auto;
+    display: inline-block;
 }
+
+
 #OverlayId{background-color: rgba(0,0,0,0.5); position: fixed; z-index: 10;}
 
 .Overlay {

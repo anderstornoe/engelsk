@@ -26,7 +26,7 @@
 	margin-bottom: 7px;
 }
 .LinkButton {
-	width:100%;
+	w/*idth:100%;*/
 	padding:10px 10%;
 	margin-top: 0;
 }
@@ -36,4 +36,15 @@
 }
 .topcol img {
 	vertical-align: baseline;
+}
+@media screen and (max-width: 480px) { 
+	.topcol {
+		width: 100%;
+	}
+	br {
+		display: none;
+	}
+	/*.LinkButton {
+		display: none;
+	}*/
 }
