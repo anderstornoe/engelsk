@@ -28,6 +28,7 @@
 .LinkButton {
 	width:100%;
 	padding:10px 10%;
+	margin-top: 0;
 }
 .MetaDataLink {
 	color: #0071BC;
