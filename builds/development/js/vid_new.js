@@ -185,7 +185,12 @@ function timerCheck() {
 
     var tid_min = Math.floor(tid_min_sek / 60);
     if (playing === true) {
-        $('#time').html(m + ":" + dec_s + "<span style ='color:#bbb'>/" + total_spille_tid + "  </span>(Quiz in " + tid_min + ":" + tid_sek + ")");
+        if (runde >= stops.length) {
+
+            $('#time').html(m + ":" + dec_s + "<span style ='color:#bbb'>/" + total_spille_tid + "  </span>");
+        } else {
+            $('#time').html(m + ":" + dec_s + "<span style ='color:#bbb'>/" + total_spille_tid + "  </span>(Quiz in " + tid_min + ":" + tid_sek + ")");
+        }
     } else {
         $('#time').html("Video paused");
     }

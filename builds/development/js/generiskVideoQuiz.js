@@ -1,5 +1,5 @@
 //######################################################################################
-// 								Video loader
+//                              Video loader
 //###################################################################################### 
 
 
@@ -59,10 +59,10 @@ var VideoClass = {
     DisplayJsonML: function() {
         $("#output").html(JSON.stringify(this));
     },
-    LoadDefaultNoVideoImgIfNoVideoIsChosen: function(){
-        if ( (this.EmbedURL === null) || (this.EmbedURL === "") ){
+    LoadDefaultNoVideoImgIfNoVideoIsChosen: function() {
+        if ((this.EmbedURL === null) || (this.EmbedURL === "")) {
             $("#PlayerVideoView").prop('src', this.DefaultNoVideoImg);
-        } 
+        }
     },
     ReturnYoutubeVidId: function(url) {
         var UrlParts = (url.indexOf("?v=") !== -1) ? url.split("?v=") : url.split("/");
@@ -74,7 +74,7 @@ var VideoClass = {
 
 
 //######################################################################################
-// 								User interface
+//                              User interface
 //###################################################################################### 
 
 
@@ -91,23 +91,23 @@ var QuestionField = '<div class="QuestionField">' +
 // EventForm  -  NOTE: "Event" er det tidligere "Runde"
 var EventForm = '<form class="EventForm">' +
     '<div class="EventFormBkColor">' +
-        '<b class="ml10"> Sæt 1</b>' +
-        '<span class="QuestionWrapperButton">' +
-            '<input type="radio" name="valg" value="RadioQuestion" /> Sp&oslash;rgsm&aring;l' + 
-            '<input type="radio" name="valg" value="RadioInformation" checked="checked"/> Information' + 
-        '</span>' +
-        '<a class="removeform ml10 right btn btn-default usrbutton" href="#"> Fjern sæt </a>' + 
-        '<div class="clear"></div>' +
-        '<textarea rows="4" class="TextField w50" name="EventInfo" placeholder="Her skriver du din infotekst (300 tegn)"></textarea> <br/>' +
-        '<div class="QuestionWrapper dhide">' +
-            '<span class="QFTheading"> ANGIV SVARMULIGHEDER (maks 4 svar muligt) </span> <span class="QFAheading"> KORREKT SVAR </span>' +
-            '<div class="QuestionFieldWrapper">' +
-                QuestionField +
-                QuestionField +
-            '</div>' +
-            '<a class="addfield ml10" href="#"> Tilføj svar </a> <br/>' + 
-            '<textarea rows="4" class="TextField w50" name="EventFeedback" placeholder="Giv feedback til kursisten"></textarea> <br/>' +
-        '</div>' +
+    '<b class="ml10"> Sæt 1</b>' +
+    '<span class="QuestionWrapperButton">' +
+    '<input type="radio" name="valg" value="RadioQuestion" /> Sp&oslash;rgsm&aring;l' +
+    '<input type="radio" name="valg" value="RadioInformation" checked="checked"/> Information' +
+    '</span>' +
+    '<a class="removeform ml10 right btn btn-default usrbutton" href="#"> Fjern sæt </a>' +
+    '<div class="clear"></div>' +
+    '<textarea rows="4" class="TextField w50" name="EventInfo" placeholder="Her skriver du din infotekst (300 tegn)"></textarea> <br/>' +
+    '<div class="QuestionWrapper dhide">' +
+    '<span class="QFTheading"> ANGIV SVARMULIGHEDER (maks 4 svar muligt) </span> <span class="QFAheading"> KORREKT SVAR </span>' +
+    '<div class="QuestionFieldWrapper">' +
+    QuestionField +
+    QuestionField +
+    '</div>' +
+    '<a class="addfield ml10" href="#"> Tilføj svar </a> <br/>' +
+    '<textarea rows="4" class="TextField w50" name="EventFeedback" placeholder="Giv feedback til kursisten"></textarea> <br/>' +
+    '</div>' +
     '</div>' +
     '<a class="addform ml10 right btn btn-default usrbutton" href="#"> Tilføj sæt </a>' +
     '<div class="clear"></div>' +
@@ -122,7 +122,7 @@ var TimeStampForm = '<div class="TimeStampForm">' +
     GenerateNumberSelect(0, 60, "ss", "sekunder", "SelectSec") +
     // ' eller <input type="text" placeholder="tt:mm:ss" />' +
     '</form>' +
-    '<a class="remove_TimeStampForm ml10 right btn btn-default usrbutton" href="#"> Fjern stop </a>' + 
+    '<a class="remove_TimeStampForm ml10 right btn btn-default usrbutton" href="#"> Fjern stop </a>' +
     '<div class="clear"></div>' +
     // '<a class="add_TimeStampForm ml10" href="#"> Tilf&oslash;j et ekstra stop </a> ' +
     EventForm +
@@ -141,25 +141,25 @@ function htmlEntities(str) {
 }
 
 
-function UpdateNumbersInFormHeaders(){
+function UpdateNumbersInFormHeaders() {
 
     $(".class_TimeStampForm > b").each(function(index1, element1) {
         $(this).html("Stop " + (index1 + 1).toString() + " : ");
         var ParentObj = $(this).closest(".TimeStampForm");
         $(".EventForm > div > b", ParentObj).each(function(index2, element2) {
-            $(this).html("Sæt " + (index2 + 1).toString() );
+            $(this).html("Sæt " + (index2 + 1).toString());
         });
     });
 }
 
 
-function UpdateQuestionFieldLetters(){
+function UpdateQuestionFieldLetters() {
 
     $(".EventForm").each(function(index1, element1) {
         $(".QuestionLetter", element1).each(function(index2, element2) {
-            var Letter = String.fromCharCode(65 + index2); 
-            $( element2 ).html( Letter );
-            console.log("index2 : " + index2 + ", Letter : " + Letter );
+            var Letter = String.fromCharCode(65 + index2);
+            $(element2).html(Letter);
+            console.log("index2 : " + index2 + ", Letter : " + Letter);
         });
     });
 }
@@ -257,7 +257,7 @@ function AddLastElement(Selector, TSelector, TSelectorParent, HtmlToBeAdded, Max
         var NextParent;
         var TSelectorParentObj = $(this).closest(TSelectorParent);
         var NumOfSiblings = $(TSelector, TSelectorParentObj).siblings().length;
-        console.log("NumOfSiblings : " + NumOfSiblings );
+        console.log("NumOfSiblings : " + NumOfSiblings);
         if ((Max > NumOfSiblings) || (Max === false)) {
             $(TSelector, TSelectorParentObj).last().after(HtmlToBeAdded);
 
@@ -294,8 +294,8 @@ function RemoveElement(Selector, TSelector, Min) {
 
 
 // VIGTIGT: Der er en bedre metode til at fylde variable ind i objekter - se: 
-// 			JQuerys funktion ".serializeArray()" :
-// 			http://api.jquery.com/serializearray/
+//          JQuerys funktion ".serializeArray()" :
+//          http://api.jquery.com/serializearray/
 function GetFormsData(Selector_FormContainer) {
     var JSONarray = [];
     var FormObj = {};
@@ -320,52 +320,61 @@ function GetFormsData(Selector_FormContainer) {
 }
 
 
-function CheckTimeStopValues(StartStr){
+function CheckTimeStopValues(StartStr) {
     var NumOfTimestamps = $(".class_TimeStampForm").length;
     var TimestampObj = {};
     var Error = false;
     $(".class_TimeStampForm").each(function(index, element) {
-        var TObj = {mm : null, ss : null, TimeInSec : null};
+        var TObj = {
+            mm: null,
+            ss: null,
+            TimeInSec: null
+        };
         TObj.mm = $("select[name='mm']", element).val();
         TObj.ss = $("select[name='ss']", element).val();
-        TObj.TimeInSec = 60*TObj.mm + TObj.ss;
-        console.log("mm : " + JSON.stringify(TObj.mm) + ", ss : " + JSON.stringify(TObj.ss) );
+        TObj.TimeInSec = 60 * TObj.mm + TObj.ss;
+        console.log("mm : " + JSON.stringify(TObj.mm) + ", ss : " + JSON.stringify(TObj.ss));
         TimestampObj[index] = TObj;
         var Missing = null;
 
 
         // Check for missing time-settings for stops/NumOfTimestamps >= 1:
-        if ( ((NumOfTimestamps > index + 1) || (NumOfTimestamps == 1)) && ((TObj.mm === null) || (TObj.ss === null)) ){
-            if (TObj.mm === null){  
+        if (((NumOfTimestamps > index + 1) ||  (NumOfTimestamps == 1)) && ((TObj.mm === null) ||  (TObj.ss === null))) {
+            if (TObj.mm === null) {
                 Missing = 'minutterne';
-                if (TObj.ss === null) 
+                if (TObj.ss === null)
                     Missing += ' og sekunderne';
             } else
                 Missing = 'sekunderne';
-            alert("ADVARSEL:\n" + StartStr + ', men '+Missing+' i "Stop '+(index + 1).toString()+'" er ikke sat!');
+            alert("ADVARSEL:\n" + StartStr + ', men ' + Missing + ' i "Stop ' + (index + 1).toString() + '" er ikke sat!');
             Error = true;
         }
 
         // Check for invalid values - NumOfTimestamps/stops has to be like: "Stop 1" <= "Stop 2" <= "Stop 3"....
-        if ((Missing === null) && (index > 0 ) && (NumOfTimestamps > index + 1) && (TimestampObj[index-1].TimeInSec > TObj.TimeInSec)){
-            alert("ADVARSEL:\n" + StartStr + ', men tiden i "Stop '+(index).toString()+'" er større end i "Stop '+(index+1).toString() + 
-                  '", hvilket ikke er tilladt!'+"\n"+'Tiderne i stops skal være fortløbende, således at "Stop 1" <= "Stop 2" <= "Stop 3"...');
+        if ((Missing === null) && (index > 0) && (NumOfTimestamps > index + 1) && (TimestampObj[index - 1].TimeInSec > TObj.TimeInSec)) {
+            alert("ADVARSEL:\n" + StartStr + ', men tiden i "Stop ' + (index).toString() + '" er større end i "Stop ' + (index + 1).toString() +
+                '", hvilket ikke er tilladt!' + "\n" + 'Tiderne i stops skal være fortløbende, således at "Stop 1" <= "Stop 2" <= "Stop 3"...');
             Error = true;
         }
 
     });
-    console.log("TimestampObj : " + JSON.stringify(TimestampObj) );
+    console.log("TimestampObj : " + JSON.stringify(TimestampObj));
 
     return Error;
 }
 
 
-function CheckInputValues(NextParent){
+function CheckInputValues(NextParent) {
     var Error = false;
     var TSObj = {};
     var NumOfTimestamps = $(".class_TimeStampForm").length;
     $(".TimeStampForm").each(function(index1, element1) {
-        var TObj = {mm : null, ss : null, EventForm_HasVal : false, QuestionField_HasVal : false};
+        var TObj = {
+            mm: null,
+            ss: null,
+            EventForm_HasVal: false,
+            QuestionField_HasVal: false
+        };
         TObj.mm = $("select[name='mm']", element1).val();
         TObj.ss = $("select[name='ss']", element1).val();
         console.log("X1 - mm: " + TObj.mm + ", ss: " + TObj.ss);
@@ -379,32 +388,32 @@ function CheckInputValues(NextParent){
                 TObj.EventForm_HasVal = true;
 
             // .
-            if ( (NumOfEventForms > index2 + 1) && !TObj.EventForm_HasVal ) {
-                alert("ADVARSEL:\n" + '"Spørgsmål '+(index1+1).toString()+'" skal spørgsmål-tekst eller svarmuligheder');
+            if ((NumOfEventForms > index2 + 1) && !TObj.EventForm_HasVal) {
+                alert("ADVARSEL:\n" + '"Spørgsmål ' + (index1 + 1).toString() + '" skal spørgsmål-tekst eller svarmuligheder');
                 $(NextParent).remove(); // Dette fjerner det naeste element man forsoeger at tilfoeje.
                 Error = true;
             }
 
             $(".QuestionField", element2).each(function(index3, element3) {
 
-                console.log("X1 - Stop: "+(index1+1).toString()+", Spørgsmål: "+(index2+1).toString()+", QuestionField: "+(index3+1).toString()); 
+                console.log("X1 - Stop: " + (index1 + 1).toString() + ", Spørgsmål: " + (index2 + 1).toString() + ", QuestionField: " + (index3 + 1).toString());
 
                 var Question = $("input[name='Question']", element3).val();
                 var Rsvar = ($("input[name='Rsvar']", element3).prop('checked') ? true : false);
                 var Csvar = ($("input[name='Csvar']", element3).prop('checked') ? true : false);
-                
 
-                console.log("X1 - EventInfo: " + EventInfo + ",Question: " + Question + ", Rsvar: " + Rsvar + ", Csvar: " + Csvar + ", EventFeedback: " + EventFeedback); 
+
+                console.log("X1 - EventInfo: " + EventInfo + ",Question: " + Question + ", Rsvar: " + Rsvar + ", Csvar: " + Csvar + ", EventFeedback: " + EventFeedback);
 
                 // Check that some text is supplied along with a correct answer:
-                if ((Question === "") && (Rsvar || Csvar) ){
-                    alert("ADVARSEL:\n" + 'I "Stop '+(index1+1).toString()+'", "Spørgsmål '+(index2+1).toString()+
-                          '", "Svarmulighed '+(index3+1).toString()+'" er der angivet en korrekt svarmulighed uden tilhørende tekst!');
+                if ((Question === "") && (Rsvar || Csvar)) {
+                    alert("ADVARSEL:\n" + 'I "Stop ' + (index1 + 1).toString() + '", "Spørgsmål ' + (index2 + 1).toString() +
+                        '", "Svarmulighed ' + (index3 + 1).toString() + '" er der angivet en korrekt svarmulighed uden tilhørende tekst!');
                     $(NextParent).remove(); // Dette fjerner det naeste element man forsoeger at tilfoeje.
                     Error = true;
                 }
 
-                if ( (Question !== "") && ( Rsvar || Csvar ) )
+                if ((Question !== "") && (Rsvar ||  Csvar))
                     TObj.QuestionField_HasVal = true;
 
             });
@@ -421,15 +430,15 @@ function CheckInputValues(NextParent){
         TSObj[index1] = TObj;
 
         // Checks that no new timestamps are added if no values are given in the input-fields current timestamp.
-        if ( (NumOfTimestamps > index1 + 1)  && (TSObj[index1].mm !== null) && (TSObj[index1].ss !== null) && 
-            (!TSObj[index1].EventForm_HasVal) ){
-            alert("ADVARSEL:\n" + 'I "Stop '+(index1+1).toString()+'" er der ingen udfyldte spørgsmål eller svar muligheder!');
+        if ((NumOfTimestamps > index1 + 1) && (TSObj[index1].mm !== null) &&  (TSObj[index1].ss !== null) &&
+            (!TSObj[index1].EventForm_HasVal)) {
+            alert("ADVARSEL:\n" + 'I "Stop ' + (index1 + 1).toString() + '" er der ingen udfyldte spørgsmål eller svar muligheder!');
             $(NextParent).remove(); // Dette fjerner det naeste element man forsoeger at tilfoeje.
             Error = true;
         }
     });
 
-    console.log("X1 - TSObj: " + JSON.stringify(TSObj) );
+    console.log("X1 - TSObj: " + JSON.stringify(TSObj));
 
     return Error;
 }
@@ -510,21 +519,21 @@ function QuestionWrapperButtonControl(Selector) {
         // var RadioButton = ((ParentObj).prop('checked')) ? true : false;
         console.log("QuestionWrapperButton - OK");
         // if (Selector == "RadioInformation"){   // slideDown()
-        if (RadioQuestion){ 
+        if (RadioQuestion) {
             // $("input[name=EventHeader]", ParentObj).hide();
             $("input[name=EventHeader]", ParentObj).slideUp("fast");
             $("textarea[name=EventInfo]", ParentObj).attr("placeholder", "Skriv spørgsmålet her (70 tegn)");
-            $("input[value=RadioInformation]", ParentObj).removeAttr('checked'); 
+            $("input[value=RadioInformation]", ParentObj).removeAttr('checked');
             $(".QuestionWrapper", ParentObj).removeClass("dhide");
-            $(".QuestionWrapper", ParentObj).slideDown( "slow" );
+            $(".QuestionWrapper", ParentObj).slideDown("slow");
             console.log("RadioInformation - OK");
         }
         // if (Selector == "RadioQuestion"){     // EventHeader  EventInfo  textarea
-        if (RadioInformation){ 
+        if (RadioInformation) {
             // $("input[name=EventHeader]", ParentObj).show();
             $("input[name=EventHeader]", ParentObj).slideDown("fast");
             $("textarea[name=EventInfo]", ParentObj).attr("placeholder", "Her skriver du din infotekst (300 tegn)");
-            $("input[value=RadioQuestion]", ParentObj).removeAttr('checked'); 
+            $("input[value=RadioQuestion]", ParentObj).removeAttr('checked');
             $(".QuestionWrapper", ParentObj).slideUp("slow", function() {
                 $(".QuestionWrapper", ParentObj).addClass("dhide");
             });
@@ -539,12 +548,12 @@ function QuestionWrapperButtonControl(Selector) {
 
 
 //######################################################################################
-// 								Regenerate form-state
+//                              Regenerate form-state
 //###################################################################################### 
 
 
 // NOTE: IE < 9 understoetter ikke:   Object.keys(a).length;
-//		http://stackoverflow.com/questions/5533192/how-to-get-object-length 
+//      http://stackoverflow.com/questions/5533192/how-to-get-object-length 
 function ReturnObjKeyNames(Obj) {
     var count = 0;
     var KeyArray = [];
@@ -682,15 +691,14 @@ function ReplicateVideoInputFormat(json) {
 
 
         // Video JSON-object-template-format by ATO:
-        var vidJson = [
-            {
-                "video": null
-            },{
-                "intro_header": null
-            },{
-                "intro_text": null
-            },{
-                "intro_knap": null
+        var vidJson = [{
+            "video": null
+        }, {
+            "intro_header": null
+        }, {
+            "intro_text": null
+        }, {
+            "intro_knap": null
         }, {
             "stops": []
         }];
@@ -712,9 +720,9 @@ function ReplicateVideoInputFormat(json) {
         var startButtonTitle = json.startButtonTitle;
 
         vidJson[0].video = ReturnYoutubeVidId(json.EmbedURL);
-        vidJson[1].intro_header = htmlEntities( json.startFrameTitle );
-        vidJson[2].intro_text = htmlEntities( json.startFrameText );
-        vidJson[3].intro_knap = htmlEntities( json.startButtonTitle );
+        vidJson[1].intro_header = htmlEntities(json.startFrameTitle);
+        vidJson[2].intro_text = htmlEntities(json.startFrameText);
+        vidJson[3].intro_knap = htmlEntities(json.startButtonTitle);
 
 
         console.log("vidJson 1 : " + JSON.stringify(vidJson));
@@ -776,7 +784,7 @@ function ReplicateVideoInputFormat(json) {
                                     // }
                                 }
 
-                                if ( (Obj.name == "Question") && (Obj.value !== "") ) {
+                                if ((Obj.name == "Question") && (Obj.value !== "")) {
                                     Event.svar.push(htmlEntities(Obj.value));
                                     ++AnswerNum;
                                 }
@@ -785,12 +793,12 @@ function ReplicateVideoInputFormat(json) {
 
                                 }
 
-                                if ( (Obj.name == "EventInfo") && (Obj.value !== "") ) {
+                                if ((Obj.name == "EventInfo") && (Obj.value !== "")) {
                                     Event.tekst = htmlEntities(Obj.value);
                                     console.log("Obj.value: " + Obj.value + ", htmlEntities: " + Event.tekst);
                                 }
 
-                                if ( (Obj.name == "EventFeedback") && (Obj.value !== "") ) {
+                                if ((Obj.name == "EventFeedback") && (Obj.value !== "")) {
                                     Event.feedback = htmlEntities(Obj.value);
                                 }
 
@@ -799,7 +807,7 @@ function ReplicateVideoInputFormat(json) {
                                 // }
 
                                 if (Obj.name == "Csvar") {
-                                    Event.korrekt.push( AnswerNum.toString() );
+                                    Event.korrekt.push(AnswerNum.toString());
                                     if (Event.korrekt.length == 1) Event.eventtype = "svarknap";
                                     if (Event.korrekt.length > 1) Event.eventtype = "checkbox";
                                 }
@@ -810,10 +818,10 @@ function ReplicateVideoInputFormat(json) {
                             } // END for
 
 
-                            console.log("X2 -- Event: " + JSON.stringify(Event) );
+                            console.log("X2 -- Event: " + JSON.stringify(Event));
 
                             // If no answer options and no feedback is given, then: eventtype = "info":
-                            if ( (Event.korrekt.length === 0) && (Event.korrekt.length === 0) && (Event.feedback === null) ){
+                            if ((Event.korrekt.length === 0) && (Event.korrekt.length === 0) && (Event.feedback === null)) {
                                 Event.eventtype = "info";
                             }
 
@@ -844,80 +852,79 @@ function ReplicateVideoInputFormat(json) {
 var Range = 9;
 var ActiveLinkNum = 1;
 
-function Pager(PagerSelector, TargetSelectorChild, CssId){
+function Pager(PagerSelector, TargetSelectorChild, CssId) {
 
     var NumOfPages = 0;
-    $(TargetSelectorChild).each(function( index, element ) {
+    $(TargetSelectorChild).each(function(index, element) {
         ++NumOfPages;
     });
     console.log("NumOfPages : " + NumOfPages);
 
 
-    var HTML = '<ul id="'+CssId+'" class="PagerClass">';
+    var HTML = '<ul id="' + CssId + '" class="PagerClass">';
 
-    if (NumOfPages == 1){
+    if (NumOfPages == 1) {
         HTML += '<li><a href="#" class="PagerButton btn btn-default"> 1 </a></li>';
     }
 
-    if ((1 < NumOfPages) && (NumOfPages <= Range+1)) {
+    if ((1 < NumOfPages) && (NumOfPages <= Range + 1)) {
         for (var i = 1; i <= NumOfPages; i++) {
-            HTML += '<li><a href="#" class="PagerButton btn btn-default">'+ i +'</a></li>';
+            HTML += '<li><a href="#" class="PagerButton btn btn-default">' + i + '</a></li>';
         }
     }
 
-    if (NumOfPages > Range+1) {
-        var StartIndex = ActiveLinkNum - Math.round((Range - 1)/2); // Find the startindex based on ActiveLinkNum
-        if (StartIndex < 1) StartIndex = 1;                         // Ajust startindex for low ActiveLinkNum
+    if (NumOfPages > Range + 1) {
+        var StartIndex = ActiveLinkNum - Math.round((Range - 1) / 2); // Find the startindex based on ActiveLinkNum
+        if (StartIndex < 1) StartIndex = 1; // Ajust startindex for low ActiveLinkNum
         if (Range + StartIndex > NumOfPages) StartIndex = NumOfPages - Range; // Ajust startindex for high ActiveLinkNum
-            
+
         // StartIndex = Math.round((NumOfPages - Range)/2);
         console.log("StartIndex : " + StartIndex);
 
 
-        if (StartIndex == 2){  // Ugly special case...
+        if (StartIndex == 2) { // Ugly special case...
             HTML += '<li><a href="#" class="PagerButton btn btn-default"> 1 </a></li>';
         }
         if (StartIndex > 2)
             HTML += '<li><a href="#" class="PagerButton btn btn-default"> 1 </a></li><li> ... </li>';
-        for (var j = StartIndex; j < Range+StartIndex; j++) {
-            HTML += '<li><a href="#" class="PagerButton btn btn-default">'+ j +'</a></li>';
+        for (var j = StartIndex; j < Range + StartIndex; j++) {
+            HTML += '<li><a href="#" class="PagerButton btn btn-default">' + j + '</a></li>';
         }
         if (Range + StartIndex == NumOfPages)
-            for (var k = Range+StartIndex; k <= NumOfPages; k++) {
-                HTML += '<li><a href="#" class="PagerButton btn btn-default">'+ k +'</a></li>';
-            }
-        else
-            HTML += '<li> ... </li><li><a href="#" class="PagerButton btn btn-default">'+ NumOfPages +'</a></li>';
-        
+            for (var k = Range + StartIndex; k <= NumOfPages; k++) {
+                HTML += '<li><a href="#" class="PagerButton btn btn-default">' + k + '</a></li>';
+            } else
+                HTML += '<li> ... </li><li><a href="#" class="PagerButton btn btn-default">' + NumOfPages + '</a></li>';
+
     }
     HTML += '</ul>';
 
     // Generate the pager:
-    $( PagerSelector ).html( HTML );
+    $(PagerSelector).html(HTML);
 
-    $( TargetSelectorChild ).removeClass("dshow");
-    $( TargetSelectorChild+":eq("+(parseInt(ActiveLinkNum)-1)+")" ).addClass("dshow"); // TargetSelectorChild
+    $(TargetSelectorChild).removeClass("dshow");
+    $(TargetSelectorChild + ":eq(" + (parseInt(ActiveLinkNum) - 1) + ")").addClass("dshow"); // TargetSelectorChild
 
     // 
-    $( "#"+CssId+" .PagerButton" ).click(function( e ) {
-        e.preventDefault();  // Prevent the link-nature of the anchor-tag.
-        $( "#"+CssId+" .PagerButton" ).removeClass("btn-default btn-primary");
-        $( "#"+CssId+" .PagerButton" ).addClass("btn-default");
-        $(this).toggleClass("btn-default btn-primary"); 
+    $("#" + CssId + " .PagerButton").click(function(e) {
+        e.preventDefault(); // Prevent the link-nature of the anchor-tag.
+        $("#" + CssId + " .PagerButton").removeClass("btn-default btn-primary");
+        $("#" + CssId + " .PagerButton").addClass("btn-default");
+        $(this).toggleClass("btn-default btn-primary");
 
         ActiveLinkNum = $(this).text();
         console.log("ActiveLinkNum 2: " + ActiveLinkNum);
 
         // TargetSelectorChildText = $(TargetSelectorChild).text();
         // console.log("TargetSelectorChildText: " + TargetSelectorChildText);
-        
+
 
         Pager(PagerSelector, TargetSelectorChild, CssId); // Update the pager by recursive call
     });
 
     // Set the chosen color if the pager-button is showen:
-    $(PagerSelector+" li a").each(function(index, element) {
-        if ($(element).text() == ActiveLinkNum){
+    $(PagerSelector + " li a").each(function(index, element) {
+        if ($(element).text() == ActiveLinkNum) {
             $(element).toggleClass("btn-default btn-primary");
         }
     });
@@ -928,123 +935,127 @@ function Pager(PagerSelector, TargetSelectorChild, CssId){
 
 
 //######################################################################################
-// 								RUN CODE....
+//                              RUN CODE....
 //###################################################################################### 
 
 
 $(document).ready(function() {
 
-    // ================================
-    // 		Video loader
-    // ================================
-
-    var VideoObj = Object.create(VideoClass);
-
-    VideoObj.DeleteSelections(); // Delete previous selections on reload.
-
-    // $("#delete_selections").click(function() {
-    //     VideoObj.DeleteSelections();
-    //     console.log("VideoObj submit : " + JSON.stringify(VideoObj));
-    // });
-
-    $("#load_default_video").click(function(e) {
-        e.preventDefault(); // Prevent the link-nature of the anchor-tag.
-        VideoObj.LoadDefaultVideo();
-
-        console.log("VideoObj.EmbedURL 1: " + VideoObj.EmbedURL + ", VideoObj.WatchURL 1: " + VideoObj.WatchURL);
-    });
-
-    $("#load_video").click(function() {
-        VideoObj.LoadVideo();
-        console.log("VideoObj submit : " + JSON.stringify(VideoObj));
-        // VideoObj.DisplayJsonML();
-
-        console.log("VideoObj.EmbedURL 2: " + VideoObj.EmbedURL + ", VideoObj.WatchURL 2: " + VideoObj.WatchURL);
-    });
-
-
-    // ================================
-    // 		User Inferface
-    // ================================
-
-    InitHTML('#FormsContainer', TimeStampForm);
-
-    // AddElement('.addfield', '.QuestionField', QuestionField, 4);
-    AddLastElement('.addfield', '.QuestionField', '.EventForm', QuestionField, 4);
-    RemoveElement('.removefield', '.QuestionField', 2);
-
-    AddElement('.addform', '.EventForm', EventForm, false);
-    RemoveElement('.removeform', '.EventForm', 1);
-
-    // OLD:
-    // AddElement('.add_TimeStampForm', '.TimeStampForm', TimeStampForm, false);
-    // RemoveElement('.remove_TimeStampForm', '.TimeStampForm', 1);
-
-// NEW:
-AddTimestampLast('.AddNewPageButton', '.TimeStampForm', '#FormsContainer', TimeStampForm, false, "#PagerContainer", "#FormsContainer > div", "Pager");
-RemoveTimestamp('.remove_TimeStampForm', '.TimeStampForm', 1, "#PagerContainer", "#FormsContainer > div", "Pager");
-
-Pager("#PagerContainer", "#FormsContainer > div", "Pager");
-
-
-    // RadioButtonDualSwitch(".EventForm input[name='valg']");
-
-    // QuestionWrapperButtonControl(".EventForm .QuestionWrapperButton");
-    QuestionWrapperButtonControl();
-
-
-    $(".WatchQuiz").click(function(e) {
-        e.preventDefault(); // Prevent the link-nature of the anchor-tag.
-
-        console.log("ScrollUp: " + $(this).prop("class"));
-
-        // Naar der trykkes paa den nederste ".WatchQuiz", saa scrolles der til "#ScrollHere":
-        if ($(this).prop("class").indexOf("ScrollUp") !== -1){
-            $('html, body').animate({
-                scrollTop: $("#ScrollHere").offset().top + 'px'
-            }, 'fast');
-        }
-
-        // if (CheckTimeStopValues('Du vælger nu "Se Quiz"') == true){
-        //     return 0;
-        // }
-
-        // CheckInputValues(false);
-
-        // VideoObj.LoadDefaultVideo(); // Elers vrker det ikke med ReGenerateForm.   
-        VideoObj.LoadVideo(); // Elers vrker det ikke med ReGenerateForm.
-        VideoObj.LoadDefaultNoVideoImgIfNoVideoIsChosen();
-        VideoObj.QuizData = GetFormsData('#FormsContainer');
-
-        // // Dette ukommenteres indtil moedet kvalitetscirklen mandag d. 9/3-2015 er overstaaet: 
-        // $("#JsonOutput").html(JSON.stringify(VideoObj, null, 4));
-
-        var JsonVideoInput = ReplicateVideoInputFormat(VideoObj);
-        $("#JsonVideoInput").html(JSON.stringify(JsonVideoInput, null, 4));
-
-        JsonVideoInput_update = JsonVideoInput;
-
-
-////
-//Her refreshes videoquiz preview iframen: 
-
-        $(".player_container").html("<div id='player' class='embed-responsive-item'></div><div id='time'></div><div id='time_bar'></div>");
-
-        loadData();
-        setupplayer();
-//
-        
-    });
     
 
+            // ================================
+            //      Video loader
+            // ================================
+
+            var VideoObj = Object.create(VideoClass);
+
+            VideoObj.DeleteSelections(); // Delete previous selections on reload.
+
+            // $("#delete_selections").click(function() {
+            //     VideoObj.DeleteSelections();
+            //     console.log("VideoObj submit : " + JSON.stringify(VideoObj));
+            // });
+
+            $("#load_default_video").click(function(e) {
+                e.preventDefault(); // Prevent the link-nature of the anchor-tag.
+                VideoObj.LoadDefaultVideo();
+
+                console.log("VideoObj.EmbedURL 1: " + VideoObj.EmbedURL + ", VideoObj.WatchURL 1: " + VideoObj.WatchURL);
+            });
+
+            $("#load_video").click(function() {
+                VideoObj.LoadVideo();
+                console.log("VideoObj submit : " + JSON.stringify(VideoObj));
+                // VideoObj.DisplayJsonML();
+
+                console.log("VideoObj.EmbedURL 2: " + VideoObj.EmbedURL + ", VideoObj.WatchURL 2: " + VideoObj.WatchURL);
+            });
 
 
-    // ================================
-    // 		Regenerate user interface
-    // ================================
+            // ================================
+            //      User Inferface
+            // ================================
 
-    // VIGTIGT: Version 15 virker med det gamle data format, hvor video-info IKKE er med!
-    // ReGenerateForm(JS, "#FormsContainer");
+            InitHTML('#FormsContainer', TimeStampForm);
+
+            // AddElement('.addfield', '.QuestionField', QuestionField, 4);
+            AddLastElement('.addfield', '.QuestionField', '.EventForm', QuestionField, 4);
+            RemoveElement('.removefield', '.QuestionField', 2);
+
+            AddElement('.addform', '.EventForm', EventForm, false);
+            RemoveElement('.removeform', '.EventForm', 1);
+
+            // OLD:
+            // AddElement('.add_TimeStampForm', '.TimeStampForm', TimeStampForm, false);
+            // RemoveElement('.remove_TimeStampForm', '.TimeStampForm', 1);
+
+            // NEW:
+            AddTimestampLast('.AddNewPageButton', '.TimeStampForm', '#FormsContainer', TimeStampForm, false, "#PagerContainer", "#FormsContainer > div", "Pager");
+            RemoveTimestamp('.remove_TimeStampForm', '.TimeStampForm', 1, "#PagerContainer", "#FormsContainer > div", "Pager");
+
+            Pager("#PagerContainer", "#FormsContainer > div", "Pager");
 
 
-});
+            // RadioButtonDualSwitch(".EventForm input[name='valg']");
+
+            // QuestionWrapperButtonControl(".EventForm .QuestionWrapperButton");
+            QuestionWrapperButtonControl();
+
+
+            $(".WatchQuiz").click(function(e) {
+                e.preventDefault(); // Prevent the link-nature of the anchor-tag.
+
+                console.log("ScrollUp: " + $(this).prop("class"));
+
+                // Naar der trykkes paa den nederste ".WatchQuiz", saa scrolles der til "#ScrollHere":
+                if ($(this).prop("class").indexOf("ScrollUp") !== -1) {
+                    $('html, body').animate({
+                        scrollTop: $("#ScrollHere").offset().top + 'px'
+                    }, 'fast');
+                }
+
+                // if (CheckTimeStopValues('Du vælger nu "Se Quiz"') == true){
+                //     return 0;
+                // }
+
+                // CheckInputValues(false);
+
+                // VideoObj.LoadDefaultVideo(); // Elers vrker det ikke med ReGenerateForm.   
+                VideoObj.LoadVideo(); // Elers vrker det ikke med ReGenerateForm.
+                VideoObj.LoadDefaultNoVideoImgIfNoVideoIsChosen();
+                VideoObj.QuizData = GetFormsData('#FormsContainer');
+
+                // // Dette ukommenteres indtil moedet kvalitetscirklen mandag d. 9/3-2015 er overstaaet: 
+                // $("#JsonOutput").html(JSON.stringify(VideoObj, null, 4));
+
+                var JsonVideoInput = ReplicateVideoInputFormat(VideoObj);
+                $("#JsonVideoInput").html(JSON.stringify(JsonVideoInput, null, 4));
+
+
+
+
+                JsonVideoInput_update = JsonVideoInput;
+
+
+                ////
+                //Her refreshes videoquiz preview iframen: 
+
+                $(".player_container").html("<div id='player' class='embed-responsive-item'></div><div id='time'></div><div id='time_bar'></div>");
+
+                loadData();
+                setupplayer();
+                //
+
+            });
+
+
+
+                // ================================
+                //      Regenerate user interface
+                // ================================
+
+                // VIGTIGT: Version 15 virker med det gamle data format, hvor video-info IKKE er med!
+                // ReGenerateForm(JS, "#FormsContainer");
+
+
+            });
