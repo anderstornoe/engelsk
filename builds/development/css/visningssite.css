@@ -1,5 +1,12 @@
 .btn-lg {
     display: table-cell;
+    font-weight: 200;
+}
+h1 {
+	margin-left: 20px;
+}
+.col-sm-12, .col-md-6 {
+	padding-right: 20px;
 }
 .MetaDataLink {
 	color: #0071bc;
