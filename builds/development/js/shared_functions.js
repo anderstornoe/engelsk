@@ -109,13 +109,13 @@ var GeneralOverlayClass = {
             "why_btntext": "Why-button instruction text",
             "why_content": "In this exercise you work with understanding the two main characters and their development. You also practice descriptive vocabulary.",
             "how_btntext": "How-button instruction text",
-            "how_content": "Watch the first half of the film and choose the words you think describe each character best. Then watch the second half of the film and choose the words you think describe the characters best now."
+            "how_content": "Watch the first half of the film and choose the words you think describe each character best.<br/>Click the words you have placed to get feedback. <br/>Hold translate to translate words to Danish."
         },
         "billeddrag_dearamericans_2": {
             "why_btntext": "Why-button instruction text",
             "why_content": "In this exercise you work with understanding the two main characters and their development. You also practice descriptive vocabulary.",
             "how_btntext": "How-button instruction text",
-            "how_content": "Watch the second half of the film and choose the words you think describe each character best. Then watch the second half of the film and choose the words you think describe the characters best now."
+            "how_content": "Watch the second half of the film and choose the words you think describe each character best.<br/>Click the words you have placed to get feedback. <br/>Hold translate to translate words to Danish."
         },
         // ------
         "vid_an": {

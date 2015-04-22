@@ -6744,10 +6744,9 @@ a {
     }
 }
 
-
-
 .btn {
     /*padding: 4px 20px;*/
+    
     margin-right: 20px;
 }
 
@@ -6866,8 +6865,27 @@ body {
     position: relative;
 }
 
-.container-fluid{
+.container-fluid {
     max-width: 1164px;
+}
+
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.own_jumbo {
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.embedlink{
+    margin-left:5px;
 }
 
 a {
