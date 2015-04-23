@@ -45,6 +45,7 @@ body {
     top: 2%;
     width: 90%;
     z-index: 100;
+height: 100%;
 }
 img {
     cursor: pointer;
@@ -112,6 +113,10 @@ table {
     margin-left: 33px;
     margin-top: 40px;
 }
+.btn_videre{
+position:absolute;
+bottom: 0;
+}
 .videre_knap {
 }
 .forfra_knap {
@@ -134,5 +139,12 @@ table {
 }
 .correctliste {
     margin-left: 35px;
-    margin-top: 0;
+    margin-top: 0;  
+
+
+}
+
+.container_tekst{
+    height:75%;
+    overflow: auto;
 }

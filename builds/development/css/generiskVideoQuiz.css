@@ -36,7 +36,7 @@
 #PagerContainer{width: 700px; display: inline-block;}
 #PagerContainer ul {padding: 0px;}
 #PagerContainer ul li {display: inline;}
-.PagerButton{margin: 0px;}
+.PagerButton{margin: 2px;}
 .AddNewPageButton{} 
 
 .b-red { }

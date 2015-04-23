@@ -34,7 +34,7 @@
                  }
              }
 
-             $(".correct").html("Correct anwers: <b>" + score + " / " + antal_korrekte + " </b> Attempts: <b>" + attempts + "</b>");
+             $(".correct").html("Correct answers: <b>" + score + " / " + antal_korrekte + " </b> Attempts: <b>" + attempts + "</b>");
              init();
          },
          error: function(jqXHR, textStatus, errorThrown) {
