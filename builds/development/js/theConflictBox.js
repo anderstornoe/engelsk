@@ -75,7 +75,8 @@ $( document ).ready(function() {
 		$("#box4_overlay_red").hide();
 	});
 
-	$( ".ImgWrapper, #AntagonistArrow, #ProtagonistArrow, #box1_overlay_blue, #box2_overlay_blue, #box3_overlay_red, #box4_overlay_red" ).on( "mousedown", function( event ) {
+	// $( ".ImgWrapper, #AntagonistArrow, #ProtagonistArrow, #box1_overlay_blue, #box2_overlay_blue, #box3_overlay_red, #box4_overlay_red" ).on( "mousedown", function( event ) {
+	$( ".ImgWrapper, #AntagonistArrow, #ProtagonistArrow, #box1_overlay_blue, #box2_overlay_blue, #box3_overlay_red, #box4_overlay_red" ).on( "click", function( event ) {
 		// $( "#log" ).text( "pageX: " + event.pageX + ", pageY: " + event.pageY );
 			if (MouseOverBox(event.pageX, event.pageY, "#box1")) {
 				$("#ProtagonistArrow").show();

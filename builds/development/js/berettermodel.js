@@ -32,13 +32,13 @@
 
   var JsonHint = [
       {"answer":"Teaser", 
-       "hint":"The teaser starts off the plot off and gets the attention of the audience"},
+       "hint":"The teaser starts off the plot and gets the attention of the audience"},
       {"answer":"Presentation", 
        "hint":"The presentation introduces the main characters, the setting and the main conflicts that drive the plot"},
       {"answer":"Elaboration", 
        "hint":"The elaboration gives further knowledge and understanding about the conflict and the characters."},
       {"answer":"Point of no return", 
-       "hint":"The point of no return of no return is the point in the film when the main character no longer can go back to the way things were before. The main character has to &quot;do or die.&quot;"},
+       "hint":"The point of no return is the point in the film when the main character no longer can go back to the way things were before. The main character has to &quot;do or die.&quot;"},
       {"answer":"Conflict escalation", 
        "hint":"The conflict escalation sees the tension of the conflict increase."},
       {"answer":"Climax", 
