@@ -1,8 +1,6 @@
 
 @import "http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400italic,600italic,700italic,800italic,400,300,600,700,800";
-body {
-    color: white;
-}
+
 .svarcontainer {
     margin-top: 4%;
 }
@@ -36,6 +34,7 @@ body {
     background-color: rgba(0, 113, 128, 0.5);
     position: relative;
     z-index: 75;
+    color:white;
 }
 .popud {
     left: 0;
