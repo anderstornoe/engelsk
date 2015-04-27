@@ -19,6 +19,9 @@ h1 {
 .jumbotron {
 	margin-right: 16.6667%;
 }
+.om_header h1 {
+	margin-left: 0;
+}
 .om_container {
 	margin-right: 25%;
 }
