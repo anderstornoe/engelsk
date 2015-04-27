@@ -29,9 +29,7 @@
 	color: #0071BC;
 	margin:10px 0;
 }
-.topcol img {
-	vertical-align: baseline;
-}
+
 @media screen and (max-width: 480px) { 
 	.topcol {
 		width: 100%;

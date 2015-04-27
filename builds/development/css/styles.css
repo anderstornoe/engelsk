@@ -6995,8 +6995,6 @@ a:hover {
 body {
     color: black;
 }
-.video_container {
-}
 .correct {
     color:#666;
     }
@@ -7022,4 +7020,9 @@ body {
 
 .imgwrapper_black {
     background-color: black;
+}
+/*PDF ICON STYLING*/
+img.pdf-icon {
+	vertical-align: middle;
+	height:40px;
 }
