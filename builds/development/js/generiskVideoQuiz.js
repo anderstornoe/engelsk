@@ -922,14 +922,24 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
         Pager(PagerSelector, TargetSelectorChild, CssId); // Update the pager by recursive call
     });
 
+    var LastElement = null;
+
     // Set the chosen color if the pager-button is showen:
     $(PagerSelector + " li a").each(function(index, element) {
         if ($(element).text() == ActiveLinkNum) {
             $(element).toggleClass("btn-default btn-primary");
         }
+        LastElement = element;
     });
 
-    console.log("ActiveLinkNum 1: " + ActiveLinkNum);
+    // If the last STOP (n) is selected, and the user deletes the current STOP (n), then the user needs to "routed" to the second-last STOP (n-1):
+    if ( ActiveLinkNum > NumOfPages){
+        ActiveLinkNum = NumOfPages;
+        $(LastElement).toggleClass("btn-default btn-primary");
+        $(TargetSelectorChild + ":eq(" + (parseInt(ActiveLinkNum) - 1) + ")").addClass("dshow"); // TargetSelectorChild
+    }
+
+    console.log("ActiveLinkNum 1: " + ActiveLinkNum + ", NumOfPages: " + NumOfPages);
 }
 
 
