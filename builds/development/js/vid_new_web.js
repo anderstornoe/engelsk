@@ -291,9 +291,9 @@ function stop_event(tal, taeller) {
         }
     }
     if (spm.eventtype == "info") {
-        $(".popud").html("<h5 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
+             $(".popud").html("<h5 class='score'>Stop number " + (runde + 1) + "/" + stops.length + "   (Information)</h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
     } else {
-        $(".popud").html("<h5 class='score'>Question " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
+        $(".popud").html("<h5 class='score'>Stop number " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default-inverse btn-lg btn_videre'>Continue</div>");
 
     }
     $(".btn_videre").hide();
@@ -413,8 +413,9 @@ function feedback() {
 
 function next_event() {
     //alert(checkTimer);
-    //clearInterval(checkTimer);
-    total_spm++;
+    if (spm.eventtype != "info") {
+        total_spm++;
+    }
     //alert (events_taeller);
     events_taeller++;
     //console.log("next_event" + ", " + total_spm);
