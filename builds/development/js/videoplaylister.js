@@ -35,7 +35,6 @@ $( document ).ready(function() {
 
     // Naar der trykkes paa et anchor-tag med klassen ".LinkButton", saa...
     $( document ).on('click', ".LinkButton", function(event){
-        event.preventDefault();  // Forhindre at anchor-tag'et sender brugeren til "href".
 
         // Fjern klassen "Active" paa alle anchor-tags:
         $(".LinkButton").removeClass( "Active" );
