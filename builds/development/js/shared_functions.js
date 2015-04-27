@@ -215,7 +215,7 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId + ", \nOverlayTextHeader: " + OverlayTextHeader + ", \nOverlayText: " + OverlayText);
 
             $(".OverlayTextHeader").html(OverlayTextHeader);
-            $(".OverlayText").html(OverlayText);
+            $(".OverlayText").html('<h5>' + OverlayText +'</h5>');
         });
 
         this.CloseOverlays();
@@ -264,7 +264,7 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId + ", \nOverlayTextHeader: " + OverlayTextHeader + ", \nOverlayText: " + OverlayText);
 
             $(".OverlayTextHeader").html(OverlayTextHeader);
-            $(".OverlayText").html(OverlayText);
+            $(".OverlayText").html('<h5>' + OverlayText +'</h5>');
         });
 
         this.CloseOverlays();
