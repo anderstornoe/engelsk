@@ -333,12 +333,12 @@ function embedlink(url, obj) {
 
     // alert($(".tab").length);
 
-    var embedMoodle = '<iframe height="570" width="820" src="http://eundervisning-wp.dk/pf_eng2015/' + obj.parent().parent().find("a").eq(0).attr("href") + '"></iframe>';
-    var embedFronter = '<embed height="670" width="970" src="http://eundervisning-wp.dk/pf_eng2015/' + obj.parent().parent().find("a").eq(0).attr("href") + '"></embed>';
+    var embedFronter = '<iframe height="570" width="820" src="http://eundervisning-wp.dk/pf_eng2015/' + obj.parent().parent().find("a").eq(0).attr("href") + '"></iframe>';
+    var embedMoodle = '<embed height="670" width="970" src="http://eundervisning-wp.dk/pf_eng2015/' + obj.parent().parent().find("a").eq(0).attr("href") + '"></embed>';
 
     var embedArray = [embedMoodle, embedFronter];
 
-    var embedwrapping = "<div class='embedToggle'><p>Indsæt dette link i dit LMS eller webside: </p><div class='tabcontainer'><div class='tab_1 tab activetab'>Fronter(embed)</div><div class='tab_2 tab'>Moodle(iframe)</div></div><div class='togglecontainer'><input class='embedtext' type='text' value='" + embedArray[0] + "'></input><a class='MetaDataLink' href='https://www.youtube.com/watch?v=vjh6z6EACqQ'>Hjælp til indlejning (embedding) </a></div></div>";
+    var embedwrapping = "<div class='embedToggle'><p>Indsæt dette link i dit LMS eller på din webside</p><div class='tabcontainer'><div class='tab_1 tab activetab'>Fronter(embed)</div><div class='tab_2 tab'>Moodle(iframe)</div></div><div class='togglecontainer'><input class='embedtext' type='text' value='" + embedArray[0] + "'></input><a class='MetaDataLink' href='https://www.youtube.com/watch?v=vjh6z6EACqQ'>Hjælp til indlejring (embedding) </a></div></div>";
 
     var embedWidth;
     var embedHeight;
