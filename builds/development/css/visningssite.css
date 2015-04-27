@@ -39,7 +39,7 @@ h1 {
 }
 .thumb_overlay {
 	transition: background-color 0.3s ease;
-	background-color: rgba(0,113,188,0.5);
+	background-color: rgba(0,113,188,0.1);
 	opacity: 50%;
 	z-index: 3;
 	position: absolute;
@@ -50,11 +50,11 @@ h1 {
 	bottom:100%;
 	right:100%;
 }
+.thumb_overlay:hover {
+	background-color: rgba(0,113,188,0.5);
+}
 .indlejring_container a {
 	margin-right: 0;
-}
-.thumb_overlay:hover {
-	background-color: rgba(0,113,188,0);
 }
 @media screen and (max-width: 480px) { 
 	.btn-lg {
