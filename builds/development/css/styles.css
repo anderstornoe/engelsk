@@ -6888,6 +6888,11 @@ body {
     margin-left:5px;
 }
 
+
+.vuc_footer{margin-top: 20px; padding-top: 40px; padding-bottom: 40px;}
+.vuc_footer h2 {margin-top: 0px; margin-bottom: 30px; padding: 0px;}
+.footerText{margin: 0px; color: #666;}
+.footerCopywrite{margin-top: 30px; margin-bottom: 0px; font-weight: 600; }
 a {
     color: black;
     text-decoration: none;
@@ -6995,6 +7000,8 @@ a:hover {
 body {
     color: black;
 }
+.video_container {
+}
 .correct {
     color:#666;
     }
@@ -7020,9 +7027,4 @@ body {
 
 .imgwrapper_black {
     background-color: black;
-}
-/*PDF ICON STYLING*/
-img.pdf-icon {
-	vertical-align: middle;
-	height:40px;
 }
