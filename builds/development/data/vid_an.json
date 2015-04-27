@@ -46,7 +46,7 @@
                 "feedback": "Everyday situations are often indicated with objects that we are all familiar with."
             }]
         }, {
-            "timestamp": 108,
+            "timestamp": 109,
             "events": [{
                 "eventtype": "svarknap",
                 "tekst": "Lucas talks to his boss. How is the scene filmed?",
@@ -78,6 +78,7 @@
         }, {
             "timestamp": 135,
             "events": [{
+                "eventtype": "svarknap",
                 "tekst": "The boss talks to Lucas. How is the scene filmed?",
                 "svar": [
                     "The boss is filmed from a low angle",

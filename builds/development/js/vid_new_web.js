@@ -214,7 +214,6 @@ function timerCheck() {
             $('#time').html(m + ":" + dec_s + "<span style ='color:#bbb'>/" + total_spille_tid + "  </span>");
         } else {
             $('#time').html(m + ":" + dec_s + "<span style ='color:#bbb'>/" + total_spille_tid + "  </span>(Quiz in " + tid_min + ":" + tid_sek + ")");
-
         }
     } else {
         $('#time').html("Video paused");
