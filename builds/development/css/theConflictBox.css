@@ -5,10 +5,16 @@
 
 .red{} /* border: 1px solid #F00; */
 
+/* 
+	Fra js-filen: "on(click)"
+	.ImgWrapper, #AntagonistArrow, #ProtagonistArrow, #box1_overlay_blue, #box2_overlay_blue, #box3_overlay_red, #box4_overlay_red 
+*/
+
 .box{	width: 47%; 
 		height: 42%; 
 		padding: 0px; 
 		display: inline-block;
+		pointer-events: none;
         cursor:pointer;   /* IPAD-work-around til at faa div's til at lukke!!! */
 	} /* VIGTIGT: Padding skal være nul pga JQuery offset */
 
