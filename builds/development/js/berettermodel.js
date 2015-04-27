@@ -144,7 +144,7 @@
   function BS_LinkDropdownMenu(MenuArray){
       var HTML = '';
       for (var i in MenuArray){
-          HTML += '<li><a href="#">'+MenuArray[i]+'</a></li>';
+          HTML += '<li><a href="#"><h5>'+MenuArray[i]+'</h5></a></li>';
       }
       console.log("BS_LinkDropdownMenu: " + HTML); 
 
