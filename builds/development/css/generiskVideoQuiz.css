@@ -1,11 +1,14 @@
 	.FormsContainer, .generator_container{
 		color:black;
+		max-width: 2000px;
 	}
 
 	.embed-responsive{
 		color:white;
 	}
-
+/*
+#PlayerVideoView{overflow:hidden;}
+*/
 #HeaderWrap{padding: 10px;}
 .InputHeader{font-weight: 600; padding-top: 15px;}
 .QuestionField{margin: 10px;}
@@ -20,7 +23,7 @@
 #JsonVideoInput{font-weight: 600;}
 .usrbutton{margin-left: 10px; margin-top: 10px;}
 
-.QuestionWrapper{display: none;}
+.QuestionWrapper{/* display: none; */}
 .QuestionWrapperButton input{margin-left: 20px;}
 .QuestionLetter{padding-left: 5px; padding-right: 5px;}
 

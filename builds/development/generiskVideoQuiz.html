@@ -46,11 +46,11 @@
             <div class="InputHeader">Youtube URL</div>
             <input id="video_url" class="TextField w50" placeholder="kopier URL'en fra adressefeltet i din browser ind i dette felt" type="text" />
             <div class="InputHeader">Titel på startframe</div>
-            <input id="video_startFrameTitle" class="TextField w50" placeholder="Titel p&aring; startframe (70 tegn)" type="text" />
+            <input id="video_startFrameTitle" class="TextField w50" placeholder="Titel p&aring; startframe (50 tegn)" type="text" maxlength="50"/>
             <div class="InputHeader">Introtekst til første frame</div>
-            <input id="video_startFrameText" class="TextField w50" placeholder="F.eks: Hvad ved du om the American Dream? (70 tegn)" type="text" />
+            <input id="video_startFrameText" class="TextField w50" placeholder="F.eks: Hvad ved du om the American Dream? (90 tegn)" type="text" maxlength="90" />
             <div class="InputHeader">Titel på startknap</div>
-            <input id="video_startButtonTitle" class="TextField w50" placeholder="Titel p&aring; startknap (40 tegn)" type="text" />
+            <input id="video_startButtonTitle" class="TextField w50" placeholder="Titel p&aring; startknap (30 tegn)" type="text" maxlength="30"/>
             <br/>
             <br/>
 
@@ -64,11 +64,11 @@
 
         <div class="row">
             <div class="col-sm-6">
-                <h2 id="ScrollHere">Din videoquiz </h2>
+                <h3 id="ScrollHere">Din videoquiz </h3>
                 <!-- <div class="embed-responsive embed-responsive-16by9"> -->
                 <div class="embed-responsive embed-responsive-16by9">
                     <div class="player_container embed-responsive embed-responsive-16by9 col-xs-12 col-md-12">
-                        <div id="player" class="embed-responsive-item"> <img class="img-responsive" alt="No video" src="https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg"/> </div>
+                        <div id="player" class="embed-responsive-item"> <img class="img-responsive" alt="No video" src="../images/no_video.jpg"/> </div>
                         <div id="time">
 
                         </div>
@@ -81,10 +81,10 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <h2>Din videofil </h2>
+                <h3>Din videofil </h3>
                 <!-- <div class="embed-responsive embed-responsive-16by9"> -->
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe id="PlayerVideoView" class="embed-responsive-item"> <img class="img-responsive" alt="No video" src="https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg"/>
+                    <iframe id="PlayerVideoView" class="embed-responsive-item" scrolling="no"> <img class="img-responsive" alt="No video" src="../images/no_video.jpg"/>
                     </iframe>
                 </div>
             </div>
@@ -104,7 +104,7 @@
     <span class="btn btn-default usrbutton"><a id="countform" class="ml10" href="#"> GEM QUIZ </a></span> (Den optimale løsning: en server der modtager JSON-stringen. Alternativ løsning: ??? - vi skal tage en beslutning...).
  -->
 
-    <h3>User interface</h3>
+    <h2>User interface</h2>
 
     <div id="PagerWrapper">
         STOP: 

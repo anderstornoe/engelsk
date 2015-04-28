@@ -15,7 +15,7 @@ var VideoClass = {
     WatchURL: null,
     BasicYoutubeEmbedStr: 'https://www.youtube.com/embed/',
     BasicYoutubeWatchStr: 'https://www.youtube.com/watch?v=',
-    DefaultNoVideoImg: 'https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg',
+    DefaultNoVideoImg: '../images/no_video.jpg',
     DefaultStartFrameTitle: "Answer the questions in this video quiz.",
     DefaultStartFrameText: "Note what happens as the film plays and try to answer the questions",
     DefaultStartButtonTitle: "Start quiz",
@@ -77,12 +77,25 @@ var VideoClass = {
 //                              User interface
 //###################################################################################### 
 
+// Maaling af ordlaengder til inputfelter:
+//
+//          10        20        30        40        50        60        70        80        90        100  
+// 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+// https://www.youtube.com/embed/4lIYv66vKGc
+// Answer the questions in this video quiz xcvb dfgbn
+// Note what happens as the film plays and try to answer the questions as the film plays and 
+// Start quiz Start quiz dgr dgre
+// (1) Note what happens as the film plays and try to answer the questions as the film plays and tryX. (2) Note what happens as the film plays and try to answer the questions as the film plays and tryX. (3) Note what happens as the film plays and try to answer the questions as the film plays and tryX. 
+// (1) Note what happens as the film plays and try to
 
+// maxlength="10"
+
+// no_video.jpg  
 
 // QuestionField
 var QuestionField = '<div class="QuestionField">' +
     '<span class="QuestionLetter"></span>' +
-    '<input type="text" class="TextField w50 mr25" placeholder="Skriv svarmulighed her" name="Question"/>' +
+    '<input type="text" class="TextField w50 mr25" placeholder="Skriv svarmulighed her" name="Question" maxlength="50"/>' +
     '<input type="checkbox" name="Csvar" class="Csvar"/>' +
     // '<a class="addfield ml10" href="#"> Tilf&oslash;j svarmulighed </a>' + 
     '<a class="removefield ml10" href="#"> slet </a>' +
@@ -93,13 +106,14 @@ var EventForm = '<form class="EventForm">' +
     '<div class="EventFormBkColor">' +
     '<b class="ml10"> Sæt 1</b>' +
     '<span class="QuestionWrapperButton">' +
-    '<input type="radio" name="valg" value="RadioQuestion" /> Sp&oslash;rgsm&aring;l' +
-    '<input type="radio" name="valg" value="RadioInformation" checked="checked"/> Information' +
+    '<input type="radio" name="valg" value="RadioQuestion" checked="checked" /> Sp&oslash;rgsm&aring;l' +
+    '<input type="radio" name="valg" value="RadioInformation" /> Information' +
     '</span>' +
     '<a class="removeform ml10 right btn btn-default usrbutton" href="#"> Fjern sæt </a>' +
     '<div class="clear"></div>' +
-    '<textarea rows="4" class="TextField w50" name="EventInfo" placeholder="Her skriver du din infotekst (300 tegn)"></textarea> <br/>' +
-    '<div class="QuestionWrapper dhide">' +
+    '<textarea rows="4" class="TextField w50" name="EventInfo" maxlength="300" placeholder="Her skriver du din infotekst (300 tegn)">' + 
+    '</textarea> <br/>' +
+    '<div class="QuestionWrapper">' +
     '<span class="QFTheading"> ANGIV SVARMULIGHEDER (maks 4 svar muligt) </span> <span class="QFAheading"> KORREKT SVAR </span>' +
     '<div class="QuestionFieldWrapper">' +
     QuestionField +
@@ -1057,6 +1071,11 @@ $(document).ready(function() {
                 //
 
             });
+
+            // $(document).on('click', "#JsonVideoInput", function(event) {
+            // $("#JsonVideoInput").click(function () {
+                $("#JsonVideoInput").select();
+            // });
 
 
 

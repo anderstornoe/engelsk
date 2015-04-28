@@ -4912,7 +4912,6 @@ a.badge:focus {
   background-color: #f8f8f6;
   border: 1px solid none;
   border-radius: 4px;
-  box-shadow: none;
   -webkit-transition: border 0.2s ease-in-out;
   -o-transition: border 0.2s ease-in-out;
   transition: border 0.2s ease-in-out;
@@ -6661,7 +6660,7 @@ button.close {
 }
 
 .btn_container {
-    margin-top: 10px;
+    margin-top: 20px;
     font-weight: 200;
 }
 
@@ -6881,7 +6880,7 @@ body {
 }
 
 .own_jumbo {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-left: 20px;
 }
 
@@ -7029,6 +7028,3 @@ body {
 .imgwrapper_black {
     background-color: black;
 }
-/*a:hover, a.embedlink:hover {
-	text-decoration: underline;
-}*/
