@@ -37,7 +37,9 @@ var intro_header;
 var intro_knap;
 var intro_text;
 
-loadData();
+//loadData();
+
+//// ALT OVER ER IDENTISK
 
 function loadData() {
     runde = 0;
@@ -173,6 +175,9 @@ function setupplayer() {
     $(".popud").css("left", popud_left);
 }
 
+
+
+/// Herunder er scriptet identisk med vid_new.js
 function timerCheck() {
 
     if (player) {

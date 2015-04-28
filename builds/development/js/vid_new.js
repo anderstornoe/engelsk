@@ -30,11 +30,16 @@ var seconds;
 
 var timestamp_Array = [];
 var JsonObj;
+var JsonVideoInput_update;
 //XML SKAL SKIFTES UD MED JSON
 
 var intro_header;
 var intro_knap;
 var intro_text;
+
+
+
+//Indhold kun til den 'rene' player: 
 
 function loadData(url) {
     $.ajax({
@@ -89,6 +94,74 @@ function loadData(url) {
 
 }
 
+// Indhold kun til den 'generiske player' : 
+
+function loadGenericData() {
+    runde = 0;
+    events_taeller = 0;
+    total_score = 0;
+    total_spm = 0;
+    playing = false;
+    console.log("loadData");
+    $(".popud").html("");
+    $(".intro").html("");
+    $.ajax({
+        //url: url,
+        // contentType: "application/json; charset=utf-8",  // Blot en test af tegnsaettet....
+        // dataType: 'json', // <------ VIGTIGT: Saadan boer en angivelse til en JSON-fil vaere! 
+        dataType: 'text', // <------ VIGTIGT: Pga. ???, saa bliver vi noedt til at angive JSON som text. 
+        async: true, // <------ VIGTIGT: Sikring af at JSON hentes i den rigtige raekkefoelge (ikke asynkront). 
+        success: function(data, textStatus, jqXHR) {
+
+            timestamp_Array = [];
+            JsonObj = JsonVideoInput_update;
+
+            console.log("success loadData");
+
+            for (var key in JsonObj) {
+                var objkey = Object.keys(JsonObj[key]);
+                //console.log("objkey:" + objkey);
+                if (objkey == "stops") {
+                    console.log("bingo: " + objkey);
+                    stops = JsonObj[key].stops;
+                    //console.log(stops[0].timestamp);
+                } else if (objkey == "video") {
+                    videoId = JsonObj[key].video;
+                } else if (objkey == "intro_header") {
+                    intro_header = JsonObj[key].intro_header;
+                } else if (objkey == "intro_knap") {
+                    intro_knap = JsonObj[key].intro_knap;
+                } else if (objkey == "intro_text") {
+                    intro_text = JsonObj[key].intro_text;
+                }
+                //console.log("Stops: " + stops);
+            }
+            //total_spille_tid = data.find('video').attr('total_tid');
+            if (stops) {
+                var lengde = stops.length;
+            } //data.find('runde').length;
+            popudwidth = 450;
+            popud_left = 0; //(bredde / 2) - (popudwidth / 2);
+
+            for (var i = 0; i < lengde; i++) {
+                timestamp_Array.push(stops[i].timestamp); //data.find('runde').eq(i).attr('timestamp'));
+            }
+
+            setUpTube();
+
+            //console.log (Stops[key].timestamp);
+            //console.log ("svarlenght:" + Stops[key].svar.length);
+            // console.log("Key : " + Key + ", overskrift_Array : " + overskrift_Array[Key] ); 
+            // console.log("JsonObj : " + JSON.stringify(JsonObj)  ); 
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("Error!!!\njqXHR:" + jqXHR + "\ntextStatus: " + textStatus + "\nerrorThrown: " + errorThrown);
+        }
+    });
+
+}
+
+
 
 /// PLAYER SCRIPT - SETUP tube
 function setUpTube() {
@@ -103,7 +176,13 @@ function setUpTube() {
 //    after the API code downloads.
 
 function onYouTubeIframeAPIReady() {
-    //console.log(videoId);
+
+    setupplayer();
+    console.log("onYouTubeIframeAPIReady");
+
+}
+
+function setupplayer() {
     $("#overlay").toggle();
     player = new YT.Player('player', {
         videoId: videoId,
@@ -151,6 +230,10 @@ function onYouTubeIframeAPIReady() {
     $(".popud").css("width", popudwidth);
     $(".popud").css("left", popud_left);
 }
+
+
+
+/// Herunder er scriptet identisk med vid_new_web.js
 
 function timerCheck() {
 

@@ -116,7 +116,7 @@
                 "korrekt": [
                     "0"
                 ],
-                "feedback": "The pop music we hear in the background, set the atmosfere for the shot. It emphasizes the superficiality of the relationship between the characters."
+                "feedback": "The pop music, heard in the background, sets the atmosfere for the shot. It maybe emphasizes the superficiality of the relationship between the characters."
             }]
         }, {
             "timestamp": 418,
@@ -131,7 +131,7 @@
                 "korrekt": [
                     "1"
                 ],
-                "feedback": "The dark, contrast-filled Low-key lighting underlines Lucas' ambiguity."
+                "feedback": "You can maybe argue, that the dark, contrast-filled Low-key lighting is underlining Lucas' ambiguity."
             }]
         }, {
             "timestamp": 490,
@@ -139,7 +139,7 @@
                 "eventtype": "svarknap",
                 "tekst": "What camera movement is used? How does the camera move in this scene?",
                 "svar": [
-                    "Steady-cam",
+                    "Fixed position",
                     "Pan or tilt",
                     "Handheld"
 
