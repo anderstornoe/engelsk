@@ -181,7 +181,7 @@ function UpdateQuestionFieldLetters() {
 
 //================================
 
-
+// IN USE:
 // AddElementLast('.AddNewPageButton', '.DummyPage', '#DummyPageContainer', DummyPage, false);
 function AddTimestampLast(Selector, TSelector, TSelectorParent, HtmlToBeAdded, Max, PagerSelector, PagerTargetSelectorChild, PagerCssId) {
     $(document).on('click', Selector, function(event) {
@@ -203,9 +203,11 @@ function AddTimestampLast(Selector, TSelector, TSelectorParent, HtmlToBeAdded, M
         UpdateNumbersInFormHeaders();
         UpdateQuestionFieldLetters();
         Pager(PagerSelector, PagerTargetSelectorChild, PagerCssId);
+        MarkFistAnswerAsCorrectIfNoneSelected(false);
     });
 }
 
+// IN USE:
 // RemoveElement('.removePage', '.DummyPage', 1);
 function RemoveTimestamp(Selector, TSelector, Min, PagerSelector, PagerTargetSelectorChild, PagerCssId) {
     $(document).on('click', Selector, function(event) {
@@ -225,13 +227,14 @@ function RemoveTimestamp(Selector, TSelector, Min, PagerSelector, PagerTargetSel
         UpdateNumbersInFormHeaders();
         UpdateQuestionFieldLetters();
         Pager(PagerSelector, PagerTargetSelectorChild, PagerCssId);
+        MarkFistAnswerAsCorrectIfNoneSelected(true);
     });
 }
 
 
 //================================
 
-
+// IN USE:
 // VIGTIGT: Chromium tillader ikke default argumentet Max at blive angivet som "Max = false". 
 function AddElement(Selector, TSelector, HtmlToBeAdded, Max) {
     $(document).on('click', Selector, function(event) {
@@ -253,6 +256,7 @@ function AddElement(Selector, TSelector, HtmlToBeAdded, Max) {
         // The following lines "breaks" the generality of this function: 
         UpdateNumbersInFormHeaders();
         UpdateQuestionFieldLetters();
+        MarkFistAnswerAsCorrectIfNoneSelected(false);
         // if (Selector == ".add_TimeStampForm") {
         //     if (CheckTimeStopValues('Du forsøger nu at tilføje nu et ekstra "Stop"') == true){
         //         $(".TimeStampForm:last-child").remove();
@@ -262,7 +266,7 @@ function AddElement(Selector, TSelector, HtmlToBeAdded, Max) {
     });
 }
 
-
+// IN USE
 //      AddLastElement('.addfield', '.QuestionField', '.EventForm', QuestionField, 4);
 // VIGTIGT: Chromium tillader ikke default argumentet Max at blive angivet som "Max = false". 
 function AddLastElement(Selector, TSelector, TSelectorParent, HtmlToBeAdded, Max) {
@@ -285,9 +289,11 @@ function AddLastElement(Selector, TSelector, TSelectorParent, HtmlToBeAdded, Max
         // The following lines "breaks" the generality of this function: 
         UpdateNumbersInFormHeaders();
         UpdateQuestionFieldLetters();
+        MarkFistAnswerAsCorrectIfNoneSelected(true);
     });
 }
 
+// IN USE:
 // VIGTIGT: Chromium tillader ikke default argumentet Min at blive angivet som "Min = false". 
 function RemoveElement(Selector, TSelector, Min) {
     $(document).on('click', Selector, function(event) {
@@ -303,6 +309,25 @@ function RemoveElement(Selector, TSelector, Min) {
 
         UpdateNumbersInFormHeaders();
         UpdateQuestionFieldLetters();
+        MarkFistAnswerAsCorrectIfNoneSelected(true);
+    });
+}
+
+
+function MarkFistAnswerAsCorrectIfNoneSelected(UsrAlert){
+    $(".EventForm").each(function(index1, element1) {
+        var Csvar = false;
+        var MaxNum; var FirstObj;
+        $(".QuestionField", element1).each(function(index2, element2) {
+            if (index2 == 0) FirstObj = $(">input[name='Csvar']", element2);
+            if ($("input[name='Csvar']", element2).prop('checked')) Csvar = true;
+            MaxNum = index2 + 1;
+        });
+        if (!Csvar) {
+            if (UsrAlert) alert("Der skal som minimum være eet korrekt svar!");
+            $(FirstObj, element1).prop('checked', true);
+        }
+        console.log("MarkFistAnswer - MaxNum : " + MaxNum + ", Csvar : " + Csvar);
     });
 }
 
@@ -1025,9 +1050,13 @@ $(document).ready(function() {
             // QuestionWrapperButtonControl(".EventForm .QuestionWrapperButton");
             QuestionWrapperButtonControl();
 
+            MarkFistAnswerAsCorrectIfNoneSelected(false); // Mark the first answer as cheked!
+
 
             $(".WatchQuiz").click(function(e) {
                 e.preventDefault(); // Prevent the link-nature of the anchor-tag.
+
+                MarkFistAnswerAsCorrectIfNoneSelected(true); // Check if a "Sæt" is missing an answer!
 
                 console.log("ScrollUp: " + $(this).prop("class"));
 
@@ -1066,7 +1095,9 @@ $(document).ready(function() {
 
                 $(".player_container").html("<div id='player' class='embed-responsive-item'></div><div id='time'></div><div id='time_bar'></div>");
 
-                loadGenericData();
+
+                // loadGenericData();  // <---- Note skrevet d. 28/4: Denne funktion findes ikke i vid_new_web.js, skal loadData evt omdøbes? 
+                loadData();
                 setupplayer();
                 //
 
