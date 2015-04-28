@@ -1096,8 +1096,7 @@ $(document).ready(function() {
                 $(".player_container").html("<div id='player' class='embed-responsive-item'></div><div id='time'></div><div id='time_bar'></div>");
 
 
-                // loadGenericData();  // <---- Note skrevet d. 28/4: Denne funktion findes ikke i vid_new_web.js, skal loadData evt omdøbes? 
-                loadData();
+                loadGenericData(); 
                 setupplayer();
                 //
 
