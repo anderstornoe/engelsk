@@ -176,6 +176,11 @@ body {
     text-decoration: none;
     background-color: transparent;
 }
+a:hover,
+a:focus {
+  color: #0071bc;
+  text-decoration: none;
+}
 a.MetaDataLink {
     text-decoration: none;
 }
