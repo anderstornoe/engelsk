@@ -71,6 +71,10 @@
       background-color: #E6E6E6;
       border-color: #B0B0AD;
     }
+    a.btn-danger, a.btn-danger:hover{
+      background-color: #ed3e3a;
+      border-color: #ed3e3a;
+    }
     h5 {
       color: black;
     }
