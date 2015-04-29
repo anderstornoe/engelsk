@@ -20,11 +20,11 @@
 
   var JsonCss = [ 
       {"id":"#Menu1", "top":218, "left":65,   "left_ajust":0, "top_ajust":0,    "answer":"Teaser"},
-      {"id":"#Menu2", "top":180, "left":162,  "left_ajust":0, "top_ajust":-30,  "answer":"Presentation"},
-      {"id":"#Menu3", "top":140, "left":270,  "left_ajust":0, "top_ajust":-60,  "answer":"Elaboration"},
-      {"id":"#Menu4", "top":100,  "left":352,  "left_ajust":0, "top_ajust":-90,  "answer":"Point of no return"},
-      {"id":"#Menu5", "top":60,  "left":489,  "left_ajust":0, "top_ajust":-120, "answer":"Conflict escalation"},
-      {"id":"#Menu6", "top":30, "left":670,  "left_ajust":0, "top_ajust":-150, "answer":"Climax"},
+      {"id":"#Menu2", "top":170, "left":162,  "left_ajust":0, "top_ajust":-30,  "answer":"Presentation"},
+      {"id":"#Menu3", "top":130, "left":270,  "left_ajust":0, "top_ajust":-60,  "answer":"Elaboration"},
+      {"id":"#Menu4", "top":90,  "left":352,  "left_ajust":0, "top_ajust":-90,  "answer":"Point of no return"},
+      {"id":"#Menu5", "top":50,  "left":489,  "left_ajust":0, "top_ajust":-120, "answer":"Conflict escalation"},
+      {"id":"#Menu6", "top":0, "left":670,  "left_ajust":0, "top_ajust":-150, "answer":"Climax"},
       {"id":"#Menu7", "top":80, "left":764,  "left_ajust":0, "top_ajust":-180, "answer":"Resolution"}
   ];
 
@@ -294,7 +294,7 @@
                   $( DivObj ).before( $('<a id="Ans'+IdNumStr+'" class="AnsClass btn btn-danger btn-sm btn-autosize">'+AnsText+'</a>').fadeIn("slow") );
                   $( "#Ans"+IdNumStr ).css({ position: "absolute", top: Ans_Top+"px", left: Ans_Left+"px"});
                   if (AnsText == "Correct") $("#Ans"+IdNumStr).toggleClass( "btn-danger btn-success" ); // Skift til groen
-                  // SetTimerAndFadeout(".AnsClass");
+                  SetTimerAndFadeout(".AnsClass");
                   console.log(" TimerId 2 : " + TimerId );
               });
           }
