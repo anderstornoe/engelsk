@@ -6907,10 +6907,6 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: none;
-}
-
 .OverlayTextHeader h1 {
     margin: 0px !important;
     font-size: 36px;

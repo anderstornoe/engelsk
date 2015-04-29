@@ -29,6 +29,13 @@
 	color: #0071BC;
 	margin:10px 0;
 }
+.MetaDataLink > h5 {
+	font-size: 12px;
+	display: inline;
+}
+.MetaDataLink:hover {
+	text-decoration: underline;
+}
 
 @media screen and (max-width: 480px) { 
 	.topcol {
