@@ -1,0 +1,20 @@
+.google_search{
+	line-height:1;
+}
+.intro {
+	padding-left: 40px;
+}
+.gsc-input {
+	height: 35px !important;
+}
+.gsc-selected-option-container {
+	padding: 0px 75px 0px 6px !important;
+}
+
+.sorting_options {
+	width:90px !important;
+}	
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

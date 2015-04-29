@@ -1,0 +1,133 @@
+[
+    {
+        "video": "e0H6AzEMHSc"
+    },
+    {
+        "stops": [
+    		{
+                "timestamp": 58,
+                "events": [
+                    {
+                        "eventtype": "svarknap",
+                        "tekst": "How does the film show Lucas's breakfast?",
+                        "svar": [
+                            "wide shots",
+                            "mid-shots",
+                            "close-ups"
+                        ],
+                        "korrekt": [
+                            "2"
+                        ],
+                        "feedback": "The film shows Lucas's breakfast in five close-ups of the products he consumes. We do not see Lucas at all during his breakfast."
+                    }
+                ]
+            },
+            {
+                "timestamp": 64,
+                "events": [
+                    {
+                        "eventtype": "svarknap",
+                        "tekst": "What do the groceries the tea and the cats indicate about the set?",
+                        "svar": [
+                            "It´s an everyday situation",
+                            "It´s a hotel room in a foreign location",
+                            "It´s a classy environment"
+                        ],
+                        "korrekt": [
+                            "0"
+                        ],
+                        "feedback": "Everyday situations are often indicated with objects that we are all familiar with."
+                    }
+                ]
+            },
+            {
+                "timestamp": 113,
+                "events": [
+                    {
+                        "eventtype": "svarknap",
+                        "tekst": "What do the clothes tell us about the relationsship between the two men?",
+                        "svar": [
+                            "They are relaxed and friendly towards each other",
+                            "One of them is rich and the other one is poor",
+                            "One of them is in an authority position in relation to the other one"
+
+                        ],
+                        "korrekt": [
+                            "2"
+                        ],
+                        "feedback": "Clothes are often used to underline a person´s  position"
+                    },
+                    {
+                        "eventtype": "svarknap",
+                        "tekst": "Lucas talks to his boss. How is the scene filmed?",
+                        "svar": [
+                            "Lucas is filmed from a worm's eye perspective",
+                            "Lucas is filmed from a bird's eye perspective",
+                            "The boss is filmed from a bird's eye perspective"
+                        ],
+                        "korrekt": [
+                            "1"  
+                        ],
+                        "feedback": "The film illustrates the boss's authority by filming Lucas from a bird's eye perspective in an over-the-shoulder shot."
+                    }
+                ]
+            },
+            {
+                "timestamp": 142,
+                "events": [
+                    {
+                        "eventtype": "svarknap",
+                        "tekst": "How is Lucas's language different when he talks to his boss from when he talks to his colleagues and his screen?",
+                        "svar": [
+                            "Lucas speaks to his boss in a formal tone",
+                            "Lucas speaks to his boss in an informal tone",
+                            "Lucas speaks to his screen in a formal tone",
+                            "Lucas speaks to his screen in an informal tone"
+                        ],
+                        "korrekt": [
+                            "0"
+                        ],
+                        "feedback": "When Lucas talks to his colleagues and his screen, he uses informal language, jokes etc. When he talks to his boss, he uses formal language, doesn't joke or flirt."
+                    }
+                ]
+            },
+            {
+                "timestamp": 160,
+                "events": [
+                    {
+                        "eventtype": "svarknap",
+                        "tekst": "Lucas is invited to his colleague's event. How does he react?",
+                        "svar": [
+                            "His first impulse is to decline, but he ends up saying yes",
+                            "His first impulse is to say yes, but he ends up declining",
+                            "He declines on Facebook but says yes to his colleague's face"
+                        ],
+                        "korrekt": [
+                            "0"
+                        ],
+                        "feedback": ""
+                    }
+                ]
+            },
+            {
+                "timestamp": 185,
+                "events": [
+                    {
+                        "eventtype": "svarknap",
+                        "tekst": "What does the interior of the apartment tell us about Lucas George?",
+                        "svar": [
+                            "That he wants to appear rich and stylish",
+                            "That he is relaxed and informal",
+                            "That he knows a lot about design"
+                        ],
+                        "korrekt": [
+                            "2"
+                        ],
+                        "feedback": "Furniture and decor in an apartment or house are often used to reveal characteristics about the people living there."
+                    }
+                ]
+            }
+        ]
+    }
+]
+ 

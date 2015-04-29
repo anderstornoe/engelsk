@@ -1,0 +1,170 @@
+[{
+        "video": "lny37_zJpFc"
+    },
+
+    {
+        "intro_header": "Watch the film and answer the questions along the way."
+    },
+
+    {
+        "intro_text": "Under the heading of “cinematic technique” or shot you look at how the pictures are created, for instance what angles, colours and sounds are used. You also look at how the camera is moved and how the different scenes are put together. You can say that you look at how things are shown in the picture.<br/>Each question has only one correct answer."
+    },
+
+    {
+        "intro_knap": "START!"
+    },
+
+    {
+        "stops": [{
+            "timestamp": "19",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "This type of shot contains one part of an object. What term describes it?",
+                "svar": [
+                    "Long shot",
+                    "Close-up",
+                    "Extreme close-up"
+                ],
+                "korrekt": [
+                    2
+                ],
+                "feedback": "Extreme close-up  is used to create an intense mood."
+            }]
+        }, {
+            "timestamp": "47",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What kind of shot is this?",
+                "svar": [
+                    "Medium shot",
+                    "Close-up",
+                    "Ultra close-up"
+                ],
+                "korrekt": [
+                    0
+                ],
+                "feedback": "Medium shot is good at allowing the viewer to see both facial expression and body language of one or two characters"
+            }]
+        }, {
+            "timestamp": "72",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What we see seems as if we are seeing it through the eyes of the woman. What term describes it?",
+                "svar": [
+                    "Transition",
+                    "(Subjective) Point of view",
+                    "Cross-cutting"
+                ],
+                "korrekt": [
+                    1
+                ],
+                "feedback": "Point of view is used so the audience is able to identify with the character"
+            }]
+        }, {
+            "timestamp": "123",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What is the term used to describe the music that the characters can hear? ",
+                "svar": [
+                    "Contrapuntal",
+                    "Diegetic",
+                    "Non-diegetic sound"
+                ],
+                "korrekt": [
+                    1
+                ],
+                "feedback": "Music creates an immediate emotional response in the viewer. The same scene can take on a wholly different meaning if the music is changed"
+            }]
+        },  {
+            "timestamp": "146",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What term describes that way the camera moves across the meat in this shot",
+                "svar": [
+                    "Steady",
+                    "Pan",
+                    "Tilt"
+                ],
+                "korrekt": [
+                    1
+                ],
+                "feedback": "This camera movement is used to show the massive amount of meat."
+            }]
+        }, {
+            "timestamp": "165",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "How does the camera move?",
+                "svar": [
+                    "Pan",
+                    "Tilt",
+                    "Handheld"
+                ],
+                "korrekt": [
+                    2
+                ],
+                "feedback": "A hand-held camera gives a dynamic or real(ist) feel to the shot"
+            }]
+        }, {
+            "timestamp": "231",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "This type of shot contains the character from the waist up. What term describes it?  ",
+                "svar": [
+                    "Close-up",
+                    "Medium shot",
+                    "Long shot"
+                ],
+                "korrekt": [
+                    1
+                ],
+                "feedback": "Medium shot is  often used to show the facial expression of the characters"
+            }]
+        }, {
+            "timestamp": "237",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "Whose point of view is this shot taken from?",
+                "svar": [
+                    "Someone who is part of the story",
+                    "The audience",
+                    "One of the main characters"
+                ],
+                "korrekt": [
+                    0
+                ],
+                "feedback": "The subjective shot allows the viewer to see the world from the point of view of a specific character or sometimes thing. "
+            }]
+        }, {
+            "timestamp": "312",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What kind of shot is this?",
+                "svar": [
+                    "Medium shot",
+                    "Close-up",
+                    "Extreme close-up"
+                ],
+                "korrekt": [
+                    1
+                ],
+                "feedback": "A close-ups are good at showing one person's emotions."
+            }]
+        }, {
+            "timestamp": "363",
+            "events": [{
+                "eventtype": "svarknap",
+                "tekst": "What is this kind of camera movement called?",
+                "svar": [
+                    "Pan",
+                    "Tilt",
+                    "Handheld"
+                ],
+                "korrekt": [
+                    1
+                ],
+                "feedback": "When the camera move up and down from a stationary position - here it allows the viewer to get a glimpse of a clear blue sky..."
+            }]
+        }]
+    }
+]

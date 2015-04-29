@@ -1,0 +1,12 @@
+.vid_container {
+	margin-bottom: 30px;
+}
+
+.droppable{margin-right:20px;}
+
+.movietext{
+	color: red;
+
+	z-index:3;
+
+}

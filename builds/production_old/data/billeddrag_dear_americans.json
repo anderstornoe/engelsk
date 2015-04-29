@@ -1,0 +1,89 @@
+[{
+    "English": "Affectionate",
+    "Dansk": "Kærlig",
+    "Correct": 1
+}, {
+    "English": "Sensitive",
+    "Dansk": "Sensitiv",
+    "Correct": 0
+}, {
+    "English": "Condescending",
+    "Dansk": "Nedladende",
+    "Correct": 0
+}, {
+    "English": "Confident",
+    "Dansk": "Confident",
+    "Correct": 2
+}, {
+    "English": "Resolute",
+    "Dansk": "Resolute",
+    "Correct": 2
+}, {
+    "English": "Obstinate",
+    "Dansk": "Stædig",
+    "Correct": 2
+}, {
+    "English": "Submissive",
+    "Dansk": "Underkastet",
+    "Correct": 2
+}, {
+    "English": "Courageous",
+    "Dansk": "Modig",
+    "Correct": 2
+}, {
+    "English": "Extrovert",
+    "Dansk": "Udadvendt",
+    "Correct": 1
+}, {
+    "English": "Talkative",
+    "Dansk": "Snakkesalig",
+    "Correct": 1
+}, {
+    "English": "Reticent",
+    "Dansk": "Tilbageholdende",
+    "Correct": 0
+}, {
+    "English": "Introvert",
+    "Dansk": "Indadvendt",
+    "Correct": 0
+}, {
+    "English": "Prudent",
+    "Dansk": "Forsigtig",
+    "Correct": 0
+}, {
+    "English": "Sensible",
+    "Dansk": "Fornuftig",
+    "Correct": 2
+}, {
+    "English": "Illogical",
+    "Dansk": "Ulogisk",
+    "Correct": 2
+}, {
+    "English": "Perplexed",
+    "Dansk": "Perpleks",
+    "Correct": 2
+}, {
+    "English": "Puzzled",
+    "Dansk": "Forvirret",
+    "Correct": 2
+}, {
+    "English": "Devastated",
+    "Dansk": "Ødelagt",
+    "Correct": 2
+}, {
+    "English": "Distressed",
+    "Dansk": "Fortvivlet",
+    "Correct": 2
+}, {
+    "English": "Enraged",
+    "Dansk": "Vred",
+    "Correct": 0
+}, {
+    "English": "Infuriated",
+    "Dansk": "Rasende",
+    "Correct": 2
+}, {
+    "English": "Thrilled",
+    "Dansk": "Begejstret",
+    "Correct": 1
+}]

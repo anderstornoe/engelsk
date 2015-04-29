@@ -1,0 +1,112 @@
+[{
+    "video": "lny37_zJpFc"
+    }, 
+    
+    {
+        "intro_header": "Watch the film and answer the questions along the way."
+    },
+
+    {
+        "intro_text": "Besides what the actors say and do in a film, much is told through the use of costumes and props.<br/> Each question has only one correct answer."
+    },
+
+    {
+        "intro_knap": "START!"
+    },
+
+    {
+        "stops": [{
+        "timestamp": "13",
+        "events": [{
+            "eventtype": "info",
+            "tekst": "Costume gives information both about the historical and social setting of the the character and it is often a hint to a character’s personality. <br/>Props can be many different things and have different levels of importance. <br/>The most important props become symbols of a character or a conflict that is important to the plot of the film. <br/>It is important to pay attention to set, costume and props when we want to understand how the film works and what it wants to say.",
+            "svar": [
+                "The pressure cooker is not typical of an American kitchen and clearly ties its owners to a culture that is different from the mainstream American.",
+                "The pressure cooker shows that this film is going to be about food and eating.",
+                "The pressure cooker does not have any particular meaning."
+            ],
+            "korrekt": [
+                0
+            ],
+            "feedback": "The opening shot of a film is always important and usually tries to give the audience an idea about what the film is going to be about"
+        }]
+    },
+    {
+        "timestamp": "27",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Consider the use of the pressure cooker as a prop? What could be reasons to show this item?",
+            "svar": [
+                "The pressure cooker is not typical of an American kitchen and clearly ties its owners to a culture that is different from the mainstream American.",
+                "The pressure cooker shows that this film is going to be about food and eating.",
+                "The pressure cooker does not have any particular meaning."
+            ],
+            "korrekt": [
+                0
+            ],
+            "feedback": "The opening shot of a film is always important and usually tries to give the audience an idea about what the film is going to be about"
+        }]
+    }, {
+        "timestamp": "40",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "How much information are you able to get from looking at the set and the characters in this picture?",
+            "svar": [
+                "The characters have recently arrived and are unable to keep their home clean",
+                "They have recently arrived and that they have ties to more than one country/culture, i.e. India and the US.",
+                "The characters  desperately want children and are moving out"
+            ],
+            "korrekt": [
+                1
+            ],
+            "feedback": "The set of a film is carefully planned and is one of the ways a director can make the audience understand what the film is about."
+        }]
+
+    }, {
+        "timestamp": "49",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Consider the man's costume, is he dressed as",
+            "svar": [
+                "A typical American",
+                "A typical Indian (Sikh)",
+                "A mix between Indian (Sikh) and American"
+            ],
+            "korrekt": [
+                2
+            ],
+            "feedback": "Costume gives information both about the historical and social setting of the the character and it is often a hint to a character’s personality"
+        }]
+    }, {
+        "timestamp": "82",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Why do you think we see this symbol in the car?",
+            "svar": [
+                "It is just an ornament with no particular meaning",
+                "It is a religious symbol that shows us the couple’s faith (which is different from mainstream Americans’)",
+                "It is there because the car smells bad"
+            ],
+            "korrekt": [
+                1
+            ],
+            "feedback": "Symbols, whether they are well-known and easy to recognize or unique to the film, are a good way of communicating a lot of meaning without words"
+        }]
+
+    }, {
+        "timestamp": "324",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "The T-shirt becomes an important prop, what is its function?",
+            "svar": [
+                "It shows that the temperature is very high",
+                "It becomes a symbol of his need to do laundry ",
+                "It becomes a symbol of him trying to be American"
+            ],
+            "korrekt": [
+                2
+            ],
+            "feedback": "The T-shirt becomes both a prop and a symbol in this scene"
+        }]
+    }]
+}]

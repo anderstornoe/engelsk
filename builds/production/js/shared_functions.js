@@ -1,3 +1,44 @@
+// TOUCHPUNCH PLUGIN/
+! function(a) {
+    function f(a, b) {
+        if (!(a.originalEvent.touches.length > 1)) {
+            a.preventDefault();
+            var c = a.originalEvent.changedTouches[0],
+                d = document.createEvent("MouseEvents");
+            d.initMouseEvent(b, !0, !0, window, 1, c.screenX, c.screenY, c.clientX, c.clientY, !1, !1, !1, !1, 0, null), a.target.dispatchEvent(d)
+        }
+    }
+    if (a.support.touch = "ontouchend" in document, a.support.touch) {
+        var e, b = a.ui.mouse.prototype,
+            c = b._mouseInit,
+            d = b._mouseDestroy;
+        b._touchStart = function(a) {
+            var b = this;
+            !e && b._mouseCapture(a.originalEvent.changedTouches[0]) && (e = !0, b._touchMoved = !1, f(a, "mouseover"), f(a, "mousemove"), f(a, "mousedown"))
+        }, b._touchMove = function(a) {
+            e && (this._touchMoved = !0, f(a, "mousemove"))
+        }, b._touchEnd = function(a) {
+            e && (f(a, "mouseup"), f(a, "mouseout"), this._touchMoved || f(a, "click"), e = !1)
+        }, b._mouseInit = function() {
+            var b = this;
+            b.element.bind({
+                touchstart: a.proxy(b, "_touchStart"),
+                touchmove: a.proxy(b, "_touchMove"),
+                touchend: a.proxy(b, "_touchEnd")
+            }), c.call(b)
+        }, b._mouseDestroy = function() {
+            var b = this;
+            b.element.unbind({
+                touchstart: a.proxy(b, "_touchStart"),
+                touchmove: a.proxy(b, "_touchMove"),
+                touchend: a.proxy(b, "_touchEnd")
+            }), d.call(b)
+        }
+    }
+}(jQuery);
+
+
+
 // OVERLAY TECHNIQUES:
 // http://tympanus.net/codrops/2013/11/07/css-overlay-techniques/
 
@@ -22,12 +63,12 @@ var GeneralOverlayClass = {
 
     ButtonControler_why: '<div id="OverlyContainerWhy">' +
         '<a href="#" id="OverlayWhy" class="OverlayButton btn btn-default"> WHY </a>' +
-        '<span class="OverlayBtnText"></span>' +
+        // '<span class="OverlayBtnText"></span>' +
         '</div>',
 
     ButtonControler_how: '<div id="OverlyContainerHow">' +
         '<a href="#" id="OverlayHow" class="OverlayButton btn btn-default"> HOW</a>' +
-        '<span class="OverlayBtnText"></span>' +
+        // '<span class="OverlayBtnText"></span>' +
         '</div>',
 
     OverlayMarkup: '<div class="Overlay"></div>' +
@@ -68,13 +109,13 @@ var GeneralOverlayClass = {
             "why_btntext": "Why-button instruction text",
             "why_content": "In this exercise you work with understanding the two main characters and their development. You also practice descriptive vocabulary.",
             "how_btntext": "How-button instruction text",
-            "how_content": "Watch the first half of the film and choose the words you think describe each character best. Then watch the second half of the film and choose the words you think describe the characters best now."
+            "how_content": "Watch the first half of the film and choose the words you think describe each character best.<br/>Click the words you have placed to get feedback. <br/>Hold translate to translate words to Danish."
         },
         "billeddrag_dearamericans_2": {
             "why_btntext": "Why-button instruction text",
             "why_content": "In this exercise you work with understanding the two main characters and their development. You also practice descriptive vocabulary.",
             "how_btntext": "How-button instruction text",
-            "how_content": "Watch the second half of the film and choose the words you think describe each character best. Then watch the second half of the film and choose the words you think describe the characters best now."
+            "how_content": "Watch the second half of the film and choose the words you think describe each character best.<br/>Click the words you have placed to get feedback. <br/>Hold translate to translate words to Danish."
         },
         // ------
         "vid_an": {
@@ -169,12 +210,12 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId);
 
             OverlayText = thisObj.JsonWhyHow[EleraningObj].why_content;
-            OverlayTextHeader = "Why";
+            OverlayTextHeader = "WHY";
 
             console.log("ButtonId: " + ButtonId + ", \nOverlayTextHeader: " + OverlayTextHeader + ", \nOverlayText: " + OverlayText);
 
             $(".OverlayTextHeader").html(OverlayTextHeader);
-            $(".OverlayText").html(OverlayText);
+            $(".OverlayText").html('<h5>' + OverlayText +'</h5>');
         });
 
         this.CloseOverlays();
@@ -218,12 +259,12 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId);
 
             OverlayText = thisObj.JsonWhyHow[EleraningObj].how_content;
-            OverlayTextHeader = "How";
+            OverlayTextHeader = "HOW";
 
             console.log("ButtonId: " + ButtonId + ", \nOverlayTextHeader: " + OverlayTextHeader + ", \nOverlayText: " + OverlayText);
 
             $(".OverlayTextHeader").html(OverlayTextHeader);
-            $(".OverlayText").html(OverlayText);
+            $(".OverlayText").html('<h5>' + OverlayText +'</h5>');
         });
 
         this.CloseOverlays();
@@ -282,75 +323,95 @@ var GeneralOverlayObj = Object.create(GeneralOverlayClass);
 /// Jeg spammer lige med en footer (Burde ligge i egen fil..):
 
 function footer() {
-    $(".container, .container-fluid").append("<div class='vuc_footer'><hr><h5>Digitale læringsmaterialer på voksenuddannelser</h5><h6>Udviklet af et produktionsfællesskab mellem otte VUC’er til anvendelse på de deltagende skoler: <br/> Hf og VUC Nordsjælland, VUC Hvidovre-Amager VUC Roskilde, VUC Vestegnen, VUF, VUC Storstrøm, VUC Aarhus og Københavns VUC (KVUC). <br/ > Copyright 2015 </h6></div >");
+    $(".container, .container-fluid").append("<div class='col-xs-12 vuc_footer'><h2>Digitale læringsmaterialer på voksenuddannelser</h2><h6 class='footerText'>Udviklet af et produktionsfællesskab mellem otte VUC’er til anvendelse på de deltagende skoler: <br/> Hf og VUC Nordsjælland, VUC Hvidovre-Amager, VUC Roskilde, VUC Vestegnen, VUF, VUC Storstrøm, VUC Aarhus og Københavns VUC (KVUC).</h6> <h6 class='footerCopywrite'> Copyright 2015 </h6></div >");
 }
 
 
-function embedlink(url, obj) {
-var embedIframe = '<iframe src="http://eundervisning-wp.dk/pf_eng2015/"' + obj.parent().parent().find("a").eq(0).attr("href") + '"></iframe>';
-var embedEmbed = $
-var embedwrapping = "<div class='embedToggle'>Indsæt dette link i dit LMS eller webside: <input class='embedtext' type='text' value='" + embedHTML + "'></input><a>Hjælp til indlejning (embedding) </a></div>";
-    if ($(".embedToggle").length > 0) {
+/// INDLEJRINGS    FUNKTIONALITET  ///////
 
-        console.log("indeks: " + $(this).index());
-        console.log("yes embedToggle");
-        $(".embedToggle").slideUp(0, function() {
+function embedlink(url, obj) {
+
+    // alert($(".tab").length);
+
+    var embedFronter = '<iframe height="570" width="820" src="http://eundervisning-wp.dk/pf_eng2015/' + obj.parent().parent().find("a").eq(0).attr("href") + '"></iframe>';
+    var embedMoodle = '<embed height="670" width="970" src="http://eundervisning-wp.dk/pf_eng2015/' + obj.parent().parent().find("a").eq(0).attr("href") + '"></embed>';
+
+    var embedArray = [embedMoodle, embedFronter];
+
+    var embedwrapping = "<div class='embedToggle'><p>Indsæt dette link i dit LMS eller på din webside</p><div class='tabcontainer'><div class='tab_1 tab activetab'>Fronter(embed)</div><div class='tab_2 tab'>Moodle(iframe)</div></div><div class='togglecontainer'><input class='embedtext' type='text' value='" + embedArray[0] + "'></input><a class='MetaDataLink' href='https://www.youtube.com/watch?v=vjh6z6EACqQ'>Hjælp til indlejring (embedding) </a></div></div>";
+
+    var embedWidth;
+    var embedHeight;
+
+
+    // Klik på embedding knapper funktionalitet:
+
+    //Hvis den man klikker på allerede har en parent...: 
+    if (obj.parent().parent().find(".embedToggle").length > 0) {
+        $(".embedToggle").slideUp(150, function() {
+
             $(".embedToggle").remove();
             // Animation complete.
+        });
 
+    } else {
+        if ($(".embedToggle").length > 0) {
+            // console.log("indeks: " + obj.parent().parent().index());
+            $(".embedToggle").slideUp(150, function() {
+
+                $(".embedToggle").remove();
+                // Animation complete.
+                obj.parent().parent().append(embedwrapping);
+                $(".embedToggle").slideUp(0);
+                $(".embedToggle").slideDown("slow");
+                $(".tab").click(function() {
+
+                    var indeks = $(this).index();
+                    $(".tab").removeClass("activetab");
+                    $(this).addClass("activetab");
+                    //alert (indeks);
+                    changeLink(indeks);
+                });
+
+            });
+            //
+
+        } else {
+            //console.log("indeks: " + obj.parent().parent().index());
             obj.parent().parent().append(embedwrapping);
             $(".embedToggle").slideUp(0);
             $(".embedToggle").slideDown("slow");
-        });
-        //
-    } else {
-        console.log("indeks: " + obj.index());
-        obj.parent().parent().append(embedwrapping);
-        $(".embedToggle").slideUp(0);
-        $(".embedToggle").slideDown("slow");
+            $(".tab").click(function() {
+
+                var indeks = $(this).index();
+                $(".tab").removeClass("activetab");
+                $(this).addClass("activetab");
+                //alert (indeks);
+                changeLink(indeks);
+            });
+        }
+        //alert(obj.parent().html());
+    }
+
+
+//<p><iframe width="100%" height="800" frameborder="0" src="http://eundervisning-wp.dk/pf_eng2015/vid_set_da.html"></iframe></p>
+//<p><embed height="800px" src="http://eundervisning-wp.dk/pf_eng2015/vid_set_da.html" width="100%"></embed></p>
+
+
+    function changeLink(indeks) {
+
+        console.log("clickede på noget")
+
+        $(".embedtext").val(embedArray[indeks]);
 
     }
-    //alert(obj.parent().html());
 
-
+    $(".embedtext").click(function () {
+   $(this).select();
+});
 }
 
 
-// Kom lige til at smide touchpunch ind her :-/
-! function(a) {
-    function f(a, b) {
-        if (!(a.originalEvent.touches.length > 1)) {
-            a.preventDefault();
-            var c = a.originalEvent.changedTouches[0],
-                d = document.createEvent("MouseEvents");
-            d.initMouseEvent(b, !0, !0, window, 1, c.screenX, c.screenY, c.clientX, c.clientY, !1, !1, !1, !1, 0, null), a.target.dispatchEvent(d)
-        }
-    }
-    if (a.support.touch = "ontouchend" in document, a.support.touch) {
-        var e, b = a.ui.mouse.prototype,
-            c = b._mouseInit,
-            d = b._mouseDestroy;
-        b._touchStart = function(a) {
-            var b = this;
-            !e && b._mouseCapture(a.originalEvent.changedTouches[0]) && (e = !0, b._touchMoved = !1, f(a, "mouseover"), f(a, "mousemove"), f(a, "mousedown"))
-        }, b._touchMove = function(a) {
-            e && (this._touchMoved = !0, f(a, "mousemove"))
-        }, b._touchEnd = function(a) {
-            e && (f(a, "mouseup"), f(a, "mouseout"), this._touchMoved || f(a, "click"), e = !1)
-        }, b._mouseInit = function() {
-            var b = this;
-            b.element.bind({
-                touchstart: a.proxy(b, "_touchStart"),
-                touchmove: a.proxy(b, "_touchMove"),
-                touchend: a.proxy(b, "_touchEnd")
-            }), c.call(b)
-        }, b._mouseDestroy = function() {
-            var b = this;
-            b.element.unbind({
-                touchstart: a.proxy(b, "_touchStart"),
-                touchmove: a.proxy(b, "_touchMove"),
-                touchend: a.proxy(b, "_touchEnd")
-            }), d.call(b)
-        }
-    }
-}(jQuery);
+
+
+/// INDLEJLRING SLUT !

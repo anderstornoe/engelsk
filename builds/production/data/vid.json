@@ -1,0 +1,61 @@
+[{
+    "video": "QH2-TGUlwu4"
+}, {
+    "stops": [{
+        "timestamp": "1",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Fatter du noget?",
+            "svar": ["Forstået", "Ikke forstået", "Måske forstået", "Delvist forstået"],
+            "korrekt": [
+                3
+            ],
+            "feedback": "Feedback på den information..??? Feed forward eller spring over??"
+        },{
+            "eventtype": "svarknap",
+            "tekst": "Hvad handler det om?",
+            "svar": ["Det handler om bacon","Det handler om tildels om bacon","Det handler ikke om bacon"],
+            "korrekt": [
+                0
+            ],
+            "feedback": "Feedback på den information..??? Feed forward eller spring over??"
+        }, {
+            "eventtype": "svarknap",
+            "tekst": "Hvilken tekst omhandler bacon?",
+            "svar": [
+                "Short loin corned beef ribeye, turducken strip steak boudin prosciutto swine jerky picanha biltong.",
+                "Frankfurter beef turducken venison.",
+                "Jerky swine pork loin, tongue chuck brisket rump frankfurter beef turducken venison."
+            ],
+            "korrekt": [
+                1
+            ],
+            "feedback": "Her er noget feedback!"
+        }]
+    }, {
+        "timestamp": "10",
+        "events": [{
+            "eventtype": "svarknap",
+            "tekst": "Spørgsmål 2.1",
+            "svar": [
+                "svar1",
+                "svar2"
+            ],
+            "korrekt": [
+                2
+            ],
+            "feedback": "Her er noget feedback!"
+        }, {
+            "eventtype": "svarknap",
+            "tekst": "Spørgsmål 2.2",
+            "svar": [
+                "svar1",
+                "svar2"
+            ],
+            "korrekt": [
+                2
+            ],
+            "feedback": "Her er noget feedback!"
+        }]
+    }]
+}]

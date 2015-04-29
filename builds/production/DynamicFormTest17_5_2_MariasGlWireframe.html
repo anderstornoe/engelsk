@@ -1,0 +1,548 @@
+<!DOCTYPE html><html><head><meta http-equiv=Content-Type content="text/html; charset=utf-8"><title>Generisk video-quiz</title><style type=text/css>
+			.QuestionField{border: 1px solid #F00; margin: 10px;}
+			.EventForm{border: 1px solid #F00; padding: 10px; margin-right: 50px;}
+			.EventForm b {margin-right: 20px;}
+			.TimeStampForm{border: 1px solid #F00; padding: 10px; margin: 5px;}
+			.TimeStampForm b {margin-right: 20px;}
+			#JsonOutput{font-weight: 600;}
+			.usrbutton{margin-left: 10px; margin-top: 10px;}
+
+			.QuestionWrapper{display: none;}
+
+			.hide{display: none;}
+			.dhide{}  /* dummy hide */
+
+			.b-red {border: 1px solid #F00; }
+			.b-blue{border: 1px solid #00F; }
+
+			.ml5 {margin-left: 5px}
+			.ml10 {margin-left: 10px}
+
+			.w100 {width: 100%;}
+			.w75 {width: 75%;}
+			.w50 {width: 50%;}
+			.w25 {width: 25%;}
+			.w20 {width: 20%;}
+			.m10 {margin: 10px;}
+			.m5  {margin: 5px;}
+			.p10 {padding: 10px;}
+			.p5  {padding: 5px;}
+
+			.right{float: right;}
+			.left{float: left;}
+			.clear{clear: both;}
+
+			.bgc-C0C0C0{background-color: #C0C0C0;}
+			.bgc-E0E0E0{background-color: #E0E0E0;}
+
+			.red{color: #F00;}
+		</style><link rel=stylesheet href=http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><script src=https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js></script><script type=text/javascript src=JsonTestOutput.js></script><script type=text/javascript>
+
+			//######################################################################################
+	 		// 								Video loader
+			//###################################################################################### 
+
+
+ 			var VideoObj = {};
+
+ 			var VideoClass = {
+ 					startFrameTitle : null, 
+ 					startButtonTitle : null,
+					Width : null,
+					Height : null,
+					URL : null,
+					QustionObj: {},
+					AddVideoProp: function(Width, Height, URL){
+						this.Width = Width;
+						this.Height = Height;
+						this.URL = URL;
+					},
+					DeleteSelections: function(){
+						this.startFrameTitle = null;
+						this.startButtonTitle = null;
+						this.Width = null;
+						this.Height = null;
+						this.URL = null;
+						$("#video_startFameTitle").val("");
+						$("#video_startButtonTitle").val("");
+						$("#video_width").val("");
+						$("#video_height").val("");
+						$("#video_url").val("");
+
+						// Add an image to the object-tag to display that no video is loaded:
+						var NoVideoLoadedImg = $("<img/>",
+					         { 	alt:'Ingen video er loaded',
+					         	width: 640,
+					         	height: 340,
+					         	data: "",
+					           	src:'https://iec2014.intel.com/fancybox/gallery/2012/photo/no-video.jpg'}
+				     		 );
+						$("object").html( NoVideoLoadedImg );
+					},
+					LoadDefaultVideo: function(){
+						this.startFrameTitle = "Game of Thrones";
+						this.startButtonTitle = "Play the video";
+						this.Width = 560;
+						this.Height = 315;
+						this.URL = "https://www.youtube.com/embed/s7L2PVdrb_8";
+						$("#video_startFameTitle").val(this.startFrameTitle);
+						$("#video_startButtonTitle").val(this.startButtonTitle);
+						$("#video_width").val(this.Width);
+						$("#video_height").val(this.Height);
+						$("#video_url").val(this.URL);
+					},
+					LoadVideo: function(){
+						this.startFrameTitle = $("#video_startFameTitle").val();
+						this.startFrameTitle = $("#video_startButtonTitle").val();
+						this.Width = $("#video_width").val();
+						this.Height = $("#video_height").val();
+						this.URL = $("#video_url").val();
+						$("object").width(this.Width);
+						$("object").height(this.Height);
+						$("object").attr("data", this.URL);
+					},
+					DisplayJsonML: function(){
+						$("#output").html(JSON.stringify(this));
+					}
+					
+	 		}
+
+
+
+	 		//######################################################################################
+	 		// 								User interface
+			//###################################################################################### 
+
+
+
+ 			// QuestionField
+ 			var QuestionField = '<div class="QuestionField">' + 
+ 									'<input type="text" class="TextField w25" placeholder="Skriv sp&oslash;rsm&aring;l p&aring; svarknap" name="Question"/>' + 
+ 									'<input type="radio" name="Rsvar" class="Rsvar"/>' + 
+ 									'<input type="checkbox" name="Csvar" class="Csvar"/>' +
+ 									'<a class="addfield ml10" href="#"> add </a> <a class="removefield ml10" href="#"> remove </a>' + 
+ 								 '</div>';
+
+ 			// EventForm  -  NOTE: "Event" er det tidligere "Runde"
+ 			var EventForm = '<form class="EventForm">' + 
+ 								'<b class="ml10"> Event: </b>' +  
+ 								' <a class="removeform ml10 right" href="#"> remove </a><a class="addform ml10 right" href="#"> add </a>' + 
+ 									'<div class="clear"></div> <br/>' +
+ 								'<input type="text" class="TextField w25" placeholder="Eventoverskrift" name="EventHeader"/> <br/>' + 
+ 								'<textarea rows="4" class="TextField w25" name="EventInfo" placeholder="Information eller indledende tekst til sp&oslash;rsm&aring;l"></textarea> <br/>' +
+ 								'<div class="QuestionWrapperButton p10 bgc-E0E0E0 b-blue">Vis spørgsmål <span class="glyphicon glyphicon-chevron-right"></span> </div>' +
+ 								'<div class="QuestionWrapper bgc-E0E0E0 b-blue dhide">' +  
+	 								'En svarmulighed <input type="radio" name="valg" value="radiobutton" checked="checked"/>' + 
+	 								' Flere svarmuligheder <input type="radio" name="valg" value="checkbox"/>' + 
+	 								QuestionField + 
+	 								QuestionField + 
+	 								'<textarea rows="4" class="TextField w25" name="EventFeedback" placeholder="Giv feedback til kursisten"></textarea> <br/>' +
+	 							'</div>' +
+ 							'</form>';
+
+ 			// TimestampForm  -  NOTE: "Timestamp" er synonym med "Stop"
+ 			var TimeStampForm = '<div class="TimeStampForm">' + 
+ 									'<form class="class_TimeStampForm p10 w75 left">' + 
+										'<b> Timestamp: </b>' +
+										GenerateNumberSelect(0, 24, "tt", "SelectHour") + " : " +
+										GenerateNumberSelect(0, 60, "mm", "SelectMin") + " : " +
+										GenerateNumberSelect(0, 60, "ss", "SelectSec") +
+										// ' eller <input type="text" placeholder="tt:mm:ss" />' +
+									'</form>' + 
+ 									'<a class="remove_TimeStampForm ml10 right" href="#"> remove </a> <a class="add_TimeStampForm ml10 right" href="#"> add </a> ' + '<div class="clear"></div>' + 
+									EventForm +
+								'</div>';
+
+
+ 			function InitHTML(Selector, HtmlToBeAdded){
+ 				$(Selector).append(HtmlToBeAdded);
+ 				SetDualSwitchState( Selector + " .EventForm ");
+ 			}
+
+ 			// VIGTIGT: Chromium tillader ikke default argumentet Max at blive angivet som "Max = false". 
+	 		function AddElement(Selector, HtmlToBeAdded, Max) {
+	 			$( document ).on('click', Selector, function(event){
+	 				event.preventDefault();
+	 				var ParentClassName = $( this ).parent().attr("class");
+	 				var NumOfParents = $( this ).parent().siblings("."+ParentClassName).length + 1;
+	 				console.log("NumOfParents : " + NumOfParents  + ", ParentClassName: " + ParentClassName );
+	 				if (( Max > NumOfParents ) || ( Max === false )) {
+	 					$( this ).parent().after( HtmlToBeAdded );
+
+	 					// The following two lines "breaks" the generality of this function: 
+	 					var NextParent = $( this ).parent().next();
+	 					CheckEventFormPosition( NextParent ); // Sets the state: "radio button" or "checkbox".
+	 				} else {
+						alert("Det største antal tilladte elementer er " + Max);
+					}
+				});
+	 		}
+
+	 		// VIGTIGT: Chromium tillader ikke default argumentet Min at blive angivet som "Min = false". 
+	 		function RemoveElement(Selector, Min) {
+	 			$( document ).on('click', Selector, function(event){
+	 				event.preventDefault();
+	 				var ParentClassName = $( this ).parent().attr("class");
+	 				var NumOfParents = $( this ).parent().siblings("."+ParentClassName).length + 1;
+	 				console.log("NumOfParents : " + NumOfParents + ", ParentClassName: " + ParentClassName );
+	 				if (( Min < NumOfParents ) || ( Min === false )) {
+		 				$( this ).parent().remove();
+	 				} else {
+						alert("Det mindste antal elementer skal være " + Min);
+					}
+				});
+	 		}
+
+
+	 		// VIGTIGT: Der er en bedre metode til at fylde variable ind i objekter - se: 
+	 		// 			JQuerys funktion ".serializeArray()" :
+	 		// 			http://api.jquery.com/serializearray/
+	 		function GetFormsData(Selector_FormContainer){
+	 				var JSONarray = new Array();
+	 				var FormObj = {}
+		 			$( Selector_FormContainer + " .TimeStampForm" ).each(function( index, element ) {
+		 				FormObj.Index = index;  // Only for testing
+		 				FormObj.TimeStamp = $(" form.class_TimeStampForm", this).serializeArray();
+		 				console.log("element : " + $(" form.class_TimeStampForm", this).get(0).tagName );
+		 				var EventFormArray = new Array();
+		 				$(" form.EventForm", this).each(function( index2, element2 ) {
+		 					EventFormArray.push( $(element2).serializeArray() );
+		 				});
+		 				FormObj.EventForm = EventFormArray;
+		 				JSONarray.push(FormObj);
+		 				console.log("FormObj : " + JSON.stringify( FormObj ) );
+		 				FormObj = {};
+			 		});
+			 		console.log("JSONarray : " + JSON.stringify( JSONarray ) );
+
+			 		return JSONarray;
+		 			
+		 			// $("#JsonOutput").html( JSON.stringify( JSONarray, null, 4 ) );
+	 		}
+
+
+	 		function GenerateNumberSelect(MinNum, MaxNum, DefaultVal, ClassSelector){
+	 			var HTML = '<select name="'+DefaultVal+'" class="'+ClassSelector+'">';
+	 			HTML += (DefaultVal !== false) ? '<option selected disabled>'+DefaultVal+'</option>' : '';
+	 			for (var i = MinNum; i <= MaxNum; i++) {
+	 				 HTML += '<option value="'+i+'">'+i+'</option>';
+	 			};
+	 			HTML += '</select>';
+	 			
+	 			return HTML;
+	 		}
+
+
+	 		function SetDualSwitchState(this_obj){
+	 			if ( $('input[value=radiobutton]', this_obj).is(':checked') ){
+ 					$('.Csvar', this_obj).hide();
+ 					$('.Rsvar', this_obj).show();
+ 					$('.Csvar', this_obj).removeAttr('checked'); // This deletes the former choice...
+ 					console.log("Csvar hide");
+ 				}
+ 				if ( $('input[value=checkbox]', this_obj).is(':checked') ){
+ 					$('.Csvar', this_obj).show();
+ 					$('.Rsvar', this_obj).hide();
+ 					$('.Rsvar', this_obj).removeAttr('checked'); // This deletes the former choice...
+ 					console.log("Rsvar hide");
+ 				}
+ 				console.log("radiobutton:" + $('input[value=radiobutton]', this_obj).is(':checked') );
+	 			console.log("checkbox:" + $('input[value=checkbox]', this_obj).is(':checked') );
+	 		}
+
+
+	 		function RadioButtonDualSwitch(Selector_radiobutton){
+	 			$( document ).on('click', Selector_radiobutton, function(event){
+	 				var Parent = $( this ).parent();
+	 				console.log(" ThisTagName " + $( this ).get(0).tagName + ", Parent " + Parent.get(0).tagName);
+	 				SetDualSwitchState( Parent );
+	 			});
+	 		}
+
+
+	 		function CheckEventFormPosition(this_obj){
+	 			var ClosestEventForm = $( this_obj ).closest( ".EventForm" );
+	 			var ClosestEventForm_class = ClosestEventForm.attr("class");
+	 			console.log("ClosestEventForm_class : " + ClosestEventForm_class);
+	 			console.log("this_obj name : " + this_obj.get(0).tagName);
+	 			if ( typeof(ClosestEventForm_class) !== "undefined" ){ // If QuestionField or EventForm is added...
+	 				SetDualSwitchState( ClosestEventForm );  
+	 			} else {	// If TimeStampForm is added...
+	 				$('.Csvar', this_obj).hide();
+ 					$('.Rsvar', this_obj).show();
+	 			}
+	 		}
+
+
+	 		function QuestionWrapperButtonControl(Selector){
+	 			$( document ).on('click', Selector, function(event){
+	 				event.preventDefault();
+	 				var EventFormObj = $( this ).parent();
+	 				$( ".QuestionWrapper", EventFormObj ).toggleClass("dhide");
+	 				$( ".QuestionWrapper", EventFormObj ).slideToggle();
+	 				if ( $( ".QuestionWrapper", EventFormObj ).prop("class").indexOf("dhide") !== -1 )
+	 					$( ".QuestionWrapperButton", EventFormObj ).html('Vis spørgsmål <span class="glyphicon glyphicon-chevron-right"></span>');
+	 				else
+	 					$( ".QuestionWrapperButton", EventFormObj ).html('Skjul spørgsmål <span class="glyphicon glyphicon-chevron-down"></span>');
+	 			})
+	 		}
+
+
+	 		//######################################################################################
+	 		// 								Regenerate form-state
+			//###################################################################################### 
+
+
+	 		// NOTE: IE < 9 understoetter ikke:   Object.keys(a).length;
+ 			//		http://stackoverflow.com/questions/5533192/how-to-get-object-length 
+	 		function ReturnObjKeyNames(Obj){
+	 			var count = 0;
+	 			var KeyArray = new Array();
+ 				for (var KeyName in Obj) {
+				    if (Obj.hasOwnProperty(KeyName)) {
+				        count++;
+				        KeyArray.push(KeyName);
+				    }
+				}
+				console.log("count: " + count + ", KeyArray: " + KeyArray);
+				return KeyArray;
+	 		}
+
+
+	 		function ReGenerateForm(json, Selector){
+
+	 			$(Selector).css("border-width", "5");  // SET EN BRED BORDER, SAA MAN KAN SE AT FUNKTIONEN ER AKTIV!!!
+
+	 			console.log("json: " + JSON.stringify( json ) );
+
+	 			$("#video_startFrameTitle").val(json.startFrameTitle);
+	 			$("#video_startButtonTitle").val(json.startButtonTitle);
+				$("#video_width").val(json.Width);
+				$("#video_height").val(json.Height);
+				$("#video_url").val(json.URL);
+
+				console.log("json.startFrameTitle: " + json.startFrameTitle + ", json.startButtonTitle: " + json.startButtonTitle + ", json.Width: " + json.Width  + 
+					        ", json.Height: " + json.Height + ", json.URL: " + json.URL);
+
+	 			var QD = json.QuizData;
+
+	 			// Assume JS is array
+	 			for (var key in QD) {
+
+	 				if (typeof(QD[key]["TimeStamp"]) !== "undefined"){
+	 					if (key == 0){  // if Selector is empty - eg. not prior TimeStampForms...
+	 						$(Selector).html( TimeStampForm );
+	 						console.log('#####  TRUE - key: ' + key );
+	 					}
+	 					else{          // if Selector already has one or more TimeStampForms...
+	 						$(Selector + " .TimeStampForm:last-child").after( TimeStampForm );
+	 						console.log('#####  FALSE - key: ' + key );
+	 					}
+	 					// Remove all QuestionFields from the newly made TimeStampForms:
+	 					$(".TimeStampForm:last-child .QuestionField").remove();
+
+
+
+	 					console.log('----- QD[key]["TimeStamp"].length: ' + QD[key]["TimeStamp"].length ) ;
+	 					if (QD[key]["TimeStamp"].length > 0){
+	 						for (var key1 in QD[key]["TimeStamp"]) {
+	 							var Obj = QD[key]["TimeStamp"][key1];
+	 							$(".TimeStampForm:last-child select[name='"+Obj.name+"']").val(Obj.value);
+	 							console.log("Obj.name: " + Obj.name + ", Obj.value: " + Obj.value );
+	 						}// END for
+	 					}// END if
+
+		 				if (typeof(QD[key]["EventForm"]) !== "undefined"){
+
+		 					console.log('----- QD[key]["EventForm"].length: ' + QD[key]["EventForm"].length ) ;
+
+		 					if (QD[key]["EventForm"].length > 0){
+
+		 						for (var key1 in QD[key]["EventForm"]) { // Each key1 is an EventForm
+		 							if (key1 > 0){
+		 								$(".TimeStampForm:last-child .EventForm:last-child").after( EventForm );
+
+		 								// Remove all QuestionFields from the newly made TimeStampForms:
+		 								$(".TimeStampForm:last-child .EventForm:last-child .QuestionField").remove();
+		 							}
+
+		 							var Wrap = $(".TimeStampForm:last-child .EventForm:last-child");
+
+		 							for (var key2 in QD[key]["EventForm"][key1]) { // Each key2 is an input-tag
+		 								var Obj = QD[key]["EventForm"][key1][key2];
+
+		 								if (Obj.name == "Question"){
+		 									// Append a newly created QuestionField to the current EventForm for each time
+		 									// an input-field "Question" is incountered. 
+		 									$( QuestionField ).appendTo( Wrap );
+		 									$("div:last-child input[name='Question']", Wrap).val(Obj.value);
+		 								}
+
+		 								if (Obj.name == "Rsvar"){
+		 									$("div:last-child input[name='Rsvar']", Wrap).prop('checked', true);
+		 								}
+
+		 								if (Obj.name == "Csvar"){
+		 									$("div:last-child input[name='Csvar']", Wrap).prop('checked', true);
+		 								}
+		 								
+		 								if (Obj.name == "valg"){ // The if-statement makes it run only once pr EventForm:
+		 									$("> input[name='valg'][value='"+Obj.value+"']", Wrap).prop('checked', true);
+		 								}
+
+		 								console.log("key1: " + key1 + ", key2: " + key2 + 
+		 									        "\nObj: " + JSON.stringify( Obj ) );
+		 							}// END for
+
+		 							SetDualSwitchState( Wrap );  // Set all DualSwitchState to match the selected states.
+		 						} // END for
+		 					}// END if
+		 				}// END if EventForm
+		 			}// END if TimeStamp
+	 			}// END for
+	 		}// END function
+
+
+	 		function ReplicateXmlFormat(json, Selector){
+
+	 			// SET EN BRED BORDER, SAA MAN KAN SE AT FUNKTIONEN ER AKTIV!!!
+	 			$(Selector).css("border-width", "5");  
+
+	 			console.log("json: " + JSON.stringify( json ) );
+
+	 			var startFrameTitle = json.startFrameTitle;
+	 			var startButtonTitle = json.startButtonTitle;
+				var Width = json.Width;
+				var Height = json.Height;
+				var URL = json.URL;
+
+				console.log("startFrameTitle: " + startFrameTitle + ", startButtonTitle: " + startButtonTitle + ", Width: " + Width + ", Height: " + Height + ", URL: " + URL);
+
+	 			var QD = json.QuizData;
+
+	 			// Assume JS is array
+	 			for (var key in QD) {
+
+	 				if (typeof(QD[key]["TimeStamp"]) !== "undefined"){
+	 					
+	 					console.log('----- QD[key]["TimeStamp"].length: ' + QD[key]["TimeStamp"].length ) ;
+	 					if (QD[key]["TimeStamp"].length > 0){
+	 						for (var key1 in QD[key]["TimeStamp"]) {
+	 							var Obj = QD[key]["TimeStamp"][key1];
+	 							var tt = (Obj.name == "tt") ? parseInt(Obj.value) : 0 ;
+	 							var mm = (Obj.name == "mm") ? parseInt(Obj.value) : 0 ;
+	 							var ss = (Obj.name == "ss") ? parseInt(Obj.value) : 0 ;
+	 							console.log("Obj.name: " + Obj.name + ", Obj.value: " + Obj.value );
+	 							console.log("tt: " + tt + ", mm: " + mm + ", ss: " + ss );
+	 						}// END for
+	 					}// END if
+
+		 				if (typeof(QD[key]["EventForm"]) !== "undefined"){
+
+		 					console.log('----- QD[key]["EventForm"].length: ' + QD[key]["EventForm"].length ) ;
+
+		 					if (QD[key]["EventForm"].length > 0){
+
+		 						for (var key1 in QD[key]["EventForm"]) { // Each key1 is an EventForm
+		 							
+		 							for (var key2 in QD[key]["EventForm"][key1]) { // Each key2 is an input-tag
+		 								var Obj = QD[key]["EventForm"][key1][key2];
+
+		 								if (Obj.name == "valg"){ 
+
+		 								}
+
+		 								if (Obj.name == "Question"){
+		 									
+		 								}
+
+		 								if (Obj.name == "Rsvar"){
+		 									
+		 								}
+
+		 								if (Obj.name == "Csvar"){
+		 									
+		 								}
+		 								
+		 							}// END for
+		 						} // END for
+		 					}// END if
+		 				}// END if EventForm
+		 			}// END if TimeStamp
+	 			}// END for
+	 		}// END function
+
+
+			//######################################################################################
+	 		// 								RUN CODE....
+			//###################################################################################### 
+		
+
+			$( document ).ready(function() {
+
+					// ================================
+					// 		Video loader
+					// ================================
+
+					var VideoObj = Object.create(VideoClass);
+
+					VideoObj.DeleteSelections();  // Delete previous selections on reload.
+
+					$( "#delete_selections" ).click(function() {
+						VideoObj.DeleteSelections();
+						console.log("VideoObj submit : " + JSON.stringify(VideoObj));
+					});
+
+					$( "#load_default_video" ).click(function( e ) {
+						e.preventDefault();  // Prevent the link-nature of the anchor-tag.
+						VideoObj.LoadDefaultVideo();
+					});
+
+					$( "#load_video" ).click(function() {
+						VideoObj.LoadVideo();
+						console.log("VideoObj submit : " + JSON.stringify(VideoObj));
+						// VideoObj.DisplayJsonML();
+
+					});
+
+
+					// ================================
+					// 		User Inferface
+					// ================================
+
+					InitHTML('#FormsContainer', TimeStampForm);
+
+					AddElement('.addfield', QuestionField, 5);
+					RemoveElement('.removefield', 2);
+
+					AddElement('.addform', EventForm, false);
+					RemoveElement('.removeform', 1);
+
+					AddElement('.add_TimeStampForm', TimeStampForm, false);
+					RemoveElement('.remove_TimeStampForm', 1);
+
+					RadioButtonDualSwitch(".EventForm input[name='valg']");
+
+					QuestionWrapperButtonControl(".EventForm .QuestionWrapperButton");
+
+					$( "#countform" ).click(function( e ) {
+						e.preventDefault();  // Prevent the link-nature of the anchor-tag.
+						VideoObj.LoadDefaultVideo(); // Elers vrker det ikke med ReGenerateForm
+						VideoObj.QuizData = GetFormsData('#FormsContainer');
+						$("#JsonOutput").html( JSON.stringify( VideoObj, null, 4 ) );
+					});
+
+					// ================================
+					// 		Regenerate user interface
+					// ================================
+
+					// VIGTIGT: Version 15 virker med det gamle data format, hvor video-info IKKE er med!
+					// ReGenerateForm(JS, "#FormsContainer");
+
+					// ReplicateXmlFormat(JS, "#FormsContainer");
+
+			});
+
+
+		</script></head><h3>Video loader</h3><div id=VideoInit class="b-red p10"><form><input id=video_url class="TextField w50" placeholder="Video URL" type=text><br><br><input id=video_startFameTitle class="TextField w50" placeholder="Titel p&aring; startframe" type=text><br><br><input id=video_startButtonTitle class="TextField w50" placeholder="Titel p&aring; startknap" type=text><br><br><input id=video_width class="TextField w25" placeholder="Video bredde" type=text> <input id=video_height class="TextField w25" placeholder="Video h&oslash;jde" type=text> <span class=red><------><br><br><div class=m5><input id=load_video class=w20 name=submit value="Hent video" type=button> <input id=delete_selections class=w20 name=delete_selections value="Slet valg" type=button> <a id=load_default_video>Hent default video</a></div><br></------></span></form><div><object height=315 width=560 data></object></div></div><h3>User interface</h3><div id=FormsContainer class="b-red p10"></div><span class="btn btn-default usrbutton"><a id=countform class=ml10 href=#>SE QUIZ</a></span> (Generere JSON-string som sendes til quiz-interfacet - læreren kan nu se sin quiz. <b>(læren skal ikke se JSON-stringen)</b> ).<br><br><span class="btn btn-default usrbutton"><a id=countform class=ml10 href=#>GEM QUIZ</a></span> (Den optimale løsning: en server der modtager JSON-stringen. Alternativ løsning: ??? - vi skal tage en beslutning...).<br><br>Mangler før vi har en funktionel beta-version at vise lærene:<ul><li>ATO og THAN vedtager en navngivningsstandard for variabler (nemmest hvis THAN tilpasser til ATO's navne i eksisterende video-quizer)</li><li>Quiz-visningsdelen laves</li><li>Spiseligt CSS (ikke det nuværende øjen-bæ layout ;-) )</li><li>User-input sikring</li></ul><h3>JSON output</h3><pre id=JsonOutput>
+		</pre><body></body></html>
