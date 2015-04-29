@@ -823,14 +823,15 @@ function ReplicateVideoInputFormat(json) {
                                     // }
                                 }
 
-                                if ((Obj.name == "Question") && (Obj.value !== "")) {
+                                // if ((Obj.name == "Question") && (Obj.value !== "")) {
+                                if (Obj.name == "Question") {
                                     Event.svar.push(htmlEntities(Obj.value));
                                     ++AnswerNum;
                                 }
 
                                 if (Obj.name == "EventHeader") {
 
-                                }
+                                } 
 
                                 if ((Obj.name == "EventInfo") && (Obj.value !== "")) {
                                     Event.tekst = htmlEntities(Obj.value);
@@ -863,6 +864,7 @@ function ReplicateVideoInputFormat(json) {
                             if ((Event.korrekt.length === 0) && (Event.korrekt.length === 0) && (Event.feedback === null)) {
                                 Event.eventtype = "info";
                             }
+
 
 
                             Stop.events.push(Event);
@@ -1094,7 +1096,6 @@ $(document).ready(function() {
                 //Her refreshes videoquiz preview iframen: 
 
                 $(".player_container").html("<div id='player' class='embed-responsive-item'></div><div id='time'></div><div id='time_bar'></div>");
-
 
                 loadGenericData(); 
                 setupplayer();

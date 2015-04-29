@@ -172,3 +172,17 @@ body {
 .embedlink{
     margin-left:5px;
 }
+.btn-default:focus,.btn-lg:focus {
+    text-decoration: none;
+    background-color: transparent;
+}
+a.MetaDataLink {
+    text-decoration: none;
+}
+a.MetaDataLink:hover {
+    text-decoration: underline;
+}
+img.pdf-icon {
+    width:40px;
+    margin-right: 5px;
+}

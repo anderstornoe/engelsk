@@ -6887,7 +6887,20 @@ body {
 .embedlink{
     margin-left:5px;
 }
-
+.btn-default:focus,.btn-lg:focus {
+    text-decoration: none;
+    background-color: transparent;
+}
+a.MetaDataLink {
+    text-decoration: none;
+}
+a.MetaDataLink:hover {
+    text-decoration: underline;
+}
+img.pdf-icon {
+    width:40px;
+    margin-right: 5px;
+}
 
 .vuc_footer{margin-top: 20px; padding-top: 40px; padding-bottom: 40px; background-color: #f8f8f6;}
 .vuc_footer h2 {margin-top: 0px; margin-bottom: 30px; padding: 0px;}
@@ -6895,10 +6908,6 @@ body {
 .footerCopywrite{margin-top: 30px; margin-bottom: 0px; font-weight: 600; }
 a {
     color: black;
-    text-decoration: none;
-}
-
-a:hover {
     text-decoration: none;
 }
 
