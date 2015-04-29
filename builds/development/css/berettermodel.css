@@ -74,6 +74,7 @@
     a.btn-danger, a.btn-danger:hover{
       background-color: #ed3e3a;
       border-color: #ed3e3a;
+      color: #FFF;
     }
     h5 {
       color: black;
