@@ -6896,6 +6896,7 @@ a.MetaDataLink {
 }
 img.pdf-icon {
     width:40px;
+    margin-right: 5px;
 }
 
 .vuc_footer{margin-top: 20px; padding-top: 40px; padding-bottom: 40px; background-color: #f8f8f6;}
