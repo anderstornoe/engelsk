@@ -177,6 +177,9 @@ body {
     background-color: transparent;
 }
 a.MetaDataLink {
+    text-decoration: none;
+}
+a.MetaDataLink:hover {
     text-decoration: underline;
 }
 img.pdf-icon {
