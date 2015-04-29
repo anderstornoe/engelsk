@@ -1084,7 +1084,7 @@ $(document).ready(function() {
                 // $("#JsonOutput").html(JSON.stringify(VideoObj, null, 4));
 
                 var JsonVideoInput = ReplicateVideoInputFormat(VideoObj);
-                $("#JsonVideoInput").html(JSON.stringify(JsonVideoInput, null, 4));
+                $(".JsonVideoInput").html(JSON.stringify(JsonVideoInput, null, 4));
 
 
 
@@ -1103,19 +1103,45 @@ $(document).ready(function() {
 
             });
 
-            // $(document).on('click', "#JsonVideoInput", function(event) {
-            // $("#JsonVideoInput").click(function () {
-                $("#JsonVideoInput").select();
+
+            // $(".embedtext").click(function () {
+            //    $(this).select();
             // });
 
+            // TEST TIL VISNINGSSITET:
+            // <script type="text/javascript">
+            //     $(document).ready(function() {
+            //         $("h3").click(function () { 
+            //             alert("SELECT");
+            //             $(this).select(); 
+            //         });
+            //     });
+            // </script>
 
 
-                // ================================
-                //      Regenerate user interface
-                // ================================
+            // TEST TIL GENERISKVIDEOQUIZ:
+            // <script type="text/javascript">
+            //     $(document).ready(function() {
+            //         $("textarea").click(function () { 
+            //             alert("SELECT");
+            //             $(this).select(); 
+            //         });
+            //     });
+            // </script>
 
-                // VIGTIGT: Version 15 virker med det gamle data format, hvor video-info IKKE er med!
-                // ReGenerateForm(JS, "#FormsContainer");
 
-
+            $(".JsonVideoInput").click(function () {
+                $(this).select();
             });
+
+            
+
+            // ================================
+            //      Regenerate user interface
+            // ================================
+
+            // VIGTIGT: Version 15 virker med det gamle data format, hvor video-info IKKE er med!
+            // ReGenerateForm(JS, "#FormsContainer");
+
+
+}); // END $(document).ready()
