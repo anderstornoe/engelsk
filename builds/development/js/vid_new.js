@@ -376,11 +376,14 @@ function stop_event(tal, taeller) {
 
             if (spm.eventtype == "svarknap") {
                 $(".svar_btn").removeClass("btn_chosen");
+                $(".svar_btn").addClass("btn-info");
                 $(this).addClass("btn_chosen");
+                $(this).removeClass("btn-info");
 
 
             } else {
                 $(this).toggleClass("btn_chosen");
+                $(this).toggleClass("btn-info");
             }
             if (chosen == false) {
                 $(".btn_videre").fadeIn().click(commit_answers);
