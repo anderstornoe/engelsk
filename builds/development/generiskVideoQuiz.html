@@ -35,6 +35,7 @@
             <form>
                 <div class="InputHeader">Youtube URL</div>
                 <input id="video_url" class="TextField w50" placeholder="kopier URL'en fra adressefeltet i din browser ind i dette felt" type="text" />
+                <input id="load_video" class="w20" name="submit" value="Hent video" type="button" />
                 <div class="InputHeader">Overskrift til introbilledet</div>
                 <input id="video_startFrameTitle" class="TextField w50" placeholder="Titel p&aring; startframe (50 tegn)" type="text" maxlength="50" />
                 <div class="InputHeader">Introtekst til første frame</div>
@@ -43,14 +44,16 @@
                 <input id="video_startButtonTitle" class="TextField w50" placeholder="Titel p&aring; startknap (30 tegn)" type="text" maxlength="30" />
                 <br/>
                 <br/>
+<!-- 
                 <div class="m5">
                     <input id="load_video" class="w20" name="submit" value="Hent video" type="button" />
                     <a id="load_default_video" href=""> Hent eksempel video </a>
                 </div>
+  -->               
                 <br/>
             </form>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <h3 id="ScrollHere">Din videoquiz vises her: </h3>
                     <!-- <div class="embed-responsive embed-responsive-16by9"> -->
                     <div class="embed-responsive embed-responsive-16by9">
@@ -66,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <h3>Din youtube hentes ind her: </h3>
                     <!-- <div class="embed-responsive embed-responsive-16by9"> -->
                     <div class="embed-responsive embed-responsive-16by9">
@@ -99,12 +102,17 @@
  -->
             STOP:
             <span id="PagerContainer"></span>
-            <a href="#" class="AddNewPageButton btn btn-default"> Tilføj stop </a>
+            <a href="#" class="AddNewPageButton btn btn-default right"> TILFØJ STOP </a>
+            <span class="clear"></span>
 <!-- 
         </div>
   -->       
         <div id="FormsContainer" class="b-red p10">
         </div>
+
+        <a href="#" class="AddNewPageButton btn btn-default right"> TILFØJ STOP </a>
+        <span class="clear"></span>
+
         <span class="btn btn-default usrbutton"><a class="WatchQuiz ScrollUp ml10" href="#"> TEST QUIZ </a></span>
         <!-- 
     Min presentation mandag d. 02-03-2015:

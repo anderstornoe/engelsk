@@ -98,7 +98,7 @@ var QuestionField = '<div class="QuestionField">' +
     '<input type="text" class="TextField w50 mr25" placeholder="Skriv svarmulighed her" name="Question" maxlength="50"/>' +
     '<input type="checkbox" name="Csvar" class="Csvar"/>' +
     // '<a class="addfield ml10" href="#"> Tilf&oslash;j svarmulighed </a>' + 
-    '<a class="removefield ml10" href="#"> slet </a>' +
+    '<a class="removefield ml60" href="#"> slet </a>' +
     '</div>';
 
 // EventForm  -  NOTE: "Event" er det tidligere "Runde"
@@ -114,23 +114,26 @@ var EventForm = '<form class="EventForm">' +
     '<textarea rows="4" class="TextField w50" name="EventInfo" maxlength="300" placeholder="Her skriver du din infotekst (300 tegn)">' + 
     '</textarea> <br/>' +
     '<div class="QuestionWrapper">' +
-    '<span class="QFTheading"> ANGIV SVARMULIGHEDER (maks 4 svar muligt) </span> <span class="QFAheading"> KORREKT SVAR </span>' +
+    '<div class="QFTheading left"> ANGIV SVARMULIGHEDER (maks 4 svar muligt) </div> <span class="QFAheading left"> KORREKT SVAR </span>' +
+    '<div class="clear"></div>' +
     '<div class="QuestionFieldWrapper">' +
     QuestionField +
     QuestionField +
     '</div>' +
-    '<a class="addfield ml10" href="#"> Tilføj svar </a> <br/>' +
+    'ANGIV FEEDBACK <span class="addfieldWrap"><a class="addfield ml10" href="#"> Tilføj svarmulighed </a><span> <br/>' +
     '<textarea rows="4" class="TextField w50" name="EventFeedback" placeholder="Giv feedback til kursisten"></textarea> <br/>' +
-    '</div>' +
     '</div>' +
     '<a class="addform ml10 right btn btn-default usrbutton" href="#"> Tilføj sæt </a>' +
     '<div class="clear"></div>' +
+    '</div>' +
+    // '<a class="addform ml10 right btn btn-default usrbutton" href="#"> Tilføj sæt </a>' +
+    // '<div class="clear"></div>' +
     '</form>';
 
 // TimestampForm  -  NOTE: "Timestamp" er synonym med "Stop"
 var TimeStampForm = '<div class="TimeStampForm">' +
     '<form class="class_TimeStampForm p10">' +
-    '<b> Stop 1 : </b>' +
+    '<b> STOP 1 : </b>' +
     // GenerateNumberSelect(0, 24, "tt", "SelectHour") + " : " +
     GenerateNumberSelect(0, 60, "mm", "minutter", "SelectMin") + " : " +
     GenerateNumberSelect(0, 60, "ss", "sekunder", "SelectSec") +
@@ -158,7 +161,7 @@ function htmlEntities(str) {
 function UpdateNumbersInFormHeaders() {
 
     $(".class_TimeStampForm > b").each(function(index1, element1) {
-        $(this).html("Stop " + (index1 + 1).toString() + " : ");
+        $(this).html("STOP " + (index1 + 1).toString() + " : ");
         var ParentObj = $(this).closest(".TimeStampForm");
         $(".EventForm > div > b", ParentObj).each(function(index2, element2) {
             $(this).html("Sæt " + (index2 + 1).toString());
@@ -1099,6 +1102,7 @@ $(document).ready(function() {
 
                 var JsonVideoInput = ReplicateVideoInputFormat(VideoObj);
                 $(".JsonVideoInput").html(JSON.stringify(JsonVideoInput, null, 4));
+                console.log("JsonVideoInput: " + JSON.stringify( JsonVideoInput ) );
 
 
 

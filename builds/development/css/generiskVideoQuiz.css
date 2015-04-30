@@ -24,13 +24,17 @@
 #JsonOutput{font-weight: 600;}
 #JsonVideoInput{font-weight: 600;}
 .usrbutton{margin-left: 10px; margin-top: 10px;}
+.addfieldWrap{margin-left: 34%;}
 
 .QuestionWrapper{/* display: none; */}
 .QuestionWrapperButton input{margin-left: 20px;}
 .QuestionLetter{padding-left: 5px; padding-right: 5px;}
 
-.QFTheading{}
-.QFAheading{margin-left: 20px;}
+.addform{margin-right: 0px;}
+.removeform{margin-right: 0px;}
+
+.QFTheading{width: 50%;}
+.QFAheading{margin-right: 20%;}
 
 .hide{display: none;}
 .dhide{}  /* dummy hide */
@@ -38,17 +42,19 @@
 
 #PagerWrapper{margin-left: auto; margin-right: auto; width: 900px;}
 .PagerClass{display: inline-block;}
-#PagerContainer{width: 700px; display: inline-block;}
+#PagerContainer{display: inline-block;}
 #PagerContainer ul {padding: 0px;}
 #PagerContainer ul li {display: inline;}
 .PagerButton{margin: 2px;}
-.AddNewPageButton{} 
+.AddNewPageButton{margin-right: 90px;} 
 
 .b-red { }
 .b-blue{border: 1px solid #00F; }
 
 .ml5 {margin-left: 5px}
 .ml10 {margin-left: 10px}
+.ml40 {margin-left: 40px}
+.ml60 {margin-left: 60px}
 .mr25 {margin-right: 25px}
 
 .w100 {width: 100%;}
@@ -65,6 +71,7 @@
 .right{float: right;}
 .left{float: left;}
 .clear{clear: both;}
+.bottom{position: relative; bottom: 0px;}
 
 .bgc-C0C0C0{background-color: #C0C0C0;}
 .bgc-E0E0E0{background-color: #E0E0E0;}
