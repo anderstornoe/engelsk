@@ -256,7 +256,7 @@
                   }
                   var Hint_Top = Math.round( Top + DivHeight );
                   console.log("Left: " + Position.left + ", Top: " + Position.top + ", DivHeight: " + DivHeight + "\nHintText: " + HintText  + ", Hint_Left: " + Hint_Left );
-                  $( DivObj ).after( $('<div id="Hint" class="HintClass"> <span class="LukClass right glyphicon glyphicon-remove"></span><span class="clear"></span>' + HintText + '</div>').fadeIn("slow") );  // glyphicon glyphicon-remove
+                  $( DivObj ).after( $('<div id="Hint" class="HintClass"> <span class="LukClass right glyphicon glyphicon-remove"></span><span class="clear"></span><h6>' + HintText + '</h6></div>').fadeIn("slow") );  // glyphicon glyphicon-remove
                   $( "#Hint" ).css({ position: "absolute", top: Hint_Top+"px", left: Hint_Left+"px"});
                   // SetTimerAndFadeout("#Hint");
                   console.log(" TimerId 1 : " + TimerId );
@@ -294,7 +294,7 @@
                   $( DivObj ).before( $('<a id="Ans'+IdNumStr+'" class="AnsClass btn btn-danger btn-sm btn-autosize">'+AnsText+'</a>').fadeIn("slow") );
                   $( "#Ans"+IdNumStr ).css({ position: "absolute", top: Ans_Top+"px", left: Ans_Left+"px"});
                   if (AnsText == "Correct") $("#Ans"+IdNumStr).toggleClass( "btn-danger btn-success" ); // Skift til groen
-                  SetTimerAndFadeout(".AnsClass");
+                  // SetTimerAndFadeout(".AnsClass");
                   console.log(" TimerId 2 : " + TimerId );
               });
           }
