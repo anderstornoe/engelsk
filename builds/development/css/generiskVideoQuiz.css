@@ -12,6 +12,8 @@
 */
 #PlayerVideoView img{width: 100%;}
 
+#load_video{margin-top: 5px;}
+
 #HeaderWrap{padding: 10px;}
 .InputHeader{font-weight: 600; padding-top: 15px;}
 .QuestionField{margin: 10px;}
