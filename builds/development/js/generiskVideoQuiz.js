@@ -1007,7 +1007,14 @@ $(document).ready(function() {
             // HENT DEFAULT VIDEO IND FRA STARTEN
             VideoObj.LoadDefaultVideo();
             VideoObj.LoadVideo();
+
+            // Hent data ind fra inputfelterne:
+            var JsonVideoInput = ReplicateVideoInputFormat(VideoObj);
+            JsonVideoInput_update = JsonVideoInput;
+
+            // Load data over i quiz'en:
             loadGenericData(); 
+
             /*setupplayer();*/
             // $("#delete_selections").click(function() {
             //     VideoObj.DeleteSelections();

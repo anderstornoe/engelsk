@@ -9,6 +9,8 @@
 /*
 #PlayerVideoView{overflow:hidden;}
 */
+#PlayerVideoView img{width: 100%;}
+
 #HeaderWrap{padding: 10px;}
 .InputHeader{font-weight: 600; padding-top: 15px;}
 .QuestionField{margin: 10px;}
