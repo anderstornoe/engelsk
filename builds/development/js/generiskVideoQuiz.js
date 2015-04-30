@@ -15,7 +15,7 @@ var VideoClass = {
     WatchURL: null,
     BasicYoutubeEmbedStr: 'https://www.youtube.com/embed/',
     BasicYoutubeWatchStr: 'https://www.youtube.com/watch?v=',
-    DefaultNoVideoImg: '../images/no_video.jpg',
+    DefaultNoVideoImg: 'images/no_video.jpg',
     DefaultStartFrameTitle: "Answer the questions in this video quiz.",
     DefaultStartFrameText: "Note what happens as the film plays and try to answer the questions",
     DefaultStartButtonTitle: "Start quiz",
