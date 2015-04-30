@@ -15,9 +15,9 @@ var VideoClass = {
     WatchURL: null,
     BasicYoutubeEmbedStr: 'https://www.youtube.com/embed/',
     BasicYoutubeWatchStr: 'https://www.youtube.com/watch?v=',
-    DefaultNoVideoImg: 'images/no_video.jpg',
-    DefaultStartFrameTitle: "Answer the questions in this video quiz.",
-    DefaultStartFrameText: "Note what happens as the film plays and try to answer the questions",
+    DefaultNoVideoImg: '../images/no_video.jpg',
+    DefaultStartFrameTitle: "Titel på introskærm",
+    DefaultStartFrameText: "Tekst, der beskriver hvad quizzen går ud på",
     DefaultStartButtonTitle: "Start quiz",
     QustionObj: {},
     AddVideoProp: function(URL) {
@@ -1000,8 +1000,15 @@ $(document).ready(function() {
 
             var VideoObj = Object.create(VideoClass);
 
+
+
             VideoObj.DeleteSelections(); // Delete previous selections on reload.
 
+            // HENT DEFAULT VIDEO IND FRA STARTEN
+            VideoObj.LoadDefaultVideo();
+            VideoObj.LoadVideo();
+            loadGenericData(); 
+            /*setupplayer();*/
             // $("#delete_selections").click(function() {
             //     VideoObj.DeleteSelections();
             //     console.log("VideoObj submit : " + JSON.stringify(VideoObj));
