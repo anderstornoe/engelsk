@@ -329,7 +329,7 @@ function footer() {
 
 /// INDLEJRINGS    FUNKTIONALITET  ///////
 
-function embedlink(url, obj) {
+function embedlink(obj) {
 
     // alert($(".tab").length);
 

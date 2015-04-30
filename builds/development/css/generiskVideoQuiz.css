@@ -5,6 +5,7 @@
 
 	.embed-responsive{
 		color:white;
+		margin: 2px; 
 	}
 /*
 #PlayerVideoView{overflow:hidden;}
