@@ -25,7 +25,7 @@ var svar;
 var m = 0;
 
 var checkTimer;
-var minutes;
+var minutes = 60;
 var seconds;
 
 var timestamp_Array = [];

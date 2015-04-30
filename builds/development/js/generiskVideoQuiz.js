@@ -487,6 +487,7 @@ function CheckInputValues(NextParent) {
 
 
 function GenerateNumberSelect(MinNum, MaxNum, NameVal, UserVal, ClassSelector) {
+    console.log("GENNUM")
     var HTML = '<select name="' + NameVal + '" class="' + ClassSelector + '">';
     HTML += (UserVal !== false) ? '<option selected disabled>' + UserVal + '</option>' : '';
     for (var i = MinNum; i <= MaxNum; i++) {
