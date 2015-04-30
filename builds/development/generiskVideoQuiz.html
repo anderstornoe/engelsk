@@ -2,100 +2,82 @@
 <html lang="en">
 
 <head>
-
     <!-- 
-	      //########################################################################
-	      //                                                          
-	      //      DOKUMENTATION TIL THOMAS: 
-	      //      Dette script tager udgangspunkt i versionen:
-	      //
-	      //          DynamicFormTest17_5_2_MariasGlWireframe.html
-	      //
-	      //########################################################################
-	 -->
-
-
+          //########################################################################
+          //                                                          
+          //      DOKUMENTATION TIL THOMAS: 
+          //      Dette script tager udgangspunkt i versionen:
+          //
+          //          DynamicFormTest17_5_2_MariasGlWireframe.html
+          //
+          //########################################################################
+     -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
     <title> Generisk video-quiz </title>
-
-
-
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="vid.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="css/generiskVideoQuiz.css" />
-
-
 </head>
 
 <body>
-<div class="container-fluid generator_container">
-    <div id="HeaderWrap">
-        <h1>VIDEOQUIZ</h1>
-
-        <p>
-            Denne quizgenerator er stadig en betaversion, så vær derfor opmærksom på at gemme dine spørgsmål du opretter til hvert stop i filmen i et tekstdokument ved siden af.
-        </p>
-        <p>
-            Når du er færdig med at oprette dine stop i filmen, kopierer du koden ved at markere feltet i bunden af siden og sende inholdet i en mail til os på adressen ato@kvuc.dk.
-        </p>
-    </div>
-
-    <div id="VideoInit" class="b-red p10">
-        <form>
-            <div class="InputHeader">Youtube URL</div>
-            <input id="video_url" class="TextField w50" placeholder="kopier URL'en fra adressefeltet i din browser ind i dette felt" type="text" />
-            <div class="InputHeader">Titel på startframe</div>
-            <input id="video_startFrameTitle" class="TextField w50" placeholder="Titel p&aring; startframe (50 tegn)" type="text" maxlength="50"/>
-            <div class="InputHeader">Introtekst til første frame</div>
-            <input id="video_startFrameText" class="TextField w50" placeholder="F.eks: Hvad ved du om the American Dream? (90 tegn)" type="text" maxlength="90" />
-            <div class="InputHeader">Titel på startknap</div>
-            <input id="video_startButtonTitle" class="TextField w50" placeholder="Titel p&aring; startknap (30 tegn)" type="text" maxlength="30"/>
-            <br/>
-            <br/>
-
-            <div class="m5">
-                <input id="load_video" class="w20" name="submit" value="Hent video" type="button" />
-                <a id="load_default_video" href=""> Hent eksempel video </a>
-            </div>
-
-            <br/>
-        </form>
-
-        <div class="row">
-            <div class="col-sm-6">
-                <h3 id="ScrollHere">Din videoquiz </h3>
-                <!-- <div class="embed-responsive embed-responsive-16by9"> -->
-                <div class="embed-responsive embed-responsive-16by9">
-                    <div class="player_container embed-responsive embed-responsive-16by9 col-xs-12 col-md-12">
-                        <div id="player" class="embed-responsive-item"> <img class="img-responsive" alt="No video" src="../images/no_video.jpg"/> </div>
-                        <div id="time">
-
+    <div class="container-fluid generator_container">
+        <div id="HeaderWrap">
+            <h1>Lav din egen videoquiz</h1>
+            <ul>
+                <li>Hent den video fra youtube, som du ønsker at bruge.</li>
+                <li>Skriv derefter titel, introtekst og startknappens tekst.</li>
+                <li>Herefter bestemmer du de STOP der skal være i filmen. Her kan du lave et eller flere spørgsmål eller information til kursisten.</li>
+                <li>Kopiér koden ved at markere feltet i bunden af siden og send inholdet i en mail til os på adressen ato@kvuc.dk, så opretter vi et link til din quiz for dig.
+                </li>
+            </ul>
+        </div>
+        <div id="VideoInit" class="b-red p10">
+            <form>
+                <div class="InputHeader">Youtube URL</div>
+                <input id="video_url" class="TextField w50" placeholder="kopier URL'en fra adressefeltet i din browser ind i dette felt" type="text" />
+                <div class="InputHeader">Overskrift til introbilledet</div>
+                <input id="video_startFrameTitle" class="TextField w50" placeholder="Titel p&aring; startframe (50 tegn)" type="text" maxlength="50" />
+                <div class="InputHeader">Introtekst til første frame</div>
+                <input id="video_startFrameText" class="TextField w50" placeholder="F.eks: Hvad ved du om the American Dream? (90 tegn)" type="text" maxlength="90" />
+                <div class="InputHeader">Titel på startknap</div>
+                <input id="video_startButtonTitle" class="TextField w50" placeholder="Titel p&aring; startknap (30 tegn)" type="text" maxlength="30" />
+                <br/>
+                <br/>
+                <div class="m5">
+                    <input id="load_video" class="w20" name="submit" value="Hent video" type="button" />
+                    <a id="load_default_video" href=""> Hent eksempel video </a>
+                </div>
+                <br/>
+            </form>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 id="ScrollHere">Din videoquiz vises her: </h3>
+                    <!-- <div class="embed-responsive embed-responsive-16by9"> -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <div class="player_container embed-responsive embed-responsive-16by9 col-xs-12 col-md-12">
+                            <div id="player" class="embed-responsive-item"> <img class="img-responsive" alt="No video" src="../images/no_video.jpg" /> </div>
+                            <div id="time">
+                            </div>
+                            <div id="time_bar"></div>
                         </div>
-                        <div id="time_bar"></div>
-                    </div>
-                    <div id="overlay">
-                        <div class="popud">
+                        <div id="overlay">
+                            <div class="popud">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <h3>Din videofil </h3>
-                <!-- <div class="embed-responsive embed-responsive-16by9"> -->
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe id="PlayerVideoView" class="embed-responsive-item" scrolling="no"> <img class="img-responsive" alt="No video" src="../images/no_video.jpg"/>
-                    </iframe>
+                <div class="col-sm-6">
+                    <h3>Din youtube hentes ind her: </h3>
+                    <!-- <div class="embed-responsive embed-responsive-16by9"> -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe id="PlayerVideoView" class="embed-responsive-item" scrolling="no"> <img class="img-responsive" alt="No video" src="../images/no_video.jpg" />
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
-
-    </div>
-
-
-    <span class="btn btn-default usrbutton"><a class="WatchQuiz ml10" href="#"> SE QUIZ </a></span>
-
-<!-- 
+        <span class="btn btn-default usrbutton"><a class="WatchQuiz ml10" href="#">TEST QUIZ </a></span>
+        <!-- 
     (Generere JSON-string som sendes til quiz-interfacet - læreren kan nu se sin quiz. <b>(læren skal ikke se JSON-stringen)</b> ).
 
     <br/>
@@ -103,27 +85,29 @@
 
     <span class="btn btn-default usrbutton"><a id="countform" class="ml10" href="#"> GEM QUIZ </a></span> (Den optimale løsning: en server der modtager JSON-stringen. Alternativ løsning: ??? - vi skal tage en beslutning...).
  -->
+        <h2>Her opretter du dine stop:</h2>
+        <ul>
+            <li>Du kan lave et spørgsmål med op til fire svarmuligheder.</li>
+            <li>Du kan have et eller flere korrekte svar.</li>
+            <li>Du kan også blot lave en informationstekst i stedet for et spørgsmål.</li>
+            <li>Du kan tilføje flere sæt spørgsmål / informationer i hvert stop.</li>
 
-    <h2>User interface</h2>
-
-    <div id="PagerWrapper">
-        STOP: 
-        <span id="PagerContainer"></span>
-        <a href="#" class="AddNewPageButton btn btn-default"> Tilføj stop </a> 
-    </div>
-    
-    <div id="FormsContainer" class="b-red p10">
-    </div>
-
-    <span class="btn btn-default usrbutton"><a class="WatchQuiz ScrollUp ml10" href="#"> SE QUIZ </a></span>
-
-
-<!-- 
-	Min presentation mandag d. 02-03-2015:
-	http://globe-views.com/dcim/dreams/car/car-03.jpg
-	http://image.motortrend.com/f/30531095+w750/2012-McLaren-MP4-12C-chassis-front-three-quarter.jpg
+            <li>Det er en GOD idé at kopiere koden i bunden over i et dokument løbende.. Det bliver ikke gemt på siden (endnu) </li>
+        </ul>
+        <div id="PagerWrapper">
+            STOP:
+            <span id="PagerContainer"></span>
+            <a href="#" class="AddNewPageButton btn btn-default"> Tilføj stop </a>
+        </div>
+        <div id="FormsContainer" class="b-red p10">
+        </div>
+        <span class="btn btn-default usrbutton"><a class="WatchQuiz ScrollUp ml10" href="#"> TEST QUIZ </a></span>
+        <!-- 
+    Min presentation mandag d. 02-03-2015:
+    http://globe-views.com/dcim/dreams/car/car-03.jpg
+    http://image.motortrend.com/f/30531095+w750/2012-McLaren-MP4-12C-chassis-front-three-quarter.jpg
 -->
-<!-- 
+        <!-- 
     <br/>
     <br/> Mangler før vi har en funktionel beta-version at vise lærene:
     <ul>
@@ -132,39 +116,31 @@
         <li>Spiseligt CSS (ikke det nuværende øjen-bæ layout ;-) )</li>
         <li>User-input sikring</li>
     </ul>
---> 
-
-<!-- 
+-->
+        <!-- 
     <h2>JSON output</h2>
 
     <pre id="JsonOutput">
-	</pre>
+    </pre>
  -->
-
-    <h2>Her genereres den tekst, som du skal sende til os: </h2>
-
-    <textarea class="JsonVideoInput TextField w100" rows="10" placeholder="Her genereres den tekst, som du skal sende til os">
-    </textarea>
-<!-- 
+        <h2>Her genereres den tekst, som du skal sende til os: </h2>
+        <textarea class="JsonVideoInput TextField w100" rows="10" placeholder="Her genereres den tekst, som du skal sende til os">
+        </textarea>
+        <!-- 
     <pre class="JsonVideoInput">
-	</pre>
-  -->   
-
-</div>
-
-<script type="text/javascript" src="js/script.js"></script>
-<script src="js/vid_new.js"></script>
-
-<script type="text/javascript" src="js/generiskVideoQuiz.js"></script>
-<script type="text/javascript" src="js/generiskVideoQuiz_JsonTestOutput.js"></script>
-
-<script src="js/shared_functions.js"></script>
+    </pre>
+  -->
+    </div>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script src="js/vid_new.js"></script>
+    <script type="text/javascript" src="js/generiskVideoQuiz.js"></script>
+    <script type="text/javascript" src="js/generiskVideoQuiz_JsonTestOutput.js"></script>
+    <script src="js/shared_functions.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
         footer();
     });
     </script>
 </body>
-
 
 </html>
