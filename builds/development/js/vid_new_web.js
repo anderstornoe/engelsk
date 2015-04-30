@@ -41,7 +41,7 @@ var intro_text;
 
 //// ALT OVER ER IDENTISK
 
-function loadData() {
+function loadGenericData() {
     runde = 0;
     events_taeller = 0;
     total_score = 0;

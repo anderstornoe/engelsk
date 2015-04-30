@@ -152,6 +152,7 @@ body {
 
 .container-fluid {
     max-width: 1164px;
+    background-color: #f8f8f6;
 }
 
 .btn-default,

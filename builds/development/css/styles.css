@@ -6867,6 +6867,7 @@ body {
 
 .container-fluid {
     max-width: 1164px;
+    background-color: #f8f8f6;
 }
 
 .btn-default,
@@ -7043,4 +7044,5 @@ body {
 
 .imgwrapper_black {
     background-color: black;
+    margin-right: 5px;
 }
