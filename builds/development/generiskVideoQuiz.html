@@ -80,7 +80,7 @@
                 </div>
             </div>
         </div>
-        <span class="btn btn-default usrbutton"><a class="WatchQuiz ml10" href="#">TEST QUIZ </a></span>
+        <a class="WatchQuiz ml10 btn btn-default usrbutton" href="#">TEST QUIZ </a>
         <!-- 
     (Generere JSON-string som sendes til quiz-interfacet - læreren kan nu se sin quiz. <b>(læren skal ikke se JSON-stringen)</b> ).
 
@@ -114,7 +114,7 @@
         <a href="#" class="AddNewPageButton btn btn-default right"> TILFØJ STOP </a>
         <span class="clear"></span>
 
-        <span class="btn btn-default usrbutton"><a class="WatchQuiz ScrollUp ml10" href="#"> TEST QUIZ </a></span>
+        <a class="WatchQuiz ScrollUp ml10 btn btn-default usrbutton" href="#"> TEST QUIZ </a>
         <!-- 
     Min presentation mandag d. 02-03-2015:
     http://globe-views.com/dcim/dreams/car/car-03.jpg
@@ -130,24 +130,27 @@
         <li>User-input sikring</li>
     </ul>
 -->
-        <!-- 
-    <h2>JSON output</h2>
 
+<!-- 
+    <h2>JSON output</h2>
     <pre id="JsonOutput">
     </pre>
- -->
-        <h2>Her genereres den tekst, som du skal sende til os: </h2>
-        <textarea class="JsonVideoInput TextField w100" rows="10" placeholder="Her genereres den tekst, som du skal sende til os">
-        </textarea>
-        <!-- 
-    <pre class="JsonVideoInput">
+
+ 
+    <h2>JSON VideoInput</h2>
+    <pre id="JsonVideoInputTest">
     </pre>
-  -->
+ -->
+
+    <h2>Her genereres den tekst, som du skal sende til os: </h2>
+    <textarea class="JsonVideoInput TextField w100" rows="10" placeholder="Her genereres den tekst, som du skal sende til os">
+    </textarea>
+
     </div>
     <script type="text/javascript" src="js/script.js"></script>
     <script src="js/vid_new.js"></script>
-    <script type="text/javascript" src="js/generiskVideoQuiz.js"></script>
     <script type="text/javascript" src="js/generiskVideoQuiz_JsonTestOutput.js"></script>
+    <script type="text/javascript" src="js/generiskVideoQuiz.js"></script>
     <script src="js/shared_functions.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
