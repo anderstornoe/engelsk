@@ -35,6 +35,8 @@
             <form>
                 <div class="InputHeader">Youtube URL</div>
                 <input id="video_url" class="TextField w50" placeholder="kopier URL'en fra adressefeltet i din browser ind i dette felt" type="text" />
+                <br/>
+                <input id="load_video" class="w20" name="submit" value="Hent video" type="button" />
                 <div class="InputHeader">Overskrift til introbilledet</div>
                 <input id="video_startFrameTitle" class="TextField w50" placeholder="Titel p&aring; startframe (50 tegn)" type="text" maxlength="50" />
                 <div class="InputHeader">Introtekst til første frame</div>
@@ -43,14 +45,16 @@
                 <input id="video_startButtonTitle" class="TextField w50" placeholder="Titel p&aring; startknap (30 tegn)" type="text" maxlength="30" />
                 <br/>
                 <br/>
+<!-- 
                 <div class="m5">
                     <input id="load_video" class="w20" name="submit" value="Hent video" type="button" />
                     <a id="load_default_video" href=""> Hent eksempel video </a>
                 </div>
+  -->               
                 <br/>
             </form>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <h3 id="ScrollHere">Din videoquiz vises her: </h3>
                     <!-- <div class="embed-responsive embed-responsive-16by9"> -->
                     <div class="embed-responsive embed-responsive-16by9">
@@ -66,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <h3>Din youtube hentes ind her: </h3>
                     <!-- <div class="embed-responsive embed-responsive-16by9"> -->
                     <div class="embed-responsive embed-responsive-16by9">
@@ -76,7 +80,7 @@
                 </div>
             </div>
         </div>
-        <span class="btn btn-default usrbutton"><a class="WatchQuiz ml10" href="#">TEST QUIZ </a></span>
+        <a class="WatchQuiz ml10 btn btn-default usrbutton" href="#">TEST QUIZ </a>
         <!-- 
     (Generere JSON-string som sendes til quiz-interfacet - læreren kan nu se sin quiz. <b>(læren skal ikke se JSON-stringen)</b> ).
 
@@ -94,14 +98,23 @@
 
             <li>Det er en GOD idé at kopiere koden i bunden over i et dokument løbende.. Det bliver ikke gemt på siden (endnu) </li>
         </ul>
+<!-- 
         <div id="PagerWrapper">
+ -->
             STOP:
             <span id="PagerContainer"></span>
-            <a href="#" class="AddNewPageButton btn btn-default"> Tilføj stop </a>
+            <a href="#" class="AddNewPageButton btn btn-default right"> TILFØJ STOP </a>
+            <span class="clear"></span>
+<!-- 
         </div>
+  -->       
         <div id="FormsContainer" class="b-red p10">
         </div>
-        <span class="btn btn-default usrbutton"><a class="WatchQuiz ScrollUp ml10" href="#"> TEST QUIZ </a></span>
+
+        <a href="#" class="AddNewPageButton btn btn-default right"> TILFØJ STOP </a>
+        <span class="clear"></span>
+
+        <a class="WatchQuiz ScrollUp ml10 btn btn-default usrbutton" href="#"> TEST QUIZ </a>
         <!-- 
     Min presentation mandag d. 02-03-2015:
     http://globe-views.com/dcim/dreams/car/car-03.jpg
@@ -117,24 +130,27 @@
         <li>User-input sikring</li>
     </ul>
 -->
-        <!-- 
-    <h2>JSON output</h2>
 
+<!-- 
+    <h2>JSON output</h2>
     <pre id="JsonOutput">
     </pre>
- -->
-        <h2>Her genereres den tekst, som du skal sende til os: </h2>
-        <textarea class="JsonVideoInput TextField w100" rows="10" placeholder="Her genereres den tekst, som du skal sende til os">
-        </textarea>
-        <!-- 
-    <pre class="JsonVideoInput">
+
+ 
+    <h2>JSON VideoInput</h2>
+    <pre id="JsonVideoInputTest">
     </pre>
-  -->
+ -->
+
+    <h2>Her genereres den tekst, som du skal sende til os: </h2>
+    <textarea class="JsonVideoInput TextField w100" rows="10" placeholder="Her genereres den tekst, som du skal sende til os">
+    </textarea>
+
     </div>
     <script type="text/javascript" src="js/script.js"></script>
     <script src="js/vid_new.js"></script>
-    <script type="text/javascript" src="js/generiskVideoQuiz.js"></script>
     <script type="text/javascript" src="js/generiskVideoQuiz_JsonTestOutput.js"></script>
+    <script type="text/javascript" src="js/generiskVideoQuiz.js"></script>
     <script src="js/shared_functions.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {

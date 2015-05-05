@@ -98,7 +98,7 @@ var QuestionField = '<div class="QuestionField">' +
     '<input type="text" class="TextField w50 mr25" placeholder="Skriv svarmulighed her" name="Question" maxlength="50"/>' +
     '<input type="checkbox" name="Csvar" class="Csvar"/>' +
     // '<a class="addfield ml10" href="#"> Tilf&oslash;j svarmulighed </a>' + 
-    '<a class="removefield ml10" href="#"> slet </a>' +
+    '<a class="removefield ml60" href="#"> slet </a>' +
     '</div>';
 
 // EventForm  -  NOTE: "Event" er det tidligere "Runde"
@@ -111,26 +111,32 @@ var EventForm = '<form class="EventForm">' +
     '</span>' +
     '<a class="removeform ml10 right btn btn-default usrbutton" href="#"> Fjern sæt </a>' +
     '<div class="clear"></div>' +
-    '<textarea rows="4" class="TextField w50" name="EventInfo" maxlength="300" placeholder="Her skriver du din infotekst (300 tegn)">' + 
-    '</textarea> <br/>' +
+    '<textarea rows="4" class="EventQuestion TextField w50" name="EventQuestion" maxlength="300" placeholder="Her skriver du dit spørgsmål til kursisten (300 tegn)">' + 
+    '</textarea>' +
+    '<textarea rows="4" class="EventInfo TextField w50" name="EventInfo" maxlength="300" placeholder="Her skriver du en tekst til kursisten, der passer tile et specifikt stop (300 tegn)">' + 
+    '</textarea>' +
+    '<br/>' +
     '<div class="QuestionWrapper">' +
-    '<span class="QFTheading"> ANGIV SVARMULIGHEDER (maks 4 svar muligt) </span> <span class="QFAheading"> KORREKT SVAR </span>' +
+    '<div class="QFTheading left"> ANGIV SVARMULIGHEDER (maks 4 svar muligt) </div> <span class="QFAheading left"> KORREKT SVAR </span>' +
+    '<div class="clear"></div>' +
     '<div class="QuestionFieldWrapper">' +
     QuestionField +
     QuestionField +
     '</div>' +
-    '<a class="addfield ml10" href="#"> Tilføj svar </a> <br/>' +
+    'ANGIV FEEDBACK <span class="addfieldWrap"><a class="addfield ml10" href="#"> Tilføj svarmulighed </a><span> <br/>' +
     '<textarea rows="4" class="TextField w50" name="EventFeedback" placeholder="Giv feedback til kursisten"></textarea> <br/>' +
-    '</div>' +
     '</div>' +
     '<a class="addform ml10 right btn btn-default usrbutton" href="#"> Tilføj sæt </a>' +
     '<div class="clear"></div>' +
+    '</div>' +
+    // '<a class="addform ml10 right btn btn-default usrbutton" href="#"> Tilføj sæt </a>' +
+    // '<div class="clear"></div>' +
     '</form>';
 
 // TimestampForm  -  NOTE: "Timestamp" er synonym med "Stop"
 var TimeStampForm = '<div class="TimeStampForm">' +
     '<form class="class_TimeStampForm p10">' +
-    '<b> Stop 1 : </b>' +
+    '<b> STOP 1 : </b>' +
     // GenerateNumberSelect(0, 24, "tt", "SelectHour") + " : " +
     GenerateNumberSelect(0, 60, "mm", "minutter", "SelectMin") + " : " +
     GenerateNumberSelect(0, 60, "ss", "sekunder", "SelectSec") +
@@ -158,7 +164,7 @@ function htmlEntities(str) {
 function UpdateNumbersInFormHeaders() {
 
     $(".class_TimeStampForm > b").each(function(index1, element1) {
-        $(this).html("Stop " + (index1 + 1).toString() + " : ");
+        $(this).html("STOP " + (index1 + 1).toString() + " : ");
         var ParentObj = $(this).closest(".TimeStampForm");
         $(".EventForm > div > b", ParentObj).each(function(index2, element2) {
             $(this).html("Sæt " + (index2 + 1).toString());
@@ -319,7 +325,7 @@ function MarkFistAnswerAsCorrectIfNoneSelected(UsrAlert){
         var Csvar = false;
         var MaxNum; var FirstObj;
         $(".QuestionField", element1).each(function(index2, element2) {
-            if (index2 == 0) FirstObj = $(">input[name='Csvar']", element2);
+            if (index2 === 0) FirstObj = $(">input[name='Csvar']", element2);
             if ($("input[name='Csvar']", element2).prop('checked')) Csvar = true;
             MaxNum = index2 + 1;
         });
@@ -484,7 +490,7 @@ function CheckInputValues(NextParent) {
 
 
 function GenerateNumberSelect(MinNum, MaxNum, NameVal, UserVal, ClassSelector) {
-    console.log("GENNUM")
+    console.log("GENNUM");
     var HTML = '<select name="' + NameVal + '" class="' + ClassSelector + '">';
     HTML += (UserVal !== false) ? '<option selected disabled>' + UserVal + '</option>' : '';
     for (var i = MinNum; i <= MaxNum; i++) {
@@ -496,7 +502,7 @@ function GenerateNumberSelect(MinNum, MaxNum, NameVal, UserVal, ClassSelector) {
 }
 
 
-// function SetDualSwitchState(this_obj) {
+// function SetDualSwitchState(this_obj) { 
 //     if ($('input[value=radiobutton]', this_obj).is(':checked')) {
 //         $('.Csvar', this_obj).hide();
 //         $('.Rsvar', this_obj).show();
@@ -558,31 +564,33 @@ function QuestionWrapperButtonControl(Selector) {
         var RadioQuestion = ($("input[value='RadioQuestion']", ParentObj).prop('checked') ? true : false);
         // var RadioButton = ((ParentObj).prop('checked')) ? true : false;
         console.log("QuestionWrapperButton - OK");
-        // if (Selector == "RadioInformation"){   // slideDown()
         if (RadioQuestion) {
             // $("input[name=EventHeader]", ParentObj).hide();
-            $("input[name=EventHeader]", ParentObj).slideUp("fast");
-            $("textarea[name=EventInfo]", ParentObj).attr("placeholder", "Skriv spørgsmålet her (70 tegn)");
-            $("input[value=RadioInformation]", ParentObj).removeAttr('checked');
-            $(".QuestionWrapper", ParentObj).removeClass("dhide");
-            $(".QuestionWrapper", ParentObj).slideDown("slow");
+
+            $("textarea", ParentObj).val("");     // Delete all values in the EventInfo-field and FeedbackField 
+
+            $(".EventInfo", ParentObj).slideUp("fast", function() {
+                $(".EventQuestion", ParentObj).slideDown("fast", function() {
+                    $(".QuestionWrapper", ParentObj).slideDown("fast");
+                });
+            });
             console.log("RadioInformation - OK");
         }
-        // if (Selector == "RadioQuestion"){     // EventHeader  EventInfo  textarea
         if (RadioInformation) {
-            // $("input[name=EventHeader]", ParentObj).show();
-            $("input[name=EventHeader]", ParentObj).slideDown("fast");
-            $("textarea[name=EventInfo]", ParentObj).attr("placeholder", "Her skriver du din infotekst (300 tegn)");
-            $("input[value=RadioQuestion]", ParentObj).removeAttr('checked');
-            $(".QuestionWrapper", ParentObj).slideUp("slow", function() {
-                $(".QuestionWrapper", ParentObj).addClass("dhide");
+
+            $("textarea", ParentObj).val("");     // Delete all values in the EventQuestion-field and FeedbackField
+            $("input[name=Question]", ParentObj).val(""); // Delete all text-values in the QuestionFields
+            $("input[type=checkbox]", ParentObj).prop( "checked", false ); // Remove all checkbox selections
+            $("input[type=checkbox]:eq(0)", ParentObj).prop( "checked", true ); // Add checkbox selection on the first checkbox
+
+            $(".EventQuestion", ParentObj).slideUp("fast", function() {
+                $(".QuestionWrapper", ParentObj).slideUp("fast", function() {
+                    $(".EventInfo", ParentObj).slideDown("fast");
+                });
             });
+            
             console.log("RadioQuestion - OK");
         }
-        // if ($(".QuestionWrapper", EventFormObj).prop("class").indexOf("dhide") !== -1)
-        //     $(".QuestionWrapperButton", EventFormObj).html('<span class="glyphicon glyphicon-chevron-right"></span> Svar og feedback');
-        // else
-        //     $(".QuestionWrapperButton", EventFormObj).html('<span class="glyphicon glyphicon-chevron-down"></span> Skjul svar og feedback');
     });
 }
 
@@ -610,7 +618,7 @@ function ReturnObjKeyNames(Obj) {
 // MARK
 function ReGenerateForm(json, Selector) {
 
-        $(Selector).css("border-width", "5"); // SET EN BRED BORDER, SAA MAN KAN SE AT FUNKTIONEN ER AKTIV!!!
+        $(Selector).css("color", "#F00"); // SET EN BRED BORDER, SAA MAN KAN SE AT FUNKTIONEN ER AKTIV!!!
 
         console.log("json: " + JSON.stringify(json));
 
@@ -622,6 +630,8 @@ function ReGenerateForm(json, Selector) {
         console.log("json.startFrameTitle: " + json.startFrameTitle + ", json.startButtonTitle: " + json.startButtonTitle + ", json.URL: " + json.URL);
 
         var QD = json.QuizData;
+        console.log('QD: ' + QD);
+
 
         // Assume JS is array
         for (var key in QD) {
@@ -830,13 +840,20 @@ function ReplicateVideoInputFormat(json) {
                                     ++AnswerNum;
                                 }
 
-                                if (Obj.name == "EventHeader") {
+                                // if (Obj.name == "EventHeader") {
 
-                                } 
+                                // } 
 
                                 if ((Obj.name == "EventInfo") && (Obj.value !== "")) {
                                     Event.tekst = htmlEntities(Obj.value);
-                                    console.log("Obj.value: " + Obj.value + ", htmlEntities: " + Event.tekst);
+                                    Event.eventtype = "info";
+                                    console.log("EventInfo - Obj.value: " + Obj.value + ", htmlEntities: " + Event.tekst);
+                                }
+
+                                if ((Obj.name == "EventQuestion") && (Obj.value !== "")) {
+                                    Event.tekst = htmlEntities(Obj.value);
+                                    Event.eventtype = "svarknap";
+                                    console.log("EventQuestion - Obj.value: " + Obj.value + ", htmlEntities: " + Event.tekst);
                                 }
 
                                 if ((Obj.name == "EventFeedback") && (Obj.value !== "")) {
@@ -849,7 +866,7 @@ function ReplicateVideoInputFormat(json) {
 
                                 if (Obj.name == "Csvar") {
                                     Event.korrekt.push(AnswerNum.toString());
-                                    if (Event.korrekt.length == 1) Event.eventtype = "svarknap";
+                                    // if (Event.korrekt.length == 1) Event.eventtype = "svarknap";
                                     if (Event.korrekt.length > 1) Event.eventtype = "checkbox";
                                 }
 
@@ -861,10 +878,10 @@ function ReplicateVideoInputFormat(json) {
 
                             console.log("X2 -- Event: " + JSON.stringify(Event));
 
-                            // If no answer options and no feedback is given, then: eventtype = "info":
-                            if ((Event.korrekt.length === 0) && (Event.korrekt.length === 0) && (Event.feedback === null)) {
-                                Event.eventtype = "info";
-                            }
+                            // // If no answer options and no feedback is given, then: eventtype = "info":
+                            // if ((Event.korrekt.length === 0) && (Event.korrekt.length === 0) && (Event.feedback === null)) {
+                            //     Event.eventtype = "info";
+                            // }
 
 
 
@@ -1095,13 +1112,15 @@ $(document).ready(function() {
                 VideoObj.LoadDefaultNoVideoImgIfNoVideoIsChosen();
                 VideoObj.QuizData = GetFormsData('#FormsContainer');
 
+
+                var JsonVideoInput = ReplicateVideoInputFormat(VideoObj); 
+                $(".JsonVideoInput").val(JSON.stringify(JsonVideoInput, null, 4));
+                console.log("JsonVideoInput: " + JSON.stringify( JsonVideoInput ) );
+
+
                 // // Dette ukommenteres indtil moedet kvalitetscirklen mandag d. 9/3-2015 er overstaaet: 
                 // $("#JsonOutput").html(JSON.stringify(VideoObj, null, 4));
-
-                var JsonVideoInput = ReplicateVideoInputFormat(VideoObj);
-                $(".JsonVideoInput").html(JSON.stringify(JsonVideoInput, null, 4));
-
-
+                // $("#JsonVideoInputTest").html(JSON.stringify(JsonVideoInput, null, 4));
 
 
                 JsonVideoInput_update = JsonVideoInput;
