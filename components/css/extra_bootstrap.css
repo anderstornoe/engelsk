@@ -84,12 +84,12 @@
 }
 
 p {
-    letter-spacing: 0px;
+    letter-spacing: 0.8px;
     font-weight: 200;
 }
 
 body {
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
 }
 
 .btn {
