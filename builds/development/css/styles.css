@@ -6806,6 +6806,9 @@ p {
 body {
     letter-spacing: 0.8px;
 }
+h5 {
+    letter-spacing: 0.8px;
+}
 
 .btn {
     letter-spacing: 0px;
