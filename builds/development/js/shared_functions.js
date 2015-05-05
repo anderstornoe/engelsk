@@ -94,13 +94,13 @@ var GeneralOverlayClass = {
         },
         "vid_shot_da": {
             "why_btntext": "Why-button instruction text",
-            "why_content": "This exercise has a double purpose, one the one hand you practice recognizing different aspects of the area of analysis dealing with shot on an actual film and get feedback so you can tell on you are on the right track. On the other hand you get a better understanding of this particular film.",
+            "why_content": "This exercise has a double purpose, one the one hand you practice recognizing different aspects of the area of analysis dealing with shot on an actual film and get feedback so you can tell if you are on the right track. On the other hand you get a better understanding of this particular film.",
             "how_btntext": "How-button instruction text",
             "how_content": "Watch the film and answer the questions as you go along. Be sure to read the feedback after each answer."
         },
         "vid_plot_da": {
             "why_btntext": "Why-button instruction text",
-            "why_content": "This exercise has a double purpose, one the one hand you practice recognizing different aspects of plot on an actual film and get feedback so you can tell on you are on the right track. On the other hand you get a better understanding of this particular film.",
+            "why_content": "This exercise has a double purpose, one the one hand you practice recognizing different aspects of plot on an actual film and get feedback so you can tell if you are on the right track. On the other hand you get a better understanding of this particular film.",
             "how_btntext": "How-button instruction text",
             "how_content": "Watch the film and answer the questions as you go along. Be sure to read the feedback after each answer."
         },
@@ -120,7 +120,7 @@ var GeneralOverlayClass = {
         // ------
         "vid_an": {
             "why_btntext": "Why-button instruction text",
-            "why_content": "This exercise has a double purpose, one the one hand you practice recognizing different aspects of film analysis including both SHOT, SET and PLOTon an actual film and get feedback so you can tell on you are on the right track. On the other hand you get a better understanding of this particular film.",
+            "why_content": "This exercise has a double purpose, one the one hand you practice recognizing different aspects of film analysis including both SHOT, SET and PLOTon an actual film and get feedback so you can tell if you are on the right track. On the other hand you get a better understanding of this particular film.",
             "how_btntext": "How-button instruction text",
             "how_content": "Watch the film and answer the questions as you go along. Be sure to read the feedback after each answer."
         },
