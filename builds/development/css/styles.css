@@ -7057,5 +7057,10 @@ body {
 
 .imgwrapper_black {
     background-color: black;
-    margin-right: 5px;
+}
+.characters .col-xs-6:nth-of-type(1) .imgwrapper_black {
+	margin-right:2.5px;
+}
+.characters .col-xs-6:nth-of-type(2) .imgwrapper_black {
+	margin-left:2.5px;
 }
