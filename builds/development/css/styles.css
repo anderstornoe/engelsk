@@ -6813,6 +6813,9 @@ h5 {
 .btn {
     letter-spacing: 0px;
 }
+h5,h6 {
+    color:#777777;
+}
 
 .col-xs-1,
 .col-sm-1,
@@ -7057,10 +7060,5 @@ body {
 
 .imgwrapper_black {
     background-color: black;
-}
-.characters .col-xs-6:nth-of-type(1) .imgwrapper_black {
-	margin-right:2.5px;
-}
-.characters .col-xs-6:nth-of-type(2) .imgwrapper_black {
-	margin-left:2.5px;
+    margin-right: 5px;
 }
