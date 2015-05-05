@@ -294,7 +294,7 @@
                   $( DivObj ).before( $('<a id="Ans'+IdNumStr+'" class="AnsClass btn btn-danger btn-sm btn-autosize">'+AnsText+'</a>').fadeIn("slow") );
                   $( "#Ans"+IdNumStr ).css({ position: "absolute", top: Ans_Top+"px", left: Ans_Left+"px"});
                   if (AnsText == "Correct") $("#Ans"+IdNumStr).toggleClass( "btn-danger btn-success" ); // Skift til groen
-                  // SetTimerAndFadeout(".AnsClass");
+                  SetTimerAndFadeout(".AnsClass");
                   console.log(" TimerId 2 : " + TimerId );
               });
           }
