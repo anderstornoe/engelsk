@@ -502,7 +502,7 @@ function GenerateNumberSelect(MinNum, MaxNum, NameVal, UserVal, ClassSelector) {
 }
 
 
-// function SetDualSwitchState(this_obj) { 
+// function SetDualSwitchState(this_obj) {
 //     if ($('input[value=radiobutton]', this_obj).is(':checked')) {
 //         $('.Csvar', this_obj).hide();
 //         $('.Rsvar', this_obj).show();
