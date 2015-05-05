@@ -6868,6 +6868,16 @@ body {
 .container-fluid {
     max-width: 1164px;
     background-color: #f8f8f6;
+    padding:0 30px 30px 30px;
+}
+.container-fluid:nth-of-type(2) {
+    margin-top: 20px;
+}
+.container:nth-of-type(2) {
+    margin-top: 0px;
+}
+.container .vuc_footer {
+    margin-top: 0;
 }
 
 .btn-default,
