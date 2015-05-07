@@ -109,13 +109,13 @@ var GeneralOverlayClass = {
             "why_btntext": "Why-button instruction text",
             "why_content": "In this exercise you work with understanding the two main characters and their development. You also practice descriptive vocabulary.",
             "how_btntext": "How-button instruction text",
-            "how_content": "Watch the first half of the film and choose the words you think describe each character best.<br/>Click the words you have placed to get feedback. <br/>Hold translate to translate words to Danish."
+            "how_content": "Watch the first half of the film and choose the words you think describe each character best.<br/>Click the words you have placed to get feedback. <br/>Hold translate to translate words to Danish.<br/>Not all words will fit the characters."
         },
         "billeddrag_dearamericans_2": {
             "why_btntext": "Why-button instruction text",
             "why_content": "In this exercise you work with understanding the two main characters and their development. You also practice descriptive vocabulary.",
             "how_btntext": "How-button instruction text",
-            "how_content": "Watch the second half of the film and choose the words you think describe each character best.<br/>Click the words you have placed to get feedback. <br/>Hold translate to translate words to Danish."
+            "how_content": "Watch the second half of the film and choose the words you think describe each character best.<br/>Click the words you have placed to get feedback. <br/>Hold translate to translate words to Danish.<br/>Not all words will fit the characters."
         },
         // ------
         "vid_an": {
@@ -128,7 +128,7 @@ var GeneralOverlayClass = {
             "why_btntext": "Why-button instruction text",
             "why_content": "In this exercise you work with understanding the two main characters and their development. You also practice descriptive vocabulary.",
             "how_btntext": "How-button instruction text",
-            "how_content": "Watch the film and choose the words you think describe each character best."
+            "how_content": "Watch the second half of the film and choose the words you think describe each character best.<br/>Click the words you have placed to get feedback. <br/>Hold translate to translate words to Danish.<br/>Not all words will fit the characters."
         },
         "search_american_dream": {
             "why_btntext": "Why-button instruction text",
@@ -215,7 +215,7 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId + ", \nOverlayTextHeader: " + OverlayTextHeader + ", \nOverlayText: " + OverlayText);
 
             $(".OverlayTextHeader").html(OverlayTextHeader);
-            $(".OverlayText").html('<h5>' + OverlayText +'</h5>');
+            $(".OverlayText").html('<h5>' + OverlayText + '</h5>');
         });
 
         this.CloseOverlays();
@@ -264,7 +264,7 @@ var GeneralOverlayClass = {
             console.log("ButtonId: " + ButtonId + ", \nOverlayTextHeader: " + OverlayTextHeader + ", \nOverlayText: " + OverlayText);
 
             $(".OverlayTextHeader").html(OverlayTextHeader);
-            $(".OverlayText").html('<h5>' + OverlayText +'</h5>');
+            $(".OverlayText").html('<h5>' + OverlayText + '</h5>');
         });
 
         this.CloseOverlays();
@@ -324,6 +324,21 @@ var GeneralOverlayObj = Object.create(GeneralOverlayClass);
 
 function footer() {
     $("body").append("<div class='container-fluid'><div class='col-xs-12 vuc_footer'><h2>Digitale læringsmaterialer på voksenuddannelser</h2><h6 class='footerText'>Udviklet af et produktionsfællesskab mellem otte VUC’er til anvendelse på de deltagende skoler: <br/> Hf og VUC Nordsjælland, VUC Hvidovre-Amager, VUC Roskilde, VUC Vestegnen, VUF, VUC Storstrøm, VUC Aarhus og Københavns VUC (KVUC).</h6> <h6 class='footerCopywrite'> Copyright 2015 </h6></div></div>");
+
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-62686407-1', 'auto');
+    ga('send', 'pageview');
 }
 
 
@@ -394,8 +409,8 @@ function embedlink(obj) {
     }
 
 
-//<p><iframe width="100%" height="800" frameborder="0" src="http://eundervisning-wp.dk/pf_eng2015/vid_set_da.html"></iframe></p>
-//<p><embed height="800px" src="http://eundervisning-wp.dk/pf_eng2015/vid_set_da.html" width="100%"></embed></p>
+    //<p><iframe width="100%" height="800" frameborder="0" src="http://eundervisning-wp.dk/pf_eng2015/vid_set_da.html"></iframe></p>
+    //<p><embed height="800px" src="http://eundervisning-wp.dk/pf_eng2015/vid_set_da.html" width="100%"></embed></p>
 
 
     function changeLink(indeks) {
@@ -406,9 +421,9 @@ function embedlink(obj) {
 
     }
 
-    $(".embedtext").click(function () {
-   $(this).select();
-});
+    $(".embedtext").click(function() {
+        $(this).select();
+    });
 }
 
 
