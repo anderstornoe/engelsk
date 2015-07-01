@@ -1092,16 +1092,16 @@ th {
   box-sizing: border-box;
 }
 html {
-  font-size: 10px;
+  /*font-size: 10px;*/
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-body {
+/*body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.7;
   color: #999999;
   background-color: #ffffff;
-}
+}*/
 input,
 button,
 select,
@@ -6713,11 +6713,19 @@ a {
     background-color: white;
 }
 
+
 @font-face {
-    font-family: 'OpenSans';
+    font-family: 'OpenSans', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: normal;
-    font-weight: 400;
-    src: local('Open Sans'), local('OpenSans'), url("//themes.googleusercontent.com/static/fonts/opensans/v6/u-WUoqrET9fUeobQW7jkRT8E0i7KZn-EPnyo3HZu7kw.woff") format('woff');
+    font-weight: 200;
+    src: local('Open Sans'), local('OpenSans'), url("../../builds/development/fonts/open-sans.woff") format('woff');
+    /*src: local('Open Sans'), local('OpenSans'), url("../../bower_components/development/fonts/open-sans.woff") format('woff');*/
+}
+
+body {
+  font-family: "OpenSans";
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 @media (max-width: 992px) {

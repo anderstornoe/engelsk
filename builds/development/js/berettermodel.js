@@ -7,17 +7,6 @@
   // top_ajust  : "value", er afhaengig af tekst-stoerrelser, margin og padding paa ul-tags - de svare alle til at placere 
   //              ul-tag'et i "position: relative; top: 0px" - se det udkommenterede CSS foroven.
   // top og left: er begge angivelser for ul-tag'et naar billedet er i dets native stoerrelse, dvs 911 x 400 px.
-
-  // var JsonCss = [ 
-  //     {"id":"#Menu1", "top":218, "left":65,   "left_ajust":0, "top_ajust":0,    "answer":"Teaser"},
-  //     {"id":"#Menu2", "top":150, "left":162,  "left_ajust":0, "top_ajust":-30,  "answer":"Presentation"},
-  //     {"id":"#Menu3", "top":80, "left":270,  "left_ajust":0, "top_ajust":-60,  "answer":"Elaboration"},
-  //     {"id":"#Menu4", "top":10,  "left":352,  "left_ajust":0, "top_ajust":-90,  "answer":"Point of no return"},
-  //     {"id":"#Menu5", "top":-60,  "left":489,  "left_ajust":0, "top_ajust":-120, "answer":"Conflict escalation"},
-  //     {"id":"#Menu6", "top":-110, "left":670,  "left_ajust":0, "top_ajust":-150, "answer":"Climax"},
-  //     {"id":"#Menu7", "top":-60, "left":764,  "left_ajust":0, "top_ajust":-180, "answer":"Resolution"}
-  // ];
-
   var JsonCss = [ 
       {"id":"#Menu1", "top":218, "left":65,   "left_ajust":0, "top_ajust":0,    "answer":"Teaser"},
       {"id":"#Menu2", "top":170, "left":162,  "left_ajust":0, "top_ajust":-30,  "answer":"Presentation"},
@@ -47,9 +36,6 @@
        "hint":"The resolution is the end of the story, a new order has been established or the old one has been re-established."}
   ];
 
-  // RescaleImage(".ImgWrapper", 911, 400);
-  // RepositionObjects(JsonCss ,".ImgWrapper", 911, 400);
-  
   // Funktionen rescaler billedet saaledes at forholdet imellem billedets naturlige hoejde og bredde bevares.
   //    ImgWrapper = En wrapper (f.eks et div-tag) omkring en div med et billede.
   //    NativeWidth og NativeHeigth er den "naturlige" bredde og hoejde for billedet.
@@ -58,7 +44,6 @@
       var Containerheigth = (NativeHeigth/NativeWidth)*ContainerWidth;
       $( ImgWrapper ).height(Containerheigth);
   }
-
 
   // Funktionen rescaler positionen af div-tags saaledes at forholdet mellem billedet og positionen bevares naar siden resizes.
   //    JsonCss: JSON eller JS-objekt
@@ -265,7 +250,6 @@
       });
 
     
-
       // Nedenstaaende udfoeres naar der trykkes paa kanppen "DONE":
       $( document ).on('click', "#done", function(event){
           
