@@ -1,6 +1,6 @@
 
 @font-face {
-    font-family: 'OpenSans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'OpenSans';
     font-style: normal;
     font-weight: 200;
     src: local('Open Sans'), local('OpenSans'), url("../../builds/development/fonts/open-sans.woff") format('woff');
@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: "OpenSans";
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
