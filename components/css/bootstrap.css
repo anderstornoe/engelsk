@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'OpenSans';
+    font-style: normal;
+    font-weight: 200;
+    src: local('Open Sans'), local('OpenSans'), url("../fonts/open-sans.woff") format('woff');
+    /*src: local('Open Sans'), local('OpenSans'), url("../../bower_components/development/fonts/open-sans.woff") format('woff');*/
+}
+
+
+
+
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -10,7 +21,7 @@
  */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
-  font-family: sans-serif;
+    font-family: "OpenSans", Helvetica, Arial, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
